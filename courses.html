@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Course Academy - Courses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0f1117; /* Default dark background */
+        transition: background-color 0.3s ease; /* Smooth transition */
+      }
+      body.light-mode {
+        background-color: #f0f4f8; /* Light background for day mode */
+      }
+
+      #grid-background {
+        background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .1) 25%, rgba(255, 255, 255, .1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .1) 75%, rgba(255, 255, 255, .1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .1) 25%, rgba(255, 255, 255, .1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .1) 75%, rgba(255, 255, 255, .1) 76%, transparent 77%, transparent);
+        background-size: 80px 80px;
+        background-color: #0f1117;
+        transition: background-color 0.3s ease, background-image 0.3s ease;
+      }
+      #grid-background.light-mode {
+        background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent);
+        background-color: #e2e8f0;
+      }
+
+      /* Enhanced shadow for dark mode */
+      .main-container {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.3s ease;
+      }
+      
+      body:not(.light-mode) .main-container {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Page fade animation */
+      .page-fade-in {
+        animation: fadeIn 0.4s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Smooth page transition */
+      .page-transition {
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .page-transition.fade-out {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body class="text-gray-900">
+    <div class="relative min-h-screen flex items-center justify-center p-4 page-transition page-fade-in">
+      <div id="grid-background" class="absolute inset-0"></div>
+
+      <div class="relative bg-[#f6f7fb] rounded-2xl shadow-lg p-8 max-w-7xl mx-auto w-full z-10 main-container">
+        <header class="w-full bg-white shadow-sm px-8 py-4 flex justify-between items-center rounded-xl mb-8">
+          <div class="text-lg font-semibold">BYTE.io</div>
+          <nav class="hidden md:flex space-x-8 text-sm font-medium items-center">
+            <a href="Byte_Learning_Platform.html" class="text-gray-600 hover:text-black">Home</a>
+            <a href="courses.html" class="text-gray-800 hover:text-black">Courses</a>
+            <a href="about.html" class="text-gray-600 hover:text-black">About Us</a>
+            <a href="pricing.html" class="text-gray-600 hover:text-black">Pricing</a>
+            <button id="theme-toggle" class="ml-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="sun-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M2 12H1m15.66-1.66l-.707-.707m-4.243 4.243l-.707.707m-.707 4.243l-.707.707M4.343 4.343L3.636 3.636m16.97 16.97l-.707-.707M4.343 19.657L3.636 20.364M18.364 5.636l.707-.707M12 8a4 4 0 110 8 4 4 0 010-8z"></path>
+              </svg>
+              <svg class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="moon-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              </svg>
+            </button>
+          </nav>
+          <button class="bg-white border border-gray-300 rounded-full px-5 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-100">
+            Sign Up
+          </button>
+        </header>
+
+        <div class="bg-white rounded-2xl shadow-md p-8 mb-8">
+            <section class="text-center mb-12">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">4-Day Intensive Workshop</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+                    BPS Summer Workshop <br />MentorMatchAI Build
+                </h1>
+                <p class="text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                    Build a complete AI-powered mentorship platform from scratch! No coding experience required. 
+                    Learn R, Shiny, databases, and machine learning while creating a real-world application 
+                    that matches students with mentors using artificial intelligence.
+                </p>
+            </section>
+        </div>
+
+        <!-- Workshop Overview -->
+        <section class="bg-white rounded-2xl shadow-md p-8 mb-8">
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold mb-4">4-Day Workshop Journey</h3>
+            <p class="text-gray-600 mb-6">No coding experience required! We'll teach you everything from scratch.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Day 1 -->
+              <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl">
+                <div class="flex items-center mb-4">
+                  <div class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">1</div>
+                  <h4 class="font-bold text-lg">Day 1: Design & Planning</h4>
+                </div>
+                <ul class="text-left text-gray-700 space-y-2">
+                  <li>• Set up your development environment (R Studio)</li>
+                  <li>• Design a beautiful landing page</li>
+                  <li>• Plan user questionnaires</li>
+                  <li>• Learn basic HTML/CSS in R Shiny</li>
+                </ul>
+              </div>
+
+              <!-- Day 2 -->
+              <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-xl">
+                <div class="flex items-center mb-4">
+                  <div class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">2</div>
+                  <h4 class="font-bold text-lg">Day 2: Data & Database</h4>
+                </div>
+                <ul class="text-left text-gray-700 space-y-2">
+                  <li>• Create interactive forms and modals</li>
+                  <li>• Build your first database</li>
+                  <li>• Learn SQL basics</li>
+                  <li>• Create AI recommendation prototype</li>
+                </ul>
+              </div>
+
+              <!-- Day 3 -->
+              <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl">
+                <div class="flex items-center mb-4">
+                  <div class="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">3</div>
+                  <h4 class="font-bold text-lg">Day 3: AI Integration</h4>
+                </div>
+                <ul class="text-left text-gray-700 space-y-2">
+                  <li>• Connect AI to your database</li>
+                  <li>• Design email templates</li>
+                  <li>• Build smart matching logic</li>
+                  <li>• Create notification systems</li>
+                </ul>
+              </div>
+
+              <!-- Day 4 -->
+              <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl">
+                <div class="flex items-center mb-4">
+                  <div class="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">4</div>
+                  <h4 class="font-bold text-lg">Day 4: Testing & Launch</h4>
+                </div>
+                <ul class="text-left text-gray-700 space-y-2">
+                  <li>• Test your complete application</li>
+                  <li>• Build admin dashboard (optional)</li>
+                  <li>• Deploy your app online</li>
+                  <li>• Present your final project</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Learning Tracks -->
+        <section class="bg-white rounded-2xl shadow-md p-8 mb-8">
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold mb-4">Choose Your Learning Track</h3>
+            <p class="text-gray-600 mb-6">Work in specialized teams while building one unified project</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <!-- Frontend Track -->
+              <div class="border border-blue-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                <div class="bg-blue-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a4 4 0 004-4V5z"></path>
+                  </svg>
+                </div>
+                <h4 class="font-bold text-xl text-blue-900 mb-2">Frontend Development</h4>
+                <p class="text-gray-600 mb-6">Master UI/UX design and create beautiful, interactive interfaces using R Shiny. Perfect for those interested in user experience and visual design.</p>
+                <div class="flex items-center justify-between text-sm text-gray-500 mb-6">
+                  <span>4 Weeks</span>
+                  <span>•</span>
+                  <span>20+ Lessons</span>
+                  <span>•</span>
+                  <span>Frontend Focus</span>
+                </div>
+                <div class="space-y-3">
+                  <a href="resources.html?track=frontend" class="w-full bg-blue-50 hover:bg-blue-100 text-blue-700 py-2 px-4 rounded-lg flex items-center justify-between transition-colors">
+                    <span class="flex items-center">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                      </svg>
+                      Resources
+                    </span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <a href="lessons.html?track=frontend" class="w-full bg-blue-50 hover:bg-blue-100 text-blue-700 py-2 px-4 rounded-lg flex items-center justify-between transition-colors">
+                    <span class="flex items-center">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+                      </svg>
+                      Lessons
+                    </span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <a href="lessons.html?track=frontend&section=tickets" class="w-full bg-blue-50 hover:bg-blue-100 text-blue-700 py-2 px-4 rounded-lg flex items-center justify-between transition-colors">
+                    <span class="flex items-center">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
+                      </svg>
+                      Tickets
+                    </span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Backend Track -->
+              <div class="border border-green-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                <div class="bg-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                  </svg>
+                </div>
+                <h4 class="font-bold text-xl text-green-900 mb-2">Backend Development</h4>
+                <p class="text-gray-600 mb-6">Build robust server-side systems, databases, and APIs. Ideal for those interested in data management and system architecture.</p>
+                <div class="flex items-center justify-between text-sm text-gray-500 mb-6">
+                  <span>4 Weeks</span>
+                  <span>•</span>
+                  <span>20+ Lessons</span>
+                  <span>•</span>
+                  <span>Backend Focus</span>
+                </div>
+                <div class="space-y-3">
+                  <a href="resources.html?track=backend" class="w-full bg-green-50 hover:bg-green-100 text-green-700 py-2 px-4 rounded-lg flex items-center justify-between transition-colors">
+                    <span class="flex items-center">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                      </svg>
+                      Resources
+                    </span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <a href="lessons.html?track=backend" class="w-full bg-green-50 hover:bg-green-100 text-green-700 py-2 px-4 rounded-lg flex items-center justify-between transition-colors">
+                    <span class="flex items-center">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+                      </svg>
+                      Lessons
+                    </span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <a href="lessons.html?track=backend&section=tickets" class="w-full bg-green-50 hover:bg-green-100 text-green-700 py-2 px-4 rounded-lg flex items-center justify-between transition-colors">
+                    <span class="flex items-center">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
+                      </svg>
+                      Tickets
+                    </span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- AI Track -->
+              <div class="border border-purple-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                <div class="bg-purple-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364-.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                  </svg>
+                </div>
+                <h4 class="font-bold text-xl text-purple-900 mb-2">AI Development</h4>
+                <p class="text-gray-600 mb-6">Create intelligent matching systems and ML models. Perfect for those interested in machine learning and AI integration.</p>
+                <div class="flex items-center justify-between text-sm text-gray-500 mb-6">
+                  <span>4 Weeks</span>
+                  <span>•</span>
+                  <span>20+ Lessons</span>
+                  <span>•</span>
+                  <span>AI Focus</span>
+                </div>
+                <div class="space-y-3">
+                  <a href="resources.html?track=ai" class="w-full bg-purple-50 hover:bg-purple-100 text-purple-700 py-2 px-4 rounded-lg flex items-center justify-between transition-colors">
+                    <span class="flex items-center">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                      </svg>
+                      Resources
+                    </span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <a href="lessons.html?track=ai" class="w-full bg-purple-50 hover:bg-purple-100 text-purple-700 py-2 px-4 rounded-lg flex items-center justify-between transition-colors">
+                    <span class="flex items-center">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+                      </svg>
+                      Lessons
+                    </span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <a href="lessons.html?track=ai&section=tickets" class="w-full bg-purple-50 hover:bg-purple-100 text-purple-700 py-2 px-4 rounded-lg flex items-center justify-between transition-colors">
+                    <span class="flex items-center">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
+                      </svg>
+                      Tickets
+                    </span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="bg-white rounded-2xl shadow-md p-8">
+          <div class="text-center">
+            <h3 class="text-2xl font-bold mb-6">Ready to Start Your Coding Journey?</h3>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+              Join hundreds of students who went from complete beginners to building real AI applications. 
+              Choose your track and let's start building together!
+            </p>
+            <div class="mb-6">
+              <span class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium">
+                🎯 Limited Spots Available - Register Now!
+              </span>
+            </div>
+            <button id="start-course-btn" class="bg-[#6b4eff] text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-[#5a3ecc] transition-colors shadow-lg">
+              🚀 JOIN BPS SUMMER WORKSHOP
+            </button>
+          </div>
+        </section>
+
+        <!-- Group Selection Modal -->
+        <div id="group-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+          <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold mb-6 text-center">Select Your Track</h3>
+            <p class="text-gray-600 mb-8 text-center">Choose the specialization that best fits your interests and career goals.</p>
+            
+            <div class="space-y-4">
+              <button onclick="selectGroup('frontend')" class="w-full bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg p-4 text-left transition-colors">
+                <h4 class="font-semibold text-blue-900">Frontend Development</h4>
+                <p class="text-blue-700 text-sm">Focus on user interfaces, user experience, and client-side AI integration</p>
+              </button>
+              
+              <button onclick="selectGroup('backend')" class="w-full bg-green-50 hover:bg-green-100 border border-green-200 rounded-lg p-4 text-left transition-colors">
+                <h4 class="font-semibold text-green-900">Backend Development</h4>
+                <p class="text-green-700 text-sm">Master server-side architecture, APIs, and data processing systems</p>
+              </button>
+              
+              <button onclick="selectGroup('ai-dev')" class="w-full bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg p-4 text-left transition-colors">
+                <h4 class="font-semibold text-purple-900">AI Development</h4>
+                <p class="text-purple-700 text-sm">Deep dive into machine learning, model training, and AI system design</p>
+              </button>
+            </div>
+            
+            <button onclick="closeModal()" class="mt-6 w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg transition-colors">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const body = document.body;
+      const gridBackground = document.getElementById('grid-background');
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+
+      function setTheme(theme) {
+        if (theme === 'light') {
+          body.classList.add('light-mode');
+          gridBackground.classList.add('light-mode');
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+          localStorage.setItem('theme', 'light');
+        } else {
+          body.classList.remove('light-mode');
+          gridBackground.classList.remove('light-mode');
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+          localStorage.setItem('theme', 'dark');
+        }
+      }
+
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        setTheme('light');
+      } else {
+        setTheme('dark');
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      });
+
+      // Smooth page transitions
+      function smoothPageTransition(url) {
+        const pageContainer = document.querySelector('.page-transition');
+        pageContainer.classList.add('fade-out');
+        
+        setTimeout(() => {
+          window.location.href = url;
+        }, 300);
+      }
+
+      // Add smooth transitions to navigation links
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          smoothPageTransition(link.href);
+        });
+      });
+
+      // Group selection functionality
+      const startCourseBtn = document.getElementById('start-course-btn');
+      const groupModal = document.getElementById('group-modal');
+
+      startCourseBtn.addEventListener('click', () => {
+        groupModal.classList.remove('hidden');
+        groupModal.classList.add('flex');
+      });
+
+      function closeModal() {
+        groupModal.classList.add('hidden');
+        groupModal.classList.remove('flex');
+      }
+
+      function selectGroup(group) {
+        // Redirect to the appropriate dashboard page
+        switch(group) {
+          case 'frontend':
+            window.location.href = 'dashboard-frontend.html';
+            break;
+          case 'backend':
+            window.location.href = 'dashboard-backend.html';
+            break;
+          case 'ai-dev':
+            window.location.href = 'dashboard-ai-dev.html';
+            break;
+        }
+      }
+
+      // Close modal when clicking outside
+      groupModal.addEventListener('click', (e) => {
+        if (e.target === groupModal) {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
+</html>

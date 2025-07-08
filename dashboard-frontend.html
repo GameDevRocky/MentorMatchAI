@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Development Track - BYTE.io</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0f1117;
+        transition: background-color 0.3s ease;
+      }
+      body.light-mode {
+        background-color: #f0f4f8;
+      }
+
+      #grid-background {
+        background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .1) 25%, rgba(255, 255, 255, .1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .1) 75%, rgba(255, 255, 255, .1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .1) 25%, rgba(255, 255, 255, .1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .1) 75%, rgba(255, 255, 255, .1) 76%, transparent 77%, transparent);
+        background-size: 80px 80px;
+        background-color: #0f1117;
+        transition: background-color 0.3s ease, background-image 0.3s ease;
+      }
+
+      #grid-background.light-mode {
+        background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent);
+        background-color: #e2e8f0;
+      }
+
+      .main-container {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.3s ease;
+      }
+      
+      body:not(.light-mode) .main-container {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .page-fade-in {
+        animation: fadeIn 0.4s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .page-transition {
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .page-transition.fade-out {
+        opacity: 0;
+      }
+
+      .week-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .week-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .resource-card {
+        transition: all 0.2s ease;
+      }
+
+      .resource-card:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body class="text-gray-900">
+    <div class="relative min-h-screen flex items-center justify-center p-4 page-transition page-fade-in">
+      <div id="grid-background" class="absolute inset-0"></div>
+
+      <div class="relative bg-[#f6f7fb] rounded-2xl shadow-lg p-8 max-w-7xl mx-auto w-full z-10 main-container">
+        <header class="w-full bg-white shadow-sm px-8 py-4 flex justify-between items-center rounded-xl mb-8">
+          <div class="text-lg font-semibold">BYTE.io</div>
+          <nav class="hidden md:flex space-x-8 text-sm font-medium items-center">
+            <a href="courses.html" class="text-blue-600 hover:text-blue-800">← Back to Courses</a>
+            <button id="theme-toggle" class="ml-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="sun-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M2 12H1m15.66-1.66l-.707-.707m-4.243 4.243l-.707.707m-.707 4.243l-.707.707M4.343 4.343L3.636 3.636m16.97 16.97l-.707-.707M4.343 19.657L3.636 20.364M18.364 5.636l.707-.707M12 8a4 4 0 110 8 4 4 0 010-8z"></path>
+              </svg>
+              <svg class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="moon-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              </svg>
+            </button>
+          </nav>
+          <div class="flex items-center space-x-4">
+            <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Frontend Track</div>
+          </div>
+        </header>
+
+        <!-- Course Header -->
+        <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-2xl p-8 mb-8">
+          <h1 class="text-4xl font-bold mb-4">Frontend Development Track</h1>
+          <p class="text-blue-100 text-lg mb-4">Master user interfaces, user experience, and client-side AI integration</p>
+          <div class="flex items-center space-x-6">
+            <div class="flex items-center space-x-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>4 Weeks</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+              <span>20+ Lessons</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+              <span>Frontend Focus</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weekly Content -->
+        <div class="space-y-8">
+          <!-- Week 1 -->
+          <div class="bg-white rounded-2xl shadow-md p-8 week-card">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900">Week 1: Foundations</h2>
+                <p class="text-gray-600 mt-1">Building the groundwork for modern frontend development</p>
+              </div>
+              <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+                5 Days
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold mb-3">This Week's Focus</h3>
+              <p class="text-gray-700 leading-relaxed">
+                We'll establish the foundation of modern frontend development, covering HTML5 semantics, CSS Grid/Flexbox, 
+                and JavaScript ES6+ fundamentals. You'll learn responsive design principles and accessibility best practices.
+              </p>
+            </div>
+
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold mb-3">Frontend Challenge</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Build a responsive portfolio website showcasing your projects with modern CSS techniques, 
+                semantic HTML structure, and interactive JavaScript components.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="resource-card bg-blue-50 border border-blue-200 rounded-lg p-4 cursor-pointer hover:bg-blue-100">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="bg-blue-500 rounded-full p-2">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-blue-900">Tutorial & Code</h4>
+                </div>
+                <p class="text-blue-700 text-sm">Interactive coding tutorials and live examples</p>
+              </div>
+
+              <div class="resource-card bg-green-50 border border-green-200 rounded-lg p-4 cursor-pointer hover:bg-green-100">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="bg-green-500 rounded-full p-2">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-green-900">Resources</h4>
+                </div>
+                <p class="text-green-700 text-sm">Documentation, tools, and reference materials</p>
+              </div>
+
+              <div class="resource-card bg-purple-50 border border-purple-200 rounded-lg p-4 cursor-pointer hover:bg-purple-100">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="bg-purple-500 rounded-full p-2">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364-.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-purple-900">Lesson</h4>
+                </div>
+                <p class="text-purple-700 text-sm">Live instruction and guided practice</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Week 2 -->
+          <div class="bg-white rounded-2xl shadow-md p-8 week-card">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900">Week 2: React & Components</h2>
+                <p class="text-gray-600 mt-1">Modern component-based architecture and state management</p>
+              </div>
+              <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+                5 Days
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold mb-3">This Week's Focus</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Dive deep into React fundamentals, component lifecycle, hooks, and state management. 
+                Learn to build reusable components and manage complex application state effectively.
+              </p>
+            </div>
+
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold mb-3">Frontend Challenge</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Create a dynamic task management application with React, featuring component composition, 
+                local state management, and real-time updates using hooks.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="resource-card bg-blue-50 border border-blue-200 rounded-lg p-4 cursor-pointer hover:bg-blue-100">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="bg-blue-500 rounded-full p-2">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-blue-900">Tutorial & Code</h4>
+                </div>
+                <p class="text-blue-700 text-sm">React components and hooks deep dive</p>
+              </div>
+
+              <div class="resource-card bg-green-50 border border-green-200 rounded-lg p-4 cursor-pointer hover:bg-green-100">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="bg-green-500 rounded-full p-2">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-green-900">Resources</h4>
+                </div>
+                <p class="text-green-700 text-sm">React documentation and component libraries</p>
+              </div>
+
+              <div class="resource-card bg-purple-50 border border-purple-200 rounded-lg p-4 cursor-pointer hover:bg-purple-100">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="bg-purple-500 rounded-full p-2">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364-.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-purple-900">Lesson</h4>
+                </div>
+                <p class="text-purple-700 text-sm">Component architecture and patterns</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Week 3 -->
+          <div class="bg-white rounded-2xl shadow-md p-8 week-card">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900">Week 3: AI Integration</h2>
+                <p class="text-gray-600 mt-1">Integrating AI APIs and building intelligent user interfaces</p>
+              </div>
+              <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+                5 Days
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold mb-3">This Week's Focus</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Learn to integrate AI services into frontend applications, handle API responses, 
+                and create intelligent user interfaces that adapt to user behavior and preferences.
+              </p>
+            </div>
+
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold mb-3">Frontend Challenge</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Build an AI-powered chat interface with real-time responses, message history, 
+                and smart suggestions using modern frontend techniques and AI APIs.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="resource-card bg-blue-50 border border-blue-200 rounded-lg p-4 cursor-pointer hover:bg-blue-100">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="bg-blue-500 rounded-full p-2">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-blue-900">Tutorial & Code</h4>
+                </div>
+                <p class="text-blue-700 text-sm">AI API integration and response handling</p>
+              </div>
+
+              <div class="resource-card bg-green-50 border border-green-200 rounded-lg p-4 cursor-pointer hover:bg-green-100">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="bg-green-500 rounded-full p-2">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-green-900">Resources</h4>
+                </div>
+                <p class="text-green-700 text-sm">AI service documentation and SDKs</p>
+              </div>
+
+              <div class="resource-card bg-purple-50 border border-purple-200 rounded-lg p-4 cursor-pointer hover:bg-purple-100">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="bg-purple-500 rounded-full p-2">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364-.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-purple-900">Lesson</h4>
+                </div>
+                <p class="text-purple-700 text-sm">AI UX patterns and best practices</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Week 4 -->
+          <div class="bg-white rounded-2xl shadow-md p-8 week-card">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900">Week 4: Deployment & Optimization</h2>
+                <p class="text-gray-600 mt-1">Performance optimization and production deployment</p>
+              </div>
+              <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+                5 Days
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold mb-3">This Week's Focus</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Master production deployment, performance optimization, and monitoring. 
+                Learn to build, test, and deploy scalable frontend applications with CI/CD pipelines.
+              </p>
+            </div>
+
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold mb-3">Frontend Challenge</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Deploy your complete AI-powered application to production with optimized performance, 
+                automated testing, and continuous deployment pipeline.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="resource-card bg-blue-50 border border-blue-200 rounded-lg p-4 cursor-pointer hover:bg-blue-100">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="bg-blue-500 rounded-full p-2">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-blue-900">Tutorial & Code</h4>
+                </div>
+                <p class="text-blue-700 text-sm">Build optimization and deployment strategies</p>
+              </div>
+
+              <div class="resource-card bg-green-50 border border-green-200 rounded-lg p-4 cursor-pointer hover:bg-green-100">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="bg-green-500 rounded-full p-2">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-green-900">Resources</h4>
+                </div>
+                <p class="text-green-700 text-sm">Deployment platforms and monitoring tools</p>
+              </div>
+
+              <div class="resource-card bg-purple-50 border border-purple-200 rounded-lg p-4 cursor-pointer hover:bg-purple-100">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="bg-purple-500 rounded-full p-2">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364-.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-purple-900">Lesson</h4>
+                </div>
+                <p class="text-purple-700 text-sm">Performance optimization and monitoring</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const body = document.body;
+      const gridBackground = document.getElementById('grid-background');
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+
+      function setTheme(theme) {
+        if (theme === 'light') {
+          body.classList.add('light-mode');
+          gridBackground.classList.add('light-mode');
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+          localStorage.setItem('theme', 'light');
+        } else {
+          body.classList.remove('light-mode');
+          gridBackground.classList.remove('light-mode');
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+          localStorage.setItem('theme', 'dark');
+        }
+      }
+
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        setTheme('light');
+      } else {
+        setTheme('dark');
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      });
+
+      // Smooth page transitions
+      function smoothPageTransition(url) {
+        const pageContainer = document.querySelector('.page-transition');
+        pageContainer.classList.add('fade-out');
+        
+        setTimeout(() => {
+          window.location.href = url;
+        }, 300);
+      }
+
+      // Add smooth transitions to navigation links
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          smoothPageTransition(link.href);
+        });
+      });
+
+      // Resource card interactions
+      document.querySelectorAll('.resource-card').forEach(card => {
+        card.addEventListener('click', () => {
+          // Add your resource interaction logic here
+          console.log('Resource clicked:', card.querySelector('h4').textContent);
+        });
+      });
+    </script>
+  </body>
+</html> 

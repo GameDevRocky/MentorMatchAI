@@ -1,0 +1,1220 @@
+# MentorMatchAI: 4-Day Development Workshop
+# Building a Complete AI-Powered Mentorship Platform
+
+===============================================================================
+## WORKSHOP OVERVIEW
+===============================================================================
+
+This workshop transforms the MentorMatchAI application into a comprehensive 
+learning experience for developers at different specialization levels. 
+Students will work in three focused groups while building a complete 
+mentorship platform with AI-powered matching.
+
+**Target Groups:**
+- Frontend Development (UI/UX, Shiny Interface, CSS/HTML)
+- Backend Development (Database, Server Logic, Data Processing)  
+- AI Development (Machine Learning, NLP, Recommendation Systems)
+
+**Workshop Duration:** 4 Days
+**Final Product:** Fully functional AI-powered mentorship matching platform
+
+===============================================================================
+## APPLICATION ARCHITECTURE OVERVIEW
+===============================================================================
+
+### Core Components:
+1. **Frontend Layer (Shiny UI)**
+   - Landing page with navigation
+   - Modal-based questionnaires
+   - Dynamic mentor cards display
+   - Real-time matching results
+
+2. **Backend Layer (R Server + Database)**
+   - SQLite database with multiple tables
+   - Reactive server logic
+   - Email notification system
+   - Data validation and storage
+
+3. **AI Layer (Machine Learning)**
+   - Text preprocessing and vectorization
+   - TF-IDF and LSA transformations
+   - Cosine similarity matching
+   - Semantic recommendation engine
+
+### Technology Stack:
+- **Frontend:** R Shiny, bslib, HTML/CSS, JavaScript
+- **Backend:** R, SQLite, DBI/RSQLite, Email utilities
+- **AI/ML:** text2vec, Matrix operations, NLP processing
+- **Deployment:** Local R server, containerization ready
+
+===============================================================================
+## DAY 1: LANDING PAGE DESIGN & QUESTIONNAIRE PLANNING
+===============================================================================
+
+### Morning Session (All Groups): Setup & Landing Page Challenge
+**Duration:** 4 hours
+
+#### 1.1 Application Setup & Demo
+**Teaching Moment:** Understanding the MentorMatchAI foundation
+
+```r
+# Current Landing Page Structure (Lines 18-40 in app_enhanced.R)
+nav_panel(
+  title = "Home",
+  div(
+    style = "text-align: center; padding: 40px;",
+    h1("Welcome to MentorMatch"),
+    p("Connect with the perfect mentor using AI-powered matching", 
+      style = "font-size: 1.2rem; margin-bottom: 30px;"),
+    
+    div(
+      actionButton("show_student_form", "I'm a Student", 
+                   class = "btn-primary btn-lg", 
+                   style = "margin: 10px;"),
+      actionButton("show_mentor_form", "I'm a Mentor", 
+                   class = "btn-success btn-lg",
+                   style = "margin: 10px;")
+    )
+  )
+)
+```
+
+#### 1.2 MAIN CHALLENGE: Redesign the Landing Page
+**Teaching Moment:** Modern UI design principles in Shiny
+
+**Requirements (MUST KEEP):**
+1. ✅ Keep the "I'm a Student" and "I'm a Mentor" buttons
+2. ✅ Make it crystal clear what the app does
+3. ✅ Professional, modern design that explains the value proposition
+
+**Shiny UI Components for Landing Page:**
+```r
+# Enhanced Landing Page Template
+div(
+  class = "landing-container",
+  style = "min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);",
+  
+  # Hero Section
+  div(
+    class = "hero-section",
+    style = "text-align: center; padding: 80px 20px;",
+    
+    h1("Find Your Perfect Mentor", 
+       style = "font-size: 3.5rem; color: white; margin-bottom: 20px;"),
+    
+    p("AI-powered matching connects students with industry professionals 
+       for personalized career guidance and mentorship.",
+      style = "font-size: 1.3rem; color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto 40px;"),
+    
+    # Value Propositions
+    div(
+      class = "features-grid",
+      style = "display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+               gap: 30px; margin: 60px auto; max-width: 800px;",
+      
+      div(
+        class = "feature-card",
+        style = "background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;",
+        icon("brain", style = "font-size: 3rem; color: #FFD700; margin-bottom: 15px;"),
+        h3("AI-Powered Matching", style = "color: white; margin-bottom: 10px;"),
+        p("Smart algorithms analyze your goals and match you with the perfect mentor", 
+          style = "color: rgba(255,255,255,0.8);")
+      ),
+      
+      div(
+        class = "feature-card", 
+        style = "background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;",
+        icon("users", style = "font-size: 3rem; color: #FFD700; margin-bottom: 15px;"),
+        h3("Industry Experts", style = "color: white; margin-bottom: 10px;"),
+        p("Connect with experienced professionals from top companies", 
+          style = "color: rgba(255,255,255,0.8);")
+      ),
+      
+      div(
+        class = "feature-card",
+        style = "background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;",
+        icon("rocket", style = "font-size: 3rem; color: #FFD700; margin-bottom: 15px;"),
+        h3("Career Growth", style = "color: white; margin-bottom: 10px;"),
+        p("Get personalized guidance to accelerate your professional journey", 
+          style = "color: rgba(255,255,255,0.8);")
+      )
+    ),
+    
+    # Call-to-Action Buttons (REQUIRED)
+    div(
+      class = "cta-buttons",
+      style = "margin-top: 50px;",
+      
+      actionButton("show_student_form", 
+                   HTML("🎓 I'm a Student<br><small>Find my mentor</small>"), 
+                   class = "btn-light btn-lg",
+                   style = "margin: 15px; padding: 20px 40px; font-size: 1.2rem; 
+                           border-radius: 50px; min-width: 200px; height: 80px;"),
+      
+      actionButton("show_mentor_form", 
+                   HTML("👨‍🏫 I'm a Mentor<br><small>Share my expertise</small>"), 
+                   class = "btn-outline-light btn-lg",
+                   style = "margin: 15px; padding: 20px 40px; font-size: 1.2rem; 
+                           border-radius: 50px; min-width: 200px; height: 80px;")
+    )
+  )
+)
+```
+
+**CSS Enhancements:**
+```css
+/* Add to tags$head() in UI */
+tags$style(HTML("
+  .landing-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  .feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+  
+  .cta-buttons .btn {
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+  
+  .cta-buttons .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  }
+  
+  @media (max-width: 768px) {
+    .hero-section h1 { font-size: 2.5rem !important; }
+    .features-grid { grid-template-columns: 1fr !important; }
+    .cta-buttons .btn { width: 100%; margin: 10px 0; }
+  }
+"))
+```
+
+### Afternoon Session: Questionnaire Planning
+**Duration:** 4 hours
+
+#### 1.3 Questionnaire Design Workshop
+**Teaching Moment:** User experience and data collection strategy
+
+**Current Student Questions Analysis:**
+```r
+# Existing Student Form Fields (Lines 95-140 in app_enhanced.R)
+textInput("student_name", "Full Name")
+textInput("student_email", "Email Address") 
+selectInput("student_major", "Primary Academic Interest")
+selectInput("student_level", "Academic Level")
+selectInput("career_interest", "Target Industry")
+selectInput("career_stage", "Career Goal Timeline")
+checkboxGroupInput("mentorship_type", "What kind of guidance do you need?")
+textAreaInput("biggest_challenge", "What's your biggest current challenge or goal?")
+```
+
+**Current Mentor Questions Analysis:**
+```r
+# Existing Mentor Form Fields (Lines 165-210 in app_enhanced.R)
+textInput("mentor_name", "Full Name")
+textInput("mentor_email", "Email Address")
+textInput("mentor_title", "Current Position")
+selectInput("mentor_industry", "Primary Industry")
+selectInput("mentor_experience", "Years of Experience")
+checkboxGroupInput("mentor_expertise", "Areas of Expertise")
+checkboxGroupInput("mentor_willing", "I'm willing to help with:")
+selectInput("communication_pref", "Preferred Communication")
+textAreaInput("mentor_bio", "Professional Bio & Mentoring Philosophy")
+```
+
+#### 1.4 End of Day 1 Deliverable: Question Selection
+**Teaching Moment:** Collaborative decision making and user research
+
+**Task:** Submit your team's recommended questions for both questionnaires
+
+**Student Questionnaire Categories:**
+- Personal Information (Name, Email, etc.)
+- Academic Background 
+- Career Goals & Interests
+- Mentorship Needs
+- Communication Preferences
+- Challenges & Growth Areas
+
+**Mentor Questionnaire Categories:**
+- Professional Information
+- Expertise & Specializations  
+- Mentoring Preferences
+- Availability & Communication
+- Experience & Background
+- Mentoring Philosophy
+
+**Submission Format:**
+```
+STUDENT QUESTIONNAIRE PROPOSAL:
+1. Question: [Question text]
+   Type: [textInput/selectInput/checkboxGroup/textArea]
+   Required: [Yes/No]
+   Reasoning: [Why this question is important for matching]
+
+2. Question: [Next question]
+   ...
+
+MENTOR QUESTIONNAIRE PROPOSAL:
+1. Question: [Question text]
+   Type: [textInput/selectInput/checkboxGroup/textArea]  
+   Required: [Yes/No]
+   Reasoning: [Why this question is important for matching]
+```
+
+**Evaluation Criteria:**
+- Relevance to AI matching algorithm
+- User experience (not too long/complex)
+- Data quality for recommendations
+- Balance between required/optional fields
+
+===============================================================================
+## DAY 2: DATA & DATABASE DESIGN
+===============================================================================
+
+### Morning Session: Question Finalization & Group Split
+**Duration:** 2 hours
+
+#### 2.1 Questionnaire Questions Selection
+**Teaching Moment:** Consensus building and requirements gathering
+
+**Process:**
+1. Each group presents their questionnaire proposals
+2. Collaborative discussion and voting
+3. Final question list agreed upon by all groups
+4. Technical specifications defined
+
+### Afternoon Session: Specialized Group Challenges
+**Duration:** 6 hours
+
+#### 2.2 Frontend Group: Modal Redesign Challenge
+**Teaching Moment:** Dynamic UI generation and responsive design
+
+**Challenge:** Redesign questionnaire modals to accommodate new questions
+
+**Current Modal Structure:**
+```r
+# Student Modal (Lines 87-130 in app_enhanced.R)
+showModal(modalDialog(
+  title = "Student Questionnaire",
+  size = "l",
+  
+  fluidRow(
+    column(6,
+      h5("Personal Information"),
+      textInput("student_name", "Full Name"),
+      textInput("student_email", "Email Address")
+    ),
+    column(6,
+      h5("Academic Background"),
+      selectInput("student_major", "Primary Academic Interest", choices = major_list)
+    )
+  ),
+  
+  footer = tagList(
+    modalButton("Cancel"),
+    actionButton("submit_student", "Find My Mentor!", class = "btn-primary")
+  )
+))
+```
+
+**Enhancement Requirements:**
+- Multi-step modal with progress indicator
+- Responsive design for mobile devices
+- Real-time validation
+- Dynamic question loading based on previous answers
+
+**Advanced Modal Template:**
+```r
+# Multi-Step Modal Implementation
+showModal(modalDialog(
+  title = div(
+    class = "modal-header-custom",
+    h3("Student Questionnaire"),
+    div(class = "progress-bar",
+        div(class = "progress-fill", style = "width: 33%;"),
+        span("Step 1 of 3")
+    )
+  ),
+  size = "xl",
+  
+  # Dynamic content based on current step
+  div(id = "modal-content",
+    conditionalPanel(
+      condition = "input.current_step == 1",
+      h4("Personal Information"),
+      # Step 1 questions
+    ),
+    conditionalPanel(
+      condition = "input.current_step == 2", 
+      h4("Academic & Career Goals"),
+      # Step 2 questions
+    ),
+    conditionalPanel(
+      condition = "input.current_step == 3",
+      h4("Mentorship Preferences"),
+      # Step 3 questions
+    )
+  ),
+  
+  footer = tagList(
+    actionButton("prev_step", "Previous", class = "btn-secondary"),
+    actionButton("next_step", "Next", class = "btn-primary"),
+    actionButton("submit_student", "Submit", class = "btn-success")
+  )
+))
+```
+
+#### 2.3 Backend Group: Database Schema Updates
+**Teaching Moment:** Database migrations and schema versioning
+
+**Challenge:** Alter database to handle new questionnaire data
+
+**Current Schema Analysis:**
+```sql
+-- Current students_enhanced table
+CREATE TABLE students_enhanced (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    field_of_study TEXT,
+    career_interest TEXT,
+    mentorship_goals TEXT,
+    challenges TEXT,
+    matched_mentor_id INTEGER,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+**Migration Strategy:**
+```r
+# Database Migration Script
+migrate_database <- function() {
+  con <- dbConnect(RSQLite::SQLite(), "mentormatch_enhanced.sqlite")
+  
+  # Add new columns for expanded questionnaire
+  dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN academic_level TEXT")
+  dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN career_timeline TEXT")
+  dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN mentorship_type TEXT")
+  dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN communication_pref TEXT")
+  dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN availability TEXT")
+  
+  # Create new table for detailed responses
+  dbExecute(con, "
+    CREATE TABLE IF NOT EXISTS student_responses (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      student_id INTEGER NOT NULL,
+      question_id TEXT NOT NULL,
+      response TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (student_id) REFERENCES students_enhanced (id)
+    )
+  ")
+  
+  # Update mentor_profiles table
+  dbExecute(con, "ALTER TABLE mentor_profiles ADD COLUMN mentoring_capacity INTEGER DEFAULT 3")
+  dbExecute(con, "ALTER TABLE mentor_profiles ADD COLUMN response_time TEXT")
+  
+  dbDisconnect(con)
+}
+```
+
+**Backend Processing Updates:**
+```r
+# Enhanced form processing
+process_student_form <- function(input_data) {
+  con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+  
+  # Insert main student record
+  student_id <- dbExecute(con, "
+    INSERT INTO students_enhanced 
+    (name, email, field_of_study, career_interest, academic_level, 
+     career_timeline, mentorship_type, communication_pref, availability)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    params = list(
+      input_data$name,
+      input_data$email,
+      input_data$field_of_study,
+      input_data$career_interest,
+      input_data$academic_level,
+      input_data$career_timeline,
+      paste(input_data$mentorship_type, collapse = ","),
+      input_data$communication_pref,
+      input_data$availability
+    )
+  )
+  
+  # Insert detailed responses
+  for (question_id in names(input_data$detailed_responses)) {
+    dbExecute(con, "
+      INSERT INTO student_responses (student_id, question_id, response)
+      VALUES (?, ?, ?)",
+      params = list(student_id, question_id, input_data$detailed_responses[[question_id]])
+    )
+  }
+  
+  dbDisconnect(con)
+  return(student_id)
+}
+```
+
+#### 2.4 AI Development Group: Semantic Recommender Prototype
+**Teaching Moment:** Building ML systems with dummy data
+
+**Challenge:** Build semantic recommender using CSV dummy data
+
+**Dummy Data Creation:**
+```r
+# Generate realistic dummy data
+create_dummy_data <- function() {
+  # Student dummy data
+  students_dummy <- data.frame(
+    id = 1:50,
+    name = paste("Student", 1:50),
+    email = paste0("student", 1:50, "@university.edu"),
+    field_of_study = sample(c("Computer Science", "Business", "Engineering", "Design", "Data Science"), 50, replace = TRUE),
+    career_interest = sample(c("Software Development", "Product Management", "Data Analysis", "UX Design", "Consulting"), 50, replace = TRUE),
+    mentorship_goals = sample(c("Career transition", "Skill development", "Industry insights", "Networking", "Leadership"), 50, replace = TRUE),
+    challenges = sample(c("Technical skills", "Industry knowledge", "Networking", "Interview prep", "Portfolio building"), 50, replace = TRUE)
+  )
+  
+  # Mentor dummy data
+  mentors_dummy <- data.frame(
+    id = 1:20,
+    name = paste("Mentor", 1:20),
+    title = sample(c("Senior Software Engineer", "Product Manager", "Data Scientist", "UX Designer", "Engineering Manager"), 20, replace = TRUE),
+    industry = sample(c("Technology", "Finance", "Healthcare", "Education", "Consulting"), 20, replace = TRUE),
+    expertise = sample(c("Machine Learning", "Web Development", "Product Strategy", "Data Analysis", "User Experience"), 20, replace = TRUE),
+    bio = paste("Experienced professional with", sample(5:15, 20, replace = TRUE), "years in", sample(c("tech", "finance", "healthcare"), 20, replace = TRUE))
+  )
+  
+  write.csv(students_dummy, "dummy_students.csv", row.names = FALSE)
+  write.csv(mentors_dummy, "dummy_mentors.csv", row.names = FALSE)
+}
+```
+
+**Enhanced Recommender System:**
+```r
+# Semantic Matching Algorithm v2
+semantic_matcher_v2 <- function(student_data, mentor_data) {
+  # Text preprocessing
+  preprocess_text <- function(text) {
+    text <- tolower(text)
+    text <- gsub("[[:punct:]]", " ", text)
+    text <- gsub("\\s+", " ", text)
+    return(trimws(text))
+  }
+  
+  # Create student profiles
+  student_profiles <- paste(
+    student_data$field_of_study,
+    student_data$career_interest,
+    student_data$mentorship_goals,
+    student_data$challenges
+  )
+  
+  # Create mentor profiles
+  mentor_profiles <- paste(
+    mentor_data$title,
+    mentor_data$industry,
+    mentor_data$expertise,
+    mentor_data$bio
+  )
+  
+  # Vectorization using TF-IDF
+  library(text2vec)
+  
+  # Combine all text for vocabulary
+  all_text <- c(student_profiles, mentor_profiles)
+  tokens <- word_tokenizer(preprocess_text(all_text))
+  it <- itoken(tokens, progressbar = FALSE)
+  
+  # Create vocabulary
+  vocab <- create_vocabulary(it, stopwords = stopwords("en"))
+  vocab <- prune_vocabulary(vocab, term_count_min = 2)
+  
+  # Vectorizer
+  vectorizer <- vocab_vectorizer(vocab)
+  
+  # Create matrices
+  student_tokens <- word_tokenizer(preprocess_text(student_profiles))
+  mentor_tokens <- word_tokenizer(preprocess_text(mentor_profiles))
+  
+  student_it <- itoken(student_tokens, progressbar = FALSE)
+  mentor_it <- itoken(mentor_tokens, progressbar = FALSE)
+  
+  student_matrix <- create_dtm(student_it, vectorizer)
+  mentor_matrix <- create_dtm(mentor_it, vectorizer)
+  
+  # Calculate similarity
+  similarity_matrix <- sim2(student_matrix, mentor_matrix, method = "cosine")
+  
+  return(similarity_matrix)
+}
+```
+
+### End of Day 2 Deliverables:
+1. **Frontend:** Redesigned questionnaire modals with new questions
+2. **Backend:** Updated database schema and migration scripts
+3. **AI Development:** Working semantic recommender prototype with dummy data
+
+===============================================================================
+## DAY 3: INTEGRATION & EMAIL SYSTEM
+===============================================================================
+
+### Morning Session: System Integration
+**Duration:** 4 hours
+
+#### 3.1 Frontend Group: Newsletter Email Design
+**Teaching Moment:** Email template design and HTML email best practices
+
+**Challenge:** Design a newsletter-style email for students when no mentors are available
+
+**Email Template Structure:**
+```html
+<!-- Newsletter Email Template -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Mentor Match Update</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 0 auto; background: #ffffff; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                  color: white; padding: 30px; text-align: center; }
+        .content { padding: 30px; }
+        .mentor-card { border: 1px solid #e0e0e0; border-radius: 8px; 
+                       padding: 20px; margin: 15px 0; }
+        .cta-button { background: #667eea; color: white; padding: 12px 30px; 
+                      text-decoration: none; border-radius: 5px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Your Perfect Mentor Match is Here!</h1>
+            <p>We found amazing mentors that align with your goals</p>
+        </div>
+        
+        <div class="content">
+            <p>Hi {{student_name}},</p>
+            
+            <p>Great news! We now have mentors available who are perfect matches for your career goals in <strong>{{field_of_study}}</strong> and <strong>{{career_interest}}</strong>.</p>
+            
+            <h3>Your Top Mentor Matches:</h3>
+            
+            {{#mentor_matches}}
+            <div class="mentor-card">
+                <h4>{{mentor_name}} - {{mentor_title}}</h4>
+                <p><strong>Industry:</strong> {{mentor_industry}}</p>
+                <p><strong>Expertise:</strong> {{mentor_expertise}}</p>
+                <p><strong>Match Score:</strong> {{compatibility_score}}%</p>
+                <p>{{mentor_bio_excerpt}}</p>
+            </div>
+            {{/mentor_matches}}
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="{{app_url}}" class="cta-button">View Full Profiles & Connect</a>
+            </div>
+            
+            <p>Ready to take the next step in your career? Click above to view detailed mentor profiles and start your mentorship journey!</p>
+            
+            <p>Best regards,<br>The MentorMatch Team</p>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+**R Implementation:**
+```r
+# Email template rendering
+render_mentor_match_email <- function(student_data, mentor_matches) {
+  template <- readLines("email_templates/mentor_match_newsletter.html")
+  
+  # Replace placeholders
+  email_content <- paste(template, collapse = "\n")
+  email_content <- gsub("{{student_name}}", student_data$name, email_content)
+  email_content <- gsub("{{field_of_study}}", student_data$field_of_study, email_content)
+  email_content <- gsub("{{career_interest}}", student_data$career_interest, email_content)
+  
+  # Render mentor matches
+  mentor_html <- ""
+  for (mentor in mentor_matches) {
+    mentor_card <- sprintf('
+      <div class="mentor-card">
+        <h4>%s - %s</h4>
+        <p><strong>Industry:</strong> %s</p>
+        <p><strong>Expertise:</strong> %s</p>
+        <p><strong>Match Score:</strong> %d%%</p>
+        <p>%s</p>
+      </div>',
+      mentor$name, mentor$title, mentor$industry, 
+      mentor$expertise, mentor$compatibility_score,
+      substr(mentor$bio, 1, 150)
+    )
+    mentor_html <- paste(mentor_html, mentor_card)
+  }
+  
+  email_content <- gsub("{{#mentor_matches}}.*{{/mentor_matches}}", mentor_html, email_content)
+  
+  return(email_content)
+}
+```
+
+#### 3.2 Backend Group: Match Logic & Email Queue System
+**Teaching Moment:** Business logic implementation and background processing
+
+**Challenge:** Build logic to check mentor availability and manage email queue
+
+**Match Availability Logic:**
+```r
+# Check if enough mentors are available for matching
+check_mentor_availability <- function(student_id) {
+  con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+  
+  # Get student preferences
+  student <- dbGetQuery(con, "
+    SELECT * FROM students_enhanced WHERE id = ?", 
+    params = list(student_id))
+  
+  # Count available mentors in student's field
+  available_mentors <- dbGetQuery(con, "
+    SELECT COUNT(*) as count FROM mentor_profiles 
+    WHERE active = 1 
+    AND (industry = ? OR expertise LIKE ?)
+    AND (current_mentees < mentoring_capacity OR mentoring_capacity IS NULL)",
+    params = list(student$career_interest, paste0("%", student$field_of_study, "%"))
+  )
+  
+  dbDisconnect(con)
+  
+  # Need at least 3 mentors for good matching
+  return(available_mentors$count >= 3)
+}
+
+# Queue system for pending matches
+queue_student_for_matching <- function(student_id) {
+  con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+  
+  # Add to pending queue
+  dbExecute(con, "
+    INSERT OR REPLACE INTO pending_matches 
+    (student_id, queued_at, status) 
+    VALUES (?, ?, 'pending')",
+    params = list(student_id, Sys.time())
+  )
+  
+  dbDisconnect(con)
+}
+
+# Process pending matches when new mentors join
+process_pending_matches <- function() {
+  con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+  
+  # Get all pending students
+  pending_students <- dbGetQuery(con, "
+    SELECT s.*, p.queued_at 
+    FROM students_enhanced s
+    JOIN pending_matches p ON s.id = p.student_id
+    WHERE p.status = 'pending'
+    ORDER BY p.queued_at ASC"
+  )
+  
+  for (i in 1:nrow(pending_students)) {
+    student <- pending_students[i, ]
+    
+    if (check_mentor_availability(student$id)) {
+      # Generate matches
+      matches <- generate_mentor_matches(student$id)
+      
+      # Send email
+      send_mentor_match_email(student, matches)
+      
+      # Update status
+      dbExecute(con, "
+        UPDATE pending_matches 
+        SET status = 'matched', processed_at = ?
+        WHERE student_id = ?",
+        params = list(Sys.time(), student$id)
+      )
+    }
+  }
+  
+  dbDisconnect(con)
+}
+```
+
+**Email Queue Management:**
+```r
+# Email queue system
+send_mentor_match_email <- function(student_data, mentor_matches) {
+  tryCatch({
+    # Render email content
+    email_html <- render_mentor_match_email(student_data, mentor_matches)
+    
+    # Send email using enhanced_email_utils.R
+    result <- send_enhanced_email(
+      to = student_data$email,
+      subject = "🎯 Your Perfect Mentor Matches Are Here!",
+      html_body = email_html,
+      email_type = "mentor_match_notification"
+    )
+    
+    # Log email sent
+    log_email_sent(student_data$id, "mentor_match", result$success)
+    
+    return(result)
+  }, error = function(e) {
+    log_error("Email sending failed", e$message)
+    return(list(success = FALSE, error = e$message))
+  })
+}
+```
+
+#### 3.3 AI Development Group: Database Integration
+**Teaching Moment:** Connecting ML models to production databases
+
+**Challenge:** Connect semantic recommender to the updated database schema
+
+**Database-Integrated Recommender:**
+```r
+# Production recommender with database integration
+generate_mentor_matches <- function(student_id, top_n = 5) {
+  con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+  
+  # Get student data
+  student <- dbGetQuery(con, "
+    SELECT s.*, GROUP_CONCAT(sr.response) as detailed_responses
+    FROM students_enhanced s
+    LEFT JOIN student_responses sr ON s.id = sr.student_id
+    WHERE s.id = ?
+    GROUP BY s.id", 
+    params = list(student_id))
+  
+  # Get available mentors
+  mentors <- dbGetQuery(con, "
+    SELECT * FROM mentor_profiles 
+    WHERE active = 1 
+    AND (current_mentees < mentoring_capacity OR mentoring_capacity IS NULL)")
+  
+  dbDisconnect(con)
+  
+  if (nrow(mentors) == 0) {
+    return(list())
+  }
+  
+  # Create text profiles for matching
+  student_profile <- paste(
+    student$field_of_study,
+    student$career_interest,
+    student$mentorship_goals,
+    student$challenges,
+    student$detailed_responses
+  )
+  
+  mentor_profiles <- paste(
+    mentors$title,
+    mentors$industry,
+    mentors$expertise,
+    mentors$bio
+  )
+  
+  # Calculate similarities
+  similarities <- calculate_semantic_similarity(student_profile, mentor_profiles)
+  
+  # Add compatibility scores
+  mentors$compatibility_score <- round(similarities * 100)
+  
+  # Sort by compatibility and return top matches
+  top_matches <- mentors[order(mentors$compatibility_score, decreasing = TRUE), ][1:min(top_n, nrow(mentors)), ]
+  
+  return(as.list(top_matches))
+}
+
+# Enhanced similarity calculation
+calculate_semantic_similarity <- function(student_profile, mentor_profiles) {
+  library(text2vec)
+  
+  # Preprocess text
+  all_profiles <- c(student_profile, mentor_profiles)
+  tokens <- word_tokenizer(tolower(all_profiles))
+  it <- itoken(tokens, progressbar = FALSE)
+  
+  # Create vocabulary and vectorizer
+  vocab <- create_vocabulary(it, stopwords = stopwords("en"))
+  vocab <- prune_vocabulary(vocab, term_count_min = 1)
+  vectorizer <- vocab_vectorizer(vocab)
+  
+  # Create DTM
+  dtm <- create_dtm(it, vectorizer)
+  
+  # Calculate cosine similarity between student and mentors
+  student_vector <- dtm[1, , drop = FALSE]
+  mentor_vectors <- dtm[-1, , drop = FALSE]
+  
+  similarities <- sim2(student_vector, mentor_vectors, method = "cosine")
+  
+  return(as.numeric(similarities))
+}
+```
+
+### End of Day 3 Deliverables:
+1. **Frontend:** Newsletter email template with mentor match information
+2. **Backend:** Match availability logic and email queue system
+3. **AI Development:** Database-integrated semantic recommender
+
+===============================================================================
+## DAY 4: TESTING, TWEAKING & ADMIN DASHBOARD
+===============================================================================
+
+### Morning Session: System Testing & Integration
+**Duration:** 4 hours
+
+#### 4.1 End-to-End Testing
+**Teaching Moment:** Quality assurance and user acceptance testing
+
+**Test Scenarios:**
+```r
+# Comprehensive test suite
+test_complete_user_journey <- function() {
+  # Test 1: Student registration with insufficient mentors
+  test_student_registration_queued()
+  
+  # Test 2: Mentor registration triggering matches
+  test_mentor_registration_triggers_matches()
+  
+  # Test 3: Email delivery and content
+  test_email_system()
+  
+  # Test 4: Database integrity
+  test_database_operations()
+  
+  # Test 5: AI matching accuracy
+  test_matching_algorithm()
+}
+
+test_student_registration_queued <- function() {
+  # Clear mentors to simulate shortage
+  con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+  dbExecute(con, "UPDATE mentor_profiles SET active = 0")
+  
+  # Register student
+  student_data <- list(
+    name = "Test Student",
+    email = "test@example.com",
+    field_of_study = "Computer Science",
+    career_interest = "Software Development"
+  )
+  
+  student_id <- process_student_form(student_data)
+  
+  # Check if queued
+  pending <- dbGetQuery(con, "
+    SELECT * FROM pending_matches WHERE student_id = ?", 
+    params = list(student_id))
+  
+  dbDisconnect(con)
+  
+  stopifnot(nrow(pending) == 1)
+  message("✅ Student queuing test passed")
+}
+```
+
+#### 4.2 Performance Optimization
+**Teaching Moment:** Scalability considerations and optimization
+
+**Database Indexing:**
+```sql
+-- Add indexes for better performance
+CREATE INDEX idx_students_career_interest ON students_enhanced(career_interest);
+CREATE INDEX idx_mentors_industry ON mentor_profiles(industry);
+CREATE INDEX idx_mentors_active ON mentor_profiles(active);
+CREATE INDEX idx_pending_matches_status ON pending_matches(status);
+```
+
+**Caching Strategy:**
+```r
+# Cache frequently accessed data
+mentor_cache <- new.env()
+
+get_cached_mentors <- function() {
+  if (is.null(mentor_cache$data) || 
+      difftime(Sys.time(), mentor_cache$timestamp, units = "mins") > 5) {
+    
+    con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+    mentor_cache$data <- dbGetQuery(con, "SELECT * FROM mentor_profiles WHERE active = 1")
+    mentor_cache$timestamp <- Sys.time()
+    dbDisconnect(con)
+  }
+  
+  return(mentor_cache$data)
+}
+```
+
+### Afternoon Session: Admin Dashboard (Optional Challenge)
+**Duration:** 4 hours
+
+#### 4.3 Admin Dashboard with Polished
+**Teaching Moment:** Authentication and admin interfaces
+
+**Polished Setup:**
+```r
+# Install polished if not already installed
+if (!require(polished)) {
+  remotes::install_github("tychobra/polished")
+}
+
+library(polished)
+
+# Polished configuration
+polished_config(
+  app_name = "mentormatch_admin",
+  api_key = Sys.getenv("POLISHED_API_KEY")
+)
+```
+
+**Admin Dashboard UI:**
+```r
+# Admin dashboard UI
+admin_ui <- function() {
+  tagList(
+    tags$head(
+      tags$style(HTML("
+        .admin-dashboard { padding: 20px; }
+        .stat-card { 
+          background: white; 
+          border-radius: 8px; 
+          padding: 20px; 
+          margin: 10px; 
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+        }
+        .stat-number { font-size: 2rem; font-weight: bold; color: #667eea; }
+        .stat-label { color: #666; font-size: 0.9rem; }
+      "))
+    ),
+    
+    div(class = "admin-dashboard",
+      h1("MentorMatch Admin Dashboard", style = "color: #333; margin-bottom: 30px;"),
+      
+      # Key Statistics
+      fluidRow(
+        column(3,
+          div(class = "stat-card",
+            div(class = "stat-number", textOutput("total_students")),
+            div(class = "stat-label", "Total Students")
+          )
+        ),
+        column(3,
+          div(class = "stat-card",
+            div(class = "stat-number", textOutput("total_mentors")),
+            div(class = "stat-label", "Active Mentors")
+          )
+        ),
+        column(3,
+          div(class = "stat-card",
+            div(class = "stat-number", textOutput("successful_matches")),
+            div(class = "stat-label", "Successful Matches")
+          )
+        ),
+        column(3,
+          div(class = "stat-card",
+            div(class = "stat-number", textOutput("pending_matches")),
+            div(class = "stat-label", "Pending Matches")
+          )
+        )
+      ),
+      
+      # Charts and Tables
+      fluidRow(
+        column(6,
+          h3("Registration Trends"),
+          plotlyOutput("registration_chart")
+        ),
+        column(6,
+          h3("Match Success Rate"),
+          plotlyOutput("match_success_chart")
+        )
+      ),
+      
+      fluidRow(
+        column(12,
+          h3("Recent Activity"),
+          DT::dataTableOutput("recent_activity")
+        )
+      ),
+      
+      # Admin Actions
+      fluidRow(
+        column(12,
+          h3("Admin Actions"),
+          actionButton("process_pending", "Process Pending Matches", class = "btn-primary"),
+          actionButton("send_digest", "Send Weekly Digest", class = "btn-info"),
+          actionButton("export_data", "Export Data", class = "btn-success")
+        )
+      )
+    )
+  )
+}
+```
+
+**Admin Dashboard Server Logic:**
+```r
+admin_server <- function(input, output, session) {
+  # Reactive data
+  dashboard_data <- reactive({
+    con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+    
+    stats <- list(
+      total_students = dbGetQuery(con, "SELECT COUNT(*) as n FROM students_enhanced")$n,
+      total_mentors = dbGetQuery(con, "SELECT COUNT(*) as n FROM mentor_profiles WHERE active = 1")$n,
+      successful_matches = dbGetQuery(con, "SELECT COUNT(*) as n FROM mentor_matches WHERE status = 'active'")$n,
+      pending_matches = dbGetQuery(con, "SELECT COUNT(*) as n FROM pending_matches WHERE status = 'pending'")$n
+    )
+    
+    dbDisconnect(con)
+    return(stats)
+  })
+  
+  # Render statistics
+  output$total_students <- renderText({
+    dashboard_data()$total_students
+  })
+  
+  output$total_mentors <- renderText({
+    dashboard_data()$total_mentors
+  })
+  
+  output$successful_matches <- renderText({
+    dashboard_data()$successful_matches
+  })
+  
+  output$pending_matches <- renderText({
+    dashboard_data()$pending_matches
+  })
+  
+  # Registration trends chart
+  output$registration_chart <- renderPlotly({
+    con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+    
+    registrations <- dbGetQuery(con, "
+      SELECT DATE(created_at) as date, COUNT(*) as count
+      FROM students_enhanced
+      WHERE created_at >= date('now', '-30 days')
+      GROUP BY DATE(created_at)
+      ORDER BY date"
+    )
+    
+    dbDisconnect(con)
+    
+    p <- plot_ly(registrations, x = ~date, y = ~count, type = 'scatter', mode = 'lines+markers') %>%
+      layout(title = "Student Registrations (Last 30 Days)",
+             xaxis = list(title = "Date"),
+             yaxis = list(title = "Registrations"))
+    
+    return(p)
+  })
+  
+  # Recent activity table
+  output$recent_activity <- DT::renderDataTable({
+    con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+    
+    activity <- dbGetQuery(con, "
+      SELECT 
+        s.name as student_name,
+        s.email as student_email,
+        s.field_of_study,
+        s.career_interest,
+        s.created_at,
+        CASE 
+          WHEN pm.status = 'pending' THEN 'Waiting for mentors'
+          WHEN pm.status = 'matched' THEN 'Matched'
+          ELSE 'Unknown'
+        END as status
+      FROM students_enhanced s
+      LEFT JOIN pending_matches pm ON s.id = pm.student_id
+      ORDER BY s.created_at DESC
+      LIMIT 50"
+    )
+    
+    dbDisconnect(con)
+    
+    DT::datatable(activity, options = list(pageLength = 10, scrollX = TRUE))
+  })
+  
+  # Admin actions
+  observeEvent(input$process_pending, {
+    result <- process_pending_matches()
+    showNotification("Pending matches processed!", type = "message")
+  })
+  
+  observeEvent(input$export_data, {
+    # Export functionality
+    con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+    students <- dbGetQuery(con, "SELECT * FROM students_enhanced")
+    mentors <- dbGetQuery(con, "SELECT * FROM mentor_profiles")
+    dbDisconnect(con)
+    
+    write.csv(students, "students_export.csv", row.names = FALSE)
+    write.csv(mentors, "mentors_export.csv", row.names = FALSE)
+    
+    showNotification("Data exported successfully!", type = "message")
+  })
+}
+```
+
+### End of Day 4 Deliverables:
+1. **All Groups:** Comprehensive testing results and bug fixes
+2. **Optional:** Admin dashboard with authentication and analytics
+3. **Final:** Production-ready MentorMatchAI application
+
+===============================================================================
+## FINAL WORKSHOP OUTCOMES
+===============================================================================
+
+### Technical Skills Gained
+
+#### Frontend Group:
+- Advanced Shiny UI design and responsive layouts
+- Modal dialog systems and multi-step forms
+- CSS animations and modern web design
+- Email template design and HTML email best practices
+- User experience optimization
+
+#### Backend Group:
+- Database schema design and migrations
+- Complex SQL queries and data relationships
+- Email queue systems and background processing
+- API integration and data validation
+- Performance optimization and caching
+
+#### AI Development Group:
+- Text preprocessing and natural language processing
+- Semantic similarity algorithms and vector spaces
+- Machine learning model integration with databases
+- Recommendation system design and evaluation
+- Production ML deployment considerations
+
+### Collaborative Skills:
+- Cross-functional team communication
+- Agile development methodologies
+- Code review and integration processes
+- Technical documentation and knowledge sharing
+- Problem-solving in distributed teams
+
+### Production Deployment:
+- Database optimization and indexing
+- Error handling and logging systems
+- User authentication and authorization
+- Performance monitoring and analytics
+- Scalability planning and architecture decisions
+
+**Final Result:** A fully functional, production-ready AI-powered mentorship platform built collaboratively by three specialized teams, demonstrating real-world software development practices and modern web application architecture. 

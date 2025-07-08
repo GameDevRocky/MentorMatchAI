@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Course Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0f1117; /* Default dark background */
+        transition: background-color 0.3s ease; /* Smooth transition */
+      }
+      body.light-mode {
+        background-color: #f0f4f8; /* Light background for day mode */
+      }
+
+      /* Custom grid background - default dark mode */
+      #grid-background {
+        background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .1) 25%, rgba(255, 255, 255, .1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .1) 75%, rgba(255, 255, 255, .1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .1) 25%, rgba(255, 255, 255, .1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .1) 75%, rgba(255, 255, 255, .1) 76%, transparent 77%, transparent);
+        background-size: 80px 80px; /* Increased grid size for visibility */
+        background-color: #0f1117; /* Dark background color for the grid */
+        transition: background-color 0.3s ease, background-image 0.3s ease; /* Smooth transition */
+      }
+
+      /* Light mode for the grid */
+      #grid-background.light-mode {
+        background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent);
+        background-color: #e2e8f0; /* Lighter background color for the grid */
+      }
+    </style>
+  </head>
+  <body class="text-gray-900">
+    <div class="relative min-h-screen flex items-center justify-center p-4">
+      <div id="grid-background" class="absolute inset-0"></div>
+
+      <div class="relative bg-[#f6f7fb] rounded-2xl shadow-lg p-8 max-w-7xl mx-auto w-full z-10">
+        <header class="w-full bg-white shadow-sm px-8 py-4 flex justify-between items-center rounded-xl mb-8">
+          <div class="text-lg font-semibold">AI Course Academy</div>
+          <nav class="hidden md:flex space-x-8 text-sm font-medium items-center">
+            <a href="Byte_Learning_Platform.html" class="text-gray-800 hover:text-black">Home</a>
+            <a href="courses.html" class="text-gray-600 hover:text-black">Courses</a>
+            <a href="#" class="text-gray-600 hover:text-black">About Us</a>
+            <a href="#" class="text-gray-600 hover:text-black">Pricing</a>
+            <button id="theme-toggle" class="ml-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="sun-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M2 12H1m15.66-1.66l-.707-.707m-4.243 4.243l-.707.707m-.707 4.243l-.707.707M4.343 4.343L3.636 3.636m16.97 16.97l-.707-.707M4.343 19.657L3.636 20.364M18.364 5.636l.707-.707M12 8a4 4 0 110 8 4 4 0 010-8z"></path>
+              </svg>
+              <svg class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="moon-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              </svg>
+            </button>
+          </nav>
+          <button class="bg-white border border-gray-300 rounded-full px-5 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-100">
+            Sign Up
+          </button>
+        </header>
+
+        <div class="bg-white rounded-2xl shadow-md p-8 mb-8">
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Unlock Your Potential</span>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+                        Master Artificial <br />Intelligence with Our <br />Expert-Led Courses.
+                    </h1>
+                </div>
+                <div class="space-y-6">
+                    <p class="text-gray-600 leading-relaxed">
+                        Dive into the world of AI with comprehensive courses designed for all skill levels.
+                        Learn from industry experts, gain practical experience, and build a strong
+                        foundation for a career in artificial intelligence.
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <button class="bg-[#6b4eff] text-white px-5 py-2 rounded-full font-medium flex items-center space-x-2">
+                            <span>Explore Courses</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </button>
+                        <a href="#" class="text-gray-700 font-medium hover:underline">View Curriculum</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <section class="px-8 md:px-20 pb-16">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="col-span-1 md:col-span-1 bg-white rounded-[20px] overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80"
+                   alt="Laptop with code"
+                   class="w-full h-60 object-cover">
+              <div class="p-4">
+                <p class="text-lg font-medium">Comprehensive Curriculum</p>
+                <p class="text-sm text-gray-500">From basics to advanced topics.</p>
+              </div>
+              <div class="absolute bottom-4 right-4 bg-black text-white rounded-full p-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="bg-black text-white rounded-2xl p-6 flex flex-col justify-between h-full relative">
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">Expert-Led<br />Training</h3>
+                  <p class="text-sm text-gray-300">
+                    Learn from industry professionals with real-world AI experience.
+                  </p>
+                </div>
+                <div class="absolute top-4 right-4 bg-[#6b4eff] rounded-full p-2">
+                  <svg class="w-4 h-4" fill="none" stroke="white" stroke-width="2"
+                       viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-white rounded-2xl p-4 flex flex-col items-center text-center">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80"
+                     alt="Learning path" class="h-24 object-contain mb-2">
+                <p class="font-semibold">Personalized Paths</p>
+                <p class="text-sm text-gray-500 mb-2">Tailored to your goals.</p>
+                <label class="inline-flex relative items-center cursor-pointer">
+                  <input type="checkbox" class="sr-only peer" checked>
+                  <div
+                    class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:bg-[#6b4eff] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full">
+                  </div>
+                </label>
+              </div>
+
+              <div class="bg-[#cde3e0] rounded-2xl p-4 flex flex-col items-center text-center">
+                <img src="https://images.unsplash.com/photo-1543269824-cb22a2760775?auto=format&fit=crop&w=200&q=80"
+                     alt="Community" class="h-20 object-contain mb-2">
+                <p class="font-semibold">Vibrant Community</p>
+                <p class="text-sm text-gray-500">Connect with peers.</p>
+              </div>
+
+              <div class="col-span-2 bg-black rounded-2xl h-40 flex items-center justify-center">
+                <img src="https://images.unsplash.com/photo-1588072432836-8a7167a84a6b?auto=format&fit=crop&w=200&q=80"
+                     alt="Certificate" class="h-24 object-contain">
+                <p class="text-white text-lg font-semibold ml-4">Earn Your AI Certification</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const body = document.body;
+      const gridBackground = document.getElementById('grid-background');
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+
+      // Function to set the theme
+      function setTheme(theme) {
+        if (theme === 'light') {
+          body.classList.add('light-mode');
+          gridBackground.classList.add('light-mode');
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+          localStorage.setItem('theme', 'light');
+        } else {
+          body.classList.remove('light-mode');
+          gridBackground.classList.remove('light-mode');
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+          localStorage.setItem('theme', 'dark');
+        }
+      }
+
+      // Initial theme setup on page load
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        // Check for OS preference if no theme saved
+        setTheme('light');
+      } else {
+        // Default to dark mode if no preference found
+        setTheme('dark');
+      }
+
+      // Toggle theme on button click
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      });
+    </script>
+  </body>
+</html>

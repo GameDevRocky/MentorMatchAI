@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resources & Tutorials - MentorMatchAI Workshop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0f1117;
+        transition: background-color 0.3s ease;
+      }
+      body.light-mode {
+        background-color: #f0f4f8;
+      }
+
+      #grid-background {
+        background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .1) 25%, rgba(255, 255, 255, .1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .1) 75%, rgba(255, 255, 255, .1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .1) 25%, rgba(255, 255, 255, .1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .1) 75%, rgba(255, 255, 255, .1) 76%, transparent 77%, transparent);
+        background-size: 80px 80px;
+        background-color: #0f1117;
+        transition: background-color 0.3s ease, background-image 0.3s ease;
+      }
+
+      #grid-background.light-mode {
+        background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent);
+        background-color: #e2e8f0;
+      }
+
+      .main-container {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.3s ease;
+      }
+      
+      body:not(.light-mode) .main-container {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+      }
+
+      .code-block {
+        background-color: #1a1a1a;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin: 1rem 0;
+        overflow-x: auto;
+      }
+
+      .code-block pre {
+        margin: 0;
+      }
+
+      .code-block code {
+        font-family: 'Fira Code', monospace;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body class="text-gray-900">
+    <div class="relative min-h-screen flex items-center justify-center p-4 page-transition page-fade-in">
+      <div id="grid-background" class="absolute inset-0"></div>
+
+      <div class="relative bg-[#f6f7fb] rounded-2xl shadow-lg p-8 max-w-7xl mx-auto w-full z-10 main-container">
+        <!-- Header -->
+        <header class="w-full bg-white shadow-sm px-8 py-4 flex justify-between items-center rounded-xl mb-8">
+          <div class="text-lg font-semibold">BYTE.io</div>
+          <nav class="hidden md:flex space-x-8 text-sm font-medium items-center">
+            <a href="Byte_Learning_Platform.html" class="text-gray-600 hover:text-black">Home</a>
+            <a href="courses.html" class="text-gray-600 hover:text-black">Courses</a>
+            <a href="resources.html" class="text-gray-800 hover:text-black">Resources</a>
+            <a href="about.html" class="text-gray-600 hover:text-black">About Us</a>
+            <button id="theme-toggle" class="ml-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="sun-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M2 12H1m15.66-1.66l-.707-.707m-4.243 4.243l-.707.707m-.707 4.243l-.707.707M4.343 4.343L3.636 3.636m16.97 16.97l-.707-.707M4.343 19.657L3.636 20.364M18.364 5.636l.707-.707M12 8a4 4 0 110 8 4 4 0 010-8z"></path>
+              </svg>
+              <svg class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="moon-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              </svg>
+            </button>
+          </nav>
+        </header>
+
+        <!-- Main Content -->
+        <div class="space-y-8">
+          <!-- Introduction -->
+          <section class="bg-white rounded-2xl p-8">
+            <h1 class="text-3xl font-bold mb-4">Workshop Resources & Tutorials</h1>
+            <p class="text-gray-600">Complete code breakdowns and tutorials for building the MentorMatchAI platform.</p>
+          </section>
+
+          <!-- Core Components -->
+          <section class="bg-white rounded-2xl p-8">
+            <h2 class="text-2xl font-bold mb-6">Core Components Overview</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="border border-blue-200 rounded-xl p-6">
+                <h3 class="font-bold text-lg text-blue-900 mb-3">Frontend Layer</h3>
+                <ul class="space-y-2 text-gray-600">
+                  <li>• Landing page with navigation</li>
+                  <li>• Modal-based questionnaires</li>
+                  <li>• Dynamic mentor cards</li>
+                  <li>• Real-time matching results</li>
+                </ul>
+              </div>
+              <div class="border border-green-200 rounded-xl p-6">
+                <h3 class="font-bold text-lg text-green-900 mb-3">Backend Layer</h3>
+                <ul class="space-y-2 text-gray-600">
+                  <li>• SQLite database integration</li>
+                  <li>• Reactive server logic</li>
+                  <li>• Email notification system</li>
+                  <li>• Data validation</li>
+                </ul>
+              </div>
+              <div class="border border-purple-200 rounded-xl p-6">
+                <h3 class="font-bold text-lg text-purple-900 mb-3">AI Layer</h3>
+                <ul class="space-y-2 text-gray-600">
+                  <li>• Text preprocessing</li>
+                  <li>• TF-IDF transformations</li>
+                  <li>• Cosine similarity matching</li>
+                  <li>• Semantic recommendations</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Code Tutorials -->
+          <section class="bg-white rounded-2xl p-8">
+            <h2 class="text-2xl font-bold mb-6">Code Tutorials</h2>
+
+            <!-- Landing Page Tutorial -->
+            <div class="mb-8">
+              <h3 class="text-xl font-bold text-blue-900 mb-4">Building the Landing Page</h3>
+              <p class="text-gray-600 mb-4">Create a modern, responsive landing page with R Shiny:</p>
+              <div class="code-block">
+                <pre><code class="language-r"># Current Landing Page Structure
+nav_panel(
+  title = "Home",
+  div(
+    style = "text-align: center; padding: 40px;",
+    h1("Welcome to MentorMatch"),
+    p("Connect with the perfect mentor using AI-powered matching", 
+      style = "font-size: 1.2rem; margin-bottom: 30px;"),
+    
+    div(
+      actionButton("show_student_form", "I'm a Student", 
+                   class = "btn-primary btn-lg", 
+                   style = "margin: 10px;"),
+      actionButton("show_mentor_form", "I'm a Mentor", 
+                   class = "btn-success btn-lg",
+                   style = "margin: 10px;")
+    )
+  )
+)</code></pre>
+              </div>
+            </div>
+
+            <!-- Database Tutorial -->
+            <div class="mb-8">
+              <h3 class="text-xl font-bold text-green-900 mb-4">Database Integration</h3>
+              <p class="text-gray-600 mb-4">Set up and interact with SQLite database:</p>
+              <div class="code-block">
+                <pre><code class="language-r"># Database Connection and Operations
+con <- dbConnect(RSQLite::SQLite(), "mentormatch_enhanced.sqlite")
+
+# Create tables
+dbExecute(con, "
+  CREATE TABLE IF NOT EXISTS students_enhanced (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    field_of_study TEXT,
+    career_interest TEXT,
+    mentorship_goals TEXT,
+    challenges TEXT,
+    matched_mentor_id INTEGER,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )
+")</code></pre>
+              </div>
+            </div>
+
+            <!-- AI Matching Tutorial -->
+            <div class="mb-8">
+              <h3 class="text-xl font-bold text-purple-900 mb-4">AI Matching System</h3>
+              <p class="text-gray-600 mb-4">Implement the semantic matching algorithm:</p>
+              <div class="code-block">
+                <pre><code class="language-r"># Semantic Matching Algorithm
+semantic_matcher_v2 <- function(student_data, mentor_data) {
+  # Text preprocessing
+  preprocess_text <- function(text) {
+    text <- tolower(text)
+    text <- gsub("[[:punct:]]", " ", text)
+    text <- gsub("\\s+", " ", text)
+    return(trimws(text))
+  }
+  
+  # Create student profiles
+  student_profiles <- paste(
+    student_data$field_of_study,
+    student_data$career_interest,
+    student_data$mentorship_goals,
+    student_data$challenges
+  )
+  
+  # Calculate similarity using TF-IDF
+  library(text2vec)
+  similarity_matrix <- sim2(student_matrix, mentor_matrix, method = "cosine")
+  
+  return(similarity_matrix)
+}</code></pre>
+              </div>
+            </div>
+
+            <!-- Email System Tutorial -->
+            <div class="mb-8">
+              <h3 class="text-xl font-bold text-orange-900 mb-4">Email Notification System</h3>
+              <p class="text-gray-600 mb-4">Implement the email notification system:</p>
+              <div class="code-block">
+                <pre><code class="language-r"># Email template rendering
+render_mentor_match_email <- function(student_data, mentor_matches) {
+  template <- readLines("email_templates/mentor_match_newsletter.html")
+  
+  # Replace placeholders
+  email_content <- gsub("{{student_name}}", student_data$name, template)
+  email_content <- gsub("{{field_of_study}}", student_data$field_of_study, email_content)
+  
+  # Add mentor matches
+  mentor_html <- paste(sapply(mentor_matches, function(mentor) {
+    sprintf('
+      <div class="mentor-card">
+        <h4>%s - %s</h4>
+        <p><strong>Match Score:</strong> %d%%</p>
+      </div>',
+      mentor$name, mentor$title, mentor$compatibility_score
+    )
+  }), collapse = "\n")
+  
+  return(email_content)
+}</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <!-- Additional Resources -->
+          <section class="bg-white rounded-2xl p-8">
+            <h2 class="text-2xl font-bold mb-6">Additional Resources</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <a href="#" class="block p-6 border border-gray-200 rounded-xl hover:shadow-lg transition-shadow">
+                <h3 class="font-bold text-lg mb-2">📚 Documentation</h3>
+                <p class="text-gray-600">Complete API documentation and function references</p>
+              </a>
+              <a href="#" class="block p-6 border border-gray-200 rounded-xl hover:shadow-lg transition-shadow">
+                <h3 class="font-bold text-lg mb-2">🛠️ Development Tools</h3>
+                <p class="text-gray-600">Recommended tools and development environment setup</p>
+              </a>
+              <a href="#" class="block p-6 border border-gray-200 rounded-xl hover:shadow-lg transition-shadow">
+                <h3 class="font-bold text-lg mb-2">📝 Code Templates</h3>
+                <p class="text-gray-600">Starter templates and code snippets</p>
+              </a>
+              <a href="#" class="block p-6 border border-gray-200 rounded-xl hover:shadow-lg transition-shadow">
+                <h3 class="font-bold text-lg mb-2">🎓 Learning Materials</h3>
+                <p class="text-gray-600">Additional tutorials and learning resources</p>
+              </a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Theme toggle functionality
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const body = document.body;
+      const gridBackground = document.getElementById('grid-background');
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+
+      function setTheme(theme) {
+        if (theme === 'light') {
+          body.classList.add('light-mode');
+          gridBackground.classList.add('light-mode');
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+          localStorage.setItem('theme', 'light');
+        } else {
+          body.classList.remove('light-mode');
+          gridBackground.classList.remove('light-mode');
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+          localStorage.setItem('theme', 'dark');
+        }
+      }
+
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        setTheme('light');
+      } else {
+        setTheme('dark');
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      });
+
+      // Smooth page transitions
+      function smoothPageTransition(url) {
+        const pageContainer = document.querySelector('.page-transition');
+        pageContainer.classList.add('fade-out');
+        
+        setTimeout(() => {
+          window.location.href = url;
+        }, 300);
+      }
+
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          smoothPageTransition(link.href);
+        });
+      });
+    </script>
+  </body>
+</html> 
