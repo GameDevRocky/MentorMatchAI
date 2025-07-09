@@ -152,9 +152,6 @@
               </svg>
             </button>
           </nav>
-          <button class="bg-white border border-gray-300 rounded-full px-5 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-100">
-            Sign Up
-          </button>
         </header>
 
         <div class="bg-white rounded-2xl shadow-md p-8 mb-8">
@@ -182,7 +179,7 @@
                                       d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                             </svg>
                         </button>
-                        <a href="#" class="text-gray-700 font-medium hover:underline">View Curriculum</a>
+                        
                     </div>
                 </div>
             </section>
@@ -191,13 +188,14 @@
 
         <section class="px-8 md:px-20 pb-16">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1: Comprehensive Curriculum -->
             <div class="col-span-1 md:col-span-1 bg-white rounded-[20px] overflow-hidden relative">
               <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80"
                    alt="Laptop with code"
                    class="w-full h-60 object-cover">
               <div class="p-4">
                 <p class="text-lg font-medium">Comprehensive Curriculum</p>
-                <p class="text-sm text-gray-500">From basics to advanced topics.</p>
+                <p class="text-sm text-gray-500">Learn for your future with 100+ free, digital, and interdisciplinary courses—designed for all backgrounds and skill levels.</p>
               </div>
               <div class="absolute bottom-4 right-4 bg-black text-white rounded-full p-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
@@ -208,12 +206,13 @@
               </div>
             </div>
 
+            <!-- Card 2: Expert-Led Training -->
             <div class="space-y-6">
               <div class="bg-black text-white rounded-2xl p-6 flex flex-col justify-between h-full relative">
                 <div>
-                  <h3 class="text-xl font-semibold mb-2">Expert-Led<br />Training</h3>
+                  <h3 class="text-xl font-semibold mb-2">Expert-Led Training</h3>
                   <p class="text-sm text-gray-300">
-                    Learn from industry professionals with real-world AI experience.
+                    Learn from expert instructors and real-world practitioners through interactive video lessons and live support.
                   </p>
                 </div>
                 <div class="absolute top-4 right-4 bg-[#6b4eff] rounded-full p-2">
@@ -226,33 +225,50 @@
               </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-white rounded-2xl p-4 flex flex-col items-center text-center">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80"
-                     alt="Learning path" class="h-24 object-contain mb-2">
-                <p class="font-semibold">Personalized Paths</p>
-                <p class="text-sm text-gray-500 mb-2">Tailored to your goals.</p>
-                <label class="inline-flex relative items-center cursor-pointer">
-                  <input type="checkbox" class="sr-only peer" checked>
-                  <div
-                    class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:bg-[#6b4eff] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full">
-                  </div>
-                </label>
-              </div>
+            <!-- Card 3, 4, 5: Grid -->
+           <!-- Card 3, 4 & 5 ============================== -->
+<div class="grid grid-cols-2 gap-4">
+  <!-- Personalized Learning Paths -->
+  <div class="bg-white rounded-2xl p-4 flex flex-col items-center text-center">
+    <img
+      src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80"
+      alt="Learning path"
+      class="h-24 object-contain mb-2"
+    >
+    <p class="font-semibold">Personalized Learning Paths</p>
+    <p class="text-sm text-gray-500">
+      Take a quick discovery quiz and receive a custom roadmap—from game design
+      to AI &amp; robotics—crafted around your passions and pace.
+    </p>
+  </div>
 
-              <div class="bg-[#cde3e0] rounded-2xl p-4 flex flex-col items-center text-center">
-                <img src="https://images.unsplash.com/photo-1543269824-cb22a2760775?auto=format&fit=crop&w=200&q=80"
-                     alt="Community" class="h-20 object-contain mb-2">
-                <p class="font-semibold">Vibrant Community</p>
-                <p class="text-sm text-gray-500">Connect with peers.</p>
-              </div>
+  <!-- Vibrant Community -->
+  <div class="bg-[#cde3e0] rounded-2xl p-4 flex flex-col items-center text-center">
+    <img
+      src="https://plus.unsplash.com/premium_photo-1681841942122-2def4317111d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="Community"
+      class="h-20 object-contain mb-2"
+    >
+    <p class="font-semibold">Vibrant Community</p>
 
-              <div class="col-span-2 bg-black rounded-2xl h-40 flex items-center justify-center">
-                <img src="https://images.unsplash.com/photo-1588072432836-8a7167a84a6b?auto=format&fit=crop&w=200&q=80"
-                     alt="Certificate" class="h-24 object-contain">
-                <p class="text-white text-lg font-semibold ml-4">Earn Your AI Certification</p>
-              </div>
-            </div>
+    <p class="text-sm text-gray-500">
+      Connect with peers, join study groups, and participate in live events—learn
+      together and support each other.
+    </p>
+  </div>
+
+  <!-- Earn Recognized Certificates -->
+  <div class="col-span-2 bg-black rounded-2xl h-40 flex items-center justify-center">
+    <p class="text-white text-lg font-semibold ml-4">
+      Earn Certificates<br>
+      <span class="text-sm font-normal">
+        Complete courses and challenges to earn digital certificates and
+        awards—showcase your skills and achievements.
+      </span>
+    </p>
+  </div>
+</div>
+</div>
           </div>
         </section>
       </div>

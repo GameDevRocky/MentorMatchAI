@@ -65,6 +65,74 @@
       .progress-ring circle {
         transition: stroke-dashoffset 0.3s;
       }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 50;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        overflow-y: auto;
+        padding: 2rem;
+      }
+
+      .modal.show {
+        display: flex;
+        opacity: 1;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .modal-content {
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+        background: white;
+        border-radius: 1rem;
+        width: 100%;
+        max-width: 52rem;
+        margin: auto;
+        position: relative;
+        max-height: calc(100vh - 4rem);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modal.show .modal-content {
+        transform: translateY(0);
+      }
+
+      .modal-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid #e5e7eb;
+        background: white;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .modal-body {
+        padding: 1.5rem;
+        overflow-y: auto;
+        max-height: calc(100vh - 12rem);
+      }
+
+      .lesson-card, .ticket-card {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .lesson-card:hover, .ticket-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
     </style>
   </head>
   <body class="text-gray-900">
@@ -103,33 +171,6 @@
                 <p id="track-description" class="text-gray-600">Please wait while we load your content</p>
               </div>
             </div>
-            <div class="flex items-center space-x-4">
-              <div class="text-right">
-                <p class="text-sm text-gray-600">Your Progress</p>
-                <div class="flex items-center space-x-2">
-                  <svg class="progress-ring" width="36" height="36">
-                    <circle
-                      stroke-width="3"
-                      fill="transparent"
-                      r="16"
-                      cx="18"
-                      cy="18"
-                      style="stroke: #e5e7eb"
-                    />
-                    <circle
-                      id="progress-indicator"
-                      stroke-width="3"
-                      fill="transparent"
-                      r="16"
-                      cx="18"
-                      cy="18"
-                      style="stroke: #6b4eff; stroke-dasharray: 100; stroke-dashoffset: 75"
-                    />
-                  </svg>
-                  <span id="progress-text" class="font-medium">25%</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -153,15 +194,16 @@
                 <div class="space-y-2">
                   <button class="week-selector w-full text-left px-4 py-2 rounded-lg transition-colors" data-week="1">
                     Week 1: Fundamentals
+                    
                   </button>
                   <button class="week-selector w-full text-left px-4 py-2 rounded-lg transition-colors" data-week="2">
-                    Week 2: Core Concepts
+                    Week 2: Data & Database Design
                   </button>
                   <button class="week-selector w-full text-left px-4 py-2 rounded-lg transition-colors" data-week="3">
-                    Week 3: Advanced Topics
+                    Week 3: Integration & Modularization
                   </button>
                   <button class="week-selector w-full text-left px-4 py-2 rounded-lg transition-colors" data-week="4">
-                    Week 4: Project Work
+                    Week 4: Deployment & Testing
                   </button>
                 </div>
               </div>
@@ -178,6 +220,25 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Template -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="flex items-center justify-between">
+            <h3 id="modal-title" class="text-xl font-bold"></h3>
+            <button onclick="closeModal()" class="text-gray-400 hover:text-gray-500">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div id="modal-content" class="modal-body">
+          <!-- Content will be dynamically inserted here -->
         </div>
       </div>
     </div>
@@ -291,62 +352,713 @@
         });
       }
 
+      // Content data structure for all tracks
+      const contentData = {
+        // Common tickets for Week 1 - will be referenced by all tracks
+        commonWeek1Tickets: [
+          {
+            title: "Setup Development Environment",
+            description: "Confirm your R, RStudio, and package setup",
+            content: `
+              <div class="space-y-4">
+                <div class="mb-6">
+                  <h4 class="font-medium text-lg mb-2">Setup Checklist</h4>
+                  <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                    <li>Follow <strong>Lesson 1.1 – Onboarding to R & Shiny</strong> for a step-by-step guide to installing R, RStudio, and the required packages.</li>
+                    <li>Make sure you have installed:
+                      <ul class="list-disc pl-6">
+                        <li>The latest version of <strong>R</strong> from <a href="https://cloud.r-project.org/" target="_blank" class="text-blue-600 hover:underline">cloud.r-project.org</a></li>
+                        <li><strong>RStudio Desktop</strong> from <a href="https://posit.co/download/rstudio-desktop/" target="_blank" class="text-blue-600 hover:underline">posit.co/download/rstudio-desktop/</a></li>
+                        <li>All required R packages by running:<br>
+                          <pre><code>needed &lt;- c("shiny", "bslib", "tidyverse", "here", "lintr")
+install.packages(needed)</code></pre>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>Open RStudio and create a new R Script (<em>File → New File → R Script</em>).</li>
+                    <li>If you run into any issues, review the troubleshooting tips in Lesson 1.1 or ask for help in the workshop chat.</li>
+                  </ul>
+                </div>
+                <div class="bg-blue-50 p-4 rounded">
+                  <strong>Ready?</strong> Once you’ve completed these steps, you’re set to start coding in R and Shiny!
+                </div>
+              </div>
+            `
+          },
+          {
+            title: "Landing Page Setup",
+            description: "Create a landing page for the app.",
+            content: `
+              <div class="space-y-4">
+                <div class="mb-6">
+                  <!-- Ticket Header with monospace font -->
+                  <div style="font-family: monospace; color: #666;">
+                    ──────────────────────────────────────────────────────────────
+                    Ticket 1.1 — Landing Page MVP (Rookie Edition)
+                    MentorMatchAI • Day 1 • Deadline: EOB Today
+                    ──────────────────────────────────────────────────────────────
+                  </div>
+
+                  <div class="mt-6">
+                    <h2 class="text-xl font-bold mb-4">Ticket 1.1 — Landing Page MVP</h2>
+
+                    <div class="bg-blue-50 p-4 rounded mb-6">
+                      <p><strong>Mission:</strong> 
+                      Awesome! Now that you are all set up here is your first challenge: Build a one page landing page using shiny and some css. You have free regin in design but to complete this challenge your landing page must meet the parameters listed. Make sure to check out <i>Lesson 1.2 Building Your First Shiny App </i>, to get a better understand of how shiny apps work, how to design using Figma & how to build beautiful UI's in shiny. 
+                      </p>
+                    </div>
+
+                    <h3 class="text-lg font-semibold mb-3">Requirements</h3>
+                    <ul class="list-disc pl-5 space-y-2 mb-6">
+                      <li><strong>Keep the two CTA buttons exactly:</strong> <code>I'm a Student</code> and <code>I'm a Mentor</code> – IDs can change but the text must match.</li>
+                      <li>A first-time visitor should understand MentorMatchAI's purpose <u>within three seconds</u> (clear headline + sub-headline or hero blurb).</li>
+                      <li>Use the provided starter Shiny app as your base; build <em>all</em> content inside its UI.</li>
+                      
+                    </ul>
+
+                   
+
+                    <h3 class="text-lg font-semibold mb-3">Starter Shiny Script</h3>
+                    <div class="relative mb-6">
+                      <pre class="bg-gray-800 rounded-lg p-4 overflow-x-auto"><code class="language-r" style="color: #fff; font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; font-size: 1rem;"># ticket1_1_landing_mvp.R
+# mentor_match_simple.R
+# ─────────────────────────────────────────────────────────
+# Libraries
+library(shiny)
+library(bslib)
+
+# ---- UI -------------------------------------------------
+ui <- page_navbar(
+  title = "MentorMatch Simple",
+  theme = bs_theme(version = 5, primary = "#4f8bb8"),
+
+  # Home tab ------------------------------------------------
+  nav_panel(
+    title = "Home",
+
+    div(
+      style = "text-align:center; padding:40px;",
+      h1("Welcome to MentorMatch"),
+      p("Connect with the perfect mentor using AI-powered matching",
+        style = "font-size:1.2rem; margin-bottom:30px;"),
+
+      div(
+        actionButton("show_student_form", "I'm a Student",
+                     class = "btn-primary btn-lg", style = "margin:10px;"),
+        actionButton("show_mentor_form", "I'm a Mentor",
+                     class = "btn-success  btn-lg", style = "margin:10px;")
+      )
+    ),
+
+    hr(),
+
+    # Where results / pop-ups will appear
+    uiOutput("results_section")
+  ),
+
+  # About tab ----------------------------------------------
+  nav_panel(
+    title = "About",
+    div(
+      style = "padding:20px; max-width:800px; margin:0 auto;",
+      h3("About MentorMatch"),
+      p("This application uses semantic text analysis to match students with appropriate mentors."),
+      h4("How it works:"),
+      tags$ol(
+        tags$li("Students and mentors fill out detailed questionnaires"),
+        tags$li("The system analyzes responses using text embeddings"),
+        tags$li("Cosine similarity finds the best matches"),
+        tags$li("Students can connect with their top matches")
+      )
+    )
+  )
+)
+
+# ---- Server ---------------------------------------------
+server <- function(input, output, session) {
+
+  observeEvent(input$show_student_form, {
+    showModal(
+      modalDialog(
+        title = "Student Questionnaire (placeholder)",
+        "Todo: build the multi-step student form here.",
+        easyClose = TRUE
+      )
+    )
+  })
+
+  observeEvent(input$show_mentor_form, {
+    showModal(
+      modalDialog(
+        title = "Mentor Questionnaire (placeholder)",
+        "Todo: build the multi-step mentor form here.",
+        easyClose = TRUE
+      )
+    )
+  })
+
+  # placeholder for future results
+  output$results_section <- renderUI({ NULL })
+}
+
+# ---- Launch ---------------------------------------------
+shinyApp(ui, server)
+</code></pre>
+  <button onclick="copyShinyScript(this)" class="absolute top-2 right-2 bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-600 text-sm">Copy</button>
+</div>
+
+                    <div class="mt-6 space-y-6">
+
+  <!-- Next Steps ------------------------------------------------------------->
+  <div>
+    <p class="font-semibold mb-2">Next Steps</p>
+    <ol class="list-decimal pl-6 space-y-2 text-sm">
+      <li>
+        Read <em>Lesson 1.2 – Building Your First Shiny App</em> to learn how Shiny
+        works, how to add UI features, and how to apply themes & element-level styling.
+      </li>
+
+      <li>
+        Create a free <a href="https://www.figma.com" target="_blank" class="text-blue-600 underline">Figma</a> account
+        (steps in Lesson 1.2). Design your landing page in Figma, keeping all ticket
+        parameters in mind. When finished, rebuild that design in the <strong>UI</strong> section
+        of the provided Shiny script.
+      </li>
+
+      <li>
+        Inside the project’s <em>Landing Page</em> folder, make a new folder named
+        <code class="bg-gray-200 px-1 rounded text-xs">[YOUR_NAME]_Landing_Page</code>.
+        Place your Shiny script and, if you have one, your separate CSS file inside.
+      </li>
+    </ol>
+  </div>
+
+  <!-- Submission ------------------------------------------------------------->
+  <div>
+    <p class="font-semibold mb-2">Submission</p>
+    <p class="text-sm">
+      Upload your folder to Google Drive ➜ <em>Submissions ▸ Week 1 ▸ Ticket 1.1</em><br>
+      (Drive link is pinned in Slack).
+    </p>
+  </div>
+
+<!-- Additional Resources --------------------------------------------------->
+<div>
+  <p class="font-semibold mb-2">Additional Resources</p>
+  <ul class="list-disc pl-6 space-y-2 text-sm">
+
+    <!-- 1. Quick CSS doc -->
+    <li>
+      Quick CSS refresher:
+      <a href="https://www.w3schools.com/css/" target="_blank" class="text-blue-600 underline">
+        W3Schools CSS
+      </a>
+    </li>
+
+    <!-- 2. Hero image tip -->
+    <li>
+      Add a wide hero image (~1920 × 600 px) as
+      <code class="bg-gray-200 px-1 rounded text-xs">www/hero.png</code>
+      and reference it in your UI.
+    </li>
+
+    <!-- 3. Landing-page feature ideas -->
+    <li>
+      <strong>Feature ideas to level-up the page:</strong>
+      <ul class="list-disc pl-6 space-y-1 mt-1">
+        <li><em>Hero section</em> — bold headline, one-line value prop, and a background image or gradient.</li>
+        <li><em>Three feature cards</em> — icons + short text (e.g., “Instant Match”, “Verified Mentors”, “Free to Join”).</li>
+        <li><em>Testimonials row</em> — 2-3 short quotes from happy users.</li>
+        <li><em>Trust badge strip</em> — logos of partner universities or companies.</li>
+        <li><em>Sticky call-to-action</em> — “Get Started” button that stays visible on mobile.</li>
+        <li><em>Accessible color palette</em> — check contrast at <a href="https://webaim.org/resources/contrastchecker/" target="_blank" class="text-blue-600 underline">WebAIM</a>.</li>
+      </ul>
+    </li>
+
+    <!-- 4. Workflow tip -->
+    <li>
+      Commit early, push often, and ping the mentor channel if you hit a wall.
+    </li>
+  </ul>
+</div>
+
+
+
+               
+            `
+          }
+        ],
+        frontend: {
+          lessons: {
+            1: [
+             {
+    title: "Onboarding",
+    description: "Essential onboarding and setup",
+    content: `
+<style>
+  .shiny-tutorial { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+  .shiny-tutorial h2 { font-size: 28px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #3498db; }
+  .shiny-tutorial h3 { font-size: 20px; font-weight: 600; margin: 30px 0 15px 0; background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #3498db; }
+  .shiny-tutorial blockquote { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px 20px; margin: 20px 0; font-style: normal; }
+  .shiny-tutorial p { margin: 15px 0; }
+  .shiny-tutorial ul, .shiny-tutorial ol { margin: 15px 0 20px 25px; }
+  .shiny-tutorial li { margin-bottom: 10px; }
+  .shiny-tutorial pre { background: #263238; color: #aed581; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
+  .shiny-tutorial code { background: #f5f5f5; color: #d32f2f; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+  .shiny-tutorial pre code { background: transparent; color: inherit; padding: 0; }
+  .shiny-tutorial hr { margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0; }
+  .shiny-tutorial a { color: #2196f3; text-decoration: none; }
+  .shiny-tutorial a:hover { text-decoration: underline; }
+</style>
+<div class="shiny-tutorial">
+  <h2>Onboarding to R & Shiny – Your First Steps</h2>
+  <blockquote>
+    <strong>Who is this for?</strong> Absolute beginners. This onboarding will get you set up and ready to build your first Shiny app, even if you’ve never coded before.
+  </blockquote>
+  <hr>
+  <h3>Getting Set Up</h3>
+  <ul>
+    <li><strong>Install R:</strong> Download from <a href="https://cloud.r-project.org/" target="_blank">cloud.r-project.org</a> (choose Windows, macOS, or Linux).</li>
+    <li><strong>Install RStudio Desktop:</strong> Download from <a href="https://posit.co/download/rstudio-desktop/" target="_blank">posit.co/download/rstudio-desktop/</a> (install R first).</li>
+    <li><strong>Install Required Packages:</strong> In RStudio’s Console, run:<br>
+      <pre><code>needed &lt;- c("shiny", "bslib", "tidyverse", "here", "lintr")
+install.packages(needed)</code></pre>
+    </li>
+  </ul>
+  <hr>
+  <h3>What You’ll Learn in This Lesson</h3>
+  <ul>
+    <li>How to set up your R and RStudio environment</li>
+    <li>What R scripts and variables are</li>
+    <li>How to use R’s basic data types and functions</li>
+    <li>How to write simple control flow (if/else, loops)</li>
+  </ul>
+  <hr>
+  <h3>R Coding Fundamentals</h3>
+  <h4>Variables and Assignment</h4>
+  <p>Variables are like labeled boxes where you can store information for later use. In R, you use the <code>&lt;-</code> symbol to assign a value to a variable. For example, you can store a number or a word in a variable and use it throughout your code. This helps you keep track of data and reuse it easily.</p>
+  <pre><code># Assigning values to variables
+my_number &lt;- 10
+my_text &lt;- "Hello, R!"
+print(my_number)
+print(my_text)</code></pre>
+  <h4>Data Types</h4>
+  <p>Data types tell R what kind of information you are working with. The most common types are numbers (numeric), text (character), true/false values (logical), collections of values (vectors), and tables (data frames). Understanding data types helps you organize and analyze your data correctly.</p>
+  <pre><code># Numeric
+x &lt;- 5
+y &lt;- 3.14
+# Character
+name &lt;- "Alice"
+# Logical
+is_true &lt;- TRUE
+# Vectors
+ages &lt;- c(25, 30, 22, 35)
+names &lt;- c("Alice", "Bob", "Charlie")
+# Data frames
+students &lt;- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 30, 22)
+)</code></pre>
+  <h4>Functions</h4>
+  <p>Functions are like kitchen appliances: you give them ingredients (inputs), and they do something for you (output). R has many built-in functions, like <code>sum()</code> or <code>mean()</code>, and you can also create your own. Functions help you avoid repeating code and make your scripts easier to read and maintain.</p>
+  <pre><code># Built-in functions
+sum(c(1, 2, 3, 4, 5))
+mean(c(10, 20, 30))
+# Custom function
+add_numbers &lt;- function(a, b) {
+  result &lt;- a + b
+  return(result)
+}
+add_numbers(5, 7)</code></pre>
+  <h4>Control Flow</h4>
+  <p>Control flow lets your program make decisions and repeat actions. With <code>if</code> statements, your code can choose what to do based on certain conditions (like a traffic light). Loops, like <code>for</code>, let you repeat actions multiple times. This is how you make your code flexible and powerful.</p>
+  <pre><code># If-else statements
+score &lt;- 85
+if (score &gt;= 90) {
+  print("Excellent!")
+} else if (score &gt;= 70) {
+  print("Good job!")
+} else {
+  print("Keep practicing.")
+}
+# For loops
+for (i in 1:3) {
+  print(paste("Loop iteration:", i))
+}</code></pre>
+  <hr>
+  <h3>What’s Next?</h3>
+  <p><strong>Congratulations!</strong> You’ve set up your R and RStudio environment and learned the basics of R programming. In the next lesson, you’ll build your first interactive Shiny app!</p>
+</div>
+`
+},
+               { title: "Building Your First Shiny App",
+              description: "Crash course on Shiny",
+              content : `
+         <!-- Shiny UI & CSS Zero-to-Hero Guide -->
+
+<style>
+  .shiny-tutorial { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+  .shiny-tutorial h2 { font-size: 28px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #3498db; }
+  .shiny-tutorial h3 { font-size: 20px; font-weight: 600; margin: 30px 0 15px 0; background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #3498db; }
+  .shiny-tutorial blockquote { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px 20px; margin: 20px 0; font-style: normal; }
+  .shiny-tutorial p { margin: 15px 0; }
+  .shiny-tutorial ul, .shiny-tutorial ol { margin: 15px 0 20px 25px; }
+  .shiny-tutorial li { margin-bottom: 10px; }
+  .shiny-tutorial pre { background: #263238; color: #aed581; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
+  .shiny-tutorial code { background: #f5f5f5; color: #d32f2f; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+  .shiny-tutorial pre code { background: transparent; color: inherit; padding: 0; }
+  .shiny-tutorial hr { margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0; }
+  .shiny-tutorial iframe { margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .shiny-tutorial a { color: #2196f3; text-decoration: none; }
+  .shiny-tutorial a:hover { text-decoration: underline; }
+</style>
+
+<div class="shiny-tutorial">
+  <h2>Build Beautiful Shiny UIs – A Zero-to-Hero Guide</h2>
+  
+  <blockquote>
+    <strong>Who is this for?</strong> Absolute beginners. If you have never written a line of code, don't worry—every concept is explained from the ground up.
+  </blockquote>
+  
+  <hr>
+  
+  <h3>Getting Your Toolkit Ready</h3>
+  <ul>
+    <li>Download and install <strong>R</strong> from the <a href="https://cloud.r-project.org" target="_blank" rel="noopener">Comprehensive R Archive Network</a>.</li>
+    <li>Install <strong>RStudio Desktop</strong> from <a href="https://posit.co/download/rstudio-desktop/" target="_blank" rel="noopener">Posit</a>.</li>
+    <li>Open RStudio, locate the <em>Console</em> pane, and run:<br>
+      <pre><code>install.packages(c("shiny", "bslib"))</code></pre>
+    </li>
+    <li>Create a new script (<em>File → New File → R Script</em>)—this blank page is where you'll compose your Shiny app.</li>
+  </ul>
+  
+  <hr>
+  
+  <h3>What Exactly Is Shiny?</h3>
+  <p><strong>Shiny is a bridge between R code and the web.</strong> Normally, an R analysis prints results only in RStudio. Shiny wraps that same analysis in an interactive website so anyone can click, drag, and explore without touching code. Crucially, you do <em>not</em> need prior HTML, CSS, or JavaScript knowledge—Shiny hides those layers until you want to customise them.</p>
+  <p>Picture a spreadsheet full of numbers. Instead of emailing updated sheets, build a Shiny app with sliders for each assumption; visitors move the sliders and see charts update live. That real-time responsiveness is Shiny's signature feature.</p>
+  
+  <hr>
+  
+  <h3>Why Choose Shiny as Your First Coding Project?</h3>
+  <ul>
+    <li>Shiny rewards curiosity immediately. Write a handful of lines, click the <strong>▶️ Run App</strong> button in RStudio, and a web window pops up.</li>
+    <li>Tweak a line, click again, and the change appears instantly.</li>
+    <li>Shiny ships with Bootstrap, so your app already looks polished—professional fonts, tidy spacing, and mobile-friendly layouts come for free.</li>
+    <li>When you're ready to share, upload to <a href="https://www.shinyapps.io" target="_blank" rel="noopener">shinyapps.io</a> and hand out a link—no server admin required.</li>
+  </ul>
+  
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/HVa42mJYppE?si=QYXvaIghutKh7NFP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  
+  <hr>
+  
+  <h3>How Reactivity Works—Think Excel, Not Rocket Science</h3>
+  <p>Reactivity is what makes Shiny apps feel alive. Imagine a spreadsheet: when you change a value in one cell, any formulas that depend on it update instantly. Shiny works the same way—when a user interacts with an input (like a slider or button), only the parts of the app that depend on that input are recalculated and updated. This means your app always feels fast and interactive, and you don’t have to write any code to “refresh” outputs manually. Shiny’s reactivity system keeps track of all the dependencies for you, so you can focus on building features, not wiring up updates.</p>
+  <ul>
+    <li><strong>Inputs</strong> (sliders, text boxes) capture user choices.</li>
+    <li><strong>Outputs</strong> (plots, tables) display results.</li>
+    <li>A built-in engine watches every input and reruns the necessary R code whenever something changes—no manual "refresh" calls required.</li>
+  </ul>
+  <p>If you've ever entered a formula like <code>=A1 + A2</code> in Excel, you know changing cell <em>A1</em> instantly updates the total. Shiny applies the same idea to web apps.</p>
+  
+  <hr>
+  
+  <h3>The Three Building Blocks of Every Shiny App</h3>
+  <p>Every Shiny app is built from three main pieces, like the frame, engine, and dashboard of a car:</p>
+  <ol>
+    <li><strong>UI object</strong> – This is the blueprint for what your users see and interact with. It lays out buttons, text, images, and more.</li>
+    <li><strong>Server function</strong> – This is the brain of your app. It listens for user input, does calculations, and prepares outputs to display.</li>
+    <li><strong><code>shinyApp(ui, server)</code></strong> – This is the ignition switch. It tells R to launch your app by combining the UI and server.</li>
+  </ol>
+  <p>By keeping these parts separate, Shiny makes it easy to build, test, and expand your app as you learn more.</p>
+  <pre><code>library(shiny)
+
+ui <- fluidPage(
+  sliderInput("n", "Number of points", min = 1, max = 100, value = 50),
+  plotOutput("hist")
+)
+
+server <- function(input, output, session){
+  output$hist <- renderPlot({
+    hist(rnorm(input$n))
+  })
+}
+
+shinyApp(ui, server)</code></pre>
+  
+  <hr>
+  
+  <h3>Introducing CSS—The Art Department of the Web</h3>
+  <p>CSS (Cascading Style Sheets) is like the wardrobe and makeup team for your app. It controls colors, fonts, spacing, and more—making your app look polished and professional. In Shiny, you can add CSS in three ways: inline (for quick tweaks), embedded (for page-wide rules), or external (for big projects). Don’t worry if you’re new to CSS; even a few lines can make your app stand out. You can always experiment and see changes live as you go.</p>
+  <ul>
+    <li><strong>Inline styles</strong>—quick tests inside a tag.<br>
+      <code>div(style = "color:blue;", "Hello")</code></li>
+    <li><strong>Embedded styles</strong>—page-wide rules inside <code>tags$style()</code>.</li>
+    <li><strong>External stylesheets</strong>—the clean approach. Put <code>styles.css</code> in a <code>www</code> folder and link once with <code>includeCSS("www/styles.css")</code>.</li>
+  </ul>
+  
+  <hr>
+  
+  <h3>Quick Wins with Built-In Themes</h3>
+  <p>Shiny comes with built-in themes, thanks to the <code>bslib</code> package. Themes are like changing the wallpaper and furniture in your house: you can switch from light to dark mode, or pick a color palette that matches your brand, all with a single line of code. This means your app can look modern and inviting without any design experience. Try out different themes and see what feels right for your project!</p>
+  <pre><code>theme = bs_theme(version = 5, bootswatch = "minty")</code></pre>
+  <p>Prefer dark mode? Use <code>"darkly"</code>. You can also pass custom hex colours.</p>
+  
+  <hr>
+  
+  <h3>From Widgets to Layouts—Assembling the Interface</h3>
+  <p>Widgets are the building blocks of your app’s interface—things like sliders, buttons, and text boxes. Layout functions help you arrange these widgets on the page, so your app looks good on any device. <code>fluidPage()</code> gives you a flexible, full-width canvas. <code>fluidRow()</code> and <code>column()</code> let you create responsive grids. <code>page_sidebar()</code> and <code>page_navbar()</code> help you build dashboards and multi-page apps. Don’t be afraid to experiment—move widgets around and see how the layout changes!</p>
+  <ul>
+    <li><code>fluidPage()</code> – full-width canvas that adapts to any screen.</li>
+    <li><code>fluidRow()</code> / <code>column()</code> – 12-unit responsive grid.</li>
+    <li><code>page_sidebar()</code> – classic dashboard with collapsible sidebar.</li>
+    <li><code>page_navbar()</code> – multi-page app with a top nav bar.</li>
+  </ul>
+  
+  <hr>
+  
+  <h3>A Guided Mini-Project—Landing Page with About Tab</h3>
+  <p>Let’s put it all together! Here’s a simple Shiny app that includes two buttons (“I’m a Student” and “I’m a Mentor”) and a navigation bar with an About tab. This is a great starting point for your own project. The app uses a modern <code>bslib</code> theme, and you’ll see the CSS include line commented out—uncomment it if you add a <code>www/styles.css</code> file for custom styles.</p>
+  <pre><code># ticket1_1_landing_mvp.R
+# A simple Shiny app with two buttons and an About tab
+library(shiny)
+library(bslib)
+
+# ---- UI ----
+ui <- page_navbar(
+  title = "MentorMatch Simple",
+  theme = bs_theme(version = 5, bootswatch = "minty"),
+  # includeCSS("www/styles.css"), # Uncomment if you add custom CSS
+
+  nav_panel(
+    title = "Home",
+    div(
+      style = "text-align:center; padding:40px;",
+      h1("Welcome to MentorMatch"),
+      p("Connect with the perfect mentor using AI-powered matching",
+        style = "font-size:1.2rem; margin-bottom:30px;"),
+      div(
+        actionButton("show_student_form", "I'm a Student",
+                     class = "btn-primary btn-lg", style = "margin:10px;"),
+        actionButton("show_mentor_form", "I'm a Mentor",
+                     class = "btn-success btn-lg", style = "margin:10px;")
+      )
+    ),
+    hr(),
+    uiOutput("results_section")
+  ),
+  nav_panel(
+    title = "About",
+    div(
+      style = "padding:20px; max-width:800px; margin:0 auto;",
+      h3("About MentorMatch"),
+      p("This application uses semantic text analysis to match students with appropriate mentors."),
+      h4("How it works:"),
+      tags$ol(
+        tags$li("Students and mentors fill out detailed questionnaires"),
+        tags$li("The system analyzes responses using text embeddings"),
+        tags$li("Cosine similarity finds the best matches"),
+        tags$li("Students can connect with their top matches")
+      )
+    )
+  )
+)
+
+# ---- Server ----
+server <- function(input, output, session) {
+  observeEvent(input$show_student_form, {
+    showModal(
+      modalDialog(
+        title = "Student Questionnaire (placeholder)",
+        "Todo: build the multi-step student form here.",
+        easyClose = TRUE
+      )
+    )
+  })
+  observeEvent(input$show_mentor_form, {
+    showModal(
+      modalDialog(
+        title = "Mentor Questionnaire (placeholder)",
+        "Todo: build the multi-step mentor form here.",
+        easyClose = TRUE
+      )
+    )
+  })
+  output$results_section <- renderUI({ NULL })
+}
+
+# ---- Launch ----
+shinyApp(ui, server)</code></pre>
+  <ol start="3">
+    <li>Then create <code>www/styles.css</code>:</li>
+  </ol>
+  <pre><code>.banner {
+  background: #1abc9c;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 0 0 6px 6px;
+}</code></pre>
+  <p>Click <em>Run App</em> to see a live, styled histogram that updates as you move the slider.</p>
+  
+  <hr>
+  
+  <h3>Common Roadblocks and How to Solve Them</h3>
+  <p>Everyone runs into errors! If you see a red message in the Console, read it carefully—it usually tells you what went wrong and where. Common issues include typos, missing commas, or forgetting to load a package. If your app doesn’t look right, check that your CSS file is in the right place and that you’ve included it correctly. Don’t be afraid to Google error messages or ask for help—every developer does it!</p>
+  <ul>
+    <li><strong>"Object <code>ui</code> not found"</strong> → check you used <code>&lt;-</code> not <code>=</code>.</li>
+    <li><strong>Styles not applied</strong> → confirm <code>styles.css</code> is inside <code>www</code> and the path in <code>includeCSS()</code> is correct.</li>
+    <li><strong>Blank page</strong> → read the red error in the Console; it names the line and the typo.</li>
+  </ul>
+  
+  <hr>
+  
+  <h3>Where to Learn More</h3>
+  <p>Learning to code is a journey, not a race. Explore the official Shiny tutorials, read the free online book <em>Mastering Shiny</em>, and join the RStudio Community forum to ask questions and see what others are building. The more you experiment, the faster you’ll learn!</p>
+  <ul>
+    <li>Posit ► "Shiny Basics" tutorials and interactive component gallery.</li>
+    <li><em>Mastering Shiny</em> by Hadley Wickham – free online book.</li>
+    <li>RStudio Community forum – friendly Q&amp;A and showcase apps.</li>
+  </ul>
+  
+  <hr>
+  
+  <h3>What’s Next?</h3>
+  <p><strong>Congratulations!</strong> You’ve installed the tools, grasped reactivity, styled an interface, and shipped a working Shiny app—all in a single session. Keep iterating, and simple prototypes will soon become production-ready dashboards. In the next lessons, you’ll learn how to add more features, connect to data, and deploy your app for others to use!</p>
+  
+  <hr>
+  
+  <p><strong>Congratulations!</strong> You've installed the tools, grasped reactivity, styled an interface, and shipped a working Shiny app—all in a single session. Keep iterating, and simple prototypes will soon become production-ready dashboards.</p>
+</div>
+  `
+},
+            ]     
+            },
+          tickets: {
+            1: 'commonWeek1Tickets',
+            2: [
+              {
+                title: "Multi-Step Questionnaire Modal",
+                description: "Implement a multi-step modal for user registration",
+                content: `
+                  <div class="space-y-4">
+                    <div class="mb-6">
+                      <h4 class="font-medium text-lg mb-2">Requirements</h4>
+                      <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                        <li>Progress indicator</li>
+                        <li>Form validation</li>
+                        <li>Step navigation</li>
+                        <li>Mobile responsiveness</li>
+                      </ul>
+                    </div>
+                  </div>
+                `
+              }
+            ]
+          }
+        }
+      };
+
       // Initialize page
       function init() {
         setupTrack();
         setupNavigation();
         setupWeekSelection();
         
-        // Load content (this would typically fetch from an API)
         const contentArea = document.getElementById('content-area');
         const loadingPlaceholder = document.getElementById('loading-placeholder');
         
-        // Simulate content loading
         setTimeout(() => {
           loadingPlaceholder.style.display = 'none';
-          if (section === 'tickets') {
-            contentArea.innerHTML = `
-              <h2 class="text-2xl font-bold mb-6">Week ${week} Tickets</h2>
-              <div class="space-y-4">
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <div class="flex items-center justify-between">
-                    <h3 class="font-medium">Ticket #${week}.1: Setup Development Environment</h3>
-                    <span class="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">In Progress</span>
-                  </div>
-                  <p class="text-gray-600 mt-2">Configure your local environment and install required dependencies.</p>
-                </div>
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <div class="flex items-center justify-between">
-                    <h3 class="font-medium">Ticket #${week}.2: Complete Basic Exercises</h3>
-                    <span class="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">Ready</span>
-                  </div>
-                  <p class="text-gray-600 mt-2">Work through the fundamental exercises for this week's content.</p>
-                </div>
-              </div>
-            `;
+          
+          // Get content for current track
+          const trackContent = contentData[track] || contentData.frontend;
+          let weekContent;
+          
+          if (section === 'tickets' && week === '1') {
+            // Use common Week 1 tickets for all tracks
+            weekContent = contentData.commonWeek1Tickets;
           } else {
+            weekContent = section === 'lessons' ? 
+              trackContent.lessons[week] : trackContent.tickets[week];
+          }
+
+          if (!weekContent || weekContent.length === 0) {
             contentArea.innerHTML = `
-              <h2 class="text-2xl font-bold mb-6">Week ${week} Lessons</h2>
-              <div class="space-y-6">
-                <div class="bg-gray-50 rounded-lg p-6">
-                  <h3 class="font-medium text-lg mb-2">Lesson ${week}.1: Introduction</h3>
-                  <p class="text-gray-600 mb-4">Overview of this week's topics and learning objectives.</p>
-                  <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                    Start Lesson
-                  </button>
-                </div>
-                <div class="bg-gray-50 rounded-lg p-6">
-                  <h3 class="font-medium text-lg mb-2">Lesson ${week}.2: Core Concepts</h3>
-                  <p class="text-gray-600 mb-4">Deep dive into the fundamental concepts for this week.</p>
-                  <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                    Start Lesson
-                  </button>
-                </div>
+              <div class="text-center py-12">
+                <p class="text-gray-600">No content available for this week yet.</p>
               </div>
             `;
+            return;
           }
+
+          contentArea.innerHTML = `
+            <h2 class="text-2xl font-bold mb-6">Week ${week} ${section === 'lessons' ? 'Lessons' : 'Tickets'}</h2>
+            <div class="space-y-6">
+              ${weekContent.map((item, index) => {
+                // Create a safe ID for this content item
+                const contentId = `content-${section}-${week}-${index}`;
+                
+                // Store the content in a data attribute after escaping
+                return `
+                  <div class="${section === 'lessons' ? 'lesson-card' : 'ticket-card'} bg-gray-50 rounded-lg p-6 hover:bg-gray-100 cursor-pointer"
+                       id="${contentId}"
+                       data-title="${item.title}"
+                       onclick="handleContentClick('${contentId}')">
+                    <h3 class="font-medium text-lg mb-2">${section === 'lessons' ? `Lesson ${week}.${index + 1}: ` : `Ticket ${week}.${index + 1}: `}${item.title}</h3>
+                    <p class="text-gray-600">${item.description}</p>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          `;
+
+          // Store content data in hidden elements
+          weekContent.forEach((item, index) => {
+            const contentId = `content-${section}-${week}-${index}`;
+            const hiddenContent = document.createElement('div');
+            hiddenContent.style.display = 'none';
+            hiddenContent.id = `${contentId}-content`;
+            hiddenContent.textContent = item.content;
+            document.body.appendChild(hiddenContent);
+          });
         }, 1000);
       }
+
+      // Modal functionality
+      function showModal(title, content) {
+        document.getElementById('modal-title').textContent = title;
+        document.getElementById('modal-content').innerHTML = content;
+        document.getElementById('modal').classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        document.getElementById('modal').classList.remove('show');
+        document.body.style.overflow = '';
+      }
+
+      // Handle content card clicks
+      function handleContentClick(contentId) {
+        const element = document.getElementById(contentId);
+        const title = element.getAttribute('data-title');
+        const content = document.getElementById(`${contentId}-content`).textContent;
+        showModal(title, content);
+      }
+
+      // Close modal when clicking outside
+      document.getElementById('modal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('modal')) {
+          closeModal();
+        }
+      });
+
+      // Escape key closes modal
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeModal();
+        }
+      });
 
       // Initialize theme
       const savedTheme = localStorage.getItem('theme');
@@ -362,6 +1074,15 @@
         const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
         setTheme(currentTheme === 'dark' ? 'light' : 'dark');
       });
+
+      function copyShinyScript(btn) {
+        const codeBlock = btn.parentElement.querySelector('code');
+        const text = codeBlock.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
+        });
+      }
 
       // Initialize page
       init();

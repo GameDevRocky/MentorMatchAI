@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resources & Tutorials - MentorMatchAI Workshop</title>
+    <title>Resources & Workshop Guide - MentorMatchAI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
@@ -56,6 +56,48 @@
         font-family: 'Fira Code', monospace;
         font-size: 0.9rem;
       }
+
+      .prose {
+        max-width: 65ch;
+        color: inherit;
+      }
+
+      .prose a {
+        color: #3b82f6;
+        text-decoration: underline;
+        font-weight: 500;
+      }
+
+      .prose strong {
+        color: inherit;
+        font-weight: 600;
+      }
+
+      .prose ul {
+        list-style-type: disc;
+        padding-left: 1.5em;
+      }
+
+      .prose li {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+      }
+
+      .feature-card {
+        transition: transform 0.3s ease;
+      }
+      
+      .feature-card:hover {
+        transform: translateY(-5px);
+      }
+      
+      .quick-link {
+        transition: all 0.3s ease;
+      }
+      
+      .quick-link:hover {
+        transform: translateX(5px);
+      }
     </style>
   </head>
   <body class="text-gray-900">
@@ -69,8 +111,8 @@
           <nav class="hidden md:flex space-x-8 text-sm font-medium items-center">
             <a href="Byte_Learning_Platform.html" class="text-gray-600 hover:text-black">Home</a>
             <a href="courses.html" class="text-gray-600 hover:text-black">Courses</a>
-            <a href="resources.html" class="text-gray-800 hover:text-black">Resources</a>
             <a href="about.html" class="text-gray-600 hover:text-black">About Us</a>
+            <a href="pricing.html" class="text-gray-600 hover:text-black">Pricing</a>
             <button id="theme-toggle" class="ml-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="sun-icon">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M2 12H1m15.66-1.66l-.707-.707m-4.243 4.243l-.707.707m-.707 4.243l-.707.707M4.343 4.343L3.636 3.636m16.97 16.97l-.707-.707M4.343 19.657L3.636 20.364M18.364 5.636l.707-.707M12 8a4 4 0 110 8 4 4 0 010-8z"></path>
@@ -82,246 +124,64 @@
           </nav>
         </header>
 
-        <!-- Main Content -->
-        <div class="space-y-8">
-          <!-- Introduction -->
-          <section class="bg-white rounded-2xl p-8">
-            <h1 class="text-3xl font-bold mb-4">Workshop Resources & Tutorials</h1>
-            <p class="text-gray-600">Complete code breakdowns and tutorials for building the MentorMatchAI platform.</p>
-          </section>
-
-          <!-- Core Components -->
-          <section class="bg-white rounded-2xl p-8">
-            <h2 class="text-2xl font-bold mb-6">Core Components Overview</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div class="border border-blue-200 rounded-xl p-6">
-                <h3 class="font-bold text-lg text-blue-900 mb-3">Frontend Layer</h3>
-                <ul class="space-y-2 text-gray-600">
-                  <li>• Landing page with navigation</li>
-                  <li>• Modal-based questionnaires</li>
-                  <li>• Dynamic mentor cards</li>
-                  <li>• Real-time matching results</li>
-                </ul>
-              </div>
-              <div class="border border-green-200 rounded-xl p-6">
-                <h3 class="font-bold text-lg text-green-900 mb-3">Backend Layer</h3>
-                <ul class="space-y-2 text-gray-600">
-                  <li>• SQLite database integration</li>
-                  <li>• Reactive server logic</li>
-                  <li>• Email notification system</li>
-                  <li>• Data validation</li>
-                </ul>
-              </div>
-              <div class="border border-purple-200 rounded-xl p-6">
-                <h3 class="font-bold text-lg text-purple-900 mb-3">AI Layer</h3>
-                <ul class="space-y-2 text-gray-600">
-                  <li>• Text preprocessing</li>
-                  <li>• TF-IDF transformations</li>
-                  <li>• Cosine similarity matching</li>
-                  <li>• Semantic recommendations</li>
-                </ul>
-              </div>
+        <!-- Workshop Overview -->
+        <div class="bg-white rounded-2xl p-8 mb-8">
+          <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+              <h1 class="text-4xl font-bold mb-4">MentorMatchAI Development Workshop</h1>
+              <p class="text-xl text-gray-600">A 4-day intensive program to build a real-world AI-powered mentorship platform</p>
             </div>
-          </section>
 
-          <!-- Code Tutorials -->
-          <section class="bg-white rounded-2xl p-8">
-            <h2 class="text-2xl font-bold mb-6">Code Tutorials</h2>
+            <!-- Quick Overview Cards -->
+         
 
-            <!-- Landing Page Tutorial -->
-            <div class="mb-8">
-              <h3 class="text-xl font-bold text-blue-900 mb-4">Building the Landing Page</h3>
-              <p class="text-gray-600 mb-4">Create a modern, responsive landing page with R Shiny:</p>
-              <div class="code-block">
-                <pre><code class="language-r"># Current Landing Page Structure
-nav_panel(
-  title = "Home",
-  div(
-    style = "text-align: center; padding: 40px;",
-    h1("Welcome to MentorMatch"),
-    p("Connect with the perfect mentor using AI-powered matching", 
-      style = "font-size: 1.2rem; margin-bottom: 30px;"),
-    
-    div(
-      actionButton("show_student_form", "I'm a Student", 
-                   class = "btn-primary btn-lg", 
-                   style = "margin: 10px;"),
-      actionButton("show_mentor_form", "I'm a Mentor", 
-                   class = "btn-success btn-lg",
-                   style = "margin: 10px;")
-    )
-  )
-)</code></pre>
+            <!-- Workshop Access Section -->
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl p-8 mb-12">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 class="text-2xl font-bold mb-2">Access Your Workshop Materials</h2>
+                  <p class="text-white/90">All workshop content, lessons, and challenges are available in your track's dashboard</p>
+                </div>
+                <a href="courses.html" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">
+                  Go to Tracks →
+                </a>
               </div>
             </div>
 
-            <!-- Database Tutorial -->
-            <div class="mb-8">
-              <h3 class="text-xl font-bold text-green-900 mb-4">Database Integration</h3>
-              <p class="text-gray-600 mb-4">Set up and interact with SQLite database:</p>
-              <div class="code-block">
-                <pre><code class="language-r"># Database Connection and Operations
-con <- dbConnect(RSQLite::SQLite(), "mentormatch_enhanced.sqlite")
-
-# Create tables
-dbExecute(con, "
-  CREATE TABLE IF NOT EXISTS students_enhanced (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    email TEXT NOT NULL UNIQUE,
-    field_of_study TEXT,
-    career_interest TEXT,
-    mentorship_goals TEXT,
-    challenges TEXT,
-    matched_mentor_id INTEGER,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-  )
-")</code></pre>
-              </div>
-            </div>
-
-            <!-- AI Matching Tutorial -->
-            <div class="mb-8">
-              <h3 class="text-xl font-bold text-purple-900 mb-4">AI Matching System</h3>
-              <p class="text-gray-600 mb-4">Implement the semantic matching algorithm:</p>
-              <div class="code-block">
-                <pre><code class="language-r"># Semantic Matching Algorithm
-semantic_matcher_v2 <- function(student_data, mentor_data) {
-  # Text preprocessing
-  preprocess_text <- function(text) {
-    text <- tolower(text)
-    text <- gsub("[[:punct:]]", " ", text)
-    text <- gsub("\\s+", " ", text)
-    return(trimws(text))
-  }
-  
-  # Create student profiles
-  student_profiles <- paste(
-    student_data$field_of_study,
-    student_data$career_interest,
-    student_data$mentorship_goals,
-    student_data$challenges
-  )
-  
-  # Calculate similarity using TF-IDF
-  library(text2vec)
-  similarity_matrix <- sim2(student_matrix, mentor_matrix, method = "cosine")
-  
-  return(similarity_matrix)
-}</code></pre>
-              </div>
-            </div>
-
-            <!-- Email System Tutorial -->
-            <div class="mb-8">
-              <h3 class="text-xl font-bold text-orange-900 mb-4">Email Notification System</h3>
-              <p class="text-gray-600 mb-4">Implement the email notification system:</p>
-              <div class="code-block">
-                <pre><code class="language-r"># Email template rendering
-render_mentor_match_email <- function(student_data, mentor_matches) {
-  template <- readLines("email_templates/mentor_match_newsletter.html")
-  
-  # Replace placeholders
-  email_content <- gsub("{{student_name}}", student_data$name, template)
-  email_content <- gsub("{{field_of_study}}", student_data$field_of_study, email_content)
-  
-  # Add mentor matches
-  mentor_html <- paste(sapply(mentor_matches, function(mentor) {
-    sprintf('
-      <div class="mentor-card">
-        <h4>%s - %s</h4>
-        <p><strong>Match Score:</strong> %d%%</p>
-      </div>',
-      mentor$name, mentor$title, mentor$compatibility_score
-    )
-  }), collapse = "\n")
-  
-  return(email_content)
-}</code></pre>
-              </div>
-            </div>
-          </section>
-
-          <!-- Additional Resources -->
-          <section class="bg-white rounded-2xl p-8">
-            <h2 class="text-2xl font-bold mb-6">Additional Resources</h2>
+            <!-- Quick Links -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <a href="#" class="block p-6 border border-gray-200 rounded-xl hover:shadow-lg transition-shadow">
-                <h3 class="font-bold text-lg mb-2">📚 Documentation</h3>
-                <p class="text-gray-600">Complete API documentation and function references</p>
+              <a href="lessons.html" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow quick-link flex items-center">
+                <div class="bg-blue-100 rounded-full p-3 mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg">Workshop Lessons</h3>
+                  <p class="text-gray-600">Access your track's detailed lessons and tutorials</p>
+                </div>
+                
               </a>
-              <a href="#" class="block p-6 border border-gray-200 rounded-xl hover:shadow-lg transition-shadow">
-                <h3 class="font-bold text-lg mb-2">🛠️ Development Tools</h3>
-                <p class="text-gray-600">Recommended tools and development environment setup</p>
+              <a href="main_app_code.html" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow quick-link flex items-center">
+               <div>
+                  <h3 class="font-semibold text-lg">MentorMatch App Code</h3>
+                  <p class="text-gray-600">Access the boilerplate code for the MentorMatch app</p>
+                </div>
+                
               </a>
-              <a href="#" class="block p-6 border border-gray-200 rounded-xl hover:shadow-lg transition-shadow">
-                <h3 class="font-bold text-lg mb-2">📝 Code Templates</h3>
-                <p class="text-gray-600">Starter templates and code snippets</p>
-              </a>
-              <a href="#" class="block p-6 border border-gray-200 rounded-xl hover:shadow-lg transition-shadow">
-                <h3 class="font-bold text-lg mb-2">🎓 Learning Materials</h3>
-                <p class="text-gray-600">Additional tutorials and learning resources</p>
+
+              <a href="courses.html" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow quick-link flex items-center">
+                <div class="bg-purple-100 rounded-full p-3 mr-4">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg">Daily Challenges</h3>
+                  <p class="text-gray-600">View and complete your track's coding challenges</p>
+                </div>
               </a>
             </div>
-          </section>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <script>
-      // Theme toggle functionality
-      const themeToggleBtn = document.getElementById('theme-toggle');
-      const body = document.body;
-      const gridBackground = document.getElementById('grid-background');
-      const sunIcon = document.getElementById('sun-icon');
-      const moonIcon = document.getElementById('moon-icon');
-
-      function setTheme(theme) {
-        if (theme === 'light') {
-          body.classList.add('light-mode');
-          gridBackground.classList.add('light-mode');
-          sunIcon.classList.add('hidden');
-          moonIcon.classList.remove('hidden');
-          localStorage.setItem('theme', 'light');
-        } else {
-          body.classList.remove('light-mode');
-          gridBackground.classList.remove('light-mode');
-          sunIcon.classList.remove('hidden');
-          moonIcon.classList.add('hidden');
-          localStorage.setItem('theme', 'dark');
-        }
-      }
-
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        setTheme(savedTheme);
-      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
-
-      themeToggleBtn.addEventListener('click', () => {
-        const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
-        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-      });
-
-      // Smooth page transitions
-      function smoothPageTransition(url) {
-        const pageContainer = document.querySelector('.page-transition');
-        pageContainer.classList.add('fade-out');
-        
-        setTimeout(() => {
-          window.location.href = url;
-        }, 300);
-      }
-
-      document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          smoothPageTransition(link.href);
-        });
-      });
-    </script>
-  </body>
-</html> 

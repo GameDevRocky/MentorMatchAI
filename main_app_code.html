@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main App Code - MentorMatchAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0f1117;
+        transition: background-color 0.3s ease;
+      }
+      body.light-mode {
+        background-color: #f0f4f8;
+      }
+      .main-container {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.3s ease;
+      }
+      body:not(.light-mode) .main-container {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+      }
+      .code-block {
+        background-color: #1a1a1a;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin: 1rem 0;
+        overflow-x: auto;
+      }
+      .code-block pre {
+        margin: 0;
+      }
+      .code-block code {
+        font-family: 'Fira Code', monospace;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body class="text-gray-900">
+    <div class="relative min-h-screen flex items-center justify-center p-4 page-transition page-fade-in">
+      <div class="relative bg-[#f6f7fb] rounded-2xl shadow-lg p-8 max-w-5xl mx-auto w-full z-10 main-container">
+        <header class="w-full bg-white shadow-sm px-8 py-4 flex justify-between items-center rounded-xl mb-8">
+          <div class="text-lg font-semibold">BYTE.io</div>
+          <nav class="hidden md:flex space-x-8 text-sm font-medium items-center">
+            <a href="Byte_Learning_Platform.html" class="text-gray-600 hover:text-black">Home</a>
+            <a href="courses.html" class="text-gray-600 hover:text-black">Courses</a>
+            <a href="resources.html" class="text-gray-600 hover:text-black">Resources</a>
+            <a href="about.html" class="text-gray-600 hover:text-black">About Us</a>
+          </nav>
+        </header>
+        <h1 class="text-3xl font-bold mb-8">MentorMatchAI Full App Code & Documentation</h1>
+        <div class="mb-10 p-6 bg-blue-50 rounded-lg border border-blue-200">
+          <h2 class="text-xl font-semibold mb-2">How to Use These Files</h2>
+          
+          <ul class="list-disc pl-6 text-gray-700 mb-2">
+            <li><strong>app_enhanced.R</strong>: The main entry point for the MentorMatchAI Shiny app. Handles the UI, server logic, and connects to the recommender system.</li>
+            <li><strong>mentor_recommender.R</strong>: Provides the semantic matching and recommendation logic. <span class="font-semibold">Required</span> for the app to run.</li>
+          </ul>
+          <ol class="list-decimal pl-6 text-gray-700 mb-2">
+            <li>Download or copy both files into your project directory.</li>
+            <li>Ensure you have all required R packages installed: <code>shiny</code>, <code>bslib</code>, <code>DBI</code>, <code>RSQLite</code>, <code>text2vec</code>, <code>Matrix</code>, <code>proxy</code>, <code>stopwords</code>.</li>
+            <li>Run <code>app_enhanced.R</code> in RStudio or your preferred R environment.</li>
+            <li>Make sure your database (e.g., <code>mentormatch_enhanced.sqlite</code>) is present and populated as expected.</li>
+            <li>For further customization, edit the UI, server, or recommender logic as needed.</li>
+          </ol>
+          <div class="mb-6">
+            <h4 class="font-medium text-lg mb-2">Project Organization</h4>
+            <ul class="list-disc pl-5 text-gray-600 space-y-2">
+              <li>Create necessary directories:
+                <pre class="bg-gray-800 text-white p-3 rounded-md mt-2">mentor_match/
+├── global.R        # app-wide constants, DB connections
+├── ui.R           # layout + widgets
+├── server.R       # reactivity & business logic
+├── R/
+│   ├── mod_landing.R   # modules live here
+│   └── helpers.R       # utility fns
+├── www/           # CSS, images, JS
+└── data/          # CSVs, RDS, SQLite db</pre>
+              </li>
+              <li>Initialize Git repository and create .gitignore</li>
+              <li>Set up basic README.md with project structure</li>
+            </ul>
+          </div>
+          <p class="mt-2 text-gray-600 text-sm">For more details, see the workshop guide or contact your instructor.</p>
+        </div>
+        <div class="mb-12">
+          <h2 class="font-semibold text-xl mb-2">app_enhanced.R</h2>
+          <p class="mb-2 text-gray-700">This is the main Shiny app file. It provides the UI, server logic, and connects to the mentor recommender system. <strong>Copy and use this as your main entry point.</strong></p>
+          <div class="relative mb-4">
+            <pre class="bg-gray-800 rounded-lg p-4 overflow-x-auto"><code id="app-enhanced-code" style="color: #fff; font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; font-size: 1rem;">library(shiny)
+library(bslib)
+library(DBI)
+library(RSQLite)
+library(text2vec)
+library(Matrix)
+
+# Source the mentor recommender functions
+source("mentor_recommender.R")
+
+# Use the existing database name from original app
+DB_NAME <- "mentormatch_enhanced.sqlite"
+
+# Simple UI
+ui <- page_navbar(
+  title = "MentorMatch Simple",
+  theme = bs_theme(version = 5, primary = "#4f8bb8"),
+  
+  nav_panel(
+    title = "Home",
+    
+    div(
+      style = "text-align: center; padding: 40px;",
+      h1("Welcome to MentorMatch"),
+      p("Connect with the perfect mentor using AI-powered matching", 
+        style = "font-size: 1.2rem; margin-bottom: 30px;"),
+      
+      div(
+        actionButton("show_student_form", "I'm a Student", 
+                     class = "btn-primary btn-lg", 
+                     style = "margin: 10px;"),
+        actionButton("show_mentor_form", "I'm a Mentor", 
+                     class = "btn-success btn-lg",
+                     style = "margin: 10px;")
+      )
+    ),
+    
+    hr(),
+    
+    # Results will appear here
+    uiOutput("results_section")
+  ),
+  
+  nav_panel(
+    title = "About",
+    div(
+      style = "padding: 20px; max-width: 800px; margin: 0 auto;",
+      h3("About MentorMatch"),
+      p("This application uses semantic text analysis to match students with appropriate mentors."),
+      h4("How it works:"),
+      tags$ol(
+        tags$li("Students and mentors fill out detailed questionnaires"),
+        tags$li("The system analyzes responses using text embeddings"),
+        tags$li("Cosine similarity finds the best matches"),
+        tags$li("Students can connect with their top matches")
+      )
+    )
+  )
+)
+
+# Server logic
+server <- function(input, output, session) {
+  
+  # Reactive values
+  student_data <- reactiveValues()
+  matches <- reactiveVal(NULL)
+  selected_mentor <- reactiveVal(NULL)
+  embedding_system <- reactiveVal(NULL)
+  
+  # Initialize embedding system
+  observe({
+    con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+    
+    # Count mentors in existing mentor_profiles table
+    mentor_count <- dbGetQuery(con, "SELECT COUNT(*) as n FROM mentor_profiles WHERE active = 1")$n
+    
+    if (mentor_count >= 3) {
+      tryCatch({
+        embedding_system(default_embedding_system(con))
+        message("✓ Semantic recommendation system initialized")
+      }, error = function(e) {
+        message("⚠ Could not initialize semantic system: ", e$message)
+      })
+    } else {
+      message("⚠ Not enough mentors for semantic matching (", mentor_count, "/3)")
+    }
+    
+    dbDisconnect(con)
+  })
+  
+  # Show student form with ALL original questions
+  observeEvent(input$show_student_form, {
+    showModal(modalDialog(
+      title = "Student Questionnaire",
+      size = "l",
+      
+      fluidRow(
+        column(6,
+               h5("Personal Information"),
+               textInput("student_name", "Full Name", placeholder = "Alex Johnson"),
+               textInput("student_email", "Email Address", placeholder = "alex@university.edu"),
+               
+               selectInput("student_major", "Primary Academic Interest",
+                           choices = list(
+                             "STEM" = c("Computer Science", "Engineering", "Mathematics", 
+                                        "Physics", "Biology", "Chemistry"),
+                             "Business & Economics" = c("Business Administration", "Economics", 
+                                                        "Finance", "Marketing", "Entrepreneurship"),
+                             "Social Sciences" = c("Psychology", "Sociology", "Political Science", 
+                                                   "International Relations"),
+                             "Humanities" = c("English Literature", "History", "Philosophy", 
+                                              "Languages", "Art"),
+                             "Health & Medicine" = c("Pre-Med", "Nursing", "Public Health", 
+                                                     "Biomedical Sciences"),
+                             "Other" = c("Law", "Education", "Communications", 
+                                         "Environmental Studies", "Other")
+                           ),
+                           selected = NULL),
+               
+               selectInput("student_level", "Academic Level",
+                           choices = c("High School Student", "Undergraduate", 
+                                       "Graduate Student", "Recent Graduate", "Career Changer"),
+                           selected = NULL)
+        ),
+        
+        column(6,
+               h5("Career Goals"),
+               selectInput("career_interest", "Target Industry",
+                           choices = c("Technology & Software", "Healthcare & Medicine", 
+                                       "Business & Finance", "Education & Academia", 
+                                       "Government & Public Policy", "Non-profit & Social Impact",
+                                       "Creative & Media", "Engineering & Manufacturing", 
+                                       "Research & Development", "Other"),
+                           selected = NULL),
+               
+               selectInput("career_stage", "Career Goal Timeline",
+                           choices = c("Exploring different paths", "Preparing for internships", 
+                                       "Job searching", "Planning graduate school", 
+                                       "Changing career direction", "Starting my own business"),
+                           selected = NULL),
+               
+               h5("Mentorship Preferences"),
+               checkboxGroupInput("mentorship_type", "What kind of guidance do you need?",
+                                  choices = c("Career planning & strategy" = "career_planning",
+                                              "Industry insights & networking" = "networking",
+                                              "Skill development & learning" = "skills",
+                                              "Job search & interview prep" = "job_prep",
+                                              "Graduate school guidance" = "grad_school",
+                                              "Personal development & confidence" = "personal_dev"),
+                                  selected = NULL)
+        )
+      ),
+      
+      textAreaInput("biggest_challenge", "What's your biggest current challenge or goal?",
+                    height = "100px",
+                    placeholder = "e.g., 'I'm struggling to choose between different career paths in tech...'")
+      ,
+      footer = tagList(
+        modalButton("Cancel"),
+        actionButton("submit_student", "Find My Mentor!", class = "btn-primary")
+      )
+    ))
+  })
+  
+  # Show mentor form with ALL original questions
+  observeEvent(input$show_mentor_form, {
+    showModal(modalDialog(
+      title = "Mentor Registration",
+      size = "l",
+      
+      fluidRow(
+        column(6,
+               h5("Professional Information"),
+               textInput("mentor_name", "Full Name", placeholder = "Dr. Jane Smith"),
+               textInput("mentor_email", "Email Address", placeholder = "jane@company.com"),
+               textInput("mentor_title", "Current Position", 
+                         placeholder = "Senior Data Scientist at TechCorp"),
+               
+               selectInput("mentor_industry", "Primary Industry",
+                           choices = c("Technology & Software", "Healthcare & Medicine", 
+                                       "Business & Finance", "Education & Academia", 
+                                       "Government & Public Policy", "Non-profit & Social Impact",
+                                       "Creative & Media", "Engineering & Manufacturing", 
+                                       "Research & Development", "Other"),
+                           selected = NULL),
+               
+               selectInput("mentor_experience", "Years of Experience",
+                           choices = c("3-5 years", "5-10 years", "10-15 years", "15+ years"),
+                           selected = NULL)
+        ),
+        
+        column(6,
+               h5("Expertise & Mentoring"),
+               checkboxGroupInput("mentor_expertise", "Areas of Expertise",
+                                  choices = c("Technical skills & programming" = "technical",
+                                              "Career strategy & planning" = "career_strategy",
+                                              "Leadership & management" = "leadership",
+                                              "Entrepreneurship & startups" = "entrepreneurship",
+                                              "Research & academia" = "research",
+                                              "Industry networking" = "networking",
+                                              "Graduate school prep" = "grad_prep",
+                                              "Interview & job search" = "interview_prep"),
+                                  selected = NULL),
+               
+               checkboxGroupInput("mentor_willing", "I'm willing to help with:",
+                                  choices = c("One-on-one mentoring sessions" = "one_on_one",
+                                              "Resume & portfolio reviews" = "resume_review",
+                                              "Mock interviews & prep" = "interview_practice",
+                                              "Industry introductions" = "introductions",
+                                              "Career advice & planning" = "career_advice",
+                                              "Skill development guidance" = "skill_guidance"),
+                                  selected = NULL),
+               
+               selectInput("communication_pref", "Preferred Communication",
+                           choices = c("Email exchanges", "Video calls (30-60 min)", 
+                                       "Phone calls", "In-person meetings", "Flexible - any method"),
+                           selected = NULL)
+        )
+      ),
+      
+      textAreaInput("mentor_bio", "Professional Bio & Mentoring Philosophy",
+                    height = "100px",
+                    placeholder = "Tell potential mentees about your background and what you can offer..."),
+      
+      footer = tagList(
+        modalButton("Cancel"),
+        actionButton("submit_mentor", "Join as Mentor", class = "btn-success")
+      )
+    ))
+  })
+  
+  # Handle student submission
+  observeEvent(input$submit_student, {
+    req(input$student_name, input$student_email, input$student_major, input$career_interest)
+    
+    # Store student data with NULL safety
+    student_data$name <- input$student_name
+    student_data$email <- input$student_email
+    student_data$major <- input$student_major
+    student_data$career_interest <- input$career_interest
+    student_data$career_stage <- if(is.null(input$career_stage)) "Not specified" else input$career_stage
+    student_data$mentorship_type <- if(is.null(input$mentorship_type)) "General guidance" else paste(input$mentorship_type, collapse = ", ")
+    student_data$challenge <- if(is.null(input$biggest_challenge)) "Not specified" else input$biggest_challenge
+    student_data$level <- if(is.null(input$student_level)) "Not specified" else input$student_level
+    
+    # Save to existing students_enhanced table
+    con <- dbConnect(RSQLite::SQLite(), DB_NAME)
+    
+    dbExecute(con, 
+              "INSERT INTO students_enhanced (name, email, field_of_study, career_interest, ")
+// ... existing code ...
+</code></pre>
+          <button onclick="copyCode('app-enhanced-code', this)" class="absolute top-2 right-2 bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-600 text-sm">Copy</button>
+        </div>
+      </div>
+      <div class="mb-12">
+        <h2 class="font-semibold text-xl mb-2">mentor_recommender.R</h2>
+        <p class="mb-2 text-gray-700">This script provides the semantic matching and recommendation logic. <strong>Required for the app to run.</strong></p>
+        <div class="relative mb-4">
+          <pre class="bg-gray-800 rounded-lg p-4 overflow-x-auto"><code id="mentor-recommender-code" style="color: #fff; font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; font-size: 1rem;">library(text2vec)
+library(Matrix)
+library(proxy)
+library(stopwords)
+library(DBI)
+library(RSQLite)
+
+# Function to get mentor data from the database (enhanced with demographics)
+get_mentor_data <- function(con) {
+  # Try enhanced table first, fallback to basic
+  tryCatch({
+    mentors_enhanced <- dbGetQuery(con, "SELECT * FROM mentors_enhanced")
+    if (nrow(mentors_enhanced) > 0) {
+      # Map enhanced data to mentor_profiles format for compatibility
+      mentors_mapped <- data.frame(
+        id = mentors_enhanced$id,
+        name = mentors_enhanced$name,
+        title = mentors_enhanced$title,
+        expertise = mentors_enhanced$expertise_areas,
+        bio = mentors_enhanced$bio,
+        email = mentors_enhanced$email,
+        image = "https://via.placeholder.com/100x100?text=M",
+        # Additional demographic fields for enhanced matching
+        age_range = mentors_enhanced$age_range,
+        gender = mentors_enhanced$gender,
+        ethnicity = mentors_enhanced$ethnicity,
+        location = mentors_enhanced$location,
+        industry = mentors_enhanced$industry,
+        experience_years = mentors_enhanced$experience_years,
+        stringsAsFactors = FALSE
+      )
+      return(mentors_mapped)
+    }
+  }, error = function(e) {
+    message("Enhanced mentors table not found, using basic mentor_profiles")
+  })
+  
+  # Fallback to basic mentor_profiles
+  dbGetQuery(con, "SELECT * FROM mentor_profiles")
+}
+
+# Create mentor embeddings from DB (enhanced with demographics)
+default_embedding_system <- function(con) {
+  mentor_data <- get_mentor_data(con)
+  
+  # Enhanced text creation including demographic and professional data
+  mentor_texts <- paste(
+    mentor_data$name,
+    mentor_data$title,
+    mentor_data$expertise,
+    mentor_data$bio,
+    # Include demographic and professional context for better matching
+    ifelse(is.null(mentor_data$location), "", mentor_data$location),
+    ifelse(is.null(mentor_data$industry), "", mentor_data$industry),
+    ifelse(is.null(mentor_data$experience_years), "", mentor_data$experience_years),
+    ifelse(is.null(mentor_data$age_range), "", mentor_data$age_range)
+  )
+  tokens <- word_tokenizer(tolower(mentor_texts))
+  it_train <- itoken(tokens, progressbar = FALSE)
+  vocab <- create_vocabulary(it_train, stopwords = stopwords("en"))
+  vocab <- prune_vocabulary(vocab, term_count_min = 1, doc_count_min = 1)
+  vectorizer <- vocab_vectorizer(vocab)
+  dtm_train <- create_dtm(it_train, vectorizer)
+  tfidf <- TfIdf$new(norm = "l2", sublinear_tf = TRUE)
+  dtm_tfidf <- fit_transform(dtm_train, tfidf)
+  
+  # Robust LSA: Only use if enough mentors/features and matrix is not singular
+  if (ncol(dtm_tfidf) > 2 && nrow(dtm_tfidf) > 2) {
+    lsa <- tryCatch({
+      LSA$new(n_topics = min(30, nrow(dtm_tfidf) - 1))
+    }, error = function(e) NULL)
+    if (!is.null(lsa)) {
+      dtm_final <- tryCatch({
+        dtm_lsa <- fit_transform(dtm_tfidf, lsa)
+        dtm_lsa
+      }, error = function(e) dtm_tfidf)
+    } else {
+      dtm_final <- dtm_tfidf
+      lsa <- NULL
+    }
+  } else {
+    lsa <- NULL
+    dtm_final <- dtm_tfidf
+  }
+  
+  list(
+    embeddings = dtm_final,
+    vectorizer = vectorizer,
+    tfidf = tfidf,
+    lsa = lsa,
+    mentor_data = mentor_data
+  )
+}
+
+# Recommender function
+get_mentor_recommendations <- function(student_answers, embedding_system, top_k = 3) {
+  student_text <- tolower(paste(unlist(student_answers), collapse = " "))
+  query_tokens <- word_tokenizer(student_text)
+  it_query <- itoken(query_tokens, progressbar = FALSE)
+  dtm_query <- create_dtm(it_query, embedding_system$vectorizer)
+  dtm_query_tfidf <- transform(dtm_query, embedding_system$tfidf)
+  
+  # Only transform with LSA if it was successfully created and fitted
+  if (!is.null(embedding_system$lsa)) {
+    query_final <- tryCatch({
+      transform(dtm_query_tfidf, embedding_system$lsa)
+    }, error = function(e) {
+      # If LSA transform fails, use TF-IDF directly
+      dtm_query_tfidf
+    })
+  } else {
+    query_final <- dtm_query_tfidf
+  }
+  
+  similarities <- proxy::simil(query_final, embedding_system$embeddings, method = "cosine")
+  similarities_vec <- as.numeric(similarities[1, ])
+  top_indices <- order(similarities_vec, decreasing = TRUE)[1:min(top_k, length(similarities_vec))]
+  result_df <- embedding_system$mentor_data[top_indices, ]
+  match_scores <- similarities_vec[top_indices]
+  
+  recommendations <- list()
+  for (i in seq_along(top_indices)) {
+    recommendations[[i]] <- list(
+      id = result_df$id[i],
+      name = result_df$name[i],
+      title = result_df$title[i],
+      expertise = result_df$expertise[i],
+      bio = result_df$bio[i],
+      email = result_df$email[i],
+      image = result_df$image[i],
+      score = round(match_scores[i], 3)
+    )
+  }
+  return(recommendations)
+} 
