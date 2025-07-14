@@ -380,7 +380,7 @@ install.packages(needed)</code></pre>
                   </ul>
                 </div>
                 <div class="bg-blue-50 p-4 rounded">
-                  <strong>Ready?</strong> Once you’ve completed these steps, you’re set to start coding in R and Shiny!
+                  <strong>Ready?</strong> Once you've completed these steps, you're set to start coding in R and Shiny!
                 </div>
               </div>
             `
@@ -560,7 +560,7 @@ shinyApp(ui, server)
       </li>
 
       <li>
-        Inside the project’s <em>Landing Page</em> folder, make a new folder named
+        Inside the project's <em>Landing Page</em> folder, make a new folder named
         <code class="bg-gray-200 px-1 rounded text-xs">[YOUR_NAME]_Landing_Page</code>.
         Place your Shiny script and, if you have one, your separate CSS file inside.
       </li>
@@ -601,10 +601,10 @@ shinyApp(ui, server)
       <strong>Feature ideas to level-up the page:</strong>
       <ul class="list-disc pl-6 space-y-1 mt-1">
         <li><em>Hero section</em> — bold headline, one-line value prop, and a background image or gradient.</li>
-        <li><em>Three feature cards</em> — icons + short text (e.g., “Instant Match”, “Verified Mentors”, “Free to Join”).</li>
+        <li><em>Three feature cards</em> — icons + short text (e.g., "Instant Match", "Verified Mentors", "Free to Join").</li>
         <li><em>Testimonials row</em> — 2-3 short quotes from happy users.</li>
         <li><em>Trust badge strip</em> — logos of partner universities or companies.</li>
-        <li><em>Sticky call-to-action</em> — “Get Started” button that stays visible on mobile.</li>
+        <li><em>Sticky call-to-action</em> — "Get Started" button that stays visible on mobile.</li>
         <li><em>Accessible color palette</em> — check contrast at <a href="https://webaim.org/resources/contrastchecker/" target="_blank" class="text-blue-600 underline">WebAIM</a>.</li>
       </ul>
     </li>
@@ -647,24 +647,24 @@ shinyApp(ui, server)
 <div class="shiny-tutorial">
   <h2>Onboarding to R & Shiny – Your First Steps</h2>
   <blockquote>
-    <strong>Who is this for?</strong> Absolute beginners. This onboarding will get you set up and ready to build your first Shiny app, even if you’ve never coded before.
+    <strong>Who is this for?</strong> Absolute beginners. This onboarding will get you set up and ready to build your first Shiny app, even if you've never coded before.
   </blockquote>
   <hr>
   <h3>Getting Set Up</h3>
   <ul>
     <li><strong>Install R:</strong> Download from <a href="https://cloud.r-project.org/" target="_blank">cloud.r-project.org</a> (choose Windows, macOS, or Linux).</li>
     <li><strong>Install RStudio Desktop:</strong> Download from <a href="https://posit.co/download/rstudio-desktop/" target="_blank">posit.co/download/rstudio-desktop/</a> (install R first).</li>
-    <li><strong>Install Required Packages:</strong> In RStudio’s Console, run:<br>
+    <li><strong>Install Required Packages:</strong> In RStudio's Console, run:<br>
       <pre><code>needed &lt;- c("shiny", "bslib", "tidyverse", "here", "lintr")
 install.packages(needed)</code></pre>
     </li>
   </ul>
   <hr>
-  <h3>What You’ll Learn in This Lesson</h3>
+  <h3>What You'll Learn in This Lesson</h3>
   <ul>
     <li>How to set up your R and RStudio environment</li>
     <li>What R scripts and variables are</li>
-    <li>How to use R’s basic data types and functions</li>
+    <li>How to use R's basic data types and functions</li>
     <li>How to write simple control flow (if/else, loops)</li>
   </ul>
   <hr>
@@ -720,8 +720,8 @@ for (i in 1:3) {
   print(paste("Loop iteration:", i))
 }</code></pre>
   <hr>
-  <h3>What’s Next?</h3>
-  <p><strong>Congratulations!</strong> You’ve set up your R and RStudio environment and learned the basics of R programming. In the next lesson, you’ll build your first interactive Shiny app!</p>
+  <h3>What's Next?</h3>
+  <p><strong>Congratulations!</strong> You've set up your R and RStudio environment and learned the basics of R programming. In the next lesson, you'll build your first interactive Shiny app!</p>
 </div>
 `
 },
@@ -787,7 +787,7 @@ for (i in 1:3) {
   <hr>
   
   <h3>How Reactivity Works—Think Excel, Not Rocket Science</h3>
-  <p>Reactivity is what makes Shiny apps feel alive. Imagine a spreadsheet: when you change a value in one cell, any formulas that depend on it update instantly. Shiny works the same way—when a user interacts with an input (like a slider or button), only the parts of the app that depend on that input are recalculated and updated. This means your app always feels fast and interactive, and you don’t have to write any code to “refresh” outputs manually. Shiny’s reactivity system keeps track of all the dependencies for you, so you can focus on building features, not wiring up updates.</p>
+  <p>Reactivity is what makes Shiny apps feel alive. Imagine a spreadsheet: when you change a value in one cell, any formulas that depend on it update instantly. Shiny works the same way—when a user interacts with an input (like a slider or button), only the parts of the app that depend on that input are recalculated and updated. This means your app always feels fast and interactive, and you don't have to write any code to "refresh" outputs manually. Shiny's reactivity system keeps track of all the dependencies for you, so you can focus on building features, not wiring up updates.</p>
   <ul>
     <li><strong>Inputs</strong> (sliders, text boxes) capture user choices.</li>
     <li><strong>Outputs</strong> (plots, tables) display results.</li>
@@ -823,7 +823,7 @@ shinyApp(ui, server)</code></pre>
   <hr>
   
   <h3>Introducing CSS—The Art Department of the Web</h3>
-  <p>CSS (Cascading Style Sheets) is like the wardrobe and makeup team for your app. It controls colors, fonts, spacing, and more—making your app look polished and professional. In Shiny, you can add CSS in three ways: inline (for quick tweaks), embedded (for page-wide rules), or external (for big projects). Don’t worry if you’re new to CSS; even a few lines can make your app stand out. You can always experiment and see changes live as you go.</p>
+  <p>CSS (Cascading Style Sheets) is like the wardrobe and makeup team for your app. It controls colors, fonts, spacing, and more—making your app look polished and professional. In Shiny, you can add CSS in three ways: inline (for quick tweaks), embedded (for page-wide rules), or external (for big projects). Don't worry if you're new to CSS; even a few lines can make your app stand out. You can always experiment and see changes live as you go.</p>
   <ul>
     <li><strong>Inline styles</strong>—quick tests inside a tag.<br>
       <code>div(style = "color:blue;", "Hello")</code></li>
@@ -841,7 +841,7 @@ shinyApp(ui, server)</code></pre>
   <hr>
   
   <h3>From Widgets to Layouts—Assembling the Interface</h3>
-  <p>Widgets are the building blocks of your app’s interface—things like sliders, buttons, and text boxes. Layout functions help you arrange these widgets on the page, so your app looks good on any device. <code>fluidPage()</code> gives you a flexible, full-width canvas. <code>fluidRow()</code> and <code>column()</code> let you create responsive grids. <code>page_sidebar()</code> and <code>page_navbar()</code> help you build dashboards and multi-page apps. Don’t be afraid to experiment—move widgets around and see how the layout changes!</p>
+  <p>Widgets are the building blocks of your app's interface—things like sliders, buttons, and text boxes. Layout functions help you arrange these widgets on the page, so your app looks good on any device. <code>fluidPage()</code> gives you a flexible, full-width canvas. <code>fluidRow()</code> and <code>column()</code> let you create responsive grids. <code>page_sidebar()</code> and <code>page_navbar()</code> help you build dashboards and multi-page apps. Don't be afraid to experiment—move widgets around and see how the layout changes!</p>
   <ul>
     <li><code>fluidPage()</code> – full-width canvas that adapts to any screen.</li>
     <li><code>fluidRow()</code> / <code>column()</code> – 12-unit responsive grid.</li>
@@ -852,7 +852,7 @@ shinyApp(ui, server)</code></pre>
   <hr>
   
   <h3>A Guided Mini-Project—Landing Page with About Tab</h3>
-  <p>Let’s put it all together! Here’s a simple Shiny app that includes two buttons (“I’m a Student” and “I’m a Mentor”) and a navigation bar with an About tab. This is a great starting point for your own project. The app uses a modern <code>bslib</code> theme, and you’ll see the CSS include line commented out—uncomment it if you add a <code>www/styles.css</code> file for custom styles.</p>
+  <p>Let's put it all together! Here's a simple Shiny app that includes two buttons ("I'm a Student" and "I'm a Mentor") and a navigation bar with an About tab. This is a great starting point for your own project. The app uses a modern <code>bslib</code> theme, and you'll see the CSS include line commented out—uncomment it if you add a <code>www/styles.css</code> file for custom styles.</p>
   <pre><code># ticket1_1_landing_mvp.R
 # A simple Shiny app with two buttons and an About tab
 library(shiny)
@@ -938,7 +938,7 @@ shinyApp(ui, server)</code></pre>
   <hr>
   
   <h3>Common Roadblocks and How to Solve Them</h3>
-  <p>Everyone runs into errors! If you see a red message in the Console, read it carefully—it usually tells you what went wrong and where. Common issues include typos, missing commas, or forgetting to load a package. If your app doesn’t look right, check that your CSS file is in the right place and that you’ve included it correctly. Don’t be afraid to Google error messages or ask for help—every developer does it!</p>
+  <p>Everyone runs into errors! If you see a red message in the Console, read it carefully—it usually tells you what went wrong and where. Common issues include typos, missing commas, or forgetting to load a package. If your app doesn't look right, check that your CSS file is in the right place and that you've included it correctly. Don't be afraid to Google error messages or ask for help—every developer does it!</p>
   <ul>
     <li><strong>"Object <code>ui</code> not found"</strong> → check you used <code>&lt;-</code> not <code>=</code>.</li>
     <li><strong>Styles not applied</strong> → confirm <code>styles.css</code> is inside <code>www</code> and the path in <code>includeCSS()</code> is correct.</li>
@@ -948,7 +948,7 @@ shinyApp(ui, server)</code></pre>
   <hr>
   
   <h3>Where to Learn More</h3>
-  <p>Learning to code is a journey, not a race. Explore the official Shiny tutorials, read the free online book <em>Mastering Shiny</em>, and join the RStudio Community forum to ask questions and see what others are building. The more you experiment, the faster you’ll learn!</p>
+  <p>Learning to code is a journey, not a race. Explore the official Shiny tutorials, read the free online book <em>Mastering Shiny</em>, and join the RStudio Community forum to ask questions and see what others are building. The more you experiment, the faster you'll learn!</p>
   <ul>
     <li>Posit ► "Shiny Basics" tutorials and interactive component gallery.</li>
     <li><em>Mastering Shiny</em> by Hadley Wickham – free online book.</li>
@@ -957,8 +957,8 @@ shinyApp(ui, server)</code></pre>
   
   <hr>
   
-  <h3>What’s Next?</h3>
-  <p><strong>Congratulations!</strong> You’ve installed the tools, grasped reactivity, styled an interface, and shipped a working Shiny app—all in a single session. Keep iterating, and simple prototypes will soon become production-ready dashboards. In the next lessons, you’ll learn how to add more features, connect to data, and deploy your app for others to use!</p>
+  <h3>What's Next?</h3>
+  <p><strong>Congratulations!</strong> You've installed the tools, grasped reactivity, styled an interface, and shipped a working Shiny app—all in a single session. Keep iterating, and simple prototypes will soon become production-ready dashboards. In the next lessons, you'll learn how to add more features, connect to data, and deploy your app for others to use!</p>
   
   <hr>
   
@@ -966,30 +966,2799 @@ shinyApp(ui, server)</code></pre>
 </div>
   `
 },
-            ]     
-            },
+            ],
+            2: [{ title: "UI & UX Fundamentals for Shiny Pt 2", 
+            description: "From Figma concept to interactive app—no coding background required",
+            content: ` <style>
+  .shiny-tutorial {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  .shiny-tutorial h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 40px 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #3498db;
+  }
+
+  .shiny-tutorial h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 30px 0 15px 0;
+    background: #f8f9fa;
+    padding: 10px 15px;
+    border-left: 4px solid #3498db;
+  }
+
+  .shiny-tutorial blockquote {
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    padding: 15px 20px;
+    margin: 20px 0;
+    font-style: normal;
+  }
+
+  .shiny-tutorial p {
+    margin: 15px 0;
+  }
+
+  .shiny-tutorial ul,
+  .shiny-tutorial ol {
+    margin: 15px 0 20px 25px;
+  }
+
+  .shiny-tutorial li {
+    margin-bottom: 10px;
+  }
+
+  .shiny-tutorial pre {
+    background: #263238;
+    color: #aed581;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 15px 0;
+  }
+
+  .shiny-tutorial code {
+    background: #f5f5f5;
+    color: #d32f2f;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+  }
+
+  .shiny-tutorial pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  .shiny-tutorial hr {
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .shiny-tutorial a {
+    color: #2196f3;
+    text-decoration: none;
+  }
+
+  .shiny-tutorial a:hover {
+    text-decoration: underline;
+  }
+
+  .shiny-tutorial table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+
+  .shiny-tutorial th,
+  .shiny-tutorial td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  .shiny-tutorial th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+</style>
+<div class="shiny-tutorial">
+  
+  
+
+  <hr>
+
+  <blockquote>
+    <strong>🎯 Goal:</strong> By the end of this lesson, you'll  master the core principles of UI and UX , learn to
+     recognize design biases , and follow a practical workflow—translating your Figma design into CSS and Shiny—to
+    launch an inclusive, production‑ready landing page.
+  </blockquote>
+
+  <hr>
+
+  <h2>✅ What You’ll Learn</h2>
+  <p>This lesson covers a lot of ground, but don't worry, we'll break it down step-by-step. Keep this list handy—it's
+    your roadmap to success!</p>
+  <ul>
+    <li><strong>UI foundations:</strong> We'll explore the building blocks of visual appeal:  visual hierarchy ,
+      color theory,  typography ,  spacing , and  affordance .</li>
+    <li><strong>UX foundations:</strong> You'll understand how users interact with your app, focusing on  user
+        flows ,  feedback loops ,  accessibility , and  inclusive design .</li>
+    <li><strong>Design bias:</strong> Learn about common cognitive traps that can unknowingly affect your designs and
+      discover  mitigation strategies .</li>
+    <li><strong>CSS essentials:</strong> Get a hands-on introduction to styling with CSS, including  the cascade ,
+       box model ,  flexbox ,  grid ,  variables ,  media queries , and  animation .</li>
+    <li><strong>Shiny UI in depth:</strong> Discover how to build interactive elements in Shiny, exploring various
+      frameworks and approaches like  Bootstrap 5 layouts ,  inputs ,  outputs ,  theming , and  modules .
+    </li>
+    <li><strong>Figma ↔ Dev hand‑off:</strong> Master the seamless transition from your existing Figma design to
+      development by exporting  design tokens , understanding  naming conventions , and managing  assets .</li>
+  </ul>
+
+  <hr>
+
+  <h2>🔥 Warm‑Up: Why UI & UX Matter</h2>
+  <p>Before we get into the nitty-gritty, let's reflect on your own experiences.</p>
+  <ol>
+    <li>You've already put thought into your landing page design in Figma. Now, recall a website or app you've used
+      recently that you absolutely loved—or perhaps one you intensely disliked. What specific design choices, visual or
+      interactive, made you feel that way? Jot down a few notes.</li>
+    <li><strong>UI ≠ UX</strong>: This is a crucial distinction.  UI (User Interface)  is all about how your app
+      <em>looks</em>. Think colors, fonts, buttons, and overall visual style.  UX (User Experience) , on the other
+      hand, is about how your app <em>feels</em> to use. Is it intuitive? Frustrating? Efficient?</li>
+    <li><strong>Shiny</strong> acts as the bridge between your analytical R code (the logic that makes your app smart)
+      and the presentation layer (the visual elements users interact with). It uses web technologies like HTML and CSS,
+      often powered by the Bootstrap framework, to create the front end of your application.</li>
+    <li><strong>Reflection:</strong> In one sentence, define UX using your own words. Don't overthink it!</li>
+  </ol>
+
+  <hr>
+
+  <h2>⚖️ Design Bias & Inclusive Thinking</h2>
+  <p>As humans, we all carry cognitive shortcuts, or biases, that can sometimes unknowingly sabotage our designs, leading
+    to poor user experiences. Great designers recognize these biases and work to neutralize them, ensuring their apps
+    are usable and welcoming for everyone.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Bias</th>
+        <th>Manifestation in UI</th>
+        <th>Mitigation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Confirmation Bias</strong></td>
+        <td>Users might only notice information that confirms what they already believe or expect.</td>
+        <td>Display contrasting options side‑by‑side; proactively surface data or information that might challenge a
+          user's preconceived notions.</td>
+      </tr>
+      <tr>
+        <td><strong>Choice Overload</strong></td>
+        <td>Offering too many primary calls to action (CTAs) or dropdowns with dozens of items can paralyze users.</td>
+        <td>Limit primary choices (ideally $\leq 3$); group less frequent or advanced settings behind expandable
+          sections or dedicated pages.</td>
+      </tr>
+      <tr>
+        <td><strong>Halo Effect</strong></td>
+        <td>If one part of your app is exceptionally flashy or beautiful (e.g., a stunning hero image), users might
+          unfairly over‑trust the entire product, even if other parts are weak.</td>
+        <td>Balance aesthetics with transparent proof of value, such as clear testimonials, data-driven insights, or
+          real user reviews.</td>
+      </tr>
+      <tr>
+        <td><strong>In‑Group Bias</strong></td>
+        <td>Imagery and language that subtly (or not so subtly) exclude certain audiences.</td>
+        <td>Actively use inclusive photos, descriptive alt text for images, and gender‑neutral copy. Think broadly
+          about your potential audience.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Action:</strong> Take a moment to look at your existing Figma design. Can you identify any areas where these
+    biases might unintentionally creep in? Mark them for later adjustment during implementation.</p>
+
+  <hr>
+
+  <h2>🎨 UI Fundamentals Cheat Sheet</h2>
+  <p>UI design is like setting the stage for your users. These principles ensure your stage is clear, inviting, and easy
+    to navigate. As you translate your Figma design, keep these in mind to ensure your Shiny app looks as intended.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Principle</th>
+        <th>Quick Test</th>
+        <th>Implementation Check</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Visual Hierarchy</strong></td>
+        <td>If you squint your eyes, can you still find the most important element, like the primary call-to-action
+          (CTA)?</td>
+        <td>Are your Shiny headings using appropriate <code>h1</code>, <code>h2</code>, etc., tags? Is ample
+          <code>padding</code> and <code>margin</code> used in CSS?</td>
+      </tr>
+      <tr>
+        <td><strong>Colour Theory</strong></td>
+        <td>Do your chosen colors convey the right mood for your brand and product? Are they harmonious?</td>
+        <td>Have you correctly set your <code>bs_theme(primary=...)</code> and other color variables in CSS
+          (<code>--brand</code>, etc.) from your Figma specs?</td>
+      </tr>
+      <tr>
+        <td><strong>Typography</strong></td>
+        <td>Are your headings, body text, and captions clearly distinct and easy to read?</td>
+        <td>Does your <code>styles.css</code> correctly define <code>font-size</code>, <code>font-weight</code>, and
+          <code>line-height</code> for different text elements?</td>
+      </tr>
+      <tr>
+        <td><strong>Spacing &amp; Layout</strong></td>
+        <td>Is the grouping of related elements obvious? Does your layout feel balanced and breathable?</td>
+        <td>Are you consistently applying <code>padding</code> and <code>margin</code> in your CSS? Are your
+          <code>row</code> and <code>column</code> structures well-defined in Shiny?</td>
+      </tr>
+      <tr>
+        <td><strong>Affordance</strong></td>
+        <td>Do interactive elements (like buttons or links) <em>look</em> clickable or actionable without explanation?
+        </td>
+        <td>Have you implemented CSS <code>hover</code> states for buttons and links? Do your Shiny inputs have clear
+          visual cues?</td>
+      </tr>
+      <tr>
+        <td><strong>Accessibility</strong></td>
+        <td>Does text meet the recommended contrast ratio (typically $\geq 4.5:1$ for normal text against its
+          background)?</td>
+        <td>After implementing, use an online contrast checker or browser developer tools to verify compliance.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>🧭 UX Fundamentals Cheat Sheet</h2>
+  <p>UX design is all about anticipating user needs and creating a smooth, enjoyable journey. As you build out your Shiny
+    app, ensure these principles are guiding your implementation.</p>
+  <ul>
+    <li><strong>User Flows:</strong> You've designed a flow in Figma. Now, in Shiny, ensure that the actual sequence of
+      interactions (e.g., "Visitor lands ➜ reads value proposition ➜ clicks CTA") is logical and smooth.</li>
+    <li><strong>Feedback Loops:</strong> Every action a user takes in your Shiny app should be met with a clear
+      response. This could be a loading spinner when data is processing, a small "toast" notification confirming an
+      action, or a modal window.</li>
+    <li><strong>Progressive Disclosure:</strong> Don't overwhelm users with too much information at once. Implement
+      features in Shiny that reveal advanced settings or less critical options only when they're needed or explicitly
+      requested (e.g., using <code>conditionalPanel</code> or <code>accordion</code>).</li>
+    <li><strong>Error States:</strong> Errors are inevitable. Instead of generic messages like <code>"Error 400"</code>,
+      ensure your Shiny app provides clear, constructive error messages that tell the user what went wrong and how to
+      fix it (e.g., <code>"Email address missing @"</code> or <code>"Password must be at least 8 characters long"</code>).
+    </li>
+    <li><strong>Mobile‑First Thinking:</strong> You designed this in Figma with mobile in mind. Now, as you implement
+      in Shiny, use media queries in your CSS and responsive Bootstrap layouts (<code>column(12, 6, ...)</code> etc.) to
+      ensure your app scales beautifully across devices.</li>
+  </ul>
+  <blockquote>
+    <strong>Exercise:</strong> Grab your Figma design. Trace a typical three‑step user flow. For each step, identify what
+    kind of feedback the Shiny app will provide to the user.
+  </blockquote>
+
+  <hr>
+
+  <h2>🛠️ CSS Crash Course (Hands‑On)</h2>
+  <p>CSS (Cascading Style Sheets) is the language you use to style your web pages. It defines colors, fonts, layouts,
+    and much more. You'll be using this to translate your Figma styles.</p>
+  <pre><code class="language-css">/* Selectors: These target specific HTML elements to apply styles. */
+#hero h1          { letter-spacing: 1px; } /* Targets an &lt;h1&gt; inside an element with ID "hero" */
+.btn.primary:hover { opacity: .85; }      /* Targets a button with classes "btn" AND "primary" when hovered */
+
+/* Box Model: Every HTML element is treated as a box with content, padding, border, and margin. */
+.card             { padding: 2rem; margin: 1rem 0; } /* Adds internal space (padding) and external space (margin) */
+
+/* Flexbox: A powerful one-dimensional layout system for aligning items in a row or column. */
+.row              { display: flex; gap: 1rem; justify-content: center; } /* Arranges items in a row with spacing and centers them */
+
+/* Grid: A two-dimensional layout system for arranging items in rows and columns. */
+.features         { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:2rem; } /* Creates a responsive grid of items */
+
+/* Variables: Store reusable values (like colors or font sizes) to maintain consistency. */
+:root             { --brand:#0066ff; } /* Defines a custom property (variable) */
+.btn              { background: var(--brand); } /* Uses the defined variable */
+
+/* Media Queries: Apply different styles based on screen size (for responsive design). */
+@media(max-width:768px){ /* Styles applied when screen width is 768px or less */
+  h1 { font-size: 2rem; }
+}
+
+/* Animation: Add smooth transitions and motion to your elements. */
+@keyframes fade { from{opacity:0;} to{opacity:1;} } /* Defines a simple fading animation */
+.hero img         { animation: fade 1s ease-in-out; } /* Applies the animation to an image */
+</code></pre>
+  <p><strong>Try:</strong> Shiny apps can automatically refresh when you save a <code>styles.css</code> file. Copy this
+    snippet, create a file named <code>www/styles.css</code> in your Shiny app directory, paste the code, and save.
+    Then, run your Shiny app and see if you notice any changes!</p>
+
+  <hr>
+
+  <h2>🚀 Shiny UI in Depth: Choosing Your Tools</h2>
+  <p>Shiny offers remarkable flexibility for building user interfaces. While it's built on a foundation of HTML, CSS,
+    and JavaScript, R provides a fantastic layer of abstraction. For most apps, you'll be using helper functions that
+    generate this web code for you. Let's explore your options:</p>
+
+  <h3>1. The Core: <code>shiny</code> Package's UI Functions</h3>
+  <p>At its heart, Shiny provides fundamental functions for creating HTML elements. These are the building blocks:</p>
+  <ul>
+    <li><strong>HTML Tags:</strong> Functions like <code>h1()</code>, <code>p()</code>, <code>div()</code>,
+      <code>img()</code>, <code>a()</code> directly create their HTML counterparts. You can add <code>id</code> and
+      <code>class</code> attributes to these for targeting with CSS.
+      <pre><code class="language-R"># Example: Creating a basic div with a headline and paragraph
+div(id = "hero-section",
+    h1("Welcome to Our App!"),
+    p("This is a simple landing page built with Shiny.")
+)</code></pre>
+    </li>
+    <li><strong>Basic Layouts:</strong> <code>fluidPage()</code>, <code>fixedPage()</code>, <code>navbarPage()</code>,
+      <code>dashboardPage()</code> (from <code>shinydashboard</code> package) define the overall structure of your app.
+      <ul>
+        <li><code>fluidPage()</code>: The most common choice, creating a responsive layout that adapts to screen size.
+          Great for landing pages.</li>
+        <li><code>navbarPage()</code>: Ideal for multi-tab applications where you need navigation at the top.</li>
+        <li><code>fixedPage()</code>: For layouts that maintain a fixed width, less common for modern responsive
+          designs.</li>
+      </ul>
+    </li>
+    <li><strong>Input Widgets:</strong> These are how users interact with your app. Think buttons, sliders, text boxes,
+      dropdowns. Shiny provides a comprehensive set:
+      <code>actionButton()</code>, <code>textInput()</code>, <code>selectInput()</code>, <code>sliderInput()</code>,
+      <code>dateInput()</code>, <code>checkboxInput()</code>, <code>radioButtons()</code>, <code>fileInput()</code> and
+      many more.
+      <pre><code class="language-R"># Example: A text input and a button
+textInput("user_email", "Your Email Address"),
+actionButton("submit_email", "Subscribe Now")</code></pre>
+    </li>
+    <li><strong>Output Elements:</strong> These display dynamic content from your R code.
+      <code>textOutput()</code>, <code>plotOutput()</code>, <code>tableOutput()</code>, <code>htmlOutput()</code>,
+      <code>imageOutput()</code>.
+      <pre><code class="language-R"># Example: Displaying some dynamic text
+textOutput("welcome_message")</code></pre>
+    </li>
+  </ul>
+
+  <h3>2. The Powerhouse: Bootstrap 5 with <code>bslib</code></h3>
+  <p>Many Shiny apps use <strong>Bootstrap</strong>, a widely popular framework for building responsive, mobile-first
+    websites. Shiny's default look often comes from Bootstrap 3. However, with the <code>bslib</code> package, you can
+    easily upgrade to <strong>Bootstrap 5</strong>, bringing a more modern aesthetic and enhanced capabilities.</p>
+  <ul>
+    <li><strong>Layouts:</strong> <code>bslib</code> works seamlessly with Shiny's <code>fluidPage()</code>, allowing
+      you to create complex layouts using <code>layout_sidebar()</code>, <code>layout_column_wrap()</code>,
+      <code>card()</code>, <code>card_header()</code>, <code>card_body()</code>. These are fantastic for organizing
+      content into visually distinct sections.
+      <pre><code class="language-R"># Using bslib for a modern card layout
+library(bslib)
+card(
+  card_header("Our Features"),
+  card_body(
+    p("Feature 1: Amazing performance."),
+    p("Feature 2: Easy to use.")
+  )
+)</code></pre>
+    </li>
+    <li><strong>Theming (<code>bs_theme()</code>):</strong> This is where <code>bslib</code> truly shines for design
+      translation. Instead of writing custom CSS for every color and font, <code>bs_theme()</code> allows you to define
+      your brand's primary color, secondary color, base font, headings font, and more, which then cascade across your
+      entire app, matching your Figma theme.
+      <pre><code class="language-R"># Setting a custom theme that reflects your Figma styles
+bs_theme(
+  version = 5, # Use Bootstrap 5
+  bg = "#FFFFFF", fg = "#333333", # Background and foreground colors
+  primary = "#00C897", # Your brand's primary color from Figma
+  base_font = font_google("Inter"), # A Google Font matching your design
+  heading_font = font_google("Montserrat")
+)</code></pre>
+    </li>
+    <li><strong>Components:</strong> Bootstrap offers ready-to-use components like accordions, tabs, navbars, and
+      modals that you can often incorporate directly or with <code>bslib</code> wrappers.</li>
+  </ul>
+
+  <h3>3. Beyond Bootstrap: Other UI Frameworks and Custom Solutions</h3>
+  <p>While Bootstrap is the default and very powerful, Shiny is flexible enough to integrate other UI frameworks or
+    custom HTML/CSS/JS.</p>
+  <ul>
+    <li><code>shiny.semantic</code> / <code>f7</code> / <code>shinymaterial</code> / <code>shinyWidgets</code>: These
+      packages offer alternative design systems (e.g., Semantic UI, Framework7, Material Design) with different visual
+      styles and components. You might explore these if your Figma design leans heavily into one of these aesthetics,
+      but be aware they come with their own learning curves.</li>
+    <li><strong>Custom HTML/CSS/JS:</strong> For highly custom designs where a framework might be too restrictive, you
+      can write pure HTML directly in <code>ui.R</code> using <code>htmlTemplate()</code> or <code>includeHTML()</code>,
+      and then apply your custom CSS from <code>www/styles.css</code>. This gives you maximum control to perfectly match
+      complex Figma layouts.
+      <pre><code class="language-R"># Embedding custom HTML from your Figma export
+# Assuming you exported 'hero_section.html' from Figma
+includeHTML("www/hero_section.html")</code></pre>
+    </li>
+  </ul>
+
+  <h3>Choosing the Right Approach for Your Figma Design:</h3>
+  <ul>
+    <li><strong>Simple &amp; Standard Figma:</strong> If your Figma design uses common elements (buttons, cards, basic
+      layouts) that resemble Bootstrap's aesthetic, <code>bslib</code> with <code>bs_theme()</code> and core Shiny UI
+      functions will be your most efficient path. You'll primarily translate colors, fonts, and spacing via
+      <code>bs_theme()</code> and <code>styles.css</code>.</li>
+    <li><strong>Highly Custom Figma:</strong> If your Figma design has unique shapes, animations, or very specific
+      grid layouts not easily achievable with standard Bootstrap components, you'll rely more heavily on writing custom
+      CSS (Flexbox, Grid, custom animations) in <code>www/styles.css</code> and using generic Shiny <code>div()</code>
+      and HTML tag functions, possibly with <code>includeHTML()</code> for large static blocks.</li>
+    <li><strong>Figma based on a different UI library:</strong> If your designer explicitly used a different UI library
+      (e.g., Material Design) in Figma, consider using a Shiny package that wraps that library (e.g.,
+      <code>shinymaterial</code>) to reduce custom CSS.</li>
+  </ul>
+  <blockquote>
+    <strong>Tip:</strong> Use <code>bs_theme_preview()</code>—an interactive palette + typography sandbox—to quickly see
+    how your <code>bs_theme()</code> choices impact your app's look before writing much code. This helps validate your
+    color and font choices against your Figma design.
+  </blockquote>
+
+  <hr>
+
+  <h2>🔗 Figma ↔ Shiny Hand‑Off Workflow</h2>
+  <p>This is where your existing design vision in Figma truly comes to life in Shiny. A smooth hand-off saves time and
+    ensures your final app looks exactly as you designed it.</p>
+  <ol>
+    <li><strong>Reference Figma Layers &amp; Styles:</strong> Open your completed landing page Figma design. Pay close
+      attention to your layer names (e.g., <code>cta-btn</code>, <code>pricing-card</code>) and how you've used Figma's
+      <em>Styles</em> for colors, typography, and spacing. These will directly guide your CSS class names and Shiny
+      structure.</li>
+    <li><strong>Export Design Tokens:</strong> If you used a plugin like "Design Tokens" in Figma, export your
+      <code>tokens.json</code> file. This file contains all your design system's variables (colors, fonts, spacing
+      values), which you can then translate directly into CSS variables (e.g., <code>--brand-color: #ABCDEF;</code>) or
+      use to inform your <code>bs_theme()</code> settings.</li>
+    <li><strong>Export Assets:</strong> Export any necessary images (PNG/JPG, optimized for web) and icons (SVG for
+      scalability). Place all these assets into a <code>www/images</code> folder in your Shiny app. Remember to use
+      descriptive filenames!</li>
+    <li><strong>Translate CSS Properties:</strong> For individual elements in Figma, you can select them and often copy
+      their CSS properties directly from the "Inspect" panel. Paste these into your <code>styles.css</code> file,
+      making sure to match the <code>class</code> or <code>id</code> names you'll use in your Shiny UI elements.</li>
+    <li><strong>Include Markup (Optional but Powerful):</strong> For complex static sections (like an intricate hero
+      section or footer that won't have dynamic Shiny elements), you might have designed them as a single frame in
+      Figma. Some Figma plugins allow you to export a frame as raw HTML. If you have this, you can then
+      <code>includeHTML("www/your_exported_static_section.html")</code> directly into your Shiny UI. This saves you
+      from manually recreating every HTML tag in R, allowing you to focus on the interactive parts.</li>
+    <li><strong>Sync Changes:</strong> Design is iterative! If you or a designer makes a style tweak in Figma, remember
+      to update the corresponding CSS in your <code>styles.css</code> or <code>bs_theme()</code> call, and then refresh
+      your Shiny app to see the changes applied.</li>
+  </ol>
+  <blockquote>
+    <strong>📌 Checkpoint:</strong> Look at your Figma design's primary brand color. Does it exactly match the
+    <code>primary</code> argument you're using in your Shiny <code>bs_theme()</code> call or your <code>--brand</code>
+    CSS variable? If not, adjust one or the other to ensure consistency.
+  </blockquote>
+
+  <hr>
+
+  <h2>🧩 Pulling It All Together (Mini‑Project)</h2>
+  <p>Now it's time to apply what you've learned! This mini-project will guide you through the entire workflow, starting
+    from your existing Figma design.</p>
+  <ol>
+    <li><strong>Review Your Figma Landing Page:</strong> Open your complete landing page Figma design. Pay special
+      attention to the hero section (headline, sub-text, CTA button) and any other key sections. Note the exact colors,
+      fonts, spacing, responsive behaviors, and interactivity you designed.</li>
+    <li><strong>Export Assets &amp; Tokens:</strong> If you haven't already, export all necessary images and icons from
+      your Figma design. Also, export your design tokens (colors, font sizes, spacing values) to help generate your
+      <code>styles.css</code> or <code>bs_theme()</code> settings.</li>
+    <li><strong>Scaffold UI in Shiny:</strong> In your <code>app.R</code> file, begin building the UI structure.
+      <ul>
+        <li>Start with <code>fluidPage()</code> or <code>page_navbar()</code> as your main layout.</li>
+        <li>For the hero section, use <code>div()</code>, <code>h1()</code>, <code>p()</code>, and
+          <code>actionButton()</code> to replicate the structure. Give these elements <code>class</code> attributes or
+          <code>id</code>s that correspond to your Figma naming.</li>
+        <li>If you have other sections, use <code>row()</code> and <code>column()</code> from Shiny or
+          <code>layout_column_wrap()</code> / <code>card()</code> from <code>bslib</code> to build them according to
+          your Figma grid.</li>
+      </ul>
+    </li>
+    <li><strong>Style with CSS &amp; Theming:</strong>
+      <ul>
+        <li>Create a <code>www/styles.css</code> file.</li>
+        <li>Apply custom CSS rules (from your Figma "Inspect" panel or derived from your design tokens) to elements
+          with matching <code>class</code> or <code>id</code> attributes.</li>
+        <li>In your <code>ui.R</code>, use <code>bs_theme()</code> to set your app's global colors and fonts, directly
+          matching the primary and secondary colors and font choices from your Figma design.</li>
+        <li>Consider using CSS variables (<code>:root { --my-color: #ABC; }</code>) derived from your Figma tokens for
+          easier maintenance.</li>
+      </ul>
+    </li>
+    <li><strong>Add Interactivity:</strong> Make your CTA button interactive. When the user clicks it, use
+      <code>observeEvent(input$your_cta_id, {...})</code> to display a modal window (using <code>showModal()</code>)
+      that contains a <code>textInput("email")</code> for collecting an email address and a "Submit" button. Add some
+      basic feedback (e.g., <code>showNotification()</code>) after submission.</li>
+    <li><strong>Test Responsiveness:</strong> View your app on various screen sizes (using your browser's developer
+      tools mobile emulator or an actual mobile device). Compare it to your Figma mobile design. Fix any layout breaks
+      or unreadable text by adjusting <code>column</code> widths or adding CSS media queries in
+      <code>styles.css</code>.</li>
+    <li><strong>Run Accessibility Check:</strong> Use an online contrast checker or your browser's developer tools to
+      verify that all text on your landing page meets the accessibility contrast ratio guidelines. Adjust colors in your
+      <code>styles.css</code> or <code>bs_theme()</code> call until they pass.</li>
+    <li><strong>Refine and Share:</strong> Does your Shiny app look and feel like your Figma design? Are the user flows
+      intuitive? Share your app's link with a friend or classmate. Ask for their feedback on both the visual design and
+      usability.</li>
+  </ol>
+
+  <hr>
+
+  <h2>📚 Keep Exploring</h2>
+  <p>Learning design is a continuous journey. Here are some fantastic resources to keep you going:</p>
+  <ul>
+    <li><em>Don’t Make Me Think</em> – Steve Krug: A foundational book on UX principles, emphasizing simplicity and
+      intuition.</li>
+    <li><em>Refactoring UI</em> – Adam Wathan &amp; Steve Schoger: Practical, actionable advice for improving the visual
+      design of your interfaces.</li>
+    <li><em>Mastering Shiny</em> – Chapter 13 (Advanced UI): Dive deeper into Shiny's UI capabilities with this
+      comprehensive online book.</li>
+    <li><em>UX Crash Course: 31 Fundamentals</em> (The Hipper Element): A great quick-hit resource for core UX
+      concepts.</li>
+    <li>Shiny Gallery for real‑world inspiration: See what's possible with Shiny and get ideas for your next project.
+    </li>
+    <li>The <code>bslib</code> package documentation: Your go-to resource for modern Shiny theming and layout with
+      Bootstrap 5.</li>
+    <li>W3Schools CSS Tutorial: A comprehensive, beginner-friendly guide to all things CSS.</li>
+  </ul>
+  <p><strong>Congratulations!</strong> You've not just read about, but <strong>internalized</strong> the fundamentals of
+    UI, UX, bias-aware design, and the complete end-to-end workflow from your Figma concept to a live Shiny application.
+    Remember, great design isn't a one-time event; it's an ongoing conversation with your users, constantly iterating
+    and improving. What's one thing you're excited to try in your next Shiny app?</p>
+</div>
+            
+            `
+              
+            }]
+          },
           tickets: {
             1: 'commonWeek1Tickets',
             2: [
               {
-                title: "Multi-Step Questionnaire Modal",
-                description: "Implement a multi-step modal for user registration",
+                title: "Design to UI: Building a Landing Page in Shiny",
+                description: "Transform the starter script into a compelling landing page",
                 content: `
-                  <div class="space-y-4">
-                    <div class="mb-6">
-                      <h4 class="font-medium text-lg mb-2">Requirements</h4>
-                      <ul class="list-disc pl-5 text-gray-600 space-y-2">
-                        <li>Progress indicator</li>
-                        <li>Form validation</li>
-                        <li>Step navigation</li>
-                        <li>Mobile responsiveness</li>
-                      </ul>
-                    </div>
-                  </div>
+<style>
+  .frontend-tutorial { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+  .frontend-tutorial h2 { font-size: 28px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #3498db; }
+  .frontend-tutorial h3 { font-size: 20px; font-weight: 600; margin: 30px 0 15px 0; background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #3498db; }
+  .frontend-tutorial h4 { font-size: 18px; font-weight: 600; margin: 25px 0 10px 0; color: #2c3e50; }
+  .frontend-tutorial blockquote { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px 20px; margin: 20px 0; font-style: normal; }
+  .frontend-tutorial p { margin: 15px 0; }
+  .frontend-tutorial ul, .frontend-tutorial ol { margin: 15px 0 20px 25px; }
+  .frontend-tutorial li { margin-bottom: 10px; }
+  .frontend-tutorial pre { background: #263238; color: #aed581; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
+  .frontend-tutorial code { background: #f5f5f5; color: #d32f2f; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+  .frontend-tutorial pre code { background: transparent; color: inherit; padding: 0; }
+  .frontend-tutorial hr { margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0; }
+  .frontend-tutorial a { color: #2196f3; text-decoration: none; }
+  .frontend-tutorial a:hover { text-decoration: underline; }
+  .frontend-tutorial .highlight { background: #fff3cd; padding: 15px; border-radius: 5px; border-left: 4px solid #ffc107; }
+  .frontend-tutorial .success { background: #d4edda; padding: 15px; border-radius: 5px; border-left: 4px solid #28a745; }
+  .frontend-tutorial .info { background: #d1ecf1; padding: 15px; border-radius: 5px; border-left: 4px solid #17a2b8; }
+  .frontend-tutorial .warning { background: #f8d7da; padding: 15px; border-radius: 5px; border-left: 4px solid #dc3545; }
+</style>
+
+<div class="frontend-tutorial">
+  
+
+  
+  <hr>
+  
+  <h3>🚀 Task Overview: Building the MentorMatchAI Landing Page MVP</h3>
+  <p>Alright team, with our recommender logic taking shape, it's time to build the public face of MentorMatchAI – our landing page! This is the first impression users will have, so it needs to be clean, inviting, and clearly guide them towards finding a mentor or becoming one.</p>
+  
+  <p>Your task is to take the provided Shiny starter script and transform its "Home" tab into a compelling landing page. You'll use your newfound UI/CSS skills to make it visually appealing and user-friendly, incorporating best practices for web design.</p>
+  
+  <hr>
+  
+  <h3>📋 Your Deliverables for this Ticket:</h3>
+  <ul>
+    <li>A working Shiny R script named <code>ticket1_1_landing_mvp.R</code> (you'll rename the provided starter script).</li>
+    <li>Any custom CSS files (e.g., <code>styles.css</code>) you create, placed in a <code>www</code> folder within your Shiny app directory.</li>
+    <li>(Optional but encouraged) Any JavaScript files you create for enhanced interactivity, also in the <code>www</code> folder.</li>
+    <li>Your project folder structure should be: <code>[YOUR_NAME]_Landing_Page/ticket1_1_landing_mvp.R</code> and <code>[YOUR_NAME]_Landing_Page/www/styles.css</code> (if applicable).</li>
+  </ul>
+  
+  <hr>
+  
+  <h3>Starter Shiny Script: <code>mentor_match_simple.R</code></h3>
+  <p>Use the following R script as your starting point. Rename it to <code>ticket1_1_landing_mvp.R</code>.</p>
+  
+  <pre><code># ticket1_1_landing_mvp.R
+# mentor_match_simple.R
+# ─────────────────────────────────────────────────────────
+# Libraries
+library(shiny)
+library(bslib)
+
+# ---- UI -------------------------------------------------
+ui <- page_navbar(
+  title = "MentorMatch Simple",
+  theme = bs_theme(version = 5, primary = "#4f8bb8"),
+
+  # Home tab ------------------------------------------------
+  nav_panel(
+    title = "Home",
+
+    div(
+      style = "text-align:center; padding:40px;",
+      h1("Welcome to MentorMatch"),
+      p("Connect with the perfect mentor using AI-powered matching",
+        style = "font-size:1.2rem; margin-bottom:30px;"),
+
+      div(
+        actionButton("show_student_form", "I'm a Student",
+                     class = "btn-primary btn-lg", style = "margin:10px;"),
+        actionButton("show_mentor_form", "I'm a Mentor",
+                     class = "btn-success  btn-lg", style = "margin:10px;")
+      )
+    ),
+
+    hr(),
+
+    # Where results / pop-ups will appear
+    uiOutput("results_section")
+  ),
+
+  # About tab ----------------------------------------------
+  nav_panel(
+    title = "About",
+    div(
+      style = "padding:20px; max-width:800px; margin:0 auto;",
+      h3("About MentorMatch"),
+      p("This application uses semantic text analysis to match students with appropriate mentors."),
+      h4("How it works:"),
+      tags$ol(
+        tags$li("Students and mentors fill out detailed questionnaires"),
+        tags$li("The system analyzes responses using text embeddings"),
+        tags$li("Cosine similarity finds the best matches"),
+        tags$li("Students can connect with their top matches")
+      )
+    )
+  )
+)
+
+# ---- Server ---------------------------------------------
+server <- function(input, output, session) {
+
+  observeEvent(input$show_student_form, {
+    showModal(
+      modalDialog(
+        title = "Student Questionnaire (placeholder)",
+        "Todo: build the multi-step student form here.",
+        easyClose = TRUE
+      )
+    )
+  })
+
+  observeEvent(input$show_mentor_form, {
+    showModal(
+      modalDialog(
+        title = "Mentor Questionnaire (placeholder)",
+        "Todo: build the multi-step mentor form here.",
+        easyClose = TRUE
+      )
+    )
+  })
+
+  # placeholder for future results
+  output$results_section <- renderUI({ NULL })
+}
+
+# ---- Launch ---------------------------------------------
+shinyApp(ui, server)</code></pre>
+  
+  <hr>
+  
+  <h3>Next Steps: Bringing Your Landing Page to Life</h3>
+  <ul>
+    <li><strong>Read Lesson 1.2 – Building Your First Shiny App</strong> to learn how Shiny works, how to add UI features, and how to apply themes & element-level styling.</li>
+    <li><strong>Design in Figma:</strong> Create a free <a href="https://www.figma.com/" target="_blank">Figma</a> account. Design your landing page in Figma first, keeping all ticket parameters and the UI/UX best practices (clarity, consistency, responsiveness, ethical design) in mind.</li>
+    <li><strong>Rebuild in Shiny UI:</strong> When finished with your Figma design, rebuild that design in the <code>ui</code> section of your <code>ticket1_1_landing_mvp.R</code> Shiny script. Focus on the "Home" tab.</li>
+    <li><strong>Enhance with CSS:</strong> Use custom CSS (either inline, in <code>tags$style</code>, or in an external <code>www/styles.css</code> file) to match your Figma design's aesthetics. Pay attention to colors, fonts, spacing, and component styling (e.g., buttons, cards).</li>
+    <li><strong>Consider Advanced Features:</strong>
+      <ul>
+        <li><strong>Hero Section:</strong> Implement a bold headline, a concise value proposition, and a compelling background (image or gradient). Add a wide hero image (~1920 × 600 px) as <code>www/hero.png</code> and reference it in your UI.</li>
+        <li><strong>Feature Cards:</strong> Design three visually distinct feature cards with icons + short text (e.g., "Instant Match", "Verified Mentors", "Free to Join").</li>
+        <li><strong>Testimonials Row:</strong> Add a section with 2-3 short quotes from happy (dummy) users.</li>
+        <li><strong>Trust Badge Strip:</strong> Include a row of logos from hypothetical partner universities or companies.</li>
+        <li><strong>Sticky Call-to-Action:</strong> Implement a "Get Started" button that stays visible as the user scrolls, especially on mobile.</li>
+        <li><strong>Accessible Color Palette:</strong> Check your chosen color contrasts at <a href="https://webaim.org/resources/contrastchecker/" target="_blank">WebAIM Contrast Checker</a> to ensure accessibility.</li>
+      </ul>
+    </li>
+  </ul>
+  
+  <hr>
+  
+  <h3>Submission</h3>
+  <ul>
+    
+    <li>Email me the completed code and any files needed for it to run properly</li>
+  </ul>
+  
+  
+</div>
+`
+              }
+            ]
+          }
+        },
+        backend: {
+          lessons: {
+            1: [
+              {
+                title: "Onboarding",
+                description: "Essential onboarding and setup",
+                content: `
+<style>
+  .shiny-tutorial { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+  .shiny-tutorial h2 { font-size: 28px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #27ae60; }
+  .shiny-tutorial h3 { font-size: 20px; font-weight: 600; margin: 30px 0 15px 0; background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #27ae60; }
+  .shiny-tutorial blockquote { background: #e8f5e8; border-left: 4px solid #27ae60; padding: 15px 20px; margin: 20px 0; font-style: normal; }
+  .shiny-tutorial p { margin: 15px 0; }
+  .shiny-tutorial ul, .shiny-tutorial ol { margin: 15px 0 20px 25px; }
+  .shiny-tutorial li { margin-bottom: 10px; }
+  .shiny-tutorial pre { background: #263238; color: #aed581; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
+  .shiny-tutorial code { background: #f5f5f5; color: #d32f2f; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+  .shiny-tutorial pre code { background: transparent; color: inherit; padding: 0; }
+  .shiny-tutorial hr { margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0; }
+  .shiny-tutorial a { color: #27ae60; text-decoration: none; }
+  .shiny-tutorial a:hover { text-decoration: underline; }
+</style>
+<div class="shiny-tutorial">
+  <h2>Onboarding to R & Shiny – Your First Steps</h2>
+  <blockquote>
+    <strong>Who is this for?</strong> Absolute beginners. This onboarding will get you set up and ready to build your first Shiny app, even if you've never coded before.
+  </blockquote>
+  <hr>
+  <h3>Getting Set Up</h3>
+  <ul>
+    <li><strong>Install R:</strong> Download from <a href="https://cloud.r-project.org/" target="_blank">cloud.r-project.org</a> (choose Windows, macOS, or Linux).</li>
+    <li><strong>Install RStudio Desktop:</strong> Download from <a href="https://posit.co/download/rstudio-desktop/" target="_blank">posit.co/download/rstudio-desktop/</a> (install R first).</li>
+    <li><strong>Install Required Packages:</strong> In RStudio's Console, run:<br>
+      <pre><code>needed &lt;- c("shiny", "bslib", "tidyverse", "here", "lintr")
+install.packages(needed)</code></pre>
+    </li>
+  </ul>
+  <hr>
+  <h3>What You'll Learn in This Lesson</h3>
+  <ul>
+    <li>How to set up your R and RStudio environment</li>
+    <li>What R scripts and variables are</li>
+    <li>How to use R's basic data types and functions</li>
+    <li>How to write simple control flow (if/else, loops)</li>
+  </ul>
+  <hr>
+  <h3>R Coding Fundamentals</h3>
+  <h4>Variables and Assignment</h4>
+  <p>Variables are like labeled boxes where you can store information for later use. In R, you use the <code>&lt;-</code> symbol to assign a value to a variable. For example, you can store a number or a word in a variable and use it throughout your code. This helps you keep track of data and reuse it easily.</p>
+  <pre><code># Assigning values to variables
+my_number &lt;- 10
+my_text &lt;- "Hello, R!"
+print(my_number)
+print(my_text)</code></pre>
+  <h4>Data Types</h4>
+  <p>Data types tell R what kind of information you are working with. The most common types are numbers (numeric), text (character), true/false values (logical), collections of values (vectors), and tables (data frames). Understanding data types helps you organize and analyze your data correctly.</p>
+  <pre><code># Numeric
+x &lt;- 5
+y &lt;- 3.14
+# Character
+name &lt;- "Alice"
+# Logical
+is_true &lt;- TRUE
+# Vectors
+ages &lt;- c(25, 30, 22, 35)
+names &lt;- c("Alice", "Bob", "Charlie")
+# Data frames
+students &lt;- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 30, 22)
+)</code></pre>
+  <h4>Functions</h4>
+  <p>Functions are like kitchen appliances: you give them ingredients (inputs), and they do something for you (output). R has many built-in functions, like <code>sum()</code> or <code>mean()</code>, and you can also create your own. Functions help you avoid repeating code and make your scripts easier to read and maintain.</p>
+  <pre><code># Built-in functions
+sum(c(1, 2, 3, 4, 5))
+mean(c(10, 20, 30))
+# Custom function
+add_numbers &lt;- function(a, b) {
+  result &lt;- a + b
+  return(result)
+}
+add_numbers(5, 7)</code></pre>
+  <h4>Control Flow</h4>
+  <p>Control flow lets your program make decisions and repeat actions. With <code>if</code> statements, your code can choose what to do based on certain conditions (like a traffic light). Loops, like <code>for</code>, let you repeat actions multiple times. This is how you make your code flexible and powerful.</p>
+  <pre><code># If-else statements
+score &lt;- 85
+if (score &gt;= 90) {
+  print("Excellent!")
+} else if (score &gt;= 70) {
+  print("Good job!")
+} else {
+  print("Keep practicing.")
+}
+# For loops
+for (i in 1:3) {
+  print(paste("Loop iteration:", i))
+}</code></pre>
+  <hr>
+  <h3>What's Next?</h3>
+  <p><strong>Congratulations!</strong> You've set up your R and RStudio environment and learned the basics of R programming. In the next lesson, you'll build your first interactive Shiny app!</p>
+</div>
+`
+              }
+            ],
+            2: [
+              {
+                title: "Databases & SQLite Fundamentals",
+                description: "Learn database design, SQL, and SQLite implementation",
+                content: `
+<style>
+  .backend-tutorial { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+  .backend-tutorial h2 { font-size: 28px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #27ae60; }
+  .backend-tutorial h3 { font-size: 20px; font-weight: 600; margin: 30px 0 15px 0; background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #27ae60; }
+  .backend-tutorial h4 { font-size: 18px; font-weight: 600; margin: 25px 0 10px 0; color: #2c3e50; }
+  .backend-tutorial blockquote { background: #e8f5e8; border-left: 4px solid #27ae60; padding: 15px 20px; margin: 20px 0; font-style: normal; }
+  .backend-tutorial p { margin: 15px 0; }
+  .backend-tutorial ul, .backend-tutorial ol { margin: 15px 0 20px 25px; }
+  .backend-tutorial li { margin-bottom: 10px; }
+  .backend-tutorial pre { background: #263238; color: #aed581; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
+  .backend-tutorial code { background: #f5f5f5; color: #d32f2f; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+  .backend-tutorial pre code { background: transparent; color: inherit; padding: 0; }
+  .backend-tutorial hr { margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0; }
+  .backend-tutorial a { color: #27ae60; text-decoration: none; }
+  .backend-tutorial a:hover { text-decoration: underline; }
+  .backend-tutorial table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+  .backend-tutorial th, .backend-tutorial td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  .backend-tutorial th { background-color: #f2f2f2; font-weight: 600; }
+  .backend-tutorial .highlight { background: #fff3cd; padding: 15px; border-radius: 5px; border-left: 4px solid #ffc107; }
+  .backend-tutorial .success { background: #d4edda; padding: 15px; border-radius: 5px; border-left: 4px solid #28a745; }
+  .backend-tutorial .info { background: #d1ecf1; padding: 15px; border-radius: 5px; border-left: 4px solid #17a2b8; }
+</style>
+
+<div class="backend-tutorial">
+  <h2>Databases & SQLite Fundamentals</h2>
+  
+  <blockquote>
+    <strong>Goal:</strong> Master database design principles, SQL fundamentals, and SQLite implementation for the MentorMatchAI backend.
+  </blockquote>
+  
+  <hr>
+  
+  <h3>🎯 What You'll Learn</h3>
+  <ul>
+    <li>Database design principles and normalization</li>
+    <li>SQL fundamentals (SELECT, INSERT, UPDATE, DELETE)</li>
+    <li>SQLite database creation and management</li>
+    <li>R database connectivity with DBI and RSQLite</li>
+    <li>Data validation and integrity</li>
+  </ul>
+  
+  <hr>
+  
+  <h3>📊 Database Design Principles</h3>
+  
+  <h4>What is a Database?</h4>
+  <p>A database is like a digital filing cabinet that stores and organizes data in a structured way. Think of it as a collection of tables (like spreadsheets) that are connected to each other. Databases make it easy to store, retrieve, update, and manage large amounts of information efficiently.</p>
+  
+  <h4>Database Design Best Practices</h4>
+  <ul>
+    <li><strong>Normalization:</strong> Organize data to reduce redundancy and improve data integrity</li>
+    <li><strong>Primary Keys:</strong> Unique identifiers for each record (like a student ID)</li>
+    <li><strong>Foreign Keys:</strong> References to other tables to create relationships</li>
+    <li><strong>Data Types:</strong> Choose appropriate types (TEXT, INTEGER, REAL, BLOB)</li>
+    <li><strong>Constraints:</strong> Rules that ensure data quality (NOT NULL, UNIQUE, etc.)</li>
+  </ul>
+  
+  <div class="info">
+    <p><strong>Example:</strong> Instead of storing mentor information in every student record, create separate tables and link them with IDs.</p>
+  </div>
+  
+  <hr>
+  
+  <h3>🗄️ SQLite Crash Course</h3>
+  
+  <h4>Why SQLite?</h4>
+  <p>SQLite is perfect for our project because it's:</p>
+  <ul>
+    <li><strong>Serverless:</strong> No separate database server needed</li>
+    <li><strong>File-based:</strong> The entire database is stored in a single file</li>
+    <li><strong>Lightweight:</strong> Minimal setup and maintenance</li>
+    <li><strong>Reliable:</strong> ACID compliant and widely used</li>
+  </ul>
+  
+  <h4>Basic SQL Commands</h4>
+  
+  <h5>1. CREATE TABLE</h5>
+  <pre><code>CREATE TABLE students (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    field_of_study TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);</code></pre>
+  
+  <h5>2. INSERT Data</h5>
+  <pre><code>INSERT INTO students (name, email, field_of_study) 
+VALUES ('Alice Johnson', 'alice@email.com', 'Computer Science');</code></pre>
+  
+  <h5>3. SELECT Data</h5>
+  <pre><code>-- Get all students
+SELECT * FROM students;
+
+-- Get specific fields
+SELECT name, email FROM students;
+
+-- Filter data
+SELECT * FROM students WHERE field_of_study = 'Computer Science';
+
+-- Sort results
+SELECT * FROM students ORDER BY name ASC;</code></pre>
+  
+  <h5>4. UPDATE Data</h5>
+  <pre><code>UPDATE students 
+SET field_of_study = 'Data Science' 
+WHERE email = 'alice@email.com';</code></pre>
+  
+  <h5>5. DELETE Data</h5>
+  <pre><code>DELETE FROM students WHERE email = 'alice@email.com';</code></pre>
+  
+  <hr>
+  
+  <h3>🔗 R Database Connectivity</h3>
+  
+  <h4>Setting Up Database Connection</h4>
+  <p>First, install the required packages:</p>
+  <pre><code>install.packages(c("DBI", "RSQLite"))</code></pre>
+  
+  <h4>Connecting to SQLite</h4>
+  <pre><code>library(DBI)
+library(RSQLite)
+
+# Connect to existing database or create new one
+con <- dbConnect(SQLite(), "mentormatch.db")
+
+# Check if connection is successful
+dbIsValid(con)</code></pre>
+  
+  <h4>Basic Database Operations in R</h4>
+  
+  <h5>Creating Tables</h5>
+  <pre><code># Create students table
+dbExecute(con, "
+  CREATE TABLE IF NOT EXISTS students (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    field_of_study TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )
+")
+
+# Create mentors table
+dbExecute(con, "
+  CREATE TABLE IF NOT EXISTS mentors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    expertise TEXT,
+    years_experience INTEGER,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )
+")</code></pre>
+  
+  <h5>Inserting Data</h5>
+  <pre><code># Insert single record
+dbExecute(con, "
+  INSERT INTO students (name, email, field_of_study) 
+  VALUES (?, ?, ?)",
+  params = list("Alice Johnson", "alice@email.com", "Computer Science")
+)
+
+# Insert multiple records
+students_data <- data.frame(
+  name = c("Bob Smith", "Carol Davis"),
+  email = c("bob@email.com", "carol@email.com"),
+  field_of_study = c("Engineering", "Business")
+)
+
+dbWriteTable(con, "students", students_data, append = TRUE)</code></pre>
+  
+  <h5>Querying Data</h5>
+  <pre><code># Get all students
+all_students <- dbGetQuery(con, "SELECT * FROM students")
+
+# Get specific students
+cs_students <- dbGetQuery(con, "
+  SELECT name, email FROM students 
+  WHERE field_of_study = ?",
+  params = list("Computer Science")
+)
+
+# Count records
+student_count <- dbGetQuery(con, "SELECT COUNT(*) as count FROM students")</code></pre>
+  
+  <h5>Updating Data</h5>
+  <pre><code># Update a record
+dbExecute(con, "
+  UPDATE students 
+  SET field_of_study = ? 
+  WHERE email = ?",
+  params = list("Data Science", "alice@email.com")
+)</code></pre>
+  
+  <h5>Deleting Data</h5>
+  <pre><code># Delete a record
+dbExecute(con, "
+  DELETE FROM students 
+  WHERE email = ?",
+  params = list("alice@email.com")
+)</code></pre>
+  
+  <hr>
+  
+  <h3>🏗️ Database Schema Design</h3>
+  
+  <h4>MentorMatchAI Database Schema</h4>
+  <p>Let's design the database structure for our mentorship platform:</p>
+  
+  <h5>Core Tables</h5>
+  
+  <table>
+    <tr>
+      <th>Table</th>
+      <th>Purpose</th>
+      <th>Key Fields</th>
+    </tr>
+    <tr>
+      <td>students</td>
+      <td>Store student information</td>
+      <td>id, name, email, field_of_study, goals, challenges</td>
+    </tr>
+    <tr>
+      <td>mentors</td>
+      <td>Store mentor information</td>
+      <td>id, name, email, expertise, experience, bio</td>
+    </tr>
+    <tr>
+      <td>matches</td>
+      <td>Track mentor-student matches</td>
+      <td>id, student_id, mentor_id, match_score, status</td>
+    </tr>
+    <tr>
+      <td>questionnaires</td>
+      <td>Store questionnaire responses</td>
+      <td>id, user_id, user_type, responses, submitted_at</td>
+    </tr>
+  </table>
+  
+  <h4>Complete Schema Implementation</h4>
+  <pre><code># Create complete database schema
+create_mentormatch_schema <- function(db_path = "mentormatch.db") {
+  con <- dbConnect(SQLite(), db_path)
+  
+  # Students table
+  dbExecute(con, "
+    CREATE TABLE IF NOT EXISTS students (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT UNIQUE NOT NULL,
+      field_of_study TEXT,
+      academic_level TEXT,
+      career_goals TEXT,
+      challenges TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  ")
+  
+  # Mentors table
+  dbExecute(con, "
+    CREATE TABLE IF NOT EXISTS mentors (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT UNIQUE NOT NULL,
+      expertise TEXT,
+      years_experience INTEGER,
+      industry TEXT,
+      bio TEXT,
+      availability TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  ")
+  
+  # Matches table
+  dbExecute(con, "
+    CREATE TABLE IF NOT EXISTS matches (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      student_id INTEGER NOT NULL,
+      mentor_id INTEGER NOT NULL,
+      match_score REAL,
+      status TEXT DEFAULT 'pending',
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (student_id) REFERENCES students (id),
+      FOREIGN KEY (mentor_id) REFERENCES mentors (id)
+    )
+  ")
+  
+  # Questionnaires table
+  dbExecute(con, "
+    CREATE TABLE IF NOT EXISTS questionnaires (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      user_type TEXT NOT NULL, -- 'student' or 'mentor'
+      responses TEXT, -- JSON string of responses
+      submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  ")
+  
+  dbDisconnect(con)
+  cat("Database schema created successfully!\n")
+}</code></pre>
+  
+  <hr>
+  
+  <h3>🔍 Data Validation & Integrity</h3>
+  
+  <h4>Input Validation</h4>
+  <pre><code># Validate email format
+validate_email <- function(email) {
+  email_pattern <- "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+  return(grepl(email_pattern, email))
+}
+
+# Validate required fields
+validate_student_data <- function(name, email, field_of_study) {
+  errors <- c()
+  
+  if (is.null(name) || nchar(trimws(name)) == 0) {
+    errors <- c(errors, "Name is required")
+  }
+  
+  if (!validate_email(email)) {
+    errors <- c(errors, "Invalid email format")
+  }
+  
+  if (is.null(field_of_study) || nchar(trimws(field_of_study)) == 0) {
+    errors <- c(errors, "Field of study is required")
+  }
+  
+  return(errors)
+}</code></pre>
+  
+  <h4>Database Constraints</h4>
+  <pre><code># Add constraints to existing table
+dbExecute(con, "
+  ALTER TABLE students ADD CONSTRAINT check_email 
+  CHECK (email LIKE '%@%')
+")
+
+# Create index for better performance
+dbExecute(con, "
+  CREATE INDEX IF NOT EXISTS idx_students_email 
+  ON students(email)
+")</code></pre>
+  
+  <hr>
+  
+  <h3>🧪 Hands-On Lab: Building Your Database</h3>
+  
+  <h4>Lab Exercise</h4>
+  <p>Create a complete database for the MentorMatchAI application:</p>
+  
+  <ol>
+    <li>Create the database schema using the provided code</li>
+    <li>Insert sample data for 5 students and 3 mentors</li>
+    <li>Write queries to find students by field of study</li>
+    <li>Create a function to match students with mentors based on field of study</li>
+    <li>Test data validation functions</li>
+  </ol>
+  
+  <h4>Sample Lab Code</h4>
+  <pre><code># Lab: Complete database implementation
+library(DBI)
+library(RSQLite)
+
+# 1. Create database
+create_mentormatch_schema()
+
+# 2. Insert sample data
+con <- dbConnect(SQLite(), "mentormatch.db")
+
+# Insert students
+students_sample <- data.frame(
+  name = c("Alice Johnson", "Bob Smith", "Carol Davis", "David Wilson", "Eva Brown"),
+  email = c("alice@email.com", "bob@email.com", "carol@email.com", "david@email.com", "eva@email.com"),
+  field_of_study = c("Computer Science", "Engineering", "Business", "Data Science", "Design"),
+  academic_level = c("Junior", "Senior", "Graduate", "Junior", "Senior"),
+  career_goals = c("Software Engineer", "Mechanical Engineer", "Product Manager", "Data Scientist", "UX Designer")
+)
+
+dbWriteTable(con, "students", students_sample, append = TRUE)
+
+# Insert mentors
+mentors_sample <- data.frame(
+  name = c("Dr. Sarah Chen", "Mike Rodriguez", "Lisa Thompson"),
+  email = c("sarah@tech.com", "mike@eng.com", "lisa@business.com"),
+  expertise = c("Software Development", "Mechanical Engineering", "Product Management"),
+  years_experience = c(8, 12, 6),
+  industry = c("Technology", "Manufacturing", "Technology")
+)
+
+dbWriteTable(con, "mentors", mentors_sample, append = TRUE)
+
+# 3. Query examples
+cs_students <- dbGetQuery(con, "
+  SELECT name, email, career_goals 
+  FROM students 
+  WHERE field_of_study = 'Computer Science'
+")
+
+experienced_mentors <- dbGetQuery(con, "
+  SELECT name, expertise, years_experience 
+  FROM mentors 
+  WHERE years_experience >= 5
+")
+
+dbDisconnect(con)</code></pre>
+  
+  <div class="success">
+    <p><strong>✅ Lab Complete!</strong> You've successfully created a database, inserted data, and performed queries.</p>
+  </div>
+  
+  <hr>
+  
+  <h3>📚 Additional Resources</h3>
+  <ul>
+    <li><strong>SQLite Documentation:</strong> <a href="https://www.sqlite.org/docs.html" target="_blank">sqlite.org/docs.html</a></li>
+    <li><strong>DBI Package:</strong> <a href="https://cran.r-project.org/web/packages/DBI/index.html" target="_blank">cran.r-project.org/web/packages/DBI</a></li>
+    <li><strong>RSQLite Package:</strong> <a href="https://cran.r-project.org/web/packages/RSQLite/index.html" target="_blank">cran.r-project.org/web/packages/RSQLite</a></li>
+    <li><strong>Database Design Tutorial:</strong> <a href="https://www.w3schools.com/sql/" target="_blank">w3schools.com/sql</a></li>
+  </ul>
+  
+  <hr>
+  
+  <h3>🚀 What's Next?</h3>
+  <p>With your database fundamentals mastered, you're ready to:</p>
+  <ul>
+    <li>Integrate the database with your Shiny application</li>
+    <li>Build data processing functions</li>
+    <li>Implement the matching algorithm</li>
+    <li>Create production-ready database operations</li>
+  </ul>
+  
+  <div class="success">
+    <p><strong>Remember:</strong> A well-designed database is the foundation of any successful application. You've built a solid structure that will support the entire MentorMatchAI platform!</p>
+  </div>
+</div>
+`
+              }
+            ]
+          },
+          tickets: {
+            1: 'commonWeek1Tickets',
+            2: [
+              {
+                title: "Database Schema Implementation",
+                description: "Update existing tables or create new ones for student and mentor responses",
+                content: `
+<style>
+  .backend-tutorial { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+  .backend-tutorial h2 { font-size: 28px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #27ae60; }
+  .backend-tutorial h3 { font-size: 20px; font-weight: 600; margin: 30px 0 15px 0; background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #27ae60; }
+  .backend-tutorial h4 { font-size: 18px; font-weight: 600; margin: 25px 0 10px 0; color: #2c3e50; }
+  .backend-tutorial blockquote { background: #e8f5e8; border-left: 4px solid #27ae60; padding: 15px 20px; margin: 20px 0; font-style: normal; }
+  .backend-tutorial p { margin: 15px 0; }
+  .backend-tutorial ul, .backend-tutorial ol { margin: 15px 0 20px 25px; }
+  .backend-tutorial li { margin-bottom: 10px; }
+  .backend-tutorial pre { background: #263238; color: #aed581; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
+  .backend-tutorial code { background: #f5f5f5; color: #d32f2f; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+  .backend-tutorial pre code { background: transparent; color: inherit; padding: 0; }
+  .backend-tutorial hr { margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0; }
+  .backend-tutorial a { color: #27ae60; text-decoration: none; }
+  .backend-tutorial a:hover { text-decoration: underline; }
+  .backend-tutorial table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+  .backend-tutorial th, .backend-tutorial td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  .backend-tutorial th { background-color: #f2f2f2; font-weight: 600; }
+  .backend-tutorial .highlight { background: #fff3cd; padding: 15px; border-radius: 5px; border-left: 4px solid #ffc107; }
+  .backend-tutorial .success { background: #d4edda; padding: 15px; border-radius: 5px; border-left: 4px solid #28a745; }
+  .backend-tutorial .info { background: #d1ecf1; padding: 15px; border-radius: 5px; border-left: 4px solid #17a2b8; }
+  .backend-tutorial .warning { background: #f8d7da; padding: 15px; border-radius: 5px; border-left: 4px solid #dc3545; }
+</style>
+
+<div class="backend-tutorial">
+  <h2>Database Schema Implementation</h2>
+  
+  <div class="highlight">
+    <p><strong>Your Mission:</strong> Implement the database schema for storing student and mentor questionnaire responses. You can either update existing tables or create new ones based on your team's questionnaire design.</p>
+  </div>
+  
+  <hr>
+  
+  <h3>🎯 Task Overview</h3>
+  <p>You have two options for implementing the database schema:</p>
+  
+  <ol>
+    <li><strong>Option 1:</strong> Update existing tables to accommodate new questionnaire fields</li>
+    <li><strong>Option 2:</strong> Create new tables specifically for the questionnaire responses</li>
+  </ol>
+  
+  <div class="info">
+    <p><strong>What You'll Need:</strong> RStudio with RSQLite and DBI packages installed</p>
+    <p><strong>Success Criteria:</strong> Database tables that can store all questionnaire responses</p>
+  </div>
+  
+  <hr>
+  
+  <h3>🔍 Option 1: Update Existing Tables</h3>
+  
+  <h4>Objective</h4>
+  <p>Modify existing database tables to accommodate the new questionnaire fields your team designed.</p>
+  
+  <h4>Step 1: Connect to Your Database</h4>
+  <p>First, connect to your existing MentorMatchAI database:</p>
+  
+  <pre><code># Load required packages
+library(RSQLite)
+library(DBI)
+
+# Connect to your existing database
+con <- dbConnect(SQLite(), "mentormatch_enhanced.sqlite")
+
+# Check what tables exist
+tables <- dbListTables(con)
+print(tables)</code></pre>
+  
+  <h4>Step 2: Analyze Current Schema</h4>
+  <p>Examine the current structure of your existing tables:</p>
+  
+  <pre><code># Check current student table structure
+student_structure <- dbGetQuery(con, "PRAGMA table_info(students_enhanced)")
+print("Current Student Table Structure:")
+print(student_structure)
+
+# Check current mentor table structure (if it exists)
+if ("mentor_profiles" %in% tables) {
+  mentor_structure <- dbGetQuery(con, "PRAGMA table_info(mentor_profiles)")
+  print("Current Mentor Table Structure:")
+  print(mentor_structure)
+}</code></pre>
+  
+  <h4>Step 3: Add New Columns</h4>
+  <p>Add the new questionnaire fields to your existing tables:</p>
+  
+  <pre><code># Add new columns to students_enhanced table
+dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN environment TEXT")
+dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN guidance TEXT")
+dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN mentorship_type TEXT")
+dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN feedback_style TEXT")
+dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN comm_style TEXT")
+dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN frequency TEXT")
+dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN personal_values TEXT")
+dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN challenges TEXT")
+dbExecute(con, "ALTER TABLE students_enhanced ADD COLUMN outcomes TEXT")
+
+# Add new columns to mentor_profiles table (if it exists)
+if ("mentor_profiles" %in% tables) {
+  dbExecute(con, "ALTER TABLE mentor_profiles ADD COLUMN expertise_fields TEXT")
+  dbExecute(con, "ALTER TABLE mentor_profiles ADD COLUMN mentoring_style TEXT")
+  dbExecute(con, "ALTER TABLE mentor_profiles ADD COLUMN availability TEXT")
+  dbExecute(con, "ALTER TABLE mentor_profiles ADD COLUMN communication_pref TEXT")
+  dbExecute(con, "ALTER TABLE mentor_profiles ADD COLUMN meeting_frequency TEXT")
+  dbExecute(con, "ALTER TABLE mentor_profiles ADD COLUMN values TEXT")
+  dbExecute(con, "ALTER TABLE mentor_profiles ADD COLUMN specializations TEXT")
+  dbExecute(con, "ALTER TABLE mentor_profiles ADD COLUMN goals TEXT")
+}</code></pre>
+  
+  <div class="success">
+    <p><strong>✅ Option 1 Complete!</strong> You've successfully updated your existing tables with new questionnaire fields.</p>
+  </div>
+  
+  <hr>
+  
+  <h3>✍️ Option 2: Create New Tables</h3>
+  
+  <h4>Objective</h4>
+  <p>Create new dedicated tables specifically for storing questionnaire responses.</p>
+  
+  <h4>Step 1: Connect to Your Database</h4>
+  <p>Connect to your MentorMatchAI database:</p>
+  
+  <pre><code># Load required packages
+library(RSQLite)
+library(DBI)
+
+# Connect to your database
+con <- dbConnect(SQLite(), "mentormatch_enhanced.sqlite")</code></pre>
+  
+  <h4>Step 2: Create Student Responses Table</h4>
+  <p>Create a new table specifically for student questionnaire responses:</p>
+  
+  <pre><code># Create student_responses table
+dbExecute(con, "
+  CREATE TABLE IF NOT EXISTS student_responses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    submission_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    school_name TEXT,
+    
+    -- Questionnaire fields
+    fields TEXT,
+    environment TEXT,
+    guidance TEXT,
+    mentorship_type TEXT,
+    feedback_style TEXT,
+    comm_style TEXT,
+    frequency TEXT,
+    personal_values TEXT,
+    challenges TEXT,
+    outcomes TEXT,
+    additional_info TEXT,
+    
+    -- Profile picture support
+    profile_picture BLOB,
+    profile_picture_type TEXT
+  )
+")</code></pre>
+  
+  <h4>Step 3: Create Mentor Responses Table</h4>
+  <p>Create a new table specifically for mentor questionnaire responses:</p>
+  
+  <pre><code># Create mentor_responses table
+dbExecute(con, "
+  CREATE TABLE IF NOT EXISTS mentor_responses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    submission_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    company TEXT,
+    
+    -- Questionnaire fields
+    expertise_fields TEXT,
+    experience_level TEXT,
+    mentoring_style TEXT,
+    availability TEXT,
+    communication_pref TEXT,
+    meeting_frequency TEXT,
+    values TEXT,
+    specializations TEXT,
+    goals TEXT,
+    additional_info TEXT,
+    
+    -- Profile picture support
+    profile_picture BLOB,
+    profile_picture_type TEXT
+  )
+")</code></pre>
+  
+  <h4>Step 4: Verify Table Creation</h4>
+  <p>Confirm your new tables were created correctly:</p>
+  
+  <pre><code># List all tables
+all_tables <- dbListTables(con)
+print(all_tables)
+
+# Check table structures
+student_structure <- dbGetQuery(con, "PRAGMA table_info(student_responses)")
+print("Student Responses Table Structure:")
+print(student_structure)
+
+mentor_structure <- dbGetQuery(con, "PRAGMA table_info(mentor_responses)")
+print("Mentor Responses Table Structure:")
+print(mentor_structure)</code></pre>
+  
+  <div class="success">
+    <p><strong>✅ Option 2 Complete!</strong> You've successfully created new dedicated tables for questionnaire responses.</p>
+  </div>
+  
+    <hr>
+  
+  <h3>🏗️ Implementation Requirements</h3>
+  
+  <h4>Required Fields</h4>
+  <p>Your database schema must support all the questionnaire fields your team designed. Here are the essential fields:</p>
+  
+  <h5>Student Questionnaire Fields:</h5>
+  <ul>
+    <li><code>name</code> - Full name</li>
+    <li><code>email</code> - Email address</li>
+    <li><code>school_name</code> - Institution name</li>
+    <li><code>fields</code> - Area of study/interest</li>
+    <li><code>environment</code> - Preferred learning environment</li>
+    <li><code>guidance</code> - Type of guidance needed</li>
+    <li><code>mentorship_type</code> - Preferred mentoring style</li>
+    <li><code>feedback_style</code> - Preferred feedback approach</li>
+    <li><code>comm_style</code> - Communication preferences</li>
+    <li><code>frequency</code> - Meeting frequency preference</li>
+    <li><code>personal_values</code> - Personal values and goals</li>
+    <li><code>challenges</code> - Current challenges</li>
+    <li><code>outcomes</code> - Desired outcomes</li>
+    <li><code>additional_info</code> - Any additional information</li>
+  </ul>
+  
+  <h5>Mentor Questionnaire Fields:</h5>
+  <ul>
+    <li><code>name</code> - Full name</li>
+    <li><code>email</code> - Email address</li>
+    <li><code>company</code> - Current company/organization</li>
+    <li><code>expertise_fields</code> - Areas of expertise</li>
+    <li><code>experience_level</code> - Years of experience</li>
+    <li><code>mentoring_style</code> - Preferred mentoring approach</li>
+    <li><code>availability</code> - Available time slots</li>
+    <li><code>communication_pref</code> - Preferred communication method</li>
+    <li><code>meeting_frequency</code> - Preferred meeting frequency</li>
+    <li><code>values</code> - Personal and professional values</li>
+    <li><code>specializations</code> - Specific areas of specialization</li>
+    <li><code>goals</code> - Mentoring goals</li>
+    <li><code>additional_info</code> - Any additional information</li>
+  </ul>
+  
+  <h4>Testing Your Implementation</h4>
+  <p>After implementing your chosen option, test your database schema:</p>
+  
+  <pre><code># Test inserting sample data
+# For Option 1 (updated tables):
+dbExecute(con, "
+  INSERT INTO students_enhanced (name, email, fields, environment, guidance) 
+  VALUES ('Test Student', 'test@email.com', 'Data Science', 'Structured', 'Career guidance')
+")
+
+# For Option 2 (new tables):
+dbExecute(con, "
+  INSERT INTO student_responses (name, email, fields, environment, guidance) 
+  VALUES ('Test Student', 'test@email.com', 'Data Science', 'Structured', 'Career guidance')
+")
+
+# Verify the data was inserted
+test_data <- dbGetQuery(con, "SELECT * FROM students_enhanced WHERE name = 'Test Student'")
+# OR
+test_data <- dbGetQuery(con, "SELECT * FROM student_responses WHERE name = 'Test Student'")
+print(test_data)</code></pre>
+  
+  <div class="success">
+    <p><strong>✅ Implementation Complete!</strong> Your database schema is ready to store questionnaire responses.</p>
+  </div>
+  
+    <hr>
+  
+  <h3>📊 Completion Requirements</h3>
+  
+  <h4>Success Criteria</h4>
+  <p>To complete this ticket, you must demonstrate:</p>
+  
+  <ul>
+    <li>✅ Database tables that can store all questionnaire fields</li>
+    <li>✅ Ability to insert test data successfully</li>
+    <li>✅ Ability to query and retrieve data</li>
+    <li>✅ Proper table structure with appropriate data types</li>
+  </ul>
+  
+  <h4>Submission Checklist</h4>
+  <p>Before submitting your work, verify:</p>
+  
+  <ul>
+    <li>✅ You chose either Option 1 (update existing tables) or Option 2 (create new tables)</li>
+    <li>✅ All required questionnaire fields are included in your schema</li>
+    <li>✅ You can successfully insert test data</li>
+    <li>✅ You can query and retrieve the test data</li>
+    <li>✅ Your database file is saved and accessible</li>
+  </ul>
+  
+  <h4>Testing Your Implementation</h4>
+  <p>Run these final tests to ensure everything works:</p>
+  
+  <pre><code># Final verification
+# 1. Check table structure
+tables <- dbListTables(con)
+print("Available tables:")
+print(tables)
+
+# 2. Verify student table has required fields
+student_fields <- dbListFields(con, "students_enhanced") # or "student_responses"
+print("Student table fields:")
+print(student_fields)
+
+# 3. Test data insertion and retrieval
+test_insert <- dbExecute(con, "
+  INSERT INTO students_enhanced (name, email, fields, environment, guidance) 
+  VALUES ('Final Test', 'final@test.com', 'Testing', 'Structured', 'Verification')
+")
+
+test_retrieve <- dbGetQuery(con, "SELECT * FROM students_enhanced WHERE name = 'Final Test'")
+print("Test data retrieved:")
+print(test_retrieve)
+
+# 4. Clean up test data
+dbExecute(con, "DELETE FROM students_enhanced WHERE name = 'Final Test'")
+
+# 5. Disconnect
+dbDisconnect(con)</code></pre>
+  
+  <div class="success">
+    <p><strong>✅ Database Schema Implementation Complete!</strong> Your database is ready to support the MentorMatchAI application.</p>
+  </div>
+  
+  <hr>
+  
+  <h3>🚀 What's Next?</h3>
+  
+  <p>With your database schema implemented, you're ready to:</p>
+  
+  <ul>
+    <li>Integrate with the frontend forms your teammates are building</li>
+    <li>Support the AI matching algorithms</li>
+    <li>Build data processing functions for the application</li>
+    <li>Create production-ready database operations</li>
+  </ul>
+  
+  <div class="success">
+    <p><strong>Remember:</strong> Your database schema is the foundation that makes everything else possible. You've built a solid structure that will support the entire MentorMatchAI application!</p>
+  </div>
+  
+  <hr>
+  
+  <h3>📞 Need Help?</h3>
+  <ul>
+    <li><strong>Stuck on SQL commands?</strong> Check the SQL reference guide in the main lesson</li>
+    <li><strong>Database won't connect?</strong> Make sure RSQLite and DBI packages are installed</li>
+    <li><strong>Schema design questions?</strong> Review the database design principles in the lesson</li>
+    <li><strong>Need human help?</strong> Ask in the team chat or during office hours</li>
+  </ul>
+  
+  <p><strong>Office Hours:</strong> Tuesday/Thursday 3:00-4:00 PM EST</p>
+  
+  <p><em>Great work, Database Engineer! Your schema implementation is complete and ready for the real application. 🚀</em></p>
+</div>
                 `
               }
             ]
           }
+        },
+        ai: {
+          lessons: {
+            1: [
+              {
+                title: "Onboarding",
+                description: "Essential onboarding and setup",
+                content: `
+<style>
+  .shiny-tutorial { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+  .shiny-tutorial h2 { font-size: 28px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #8e44ad; }
+  .shiny-tutorial h3 { font-size: 20px; font-weight: 600; margin: 30px 0 15px 0; background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #8e44ad; }
+  .shiny-tutorial blockquote { background: #f3e5f5; border-left: 4px solid #9c27b0; padding: 15px 20px; margin: 20px 0; font-style: normal; }
+  .shiny-tutorial p { margin: 15px 0; }
+  .shiny-tutorial ul, .shiny-tutorial ol { margin: 15px 0 20px 25px; }
+  .shiny-tutorial li { margin-bottom: 10px; }
+  .shiny-tutorial pre { background: #263238; color: #aed581; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
+  .shiny-tutorial code { background: #f5f5f5; color: #d32f2f; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+  .shiny-tutorial pre code { background: transparent; color: inherit; padding: 0; }
+  .shiny-tutorial hr { margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0; }
+  .shiny-tutorial a { color: #9c27b0; text-decoration: none; }
+  .shiny-tutorial a:hover { text-decoration: underline; }
+</style>
+<div class="shiny-tutorial">
+  <h2>Onboarding to R & Shiny – Your First Steps</h2>
+  <blockquote>
+    <strong>Who is this for?</strong> Absolute beginners. This onboarding will get you set up and ready to build your first Shiny app, even if you've never coded before.
+  </blockquote>
+  <hr>
+  <h3>Getting Set Up</h3>
+  <ul>
+    <li><strong>Install R:</strong> Download from <a href="https://cloud.r-project.org/" target="_blank">cloud.r-project.org</a> (choose Windows, macOS, or Linux).</li>
+    <li><strong>Install RStudio Desktop:</strong> Download from <a href="https://posit.co/download/rstudio-desktop/" target="_blank">posit.co/download/rstudio-desktop/</a> (install R first).</li>
+    <li><strong>Install Required Packages:</strong> In RStudio's Console, run:<br>
+      <pre><code>needed &lt;- c("shiny", "bslib", "tidyverse", "here", "lintr")
+install.packages(needed)</code></pre>
+    </li>
+  </ul>
+  <hr>
+  <h3>What You'll Learn in This Lesson</h3>
+  <ul>
+    <li>How to set up your R and RStudio environment</li>
+    <li>What R scripts and variables are</li>
+    <li>How to use R's basic data types and functions</li>
+    <li>How to write simple control flow (if/else, loops)</li>
+  </ul>
+  <hr>
+  <h3>R Coding Fundamentals</h3>
+  <h4>Variables and Assignment</h4>
+  <p>Variables are like labeled boxes where you can store information for later use. In R, you use the <code>&lt;-</code> symbol to assign a value to a variable. For example, you can store a number or a word in a variable and use it throughout your code. This helps you keep track of data and reuse it easily.</p>
+  <pre><code># Assigning values to variables
+my_number &lt;- 10
+my_text &lt;- "Hello, R!"
+print(my_number)
+print(my_text)</code></pre>
+  <h4>Data Types</h4>
+  <p>Data types tell R what kind of information you are working with. The most common types are numbers (numeric), text (character), true/false values (logical), collections of values (vectors), and tables (data frames). Understanding data types helps you organize and analyze your data correctly.</p>
+  <pre><code># Numeric
+x &lt;- 5
+y &lt;- 3.14
+# Character
+name &lt;- "Alice"
+# Logical
+is_true &lt;- TRUE
+# Vectors
+ages &lt;- c(25, 30, 22, 35)
+names &lt;- c("Alice", "Bob", "Charlie")
+# Data frames
+students &lt;- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 30, 22)
+)</code></pre>
+  <h4>Functions</h4>
+  <p>Functions are like kitchen appliances: you give them ingredients (inputs), and they do something for you (output). R has many built-in functions, like <code>sum()</code> or <code>mean()</code>, and you can also create your own. Functions help you avoid repeating code and make your scripts easier to read and maintain.</p>
+  <pre><code># Built-in functions
+sum(c(1, 2, 3, 4, 5))
+mean(c(10, 20, 30))
+# Custom function
+add_numbers &lt;- function(a, b) {
+  result &lt;- a + b
+  return(result)
+}
+add_numbers(5, 7)</code></pre>
+  <h4>Control Flow</h4>
+  <p>Control flow lets your program make decisions and repeat actions. With <code>if</code> statements, your code can choose what to do based on certain conditions (like a traffic light). Loops, like <code>for</code>, let you repeat actions multiple times. This is how you make your code flexible and powerful.</p>
+  <pre><code># If-else statements
+score &lt;- 85
+if (score &gt;= 90) {
+  print("Excellent!")
+} else if (score &gt;= 70) {
+  print("Good job!")
+} else {
+  print("Keep practicing.")
+}
+# For loops
+for (i in 1:3) {
+  print(paste("Loop iteration:", i))
+}</code></pre>
+  <hr>
+  <h3>What's Next?</h3>
+  <p><strong>Congratulations!</strong> You've set up your R and RStudio environment and learned the basics of R programming. In the next lesson, you'll explore AI concepts and semantic recommendation systems!</p>
+</div>
+`
+              }
+            ],
+            2: [
+              {
+                title: "AI, Semantic Recommendation & RAG in R",
+                description: "Understand AI concepts, semantic recommendation, and RAG implementation",
+                content: `
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .ai-tutorial { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .ai-tutorial h2 { 
+            font-size: 28px; 
+            font-weight: 600; 
+            margin: 40px 0 20px 0; 
+            padding-bottom: 10px; 
+            border-bottom: 3px solid #8e44ad; 
+        }
+        .ai-tutorial h3 { 
+            font-size: 20px; 
+            font-weight: 600; 
+            margin: 30px 0 15px 0; 
+            background: #f8f9fa; 
+            padding: 10px 15px; 
+            border-left: 4px solid #8e44ad; 
+        }
+        .ai-tutorial h4 { 
+            font-size: 18px; 
+            font-weight: 600; 
+            margin: 25px 0 10px 0; 
+            color: #2c3e50; 
+        }
+        .ai-tutorial p { 
+            margin: 15px 0; 
+        }
+        .ai-tutorial ul, .ai-tutorial ol { 
+            margin: 15px 0 20px 25px; 
+        }
+        .ai-tutorial li { 
+            margin-bottom: 8px; 
+        }
+        .ai-tutorial pre { 
+            background: #263238; 
+            color: #aed581; 
+            padding: 15px; 
+            border-radius: 8px; 
+            overflow-x: auto; 
+            margin: 15px 0; 
+            font-size: 14px;
+        }
+        .ai-tutorial code { 
+            background: #f5f5f5; 
+            color: #d32f2f; 
+            padding: 2px 4px; 
+            border-radius: 3px; 
+            font-family: 'Courier New', monospace; 
+        }
+        .ai-tutorial pre code { 
+            background: transparent; 
+            color: inherit; 
+            padding: 0; 
+        }
+        .ai-tutorial hr { 
+            margin: 30px 0; 
+            border: 0; 
+            border-top: 1px solid #e0e0e0; 
+        }
+        .ai-tutorial .info { 
+            background: #d1ecf1; 
+            padding: 15px; 
+            border-radius: 8px; 
+            border-left: 4px solid #17a2b8; 
+            margin: 20px 0;
+        }
+        .ai-tutorial .highlight { 
+            background: #fff3cd; 
+            padding: 15px; 
+            border-radius: 8px; 
+            border-left: 4px solid #ffc107; 
+            margin: 20px 0;
+        }
+        .ai-tutorial .success { 
+            background: #d4edda; 
+            padding: 15px; 
+            border-radius: 8px; 
+            border-left: 4px solid #28a745; 
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="ai-tutorial">
+        <h2>🧠 Semantic Recommender Implementation</h2>
+        
+        <div class="info">
+            <p><strong>Goal:</strong> Build a production-ready semantic recommendation system using CSV data</p>
+            <p><strong>Time:</strong> 4-6 hours | <strong>Prerequisites:</strong> Week 2 AI Lesson on Semantic Recommendation & RAG</p>
+        </div>
+        
+        <div class="highlight">
+            <p><strong>What You'll Build:</strong> A semantic recommender that loads mentor profiles from CSV files, processes text with TF-IDF + LSA, and matches students to mentors using cosine similarity.</p>
+        </div>
+        
+        <hr>
+        
+        <h3>📦 Setup</h3>
+        <p><strong>What are packages?</strong> Think of packages like apps for R - they add new abilities to the basic R language.</p>
+        <pre><code># Install packages (only run once - like downloading apps)
+install.packages(c("text2vec", "Matrix", "proxy", "stopwords"))
+
+# Load packages (run every time - like opening apps)
+library(text2vec)    # For text analysis and creating embeddings
+library(Matrix)      # For handling large data matrices efficiently 
+library(proxy)       # For calculating similarity between texts
+library(stopwords)   # For removing common words like "the", "and"</code></pre>
+        <p><strong>Syntax Notes:</strong></p>
+        <ul>
+            <li><code>#</code> = Comment (notes for humans, R ignores these)</li>
+            <li><code>c()</code> = Combine items into a list</li>
+            <li><code>"text"</code> = Text in quotes (called a "string")</li>
+        </ul>
+        
+        <hr>
+        
+        <h3>🔧 Core Implementation</h3>
+        
+        <h4>1. CSV Data Loading</h4>
+        <p><strong>What is a function?</strong> A function is like a recipe - you give it ingredients (inputs) and it makes something (output). Functions start with <code>function_name &lt;- function()</code></p>
+        
+        <pre><code>get_mentor_data <- function(csv_file = "mentors_enhanced.csv") {
+  # This line creates a function called "get_mentor_data"
+  # csv_file = "mentors_enhanced.csv" means if no file is specified, use this default
+  
+  # file.exists() checks if a file is on your computer (returns TRUE or FALSE)
+  if (file.exists(csv_file)) {
+    # read.csv() opens a CSV file and turns it into a data frame (like a spreadsheet)
+    # stringsAsFactors = FALSE keeps text as text (don't worry about this detail)
+    mentors <- read.csv(csv_file, stringsAsFactors = FALSE)
+    
+    # c() creates a list of required column names we need
+    required_cols <- c("id", "name", "title", "expertise_areas", "bio", "email")
+    
+    # all() checks if ALL items in required_cols exist in our CSV columns
+    # %in% means "is found in" 
+    # colnames() gets the column names from our data
+    if (all(required_cols %in% colnames(mentors))) {
+      
+      # data.frame() creates a new organized table of data
+      # We're reorganizing our data into a standard format
+      return(data.frame(
+        id = mentors$id,                    # $ means "get this column"
+        name = mentors$name,
+        title = mentors$title,
+        expertise = mentors$expertise_areas, # Renaming this column
+        bio = mentors$bio,
+        email = mentors$email,
+        
+        # if() checks a condition, does one thing if true, another if false
+        # This handles columns that might not exist in some CSV files
+        location = if("location" %in% colnames(mentors)) mentors$location else "",
+        industry = if("industry" %in% colnames(mentors)) mentors$industry else "",
+        experience_years = if("experience_years" %in% colnames(mentors)) mentors$experience_years else 0,
+        stringsAsFactors = FALSE
+      ))
+    }
+  }
+  
+  # If the first file didn't work, try this backup file
+  if (file.exists("mentor_profiles.csv")) {
+    return(read.csv("mentor_profiles.csv", stringsAsFactors = FALSE))
+  }
+  
+  # stop() shows an error message and stops the program
+  stop("No mentor CSV files found! Create mentors_enhanced.csv or mentor_profiles.csv")
+}</code></pre>
+        
+        <p><strong>Key Programming Concepts:</strong></p>
+        <ul>
+            <li><code>&lt;-</code> = Assignment (puts something into a variable, like a box)</li>
+            <li><code>if (condition) { do this }</code> = Only do something if condition is true</li>
+            <li><code>return()</code> = Give back a result from the function</li>
+            <li><code>data$column</code> = Get a specific column from a data table</li>
+        </ul>
+        
+        <h4>2. Embedding System</h4>
+        <p><strong>What are embeddings?</strong> Think of embeddings like converting words into numbers that computers can understand. Similar words get similar numbers.</p>
+        
+        <pre><code>default_embedding_system <- function(csv_file = "mentors_enhanced.csv") {
+  # Step 1: Get our mentor data using the function we just created
+  mentor_data <- get_mentor_data(csv_file)
+  
+  # Step 2: Combine all text about each mentor into one big sentence
+  # paste() glues text pieces together with spaces
+  mentor_texts <- paste(
+    mentor_data$name,        # "John Smith"
+    mentor_data$title,       # "Data Scientist" 
+    mentor_data$expertise,   # "Python, Machine Learning"
+    mentor_data$bio,         # "Experienced analyst..."
+    mentor_data$location,    # "San Francisco"
+    mentor_data$industry     # "Technology"
+  )
+  # Result: "John Smith Data Scientist Python Machine Learning Experienced analyst... San Francisco Technology"
+  
+  # Step 3: Convert text to "tokens" (individual words)
+  # tolower() makes everything lowercase: "HELLO" becomes "hello"
+  # word_tokenizer() splits sentences into individual words
+  tokens <- word_tokenizer(tolower(mentor_texts))
+  
+  # Step 4: Create an "iterator" (think of it as a conveyor belt for processing words)
+  # progressbar = FALSE means don't show a progress bar
+  it_train <- itoken(tokens, progressbar = FALSE)
+  
+  # Step 5: Build vocabulary (list of all unique words across all mentors)
+  # stopwords("en") = common English words like "the", "and", "is" that we ignore
+  vocab <- create_vocabulary(it_train, stopwords = stopwords("en"))
+  
+  # Step 6: Clean up vocabulary 
+  # term_count_min = 1 means keep words that appear at least 1 time
+  vocab <- prune_vocabulary(vocab, term_count_min = 1)
+  
+  # Step 7: Create a "vectorizer" (converts words to numbers)
+  vectorizer <- vocab_vectorizer(vocab)
+  
+  # Step 8: Create DTM (Document-Term Matrix)
+  # This is like a giant spreadsheet where:
+  # - Each row = one mentor
+  # - Each column = one word
+  # - Each cell = how many times that mentor uses that word
+  dtm_train <- create_dtm(it_train, vectorizer)
+  
+  # Step 9: Apply TF-IDF (Term Frequency-Inverse Document Frequency)
+  # This makes rare words more important than common words
+  # norm = "l2" and sublinear_tf = TRUE are advanced math settings
+  tfidf <- TfIdf$new(norm = "l2", sublinear_tf = TRUE)
+  dtm_tfidf <- fit_transform(dtm_train, tfidf)
+  
+  # Step 10: Try to apply LSA (Latent Semantic Analysis) for better matching
+  # LSA finds hidden patterns and reduces complexity
+  lsa <- NULL                    # Start with no LSA
+  dtm_final <- dtm_tfidf        # Use TF-IDF as backup
+  
+  # Only try LSA if we have enough data (more than 2 mentors and 2 words)
+  if (ncol(dtm_tfidf) > 2 && nrow(dtm_tfidf) > 2) {
+    # tryCatch() means "try this, but if it fails, do something else"
+    lsa <- tryCatch({
+      # min() picks the smaller number between 30 and (number of mentors - 1)
+      lsa_model <- LSA$new(n_topics = min(30, nrow(dtm_tfidf) - 1))
+      dtm_final <<- fit_transform(dtm_tfidf, lsa_model)  # <<- updates variable outside function
+      lsa_model
+    }, error = function(e) NULL)  # If LSA fails, set lsa to NULL
+  }
+  
+  # Step 11: Return everything we created in a list (like a toolkit)
+  list(
+    embeddings = dtm_final,    # The final number representation of mentors
+    vectorizer = vectorizer,   # Tool to convert new text to numbers
+    tfidf = tfidf,            # Tool to apply TF-IDF to new text
+    lsa = lsa,                # Tool to apply LSA (might be NULL)
+    mentor_data = mentor_data  # Original mentor information
+  )
+}</code></pre>
+        
+        <p><strong>Machine Learning Concepts Explained:</strong></p>
+        <ul>
+            <li><strong>Tokenization:</strong> Breaking "Hello world" into ["Hello", "world"]</li>
+            <li><strong>Vocabulary:</strong> List of all unique words found in all mentor profiles</li>
+            <li><strong>TF-IDF:</strong> Makes rare, meaningful words more important than common words</li>
+            <li><strong>LSA:</strong> Finds hidden connections between words (e.g., "Python" and "programming" are related)</li>
+            <li><strong>Matrix:</strong> A big table of numbers representing text</li>
+        </ul>
+        
+        <h4>3. Recommendation Function</h4>
+        <p><strong>How recommendations work:</strong> We convert student text to numbers using the same process, then find mentors with the most similar numbers.</p>
+        
+        <pre><code>get_mentor_recommendations <- function(student_answers, embedding_system, top_k = 3) {
+  # Step 1: Combine all student responses into one text
+  # unlist() flattens a list: list("I like", "data science") becomes "I like" "data science"
+  # paste(..., collapse = " ") joins with spaces: "I like data science"
+  # tolower() makes everything lowercase for consistency
+  student_text <- tolower(paste(unlist(student_answers), collapse = " "))
+  
+  # Step 2: Convert student text to tokens (words) the same way we did for mentors
+  query_tokens <- word_tokenizer(student_text)
+  it_query <- itoken(query_tokens, progressbar = FALSE)
+  
+  # Step 3: Transform student query using the SAME tools we used for mentors
+  # This is crucial - we must use the exact same vectorizer and tfidf
+  # create_dtm() converts words to a document-term matrix
+  dtm_query <- create_dtm(it_query, embedding_system$vectorizer)
+  
+  # transform() applies TF-IDF using the same weights learned from mentors
+  dtm_query_tfidf <- transform(dtm_query, embedding_system$tfidf)
+  
+  # Step 4: Apply LSA if it was used for mentors (keep everything consistent)
+  if (!is.null(embedding_system$lsa)) {
+    # Try to apply LSA, but use TF-IDF if it fails
+    query_final <- tryCatch({
+      transform(dtm_query_tfidf, embedding_system$lsa)
+    }, error = function(e) {
+      dtm_query_tfidf  # Fallback to TF-IDF if LSA fails
+    })
+  } else {
+    query_final <- dtm_query_tfidf
+  }
+  
+  # Step 5: Calculate similarity between student and all mentors
+  # proxy::simil() calculates cosine similarity (how similar two vectors are)
+  # method = "cosine" means use cosine similarity (values from 0 to 1)
+  # Higher numbers = more similar
+  similarities <- proxy::simil(query_final, embedding_system$embeddings, method = "cosine")
+  
+  # Convert similarity matrix to a simple list of numbers
+  similarities_vec <- as.numeric(similarities[1, ])
+  
+  # Step 6: Find the mentors with highest similarity scores
+  # order(..., decreasing = TRUE) sorts from highest to lowest
+  # [1:min(top_k, length(...))] takes only the top few results
+  top_indices <- order(similarities_vec, decreasing = TRUE)[1:min(top_k, length(similarities_vec))]
+  
+  # Step 7: Build the recommendation results
+  # Create an empty list to store recommendations
+  recommendations <- list()
+  
+  # for loop goes through each top mentor
+  # seq_along() creates numbers 1, 2, 3... for each item
+  for (i in seq_along(top_indices)) {
+    idx <- top_indices[i]  # Get the position of this mentor
+    mentor <- embedding_system$mentor_data[idx, ]  # Get mentor data
+    
+    # Create a structured result for this mentor
+    recommendations[[i]] <- list(
+      id = mentor$id,
+      name = mentor$name,
+      title = mentor$title,
+      expertise = mentor$expertise,
+      bio = mentor$bio,
+      email = mentor$email,
+      score = round(similarities_vec[idx], 3)  # round() limits to 3 decimal places
+    )
+  }
+  
+  # Return the list of recommendations
+  return(recommendations)
+}</code></pre>
+        
+        <p><strong>Similarity Concepts:</strong></p>
+        <ul>
+            <li><strong>Cosine Similarity:</strong> Measures angle between two vectors (0 = completely different, 1 = identical)</li>
+            <li><strong>Vector:</strong> A list of numbers representing text</li>
+            <li><strong>Top-K:</strong> Return only the K highest-scoring results</li>
+            <li><strong>Consistency:</strong> Student text must be processed exactly like mentor text for fair comparison</li>
+        </ul>
+        
+        <hr>
+        
+        <h3>🧪 Testing</h3>
+        
+        <h4>Create Sample Data</h4>
+        <p><strong>Why create sample data?</strong> We need test data to see if our system works. Think of this like creating practice problems to test if you understand math.</p>
+        
+        <pre><code>create_mentor_csv <- function(filename = "mentors_enhanced.csv") {
+  # data.frame() creates a table of data (like a spreadsheet)
+  # Each column will become a column in our CSV file
+  mentors <- data.frame(
+    # id column: unique numbers for each mentor (1, 2, 3, etc.)
+    id = 1:8,  # 1:8 means "numbers from 1 to 8"
+    
+    # name column: list of mentor names
+    name = c("Dr. Sarah Chen", "Mike Rodriguez", "Lisa Thompson", "David Kim", 
+             "Emma Wilson", "James Parker", "Dr. Maya Patel", "Alex Johnson"),
+    
+    # title column: their job titles
+    title = c("Senior Data Scientist", "Engineering Manager", "Product Manager", 
+              "UX Designer", "AI Research Lead", "DevOps Engineer", 
+              "ML Engineer", "Full Stack Developer"),
+    
+    # expertise_areas: what skills they have (this is the most important for matching!)
+    expertise_areas = c(
+      "Machine Learning, Python, Data Analysis, Statistical Modeling",
+      "Web Development, Team Leadership, Agile, Cloud Architecture", 
+      "Product Strategy, User Research, Analytics, A/B Testing",
+      "User Experience, Design Systems, Prototyping, Accessibility",
+      "Deep Learning, Computer Vision, Research, Neural Networks",
+      "Infrastructure, Containerization, CI/CD, Monitoring",
+      "Machine Learning, MLOps, Model Deployment, Feature Engineering",
+      "React, Node.js, Database Design, API Development"
+    ),
+    
+    # bio: longer descriptions of their experience
+    bio = c(
+      "8 years experience in ML and analytics at Fortune 500 companies",
+      "Engineering leader who has mentored 20+ developers",
+      "Product manager with 5 successful feature launches", 
+      "UX designer focused on accessibility and inclusive design",
+      "AI researcher with 15+ published papers",
+      "DevOps engineer who reduced deployment time by 80%",
+      "ML engineer building production systems serving 10M+ predictions",
+      "Full stack developer with 99.9% uptime applications"
+    ),
+    
+    # email: contact information
+    # paste0() combines text: paste0("sarah.chen", "@email.com") = "sarah.chen@email.com"
+    email = paste0(c("sarah.chen", "mike.rodriguez", "lisa.thompson", "david.kim", 
+                     "emma.wilson", "james.parker", "maya.patel", "alex.johnson"), "@email.com"),
+    
+    # location: where they're based
+    location = c("San Francisco, CA", "Austin, TX", "New York, NY", "Seattle, WA",
+                 "Boston, MA", "Denver, CO", "Chicago, IL", "Portland, OR"),
+    
+    # industry: what type of companies they work for
+    industry = c("Technology", "Technology", "Technology", "Design", 
+                 "Research", "Technology", "Technology", "Technology"),
+    
+    # experience_years: how many years of experience they have
+    experience_years = c(8, 12, 6, 5, 4, 10, 7, 3),
+    
+    # stringsAsFactors = FALSE keeps text as text (technical detail)
+    stringsAsFactors = FALSE
+  )
+  
+  # write.csv() saves our data frame as a CSV file
+  # row.names = FALSE means don't include row numbers in the file
+  write.csv(mentors, filename, row.names = FALSE)
+  
+  # cat() prints messages to the screen (like print statements)
+  cat("✅ Created", filename, "with", nrow(mentors), "mentors\n")
+  # nrow() counts the number of rows (mentors) in our data
+  
+  return(mentors)  # Give back the data we created
+}</code></pre>
+        
+        <p><strong>Data Structure Concepts:</strong></p>
+        <ul>
+            <li><code>c()</code> creates a vector (list) of items</li>
+            <li><code>1:8</code> creates numbers 1, 2, 3, 4, 5, 6, 7, 8</li>
+            <li><code>data.frame()</code> combines vectors into a table</li>
+            <li><code>paste0()</code> glues text together without spaces</li>
+        </ul>
+        
+        <h4>Test Script</h4>
+        <p><strong>What does testing do?</strong> Testing shows us if our recommender actually works by trying different student interests and seeing which mentors it suggests.</p>
+        
+        <pre><code>test_semantic_recommender <- function() {
+  # Print a header message
+  cat("🧪 Testing Semantic Recommender...\n\n")
+  
+  # Check if our sample data file exists, create it if it doesn't
+  # ! means "not" - so this reads "if NOT file exists"
+  if (!file.exists("mentors_enhanced.csv")) {
+    cat("📄 Creating sample data...\n")
+    create_mentor_csv()  # Call our function to make the CSV file
+  }
+  
+  # Build our embedding system using our sample data
+  cat("🔧 Building embedding system...\n")
+  embedding_system <- default_embedding_system()
+  cat("✅ System ready!\n\n")
+  
+  # Create test cases - different types of students with different interests
+  # list() creates a collection of items
+  # Each item has a name and a list of interests
+  test_cases <- list(
+    # Key = Value pairs: "Student Type" = c("interest1", "interest2", ...)
+    "Machine Learning Student" = c("machine learning", "python", "data science", "statistics"),
+    "Engineering Manager" = c("team leadership", "agile", "software engineering", "management"),
+    "UX Designer" = c("user experience", "design systems", "accessibility", "prototyping"),
+    "DevOps Engineer" = c("cloud infrastructure", "containerization", "CI/CD", "automation"),
+    "Full Stack Developer" = c("react", "node.js", "databases", "web development")
+  )
+  
+  # Test each student type
+  # names() gets the keys from our list: "Machine Learning Student", etc.
+  for (student_type in names(test_cases)) {
+    # Print which student type we're testing
+    cat("👤 Testing:", student_type, "\n")
+    
+    # Get the interests for this student type
+    # test_cases[[student_type]] gets the value for this key
+    student_interests <- test_cases[[student_type]]
+    cat("📝 Interests:", paste(student_interests, collapse = ", "), "\n")
+    
+    # Get recommendations using our function
+    # We pass the interests and ask for top 3 mentors
+    recommendations <- get_mentor_recommendations(student_interests, embedding_system, 3)
+    
+    cat("🎯 Top 3 Recommended Mentors:\n")
+    
+    # Go through each recommendation
+    # length() tells us how many recommendations we got
+    for (i in 1:length(recommendations)) {
+      mentor <- recommendations[[i]]  # Get the i-th recommendation
+      
+      # sprintf() is like a template for creating formatted text
+      # %d = number, %s = text, %.3f = decimal number with 3 places
+      cat(sprintf("  %d. %s (%s) - Similarity: %.3f\n", 
+                  i,                    # Position number
+                  mentor$name,          # Mentor name
+                  mentor$title,         # Job title  
+                  mentor$score))        # How similar they are (0-1)
+      
+      # Show a preview of their expertise (first 50 characters)
+      expertise_preview <- substr(mentor$expertise, 1, 50)  # substr() cuts text
+      cat(sprintf("     💼 %s...\n", expertise_preview))
+    }
+    
+    cat("\n")  # Add blank line between test cases
+  }
+  
+  cat("✅ Testing complete! Check if the recommendations make sense.\n")
+  cat("💡 Higher similarity scores (closer to 1.0) mean better matches.\n")
+}
+
+# Run the test by calling our function
+test_semantic_recommender()</code></pre>
+        
+        <p><strong>Testing Concepts:</strong></p>
+        <ul>
+            <li><strong>Test Cases:</strong> Different scenarios to check if your system works correctly</li>
+            <li><code>names()</code> gets the names/keys from a list</li>
+            <li><code>for (item in collection)</code> repeats code for each item</li>
+            <li><code>sprintf()</code> creates formatted text with placeholders (%s, %d, %f)</li>
+            <li><strong>Expected Results:</strong> ML students should match with ML mentors, UX students with UX mentors, etc.</li>
+        </ul>
+        
+        <p><strong>What Good Results Look Like:</strong></p>
+        <ul>
+            <li>Machine Learning Student should get high scores for Dr. Sarah Chen and Dr. Maya Patel</li>
+            <li>UX Designer should get David Kim as top match</li>
+            <li>DevOps Engineer should match with James Parker</li>
+            <li>Similarity scores above 0.3 usually indicate good matches</li>
+        </ul>
+        
+        <hr>
+        
+        <h3>🚀 Enhancement Challenges</h3>
+        
+        <h4>Challenge 1: Weighted Field Matching</h4>
+        <p><strong>Problem:</strong> Right now, all mentor fields (name, title, expertise, bio) are treated equally. But expertise should be more important than name for matching!</p>
+        <p><strong>Solution:</strong> Repeat important fields multiple times so they have more influence.</p>
+        
+        <pre><code>create_weighted_mentor_text <- function(mentor_data) {
+  # We'll create a new list to store weighted text for each mentor
+  weighted_texts <- c()  # c() creates an empty vector to add to
+  
+  # Go through each mentor one by one
+  # 1:nrow(mentor_data) creates numbers 1, 2, 3... for each mentor
+  for (i in 1:nrow(mentor_data)) {
+    # Get data for this specific mentor using [i, ] (row i, all columns)
+    mentor <- mentor_data[i, ]
+    
+    # Create weighted text by repeating fields based on importance
+    # rep() repeats something: rep("hello", 3) = "hello hello hello"
+    
+    # Expertise is most important (40% weight = repeat 4 times)
+    expertise_text <- paste(rep(mentor$expertise, 4), collapse = " ")
+    
+    # Bio is second most important (30% weight = repeat 3 times) 
+    bio_text <- paste(rep(mentor$bio, 3), collapse = " ")
+    
+    # Title is third (20% weight = repeat 2 times)
+    title_text <- paste(rep(mentor$title, 2), collapse = " ")
+    
+    # Location gets normal weight (10% weight = use once)
+    location_text <- mentor$location
+    
+    # Combine everything with name (always included once)
+    # paste() joins all pieces with spaces
+    combined_text <- paste(mentor$name, expertise_text, 
+                          bio_text, title_text, location_text)
+    
+    # Add this mentor's weighted text to our collection
+    weighted_texts <- c(weighted_texts, combined_text)
+  }
+  
+  return(weighted_texts)
+}
+
+# How to use this in your embedding system:
+# In default_embedding_system(), replace this line:
+# mentor_texts <- paste(mentor_data$name, mentor_data$title, ...)
+# 
+# With this line:
+# mentor_texts <- create_weighted_mentor_text(mentor_data)</code></pre>
+        
+        <p><strong>Why This Works:</strong> When we repeat "Machine Learning" 4 times vs "John" 1 time, the algorithm sees ML as more important and weights it higher in similarity calculations.</p>
+        
+        <h4>Challenge 2: SQLite Database Integration</h4>
+        <p><strong>Problem:</strong> In real applications, mentor data is stored in databases, not CSV files. You need to learn how to connect to and query databases.</p>
+        <p><strong>Solution:</strong> Replace CSV file loading with SQLite database connections and SQL queries.</p>
+        
+        <p><strong>Step 1:</strong> First, install and load the database packages:</p>
+        <pre><code># Add these to your library() section at the top
+install.packages(c("DBI", "RSQLite"))
+library(DBI)      # Database interface for R
+library(RSQLite)  # SQLite database driver</code></pre>
+        
+        <p><strong>Step 2:</strong> Create a function to set up a test database:</p>
+        <pre><code>create_mentor_database <- function(db_file = "mentors.sqlite") {
+  # dbConnect() creates a connection to a SQLite database file
+  # If the file doesn't exist, SQLite will create it
+  con <- dbConnect(RSQLite::SQLite(), db_file)
+  
+  # Create the mentors table using SQL
+  # SQL is a language for talking to databases
+  # CREATE TABLE makes a new table with specific columns and data types
+  dbExecute(con, "
+    CREATE TABLE IF NOT EXISTS mentors_enhanced (
+      id INTEGER PRIMARY KEY,           -- Unique number for each mentor
+      name TEXT NOT NULL,              -- Mentor's full name (required)
+      title TEXT NOT NULL,             -- Job title (required)
+      expertise_areas TEXT NOT NULL,   -- Skills and expertise (required)
+      bio TEXT,                        -- Biography/description
+      email TEXT,                      -- Contact email
+      location TEXT,                   -- Where they're based
+      industry TEXT,                   -- What industry they work in
+      experience_years INTEGER,        -- Years of experience
+      age_range TEXT,                  -- Age range (optional)
+      gender TEXT,                     -- Gender (optional)
+      ethnicity TEXT                   -- Ethnicity (optional)
+    )
+  ")
+  
+  # Check if table is empty, if so, insert sample data
+  # dbGetQuery() runs a SQL query and returns results
+  count_result <- dbGetQuery(con, "SELECT COUNT(*) as count FROM mentors_enhanced")
+  
+  if (count_result$count == 0) {
+    cat("📊 Inserting sample mentor data...\n")
+    
+    # Create sample data (same as our CSV data)
+    sample_mentors <- data.frame(
+      id = 1:8,
+      name = c("Dr. Sarah Chen", "Mike Rodriguez", "Lisa Thompson", "David Kim", 
+               "Emma Wilson", "James Parker", "Dr. Maya Patel", "Alex Johnson"),
+      title = c("Senior Data Scientist", "Engineering Manager", "Product Manager", 
+                "UX Designer", "AI Research Lead", "DevOps Engineer", 
+                "ML Engineer", "Full Stack Developer"),
+      expertise_areas = c(
+        "Machine Learning, Python, Data Analysis, Statistical Modeling",
+        "Web Development, Team Leadership, Agile, Cloud Architecture", 
+        "Product Strategy, User Research, Analytics, A/B Testing",
+        "User Experience, Design Systems, Prototyping, Accessibility",
+        "Deep Learning, Computer Vision, Research, Neural Networks",
+        "Infrastructure, Containerization, CI/CD, Monitoring",
+        "Machine Learning, MLOps, Model Deployment, Feature Engineering",
+        "React, Node.js, Database Design, API Development"
+      ),
+      bio = c(
+        "8 years experience in ML and analytics at Fortune 500 companies",
+        "Engineering leader who has mentored 20+ developers",
+        "Product manager with 5 successful feature launches", 
+        "UX designer focused on accessibility and inclusive design",
+        "AI researcher with 15+ published papers",
+        "DevOps engineer who reduced deployment time by 80%",
+        "ML engineer building production systems serving 10M+ predictions",
+        "Full stack developer with 99.9% uptime applications"
+      ),
+      email = paste0(c("sarah.chen", "mike.rodriguez", "lisa.thompson", "david.kim", 
+                       "emma.wilson", "james.parker", "maya.patel", "alex.johnson"), "@email.com"),
+      location = c("San Francisco, CA", "Austin, TX", "New York, NY", "Seattle, WA",
+                   "Boston, MA", "Denver, CO", "Chicago, IL", "Portland, OR"),
+      industry = c("Technology", "Technology", "Technology", "Design", 
+                   "Research", "Technology", "Technology", "Technology"),
+      experience_years = c(8, 12, 6, 5, 4, 10, 7, 3),
+      age_range = c("30-35", "35-40", "25-30", "28-33", "26-31", "32-37", "29-34", "24-29"),
+      gender = c("Female", "Male", "Female", "Male", "Female", "Male", "Female", "Non-binary"),
+      ethnicity = c("Asian", "Hispanic", "Caucasian", "Asian", "Caucasian", 
+                    "African American", "South Asian", "Mixed"),
+      stringsAsFactors = FALSE
+    )
+    
+    # dbWriteTable() inserts data from a data frame into a database table
+    # append = TRUE means add to existing data (don't replace)
+    dbWriteTable(con, "mentors_enhanced", sample_mentors, append = TRUE)
+    
+    cat("✅ Sample data inserted successfully\n")
+  }
+  
+  # Always close database connections when done!
+  # This is very important to avoid problems
+  dbDisconnect(con)
+  
+  cat("📁 Database", db_file, "is ready with mentor data\n")
+}</code></pre>
+        
+        <p><strong>Step 3:</strong> Replace your CSV loading function with database loading:</p>
+        <pre><code>get_mentor_data_from_db <- function(db_file = "mentors.sqlite") {
+  # Connect to the database
+  con <- dbConnect(RSQLite::SQLite(), db_file)
+  
+  # Use tryCatch() to handle errors gracefully
+  result <- tryCatch({
+    # Try to get data from enhanced table first
+    cat("🔍 Querying mentors_enhanced table...\n")
+    
+    # SQL SELECT statement gets data from database
+    # * means "all columns"
+    mentors_enhanced <- dbGetQuery(con, "SELECT * FROM mentors_enhanced")
+    
+    if (nrow(mentors_enhanced) > 0) {
+      cat("✅ Found", nrow(mentors_enhanced), "mentors in enhanced table\n")
+      
+      # Map database columns to our expected format
+      mentors_mapped <- data.frame(
+        id = mentors_enhanced$id,
+        name = mentors_enhanced$name,
+        title = mentors_enhanced$title,
+        expertise = mentors_enhanced$expertise_areas,  # Note: column name change
+        bio = mentors_enhanced$bio,
+        email = mentors_enhanced$email,
+        location = ifelse(is.na(mentors_enhanced$location), "", mentors_enhanced$location),
+        industry = ifelse(is.na(mentors_enhanced$industry), "", mentors_enhanced$industry),
+        experience_years = ifelse(is.na(mentors_enhanced$experience_years), 0, mentors_enhanced$experience_years),
+        stringsAsFactors = FALSE
+      )
+      return(mentors_mapped)
+    }
+    
+    # Fallback: try basic mentor_profiles table
+    cat("⚠️ Enhanced table empty, trying mentor_profiles table...\n")
+    basic_mentors <- dbGetQuery(con, "SELECT * FROM mentor_profiles")
+    
+    if (nrow(basic_mentors) > 0) {
+      cat("✅ Found", nrow(basic_mentors), "mentors in basic table\n")
+      return(basic_mentors)
+    }
+    
+    # No data found in either table
+    stop("No mentor data found in database!")
+    
+  }, error = function(e) {
+    # Handle database errors
+    cat("❌ Database error:", e$message, "\n")
+    stop("Failed to load mentor data from database")
+  }, finally = {
+    # Always disconnect, even if there was an error
+    # finally = code that runs no matter what happens
+    dbDisconnect(con)
+    cat("🔌 Database connection closed\n")
+  })
+  
+  return(result)
+}
+
+# Step 4: Update your embedding system to use database:
+# Replace this line in default_embedding_system():
+# mentor_data <- get_mentor_data(csv_file)
+# 
+# With this line:
+# mentor_data <- get_mentor_data_from_db()
+
+# Step 5: Update your test script to create database:
+# Add this at the beginning of test_semantic_recommender():
+# if (!file.exists("mentors.sqlite")) {
+#   create_mentor_database()
+# }</code></pre>
+        
+        <p><strong>Database Concepts Explained:</strong></p>
+        <ul>
+            <li><strong>SQLite:</strong> A simple database that stores data in a single file</li>
+            <li><strong>SQL:</strong> Structured Query Language - how we ask databases for data</li>
+            <li><strong>Connection:</strong> Like opening a file - you connect, do work, then disconnect</li>
+            <li><strong>Tables:</strong> Like spreadsheet tabs - organized collections of data</li>
+            <li><strong>Queries:</strong> Requests for specific data using SQL commands</li>
+            <li><code>SELECT * FROM table_name</code> = "Get all columns from this table"</li>
+            <li><code>CREATE TABLE</code> = "Make a new table with these columns"</li>
+            <li><code>INSERT INTO</code> = "Add new data to a table"</li>
+        </ul>
+        
+        <p><strong>Why Use Databases Instead of CSV:</strong></p>
+        <ul>
+            <li><strong>Performance:</strong> Faster queries on large datasets</li>
+            <li><strong>Concurrency:</strong> Multiple users can access simultaneously</li>
+            <li><strong>Data Integrity:</strong> Built-in validation and constraints</li>
+            <li><strong>Advanced Queries:</strong> Filter, sort, and join data easily</li>
+            <li><strong>Production Ready:</strong> Real applications use databases, not CSV files</li>
+        </ul>
+        
+        <hr>
+        
+        <h3>📝 Submission</h3>
+        <ul>
+            <li>Email the following to me: </li>
+            <li>Folder: <code>[YOUR_NAME]_Semantic_Recommender</code></li>
+            <li>Files: <code>semantic_recommender.R</code>, <code>mentors_enhanced.csv</code>, test script</li>
+            <li>README with implementation notes and test results</li>
+        </ul>
+    </div>
+</body>
+</html>
+`
+              }
+            ]
+          }, 
+           tickets: { 1:"commonWeek1Tickets",
+            2: [{
+        title: "Semantic Recommender Implementation",
+        description: "Build and test a working semantic recommendation system",
+        content: `
+        <style>
+  .ai-tutorial { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+  .ai-tutorial h2 { font-size: 28px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #8e44ad; }
+  .ai-tutorial h3 { font-size: 20px; font-weight: 600; margin: 30px 0 15px 0; background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #8e44ad; }
+  .ai-tutorial h4 { font-size: 18px; font-weight: 600; margin: 25px 0 10px 0; color: #2c3e50; }
+  .ai-tutorial blockquote { background: #f3e5f5; border-left: 4px solid #9c27b0; padding: 15px 20px; margin: 20px 0; font-style: normal; }
+  .ai-tutorial p { margin: 15px 0; }
+  .ai-tutorial ul, .ai-tutorial ol { margin: 15px 0 20px 25px; }
+  .ai-tutorial li { margin-bottom: 10px; }
+  .ai-tutorial pre { background: #263238; color: #aed581; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
+  .ai-tutorial code { background: #f5f5f5; color: #d32f2f; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+  .ai-tutorial pre code { background: transparent; color: inherit; padding: 0; }
+  .ai-tutorial hr { margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0; }
+  .ai-tutorial a { color: #9c27b0; text-decoration: none; }
+  .ai-tutorial a:hover { text-decoration: underline; }
+  .ai-tutorial .highlight { background: #fff3cd; padding: 15px; border-radius: 5px; border-left: 4px solid #ffc107; }
+  .ai-tutorial .success { background: #d4edda; padding: 15px; border-radius: 5px; border-left: 4px solid #28a745; }
+  .ai-tutorial .info { background: #d1ecf1; padding: 15px; border-radius: 5px; border-left: 4px solid #17a2b8; }
+  .ai-tutorial .warning { background: #f8d7da; padding: 15px; border-radius: 5px; border-left: 4px solid #dc3545; }
+</style>
+
+<div class="ai-tutorial">
+  <h2>Semantic Recommender Implementation</h2>
+
+  
+  <hr>
+  
+  <h3>🎯 Task Overview</h3>
+  <p>You've learned the theory behind semantic recommendation systems. Now it's time to build one! Your mission is to create a functional semantic recommender that can match students with mentors based on text similarity using the concepts from the lesson.</p>
+  
+  <div class="highlight">
+    <p><strong>What You'll Build:</strong> A complete semantic recommendation system that processes mentor profiles, generates embeddings, and finds the best matches for student queries.</p>
+  </div>
+  
+  <hr>
+  
+  <h3>📋 Deliverables</h3>
+  <ul>
+    <li>A complete R script named <code>semantic_recommender.R</code> with all required functions</li>
+    <li>Sample mentor and student data files for testing</li>
+    <li>A test script that demonstrates the recommender in action</li>
+    <li>Documentation explaining your implementation choices</li>
+  </ul>
+  
+  <hr>
+  
+  <h3>🔧 Implementation Requirements</h3>
+  
+  <h4>1. Text Preprocessing Function</h4>
+  <p>Create a function that cleans and prepares text data for embedding generation:</p>
+  <pre><code>preprocess_text <- function(text) {
+  # Convert to lowercase
+  text <- tolower(text)
+  
+  # Remove punctuation and extra whitespace
+  text <- gsub("[[:punct:]]", " ", text)
+  text <- gsub("\\s+", " ", text)
+  
+  # Remove stopwords (use stopwords package)
+  library(stopwords)
+  stop_words <- stopwords("en")
+  words <- strsplit(text, " ")[[1]]
+  words <- words[!words %in% stop_words]
+  
+  # Return cleaned text
+  return(paste(words, collapse = " "))
+}</code></pre>
+  
+  <h4>2. Embedding Generation System</h4>
+  <p>Implement the TF-IDF + LSA approach from the lesson:</p>
+  <pre><code>library(text2vec)
+library(Matrix)
+
+create_embeddings <- function(mentor_profiles) {
+  # Combine mentor text fields
+  mentor_texts <- paste(
+    mentor_profiles$name,
+    mentor_profiles$title,
+    mentor_profiles$expertise,
+    mentor_profiles$bio,
+    mentor_profiles$industry
+  )
+  
+  # Preprocess all texts
+  processed_texts <- sapply(mentor_texts, preprocess_text)
+  
+  # Create vocabulary
+  tokens <- word_tokenizer(processed_texts)
+  it <- itoken(tokens, progressbar = FALSE)
+  vocab <- create_vocabulary(it)
+  vocab <- prune_vocabulary(vocab, term_count_min = 2)
+  
+  # Create vectorizer
+  vectorizer <- vocab_vectorizer(vocab)
+  
+  # Create DTM
+  dtm <- create_dtm(it, vectorizer)
+  
+  # Apply TF-IDF
+  tfidf <- TfIdf$new()
+  dtm_tfidf <- fit_transform(dtm, tfidf)
+  
+  # Apply LSA for dimensionality reduction
+  lsa <- LSA$new(n_topics = 50)  # Adjust number of topics as needed
+  dtm_lsa <- fit_transform(dtm_tfidf, lsa)
+  
+  return(list(
+    embeddings = dtm_lsa,
+    vectorizer = vectorizer,
+    tfidf = tfidf,
+    lsa = lsa
+  ))
+}</code></pre>
+  
+  <h4>3. Similarity Calculation Function</h4>
+  <p>Build a function that calculates cosine similarity between student queries and mentor embeddings:</p>
+  <pre><code>calculate_similarity <- function(student_query, embedding_system) {
+  # Preprocess student query
+  processed_query <- preprocess_text(student_query)
+  
+  # Create query tokens
+  query_tokens <- word_tokenizer(processed_query)
+  query_it <- itoken(list(query_tokens), progressbar = FALSE)
+  
+  # Transform query using same vectorizer
+  query_dtm <- create_dtm(query_it, embedding_system$vectorizer)
+  
+  # Apply same TF-IDF transformation
+  query_tfidf <- transform(query_dtm, embedding_system$tfidf)
+  
+  # Apply same LSA transformation
+  query_lsa <- transform(query_tfidf, embedding_system$lsa)
+  
+  # Calculate cosine similarity
+  similarities <- sim2(query_lsa, embedding_system$embeddings, method = "cosine")
+  
+  return(as.numeric(similarities))
+}</code></pre>
+  
+  <h4>4. Recommendation Function</h4>
+  <p>Create the main function that returns top mentor matches:</p>
+  <pre><code>get_mentor_recommendations <- function(student_query, mentor_profiles, top_n = 5) {
+  # Create embeddings for all mentors
+  embedding_system <- create_embeddings(mentor_profiles)
+  
+  # Calculate similarities
+  similarities <- calculate_similarity(student_query, embedding_system)
+  
+  # Add similarity scores to mentor profiles
+  mentor_profiles$similarity_score <- similarities
+  
+  # Sort by similarity and return top matches
+  top_matches <- mentor_profiles[order(similarities, decreasing = TRUE), ]
+  
+  return(top_matches[1:min(top_n, nrow(top_matches)), ])
+}</code></pre>
+  
+  <hr>
+  
+  <h3>🧪 Testing Your Implementation</h3>
+  
+  <h4>Create Sample Data</h4>
+  <p>Build a test dataset with diverse mentor profiles:</p>
+  <pre><code># Sample mentor data
+sample_mentors <- data.frame(
+  id = 1:5,
+  name = c("Dr. Sarah Chen", "Mike Rodriguez", "Lisa Thompson", "David Kim", "Emma Wilson"),
+  title = c("Senior Data Scientist", "Software Engineering Manager", "Product Manager", "UX Designer", "AI Research Lead"),
+  expertise = c("Machine Learning, Python, Data Analysis", "Web Development, Team Leadership, Agile", "Product Strategy, User Research, Analytics", "User Experience, Design Systems, Prototyping", "Deep Learning, Computer Vision, Research"),
+  bio = c("Experienced data scientist with 8 years in ML and analytics", "Engineering leader passionate about building great teams", "Product manager focused on user-centered design", "UX designer creating intuitive digital experiences", "AI researcher pushing boundaries in computer vision"),
+  industry = c("Technology", "Technology", "Technology", "Design", "Research")
+)
+
+# Sample student queries
+student_queries <- c(
+  "I want to learn machine learning and data science",
+  "I need help with web development and becoming a team lead",
+  "I'm interested in product management and user research",
+  "I want to improve my UX design skills",
+  "I'm studying AI and computer vision"
+)</code></pre>
+  
+  <h4>Test Your Recommender</h4>
+  <p>Create a comprehensive test script:</p>
+  <pre><code># Test the recommender
+test_recommender <- function() {
+  cat("Testing Semantic Recommender...\n\n")
+  
+  for (i in 1:length(student_queries)) {
+    query <- student_queries[i]
+    cat("Student Query:", query, "\n")
+    
+    recommendations <- get_mentor_recommendations(query, sample_mentors, top_n = 3)
+    
+    cat("Top 3 Recommendations:\n")
+    for (j in 1:nrow(recommendations)) {
+      mentor <- recommendations[j, ]
+      cat(sprintf("%d. %s (%s) - Score: %.3f\n", 
+                  j, mentor$name, mentor$title, mentor$similarity_score))
+    }
+    cat("\n" + "─".repeat(50) + "\n\n")
+  }
+}
+
+# Run the test
+test_recommender()</code></pre>
+  
+
+  
+ 
+  
+  <hr>
+  
+  <h3>📝 Submission</h3>
+  <ul>
+    <li>Email me the completed code and any files needed for it to run properly</li>
+    <li>Create a folder named <code>[YOUR_NAME]_Semantic_Recommender</code></li>
+    <li>Include your <code>semantic_recommender.R</code> script</li>
+    <li>Include your test data and test script</li>
+    <li>Add a README file explaining your implementation</li>
+   
+  </ul>
+  
+  <div class="success">
+    <p><strong>Remember:</strong> This is your chance to apply the AI concepts you've learned! Focus on building a working system first, then optimize and enhance it. Good luck!</p>
+  </div>
+</div>
+        `
+      }]
+             
+           }
         }
       };
 
