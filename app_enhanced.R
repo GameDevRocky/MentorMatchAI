@@ -61,6 +61,7 @@ ui <- page_navbar(
 # Server logic
 server <- function(input, output, session) {
   
+ 
   # Reactive values
   student_data <- reactiveValues()
   matches <- reactiveVal(NULL)
