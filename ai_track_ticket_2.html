@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .ai-tutorial { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .ai-tutorial h2 { 
+            font-size: 28px; 
+            font-weight: 600; 
+            margin: 40px 0 20px 0; 
+            padding-bottom: 10px; 
+            border-bottom: 3px solid #8e44ad; 
+        }
+        .ai-tutorial h3 { 
+            font-size: 20px; 
+            font-weight: 600; 
+            margin: 30px 0 15px 0; 
+            background: #f8f9fa; 
+            padding: 10px 15px; 
+            border-left: 4px solid #8e44ad; 
+        }
+        .ai-tutorial h4 { 
+            font-size: 18px; 
+            font-weight: 600; 
+            margin: 25px 0 10px 0; 
+            color: #2c3e50; 
+        }
+        .ai-tutorial p { 
+            margin: 15px 0; 
+        }
+        .ai-tutorial ul, .ai-tutorial ol { 
+            margin: 15px 0 20px 25px; 
+        }
+        .ai-tutorial li { 
+            margin-bottom: 8px; 
+        }
+        .ai-tutorial pre { 
+            background: #263238; 
+            color: #aed581; 
+            padding: 15px; 
+            border-radius: 8px; 
+            overflow-x: auto; 
+            margin: 15px 0; 
+            font-size: 14px;
+        }
+        .ai-tutorial code { 
+            background: #f5f5f5; 
+            color: #d32f2f; 
+            padding: 2px 4px; 
+            border-radius: 3px; 
+            font-family: 'Courier New', monospace; 
+        }
+        .ai-tutorial pre code { 
+            background: transparent; 
+            color: inherit; 
+            padding: 0; 
+        }
+        .ai-tutorial hr { 
+            margin: 30px 0; 
+            border: 0; 
+            border-top: 1px solid #e0e0e0; 
+        }
+        .ai-tutorial .info { 
+            background: #d1ecf1; 
+            padding: 15px; 
+            border-radius: 5px; 
+            border-left: 4px solid #17a2b8; 
+            margin: 20px 0; 
+        }
+        .ai-tutorial .highlight { 
+            background: #fff3cd; 
+            padding: 15px; 
+            border-radius: 5px; 
+            border-left: 4px solid #ffc107; 
+            margin: 20px 0; 
+        }
+        .ai-tutorial .success { 
+            background: #d4edda; 
+            padding: 15px; 
+            border-radius: 5px; 
+            border-left: 4px solid #28a745; 
+            margin: 20px 0; 
+        }
+        .ai-tutorial .warning { 
+            background: #f8d7da; 
+            padding: 15px; 
+            border-radius: 5px; 
+            border-left: 4px solid #dc3545; 
+            margin: 20px 0; 
+        }
+    </style>
+</head>
+<body>
+    <div class="ai-tutorial">
+        <h2>AI Track Ticket 2: Semantic Mentor Recommendation System</h2>
+        
+        <div class="info">
+            <p><strong>🎯 Mission:</strong> Build a working semantic recommendation system that matches students with mentors based on their interests and expertise using AI techniques like TF-IDF, LSA, and cosine similarity.</p>
+        </div>
+        
+        <hr>
+        
+        <h3>📋 Your Deliverables</h3>
+        <ul>
+            <li>A working R script named <code>semantic_recommender.R</code></li>
+            <li>A test script that validates your system works correctly</li>
+            <li>A README file explaining your implementation</li>
+            <li>Sample mentor data for testing</li>
+        </ul>
+        
+        <hr>
+        
+        <h3>🚀 Getting Started</h3>
+        
+        <h4>Step 1: Install Required Packages</h4>
+        <p>First, ensure you have all the necessary packages installed:</p>
+        <pre><code># Install required packages
+install.packages(c("text2vec", "Matrix", "proxy", "stopwords", "DBI", "RSQLite"))
+
+# Load libraries
+library(text2vec)
+library(Matrix)
+library(proxy)
+library(stopwords)
+library(DBI)
+library(RSQLite)</code></pre>
+        
+        <h4>Step 2: Use the Provided Mentor Recommender</h4>
+        <p>You have access to a working mentor recommender system. The file <code>mentor_recommender.R</code> contains all the functions you need:</p>
+        
+        <div class="highlight">
+            <p><strong>Key Functions Available:</strong></p>
+            <ul>
+                <li><code>get_mentor_data(con)</code> - Retrieves mentor data from database</li>
+                <li><code>default_embedding_system(con)</code> - Creates TF-IDF + LSA embeddings</li>
+                <li><code>get_mentor_recommendations(student_answers, embedding_system, top_k)</code> - Gets recommendations</li>
+            </ul>
+        </div>
+        
+        <h4>Step 3: Test Your System</h4>
+        <p>Use the provided test script to verify everything works:</p>
+        <pre><code># Run the test script
+source('test_mentor_recommender.R')</code></pre>
+        
+        <hr>
+        
+        <h3>🧪 Implementation Requirements</h3>
+        
+        <h4>1. Database Integration</h4>
+        <p>Your system must work with SQLite databases. The mentor data should be stored in a <code>mentors_enhanced</code> table with the following structure:</p>
+        <pre><code>CREATE TABLE mentors_enhanced (
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  title TEXT NOT NULL,
+  expertise_areas TEXT NOT NULL,
+  bio TEXT,
+  email TEXT,
+  location TEXT,
+  industry TEXT,
+  experience_years INTEGER,
+  age_range TEXT,
+  gender TEXT,
+  ethnicity TEXT
+)</code></pre>
+        
+        <h4>2. Semantic Processing Pipeline</h4>
+        <p>Your system must implement:</p>
+        <ul>
+            <li><strong>Text Preprocessing:</strong> Tokenization, stopword removal, case normalization</li>
+            <li><strong>TF-IDF Vectorization:</strong> Convert text to numerical vectors</li>
+            <li><strong>LSA Dimensionality Reduction:</strong> Reduce vector dimensions while preserving meaning</li>
+            <li><strong>Cosine Similarity:</strong> Calculate similarity between student queries and mentor profiles</li>
+        </ul>
+        
+        <h4>3. Robust Error Handling</h4>
+        <p>Your system should handle:</p>
+        <ul>
+            <li>Empty or invalid queries</li>
+            <li>Missing database tables</li>
+            <li>Insufficient mentor data</li>
+            <li>Matrix singularity issues</li>
+        </ul>
+        
+        <h4>4. Performance Requirements</h4>
+        <p>Your system should:</p>
+        <ul>
+            <li>Process recommendations in under 1 second</li>
+            <li>Handle at least 100 mentor profiles efficiently</li>
+            <li>Provide meaningful similarity scores (0.0 to 1.0)</li>
+        </ul>
+        
+        <hr>
+        
+        <h3>📊 Testing Your Implementation</h3>
+        
+        <h4>Quick Start Testing</h4>
+        <p>Run the quick start script to test with realistic student questionnaire data:</p>
+        <pre><code>Rscript quick_start_ai_ticket_2.R</code></pre>
+        
+        <p>This script tests 4 realistic student profiles that match the actual student questionnaire structure:</p>
+        
+        <h4>Test Cases with Real Student Data</h4>
+        <ul>
+            <li><strong>Data Science Student (Emma Johnson)</strong>
+                <ul>
+                    <li>Fields: "data science, machine learning, artificial intelligence, statistics"</li>
+                    <li>Environment: Corporate/research, structured mentorship, detailed feedback</li>
+                    <li>Values: Innovation, education</li>
+                    <li>Expected: Dr. Sarah Chen (Senior Data Scientist) - Score: ~0.877</li>
+                </ul>
+            </li>
+            <li><strong>UX Design Student (Marcus Chen)</strong>
+                <ul>
+                    <li>Fields: "user experience design, human-computer interaction, design thinking"</li>
+                    <li>Environment: Startup/corporate, casual mentorship, encouraging feedback</li>
+                    <li>Values: Social justice, accessibility</li>
+                    <li>Expected: David Kim (UX Design Lead) - Score: ~0.973</li>
+                </ul>
+            </li>
+            <li><strong>Career Exploration Student (Sofia Rodriguez)</strong>
+                <ul>
+                    <li>Fields: "business, entrepreneurship, social impact, community service"</li>
+                    <li>Environment: Startup/nonprofit, peer mentorship, encouraging feedback</li>
+                    <li>Values: Social justice, community, entrepreneurship</li>
+                    <li>Expected: Alex Rodriguez (Career Counselor) - Score: ~0.982</li>
+                </ul>
+            </li>
+            <li><strong>DevOps/Infrastructure Student (Jordan Smith)</strong>
+                <ul>
+                    <li>Fields: "cloud computing, infrastructure, automation, system administration"</li>
+                    <li>Environment: Corporate/remote, project mentorship, direct feedback</li>
+                    <li>Values: Innovation, work-life balance</li>
+                    <li>Expected: James Parker (DevOps Engineer) - Score: ~0.919</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h4>Expected Output Format</h4>
+        <pre><code>🚀 AI Track Ticket 2: Quick Start with Real Student Data
+=====================================================
+
+Step 1: Checking required packages...
+✅ text2vec is available
+✅ Matrix is available
+✅ proxy is available
+✅ stopwords is available
+✅ DBI is available
+✅ RSQLite is available
+
+Step 2: Loading mentor recommender system...
+✅ Mentor recommender system loaded
+
+Step 3: Setting up test database with diverse mentors...
+✅ Test database created with 6 diverse mentors
+
+Step 4: Testing with realistic student questionnaire data...
+
+📊 Test Case 1: Data Science Student
+------------------------------------
+Top 3 recommendations:
+1. Dr. Sarah Chen (Senior Data Scientist) - Score: 0.877
+2. Alex Rodriguez (Career Counselor) - Score: 0.689
+3. Dr. Maya Patel (Machine Learning Researcher) - Score: 0.404
+
+🎨 Test Case 2: UX Design Student
+---------------------------------
+Top 3 recommendations:
+1. David Kim (UX Design Lead) - Score: 0.973
+2. Dr. Maya Patel (Machine Learning Researcher) - Score: 0.476
+3. Alex Rodriguez (Career Counselor) - Score: 0.339
+
+🎯 Test Case 3: Career Exploration Student
+------------------------------------------
+Top 3 recommendations:
+1. Alex Rodriguez (Career Counselor) - Score: 0.982
+2. David Kim (UX Design Lead) - Score: 0.377
+3. Dr. Sarah Chen (Senior Data Scientist) - Score: 0.276
+
+⚙️ Test Case 4: DevOps/Infrastructure Student
+---------------------------------------------
+Top 3 recommendations:
+1. James Parker (DevOps Engineer) - Score: 0.919
+2. Alex Rodriguez (Career Counselor) - Score: 0.355
+3. Dr. Sarah Chen (Senior Data Scientist) - Score: 0.221
+
+Step 5: Performance test...
+✅ Average recommendation time: 0.003 seconds
+
+🎉 All tests completed successfully!</code></pre>
+        
+        <hr>
+        
+        <h3>🔧 Advanced Features (Bonus)</h3>
+        
+        <h4>1. Weighted Field Matching</h4>
+        <p>Implement field weighting so that expertise areas are more important than names:</p>
+        <pre><code>create_weighted_mentor_text <- function(mentor_data) {
+  weighted_texts <- c()
+  for (i in 1:nrow(mentor_data)) {
+    mentor <- mentor_data[i, ]
+    
+    # Expertise is most important (40% weight = repeat 4 times)
+    expertise_text <- paste(rep(mentor$expertise, 4), collapse = " ")
+    
+    # Bio is second most important (30% weight = repeat 3 times) 
+    bio_text <- paste(rep(mentor$bio, 3), collapse = " ")
+    
+    # Title is third (20% weight = repeat 2 times)
+    title_text <- paste(rep(mentor$title, 2), collapse = " ")
+    
+    # Combine everything
+    combined_text <- paste(mentor$name, expertise_text, bio_text, title_text)
+    weighted_texts <- c(weighted_texts, combined_text)
+  }
+  return(weighted_texts)
+}</code></pre>
+        
+        <h4>2. Demographic Matching</h4>
+        <p>Add optional demographic preferences (age, gender, ethnicity) to improve matching:</p>
+        <pre><code># Example: Student prefers mentors in their age range
+student_preferences <- list(
+  interests = c("machine learning", "python"),
+  age_range = "25-30",
+  gender = "any",
+  location = "San Francisco"
+)</code></pre>
+        
+        <h4>3. Real-time Learning</h4>
+        <p>Implement a feedback system that improves recommendations based on user interactions:</p>
+        <pre><code># Track successful matches and use them to improve future recommendations
+update_recommendation_weights <- function(successful_match, embedding_system) {
+  # Increase weight for features that led to successful matches
+  # This is a simplified example - real implementation would be more complex
+}</code></pre>
+        
+        <hr>
+        
+        <h3>📝 Submission Guidelines</h3>
+        
+        <h4>File Structure</h4>
+        <pre><code>[YOUR_NAME]_Semantic_Recommender/
+├── semantic_recommender.R          # Your main implementation
+├── test_mentor_recommender.R       # Test script
+├── mentor_recommender.R            # Provided mentor recommender
+├── sample_mentors.csv              # Sample data (optional)
+├── README.md                       # Documentation
+└── test_results.txt               # Test output</code></pre>
+        
+        <h4>README Requirements</h4>
+        <ul>
+            <li>Brief description of your implementation approach</li>
+            <li>Installation and setup instructions</li>
+            <li>Usage examples with sample queries</li>
+            <li>Test results and performance metrics</li>
+            <li>Any enhancements or bonus features implemented</li>
+        </ul>
+        
+        <h4>Testing Checklist</h4>
+        <ul>
+            <li>✅ All required packages install and load correctly</li>
+            <li>✅ Database connection and data retrieval works</li>
+            <li>✅ Embedding system creates successfully</li>
+            <li>✅ Recommendations are semantically meaningful</li>
+            <li>✅ Error handling works for edge cases</li>
+            <li>✅ Performance meets requirements</li>
+            <li>✅ Test cases produce expected results</li>
+        </ul>
+        
+        <hr>
+        
+        <h3>🎯 Success Criteria</h3>
+        
+        <div class="success">
+            <p><strong>Your system is successful when:</strong></p>
+            <ul>
+                <li>Machine learning students get matched with ML mentors (similarity > 0.5)</li>
+                <li>UX students get matched with design mentors</li>
+                <li>DevOps students get matched with infrastructure mentors</li>
+                <li>Product students get matched with strategy mentors</li>
+                <li>All recommendations complete in under 1 second</li>
+                <li>System handles errors gracefully without crashing</li>
+            </ul>
+        </div>
+        
+        <hr>
+        
+        <h3>💡 Tips for Success</h3>
+        
+        <div class="highlight">
+            <ul>
+                <li><strong>Start Simple:</strong> Get the basic TF-IDF + cosine similarity working first</li>
+                <li><strong>Test Early:</strong> Use the provided test script to validate each step</li>
+                <li><strong>Debug Incrementally:</strong> Test each function individually before combining</li>
+                <li><strong>Check Data Quality:</strong> Ensure mentor profiles have rich, descriptive text</li>
+                <li><strong>Monitor Performance:</strong> Use system.time() to measure execution speed</li>
+                <li><strong>Document Everything:</strong> Clear comments and README help with grading</li>
+            </ul>
+        </div>
+        
+        <hr>
+        
+        <h3>📞 Need Help?</h3>
+        
+        <ul>
+            <li><strong>Package Installation Issues:</strong> Check R version compatibility</li>
+            <li><strong>Database Errors:</strong> Verify SQLite is installed and working</li>
+            <li><strong>Poor Recommendations:</strong> Check mentor data quality and text preprocessing</li>
+            <li><strong>Performance Issues:</strong> Consider reducing LSA dimensions or optimizing text processing</li>
+            <li><strong>Matrix Errors:</strong> Ensure you have enough mentor data for LSA</li>
+        </ul>
+        
+        <div class="info">
+            <p><strong>Office Hours:</strong> Tuesday/Thursday 3:00-4:00 PM EST</p>
+            <p><strong>Remember:</strong> This is your chance to build a real AI system! Focus on creating something that works reliably and provides meaningful recommendations. Good luck! 🚀</p>
+        </div>
+    </div>
+</body>
+</html> 

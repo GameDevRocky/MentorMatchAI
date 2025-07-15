@@ -2730,792 +2730,440 @@ for (i in 1:3) {
                 content: `
 <!DOCTYPE html>
 <html>
-<head>
-    <style>
-        .ai-tutorial { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-            line-height: 1.6; 
-            color: #333; 
-            max-width: 1000px;
-            margin: 0 auto;
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
             padding: 20px;
         }
-        .ai-tutorial h2 { 
-            font-size: 28px; 
-            font-weight: 600; 
-            margin: 40px 0 20px 0; 
-            padding-bottom: 10px; 
-            border-bottom: 3px solid #8e44ad; 
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
-        .ai-tutorial h3 { 
-            font-size: 20px; 
-            font-weight: 600; 
-            margin: 30px 0 15px 0; 
-            background: #f8f9fa; 
-            padding: 10px 15px; 
-            border-left: 4px solid #8e44ad; 
+        
+        .header {
+            background: #fff;
+            padding: 30px 40px;
+            border-bottom: 1px solid #e9ecef;
+            position: relative;
         }
-        .ai-tutorial h4 { 
-            font-size: 18px; 
-            font-weight: 600; 
-            margin: 25px 0 10px 0; 
-            color: #2c3e50; 
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #6c757d;
+            cursor: pointer;
         }
-        .ai-tutorial p { 
-            margin: 15px 0; 
+        
+        h1 {
+            font-size: 2em;
+            font-weight: 600;
+            color: #212529;
+            margin: 0;
         }
-        .ai-tutorial ul, .ai-tutorial ol { 
-            margin: 15px 0 20px 25px; 
+        
+        .content {
+            padding: 40px;
         }
-        .ai-tutorial li { 
-            margin-bottom: 8px; 
-        }
-        .ai-tutorial pre { 
-            background: #263238; 
-            color: #aed581; 
-            padding: 15px; 
-            border-radius: 8px; 
-            overflow-x: auto; 
-            margin: 15px 0; 
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
             font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
         }
-        .ai-tutorial code { 
-            background: #f5f5f5; 
-            color: #d32f2f; 
-            padding: 2px 4px; 
-            border-radius: 3px; 
-            font-family: 'Courier New', monospace; 
+        
+        .code-block .comment {
+            color: #68d391;
         }
-        .ai-tutorial pre code { 
-            background: transparent; 
-            color: inherit; 
-            padding: 0; 
+        
+        .code-block .keyword {
+            color: #fbb6ce;
         }
-        .ai-tutorial hr { 
-            margin: 30px 0; 
-            border: 0; 
-            border-top: 1px solid #e0e0e0; 
+        
+        .code-block .string {
+            color: #faf089;
         }
-        .ai-tutorial .info { 
-            background: #d1ecf1; 
-            padding: 15px; 
-            border-radius: 8px; 
-            border-left: 4px solid #17a2b8; 
+        
+        .code-block .function {
+            color: #90cdf4;
+        }
+        
+        h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #495057;
+            margin: 30px 0 15px 0;
+        }
+        
+        h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #6c757d;
+            margin: 25px 0 10px 0;
+        }
+        
+        .concept-list {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
             margin: 20px 0;
         }
-        .ai-tutorial .highlight { 
-            background: #fff3cd; 
-            padding: 15px; 
-            border-radius: 8px; 
-            border-left: 4px solid #ffc107; 
+        
+        .concept-item {
+            margin: 15px 0;
+            font-size: 16px;
+        }
+        
+        .concept-item .operator {
+            color: #dc3545;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        
+        .concept-item .description {
+            color: #495057;
+        }
+        
+        .explanation {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
             margin: 20px 0;
         }
-        .ai-tutorial .success { 
-            background: #d4edda; 
-            padding: 15px; 
-            border-radius: 8px; 
-            border-left: 4px solid #28a745; 
-            margin: 20px 0;
+        
+        .explanation p {
+            margin: 0;
+            color: #856404;
+            font-weight: 500;
+        }
+        
+        .inline-code {
+            background: #e9ecef;
+            color: #495057;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #495057;
+        }
+        
+        .section {
+            margin: 40px 0;
         }
     </style>
 </head>
 <body>
-    <div class="ai-tutorial">
-        <h2>🧠 Semantic Recommender Implementation</h2>
+  
         
-        <div class="info">
-            <p><strong>Goal:</strong> Build a production-ready semantic recommendation system using CSV data</p>
-            <p><strong>Time:</strong> 4-6 hours | <strong>Prerequisites:</strong> Week 2 AI Lesson on Semantic Recommendation & RAG</p>
-        </div>
         
-        <div class="highlight">
-            <p><strong>What You'll Build:</strong> A semantic recommender that loads mentor profiles from CSV files, processes text with TF-IDF + LSA, and matches students to mentors using cosine similarity.</p>
-        </div>
-        
-        <hr>
-        
-        <h3>📦 Setup</h3>
-        <p><strong>What are packages?</strong> Think of packages like apps for R - they add new abilities to the basic R language.</p>
-        <pre><code># Install packages (only run once - like downloading apps)
-install.packages(c("text2vec", "Matrix", "proxy", "stopwords"))
+        <div class="content">
+            <h2>Key Programming Concepts:</h2>
+            
+            <div class="concept-list">
+                <div class="concept-item">
+                    <span class="operator">&lt;-</span> <span class="description">= Assignment (puts something into a variable, like a box)</span>
+                </div>
+                
+                <div class="concept-item">
+                    <span class="operator">if (condition) { do this }</span> <span class="description">= Only do something if condition is true</span>
+                </div>
+                
+                <div class="concept-item">
+                    <span class="operator">return()</span> <span class="description">= Give back a result from the function</span>
+                </div>
+                
+                <div class="concept-item">
+                    <span class="operator">data$column</span> <span class="description">= Get a specific column from a data table</span>
+                </div>
+            </div>
 
-# Load packages (run every time - like opening apps)
-library(text2vec)    # For text analysis and creating embeddings
-library(Matrix)      # For handling large data matrices efficiently 
-library(proxy)       # For calculating similarity between texts
-library(stopwords)   # For removing common words like "the", "and"</code></pre>
-        <p><strong>Syntax Notes:</strong></p>
-        <ul>
-            <li><code>#</code> = Comment (notes for humans, R ignores these)</li>
-            <li><code>c()</code> = Combine items into a list</li>
-            <li><code>"text"</code> = Text in quotes (called a "string")</li>
-        </ul>
-        
-        <hr>
-        
-        <h3>🔧 Core Implementation</h3>
-        
-        <h4>1. CSV Data Loading</h4>
-        <p><strong>What is a function?</strong> A function is like a recipe - you give it ingredients (inputs) and it makes something (output). Functions start with <code>function_name &lt;- function()</code></p>
-        
-        <pre><code>get_mentor_data <- function(csv_file = "mentors_enhanced.csv") {
-  # This line creates a function called "get_mentor_data"
-  # csv_file = "mentors_enhanced.csv" means if no file is specified, use this default
-  
-  # file.exists() checks if a file is on your computer (returns TRUE or FALSE)
-  if (file.exists(csv_file)) {
-    # read.csv() opens a CSV file and turns it into a data frame (like a spreadsheet)
-    # stringsAsFactors = FALSE keeps text as text (don't worry about this detail)
-    mentors <- read.csv(csv_file, stringsAsFactors = FALSE)
-    
-    # c() creates a list of required column names we need
-    required_cols <- c("id", "name", "title", "expertise_areas", "bio", "email")
-    
-    # all() checks if ALL items in required_cols exist in our CSV columns
-    # %in% means "is found in" 
-    # colnames() gets the column names from our data
-    if (all(required_cols %in% colnames(mentors))) {
-      
-      # data.frame() creates a new organized table of data
-      # We're reorganizing our data into a standard format
-      return(data.frame(
-        id = mentors$id,                    # $ means "get this column"
-        name = mentors$name,
-        title = mentors$title,
-        expertise = mentors$expertise_areas, # Renaming this column
-        bio = mentors$bio,
-        email = mentors$email,
-        
-        # if() checks a condition, does one thing if true, another if false
-        # This handles columns that might not exist in some CSV files
-        location = if("location" %in% colnames(mentors)) mentors$location else "",
-        industry = if("industry" %in% colnames(mentors)) mentors$industry else "",
-        experience_years = if("experience_years" %in% colnames(mentors)) mentors$experience_years else 0,
-        stringsAsFactors = FALSE
-      ))
-    }
-  }
-  
-  # If the first file didn't work, try this backup file
-  if (file.exists("mentor_profiles.csv")) {
-    return(read.csv("mentor_profiles.csv", stringsAsFactors = FALSE))
-  }
-  
-  # stop() shows an error message and stops the program
-  stop("No mentor CSV files found! Create mentors_enhanced.csv or mentor_profiles.csv")
-}</code></pre>
-        
-        <p><strong>Key Programming Concepts:</strong></p>
-        <ul>
-            <li><code>&lt;-</code> = Assignment (puts something into a variable, like a box)</li>
-            <li><code>if (condition) { do this }</code> = Only do something if condition is true</li>
-            <li><code>return()</code> = Give back a result from the function</li>
-            <li><code>data$column</code> = Get a specific column from a data table</li>
-        </ul>
-        
-        <h4>2. Embedding System</h4>
-        <p><strong>What are embeddings?</strong> Think of embeddings like converting words into numbers that computers can understand. Similar words get similar numbers.</p>
-        
-        <pre><code>default_embedding_system <- function(csv_file = "mentors_enhanced.csv") {
-  # Step 1: Get our mentor data using the function we just created
-  mentor_data <- get_mentor_data(csv_file)
-  
-  # Step 2: Combine all text about each mentor into one big sentence
-  # paste() glues text pieces together with spaces
-  mentor_texts <- paste(
-    mentor_data$name,        # "John Smith"
-    mentor_data$title,       # "Data Scientist" 
-    mentor_data$expertise,   # "Python, Machine Learning"
-    mentor_data$bio,         # "Experienced analyst..."
-    mentor_data$location,    # "San Francisco"
-    mentor_data$industry     # "Technology"
-  )
-  # Result: "John Smith Data Scientist Python Machine Learning Experienced analyst... San Francisco Technology"
-  
-  # Step 3: Convert text to "tokens" (individual words)
-  # tolower() makes everything lowercase: "HELLO" becomes "hello"
-  # word_tokenizer() splits sentences into individual words
-  tokens <- word_tokenizer(tolower(mentor_texts))
-  
-  # Step 4: Create an "iterator" (think of it as a conveyor belt for processing words)
-  # progressbar = FALSE means don't show a progress bar
-  it_train <- itoken(tokens, progressbar = FALSE)
-  
-  # Step 5: Build vocabulary (list of all unique words across all mentors)
-  # stopwords("en") = common English words like "the", "and", "is" that we ignore
-  vocab <- create_vocabulary(it_train, stopwords = stopwords("en"))
-  
-  # Step 6: Clean up vocabulary 
-  # term_count_min = 1 means keep words that appear at least 1 time
-  vocab <- prune_vocabulary(vocab, term_count_min = 1)
-  
-  # Step 7: Create a "vectorizer" (converts words to numbers)
-  vectorizer <- vocab_vectorizer(vocab)
-  
-  # Step 8: Create DTM (Document-Term Matrix)
-  # This is like a giant spreadsheet where:
-  # - Each row = one mentor
-  # - Each column = one word
-  # - Each cell = how many times that mentor uses that word
-  dtm_train <- create_dtm(it_train, vectorizer)
-  
-  # Step 9: Apply TF-IDF (Term Frequency-Inverse Document Frequency)
-  # This makes rare words more important than common words
-  # norm = "l2" and sublinear_tf = TRUE are advanced math settings
-  tfidf <- TfIdf$new(norm = "l2", sublinear_tf = TRUE)
-  dtm_tfidf <- fit_transform(dtm_train, tfidf)
-  
-  # Step 10: Try to apply LSA (Latent Semantic Analysis) for better matching
-  # LSA finds hidden patterns and reduces complexity
-  lsa <- NULL                    # Start with no LSA
-  dtm_final <- dtm_tfidf        # Use TF-IDF as backup
-  
-  # Only try LSA if we have enough data (more than 2 mentors and 2 words)
-  if (ncol(dtm_tfidf) > 2 && nrow(dtm_tfidf) > 2) {
-    # tryCatch() means "try this, but if it fails, do something else"
-    lsa <- tryCatch({
-      # min() picks the smaller number between 30 and (number of mentors - 1)
-      lsa_model <- LSA$new(n_topics = min(30, nrow(dtm_tfidf) - 1))
-      dtm_final <<- fit_transform(dtm_tfidf, lsa_model)  # <<- updates variable outside function
-      lsa_model
-    }, error = function(e) NULL)  # If LSA fails, set lsa to NULL
-  }
-  
-  # Step 11: Return everything we created in a list (like a toolkit)
-  list(
-    embeddings = dtm_final,    # The final number representation of mentors
-    vectorizer = vectorizer,   # Tool to convert new text to numbers
-    tfidf = tfidf,            # Tool to apply TF-IDF to new text
-    lsa = lsa,                # Tool to apply LSA (might be NULL)
-    mentor_data = mentor_data  # Original mentor information
-  )
-}</code></pre>
-        
-        <p><strong>Machine Learning Concepts Explained:</strong></p>
-        <ul>
-            <li><strong>Tokenization:</strong> Breaking "Hello world" into ["Hello", "world"]</li>
-            <li><strong>Vocabulary:</strong> List of all unique words found in all mentor profiles</li>
-            <li><strong>TF-IDF:</strong> Makes rare, meaningful words more important than common words</li>
-            <li><strong>LSA:</strong> Finds hidden connections between words (e.g., "Python" and "programming" are related)</li>
-            <li><strong>Matrix:</strong> A big table of numbers representing text</li>
-        </ul>
-        
-        <h4>3. Recommendation Function</h4>
-        <p><strong>How recommendations work:</strong> We convert student text to numbers using the same process, then find mentors with the most similar numbers.</p>
-        
-        <pre><code>get_mentor_recommendations <- function(student_answers, embedding_system, top_k = 3) {
-  # Step 1: Combine all student responses into one text
-  # unlist() flattens a list: list("I like", "data science") becomes "I like" "data science"
-  # paste(..., collapse = " ") joins with spaces: "I like data science"
-  # tolower() makes everything lowercase for consistency
-  student_text <- tolower(paste(unlist(student_answers), collapse = " "))
-  
-  # Step 2: Convert student text to tokens (words) the same way we did for mentors
-  query_tokens <- word_tokenizer(student_text)
-  it_query <- itoken(query_tokens, progressbar = FALSE)
-  
-  # Step 3: Transform student query using the SAME tools we used for mentors
-  # This is crucial - we must use the exact same vectorizer and tfidf
-  # create_dtm() converts words to a document-term matrix
-  dtm_query <- create_dtm(it_query, embedding_system$vectorizer)
-  
-  # transform() applies TF-IDF using the same weights learned from mentors
-  dtm_query_tfidf <- transform(dtm_query, embedding_system$tfidf)
-  
-  # Step 4: Apply LSA if it was used for mentors (keep everything consistent)
-  if (!is.null(embedding_system$lsa)) {
-    # Try to apply LSA, but use TF-IDF if it fails
-    query_final <- tryCatch({
-      transform(dtm_query_tfidf, embedding_system$lsa)
-    }, error = function(e) {
-      dtm_query_tfidf  # Fallback to TF-IDF if LSA fails
-    })
-  } else {
-    query_final <- dtm_query_tfidf
-  }
-  
-  # Step 5: Calculate similarity between student and all mentors
-  # proxy::simil() calculates cosine similarity (how similar two vectors are)
-  # method = "cosine" means use cosine similarity (values from 0 to 1)
-  # Higher numbers = more similar
-  similarities <- proxy::simil(query_final, embedding_system$embeddings, method = "cosine")
-  
-  # Convert similarity matrix to a simple list of numbers
-  similarities_vec <- as.numeric(similarities[1, ])
-  
-  # Step 6: Find the mentors with highest similarity scores
-  # order(..., decreasing = TRUE) sorts from highest to lowest
-  # [1:min(top_k, length(...))] takes only the top few results
-  top_indices <- order(similarities_vec, decreasing = TRUE)[1:min(top_k, length(similarities_vec))]
-  
-  # Step 7: Build the recommendation results
-  # Create an empty list to store recommendations
-  recommendations <- list()
-  
-  # for loop goes through each top mentor
-  # seq_along() creates numbers 1, 2, 3... for each item
-  for (i in seq_along(top_indices)) {
-    idx <- top_indices[i]  # Get the position of this mentor
-    mentor <- embedding_system$mentor_data[idx, ]  # Get mentor data
-    
-    # Create a structured result for this mentor
-    recommendations[[i]] <- list(
-      id = mentor$id,
-      name = mentor$name,
-      title = mentor$title,
-      expertise = mentor$expertise,
-      bio = mentor$bio,
-      email = mentor$email,
-      score = round(similarities_vec[idx], 3)  # round() limits to 3 decimal places
-    )
-  }
-  
-  # Return the list of recommendations
-  return(recommendations)
-}</code></pre>
-        
-        <p><strong>Similarity Concepts:</strong></p>
-        <ul>
-            <li><strong>Cosine Similarity:</strong> Measures angle between two vectors (0 = completely different, 1 = identical)</li>
-            <li><strong>Vector:</strong> A list of numbers representing text</li>
-            <li><strong>Top-K:</strong> Return only the K highest-scoring results</li>
-            <li><strong>Consistency:</strong> Student text must be processed exactly like mentor text for fair comparison</li>
-        </ul>
-        
-        <hr>
-        
-        <h3>🧪 Testing</h3>
-        
-        <h4>Create Sample Data</h4>
-        <p><strong>Why create sample data?</strong> We need test data to see if our system works. Think of this like creating practice problems to test if you understand math.</p>
-        
-        <pre><code>create_mentor_csv <- function(filename = "mentors_enhanced.csv") {
-  # data.frame() creates a table of data (like a spreadsheet)
-  # Each column will become a column in our CSV file
-  mentors <- data.frame(
-    # id column: unique numbers for each mentor (1, 2, 3, etc.)
-    id = 1:8,  # 1:8 means "numbers from 1 to 8"
-    
-    # name column: list of mentor names
-    name = c("Dr. Sarah Chen", "Mike Rodriguez", "Lisa Thompson", "David Kim", 
-             "Emma Wilson", "James Parker", "Dr. Maya Patel", "Alex Johnson"),
-    
-    # title column: their job titles
-    title = c("Senior Data Scientist", "Engineering Manager", "Product Manager", 
-              "UX Designer", "AI Research Lead", "DevOps Engineer", 
-              "ML Engineer", "Full Stack Developer"),
-    
-    # expertise_areas: what skills they have (this is the most important for matching!)
-    expertise_areas = c(
-      "Machine Learning, Python, Data Analysis, Statistical Modeling",
-      "Web Development, Team Leadership, Agile, Cloud Architecture", 
-      "Product Strategy, User Research, Analytics, A/B Testing",
-      "User Experience, Design Systems, Prototyping, Accessibility",
-      "Deep Learning, Computer Vision, Research, Neural Networks",
-      "Infrastructure, Containerization, CI/CD, Monitoring",
-      "Machine Learning, MLOps, Model Deployment, Feature Engineering",
-      "React, Node.js, Database Design, API Development"
-    ),
-    
-    # bio: longer descriptions of their experience
-    bio = c(
-      "8 years experience in ML and analytics at Fortune 500 companies",
-      "Engineering leader who has mentored 20+ developers",
-      "Product manager with 5 successful feature launches", 
-      "UX designer focused on accessibility and inclusive design",
-      "AI researcher with 15+ published papers",
-      "DevOps engineer who reduced deployment time by 80%",
-      "ML engineer building production systems serving 10M+ predictions",
-      "Full stack developer with 99.9% uptime applications"
-    ),
-    
-    # email: contact information
-    # paste0() combines text: paste0("sarah.chen", "@email.com") = "sarah.chen@email.com"
-    email = paste0(c("sarah.chen", "mike.rodriguez", "lisa.thompson", "david.kim", 
-                     "emma.wilson", "james.parker", "maya.patel", "alex.johnson"), "@email.com"),
-    
-    # location: where they're based
-    location = c("San Francisco, CA", "Austin, TX", "New York, NY", "Seattle, WA",
-                 "Boston, MA", "Denver, CO", "Chicago, IL", "Portland, OR"),
-    
-    # industry: what type of companies they work for
-    industry = c("Technology", "Technology", "Technology", "Design", 
-                 "Research", "Technology", "Technology", "Technology"),
-    
-    # experience_years: how many years of experience they have
-    experience_years = c(8, 12, 6, 5, 4, 10, 7, 3),
-    
-    # stringsAsFactors = FALSE keeps text as text (technical detail)
-    stringsAsFactors = FALSE
-  )
-  
-  # write.csv() saves our data frame as a CSV file
-  # row.names = FALSE means don't include row numbers in the file
-  write.csv(mentors, filename, row.names = FALSE)
-  
-  # cat() prints messages to the screen (like print statements)
-  cat("✅ Created", filename, "with", nrow(mentors), "mentors\n")
-  # nrow() counts the number of rows (mentors) in our data
-  
-  return(mentors)  # Give back the data we created
-}</code></pre>
-        
-        <p><strong>Data Structure Concepts:</strong></p>
-        <ul>
-            <li><code>c()</code> creates a vector (list) of items</li>
-            <li><code>1:8</code> creates numbers 1, 2, 3, 4, 5, 6, 7, 8</li>
-            <li><code>data.frame()</code> combines vectors into a table</li>
-            <li><code>paste0()</code> glues text together without spaces</li>
-        </ul>
-        
-        <h4>Test Script</h4>
-        <p><strong>What does testing do?</strong> Testing shows us if our recommender actually works by trying different student interests and seeing which mentors it suggests.</p>
-        
-        <pre><code>test_semantic_recommender <- function() {
-  # Print a header message
-  cat("🧪 Testing Semantic Recommender...\n\n")
-  
-  # Check if our sample data file exists, create it if it doesn't
-  # ! means "not" - so this reads "if NOT file exists"
-  if (!file.exists("mentors_enhanced.csv")) {
-    cat("📄 Creating sample data...\n")
-    create_mentor_csv()  # Call our function to make the CSV file
-  }
-  
-  # Build our embedding system using our sample data
-  cat("🔧 Building embedding system...\n")
-  embedding_system <- default_embedding_system()
-  cat("✅ System ready!\n\n")
-  
-  # Create test cases - different types of students with different interests
-  # list() creates a collection of items
-  # Each item has a name and a list of interests
-  test_cases <- list(
-    # Key = Value pairs: "Student Type" = c("interest1", "interest2", ...)
-    "Machine Learning Student" = c("machine learning", "python", "data science", "statistics"),
-    "Engineering Manager" = c("team leadership", "agile", "software engineering", "management"),
-    "UX Designer" = c("user experience", "design systems", "accessibility", "prototyping"),
-    "DevOps Engineer" = c("cloud infrastructure", "containerization", "CI/CD", "automation"),
-    "Full Stack Developer" = c("react", "node.js", "databases", "web development")
-  )
-  
-  # Test each student type
-  # names() gets the keys from our list: "Machine Learning Student", etc.
-  for (student_type in names(test_cases)) {
-    # Print which student type we're testing
-    cat("👤 Testing:", student_type, "\n")
-    
-    # Get the interests for this student type
-    # test_cases[[student_type]] gets the value for this key
-    student_interests <- test_cases[[student_type]]
-    cat("📝 Interests:", paste(student_interests, collapse = ", "), "\n")
-    
-    # Get recommendations using our function
-    # We pass the interests and ask for top 3 mentors
-    recommendations <- get_mentor_recommendations(student_interests, embedding_system, 3)
-    
-    cat("🎯 Top 3 Recommended Mentors:\n")
-    
-    # Go through each recommendation
-    # length() tells us how many recommendations we got
-    for (i in 1:length(recommendations)) {
-      mentor <- recommendations[[i]]  # Get the i-th recommendation
-      
-      # sprintf() is like a template for creating formatted text
-      # %d = number, %s = text, %.3f = decimal number with 3 places
-      cat(sprintf("  %d. %s (%s) - Similarity: %.3f\n", 
-                  i,                    # Position number
-                  mentor$name,          # Mentor name
-                  mentor$title,         # Job title  
-                  mentor$score))        # How similar they are (0-1)
-      
-      # Show a preview of their expertise (first 50 characters)
-      expertise_preview <- substr(mentor$expertise, 1, 50)  # substr() cuts text
-      cat(sprintf("     💼 %s...\n", expertise_preview))
-    }
-    
-    cat("\n")  # Add blank line between test cases
-  }
-  
-  cat("✅ Testing complete! Check if the recommendations make sense.\n")
-  cat("💡 Higher similarity scores (closer to 1.0) mean better matches.\n")
-}
+            <div class="section">
+                <h2>1. Library Setup</h2>
+                
+                <div class="code-block">
+<span class="function">library</span>(text2vec)
+<span class="function">library</span>(Matrix)
+<span class="function">library</span>(proxy)
+<span class="function">library</span>(stopwords)
+<span class="function">library</span>(DBI)
+<span class="function">library</span>(RSQLite)</div>
 
-# Run the test by calling our function
-test_semantic_recommender()</code></pre>
-        
-        <p><strong>Testing Concepts:</strong></p>
-        <ul>
-            <li><strong>Test Cases:</strong> Different scenarios to check if your system works correctly</li>
-            <li><code>names()</code> gets the names/keys from a list</li>
-            <li><code>for (item in collection)</code> repeats code for each item</li>
-            <li><code>sprintf()</code> creates formatted text with placeholders (%s, %d, %f)</li>
-            <li><strong>Expected Results:</strong> ML students should match with ML mentors, UX students with UX mentors, etc.</li>
-        </ul>
-        
-        <p><strong>What Good Results Look Like:</strong></p>
-        <ul>
-            <li>Machine Learning Student should get high scores for Dr. Sarah Chen and Dr. Maya Patel</li>
-            <li>UX Designer should get David Kim as top match</li>
-            <li>DevOps Engineer should match with James Parker</li>
-            <li>Similarity scores above 0.3 usually indicate good matches</li>
-        </ul>
-        
-        <hr>
-        
-        <h3>🚀 Enhancement Challenges</h3>
-        
-        <h4>Challenge 1: Weighted Field Matching</h4>
-        <p><strong>Problem:</strong> Right now, all mentor fields (name, title, expertise, bio) are treated equally. But expertise should be more important than name for matching!</p>
-        <p><strong>Solution:</strong> Repeat important fields multiple times so they have more influence.</p>
-        
-        <pre><code>create_weighted_mentor_text <- function(mentor_data) {
-  # We'll create a new list to store weighted text for each mentor
-  weighted_texts <- c()  # c() creates an empty vector to add to
-  
-  # Go through each mentor one by one
-  # 1:nrow(mentor_data) creates numbers 1, 2, 3... for each mentor
-  for (i in 1:nrow(mentor_data)) {
-    # Get data for this specific mentor using [i, ] (row i, all columns)
-    mentor <- mentor_data[i, ]
-    
-    # Create weighted text by repeating fields based on importance
-    # rep() repeats something: rep("hello", 3) = "hello hello hello"
-    
-    # Expertise is most important (40% weight = repeat 4 times)
-    expertise_text <- paste(rep(mentor$expertise, 4), collapse = " ")
-    
-    # Bio is second most important (30% weight = repeat 3 times) 
-    bio_text <- paste(rep(mentor$bio, 3), collapse = " ")
-    
-    # Title is third (20% weight = repeat 2 times)
-    title_text <- paste(rep(mentor$title, 2), collapse = " ")
-    
-    # Location gets normal weight (10% weight = use once)
-    location_text <- mentor$location
-    
-    # Combine everything with name (always included once)
-    # paste() joins all pieces with spaces
-    combined_text <- paste(mentor$name, expertise_text, 
-                          bio_text, title_text, location_text)
-    
-    # Add this mentor's weighted text to our collection
-    weighted_texts <- c(weighted_texts, combined_text)
-  }
-  
-  return(weighted_texts)
-}
+                <div class="explanation">
+                    <p><strong>What this does:</strong> Loads the necessary tools (libraries) for text processing, database connections, and mathematical calculations. Think of this like gathering all your tools before starting a project.</p>
+                </div>
 
-# How to use this in your embedding system:
-# In default_embedding_system(), replace this line:
-# mentor_texts <- paste(mentor_data$name, mentor_data$title, ...)
-# 
-# With this line:
-# mentor_texts <- create_weighted_mentor_text(mentor_data)</code></pre>
-        
-        <p><strong>Why This Works:</strong> When we repeat "Machine Learning" 4 times vs "John" 1 time, the algorithm sees ML as more important and weights it higher in similarity calculations.</p>
-        
-        <h4>Challenge 2: SQLite Database Integration</h4>
-        <p><strong>Problem:</strong> In real applications, mentor data is stored in databases, not CSV files. You need to learn how to connect to and query databases.</p>
-        <p><strong>Solution:</strong> Replace CSV file loading with SQLite database connections and SQL queries.</p>
-        
-        <p><strong>Step 1:</strong> First, install and load the database packages:</p>
-        <pre><code># Add these to your library() section at the top
-install.packages(c("DBI", "RSQLite"))
-library(DBI)      # Database interface for R
-library(RSQLite)  # SQLite database driver</code></pre>
-        
-        <p><strong>Step 2:</strong> Create a function to set up a test database:</p>
-        <pre><code>create_mentor_database <- function(db_file = "mentors.sqlite") {
-  # dbConnect() creates a connection to a SQLite database file
-  # If the file doesn't exist, SQLite will create it
-  con <- dbConnect(RSQLite::SQLite(), db_file)
-  
-  # Create the mentors table using SQL
-  # SQL is a language for talking to databases
-  # CREATE TABLE makes a new table with specific columns and data types
-  dbExecute(con, "
-    CREATE TABLE IF NOT EXISTS mentors_enhanced (
-      id INTEGER PRIMARY KEY,           -- Unique number for each mentor
-      name TEXT NOT NULL,              -- Mentor's full name (required)
-      title TEXT NOT NULL,             -- Job title (required)
-      expertise_areas TEXT NOT NULL,   -- Skills and expertise (required)
-      bio TEXT,                        -- Biography/description
-      email TEXT,                      -- Contact email
-      location TEXT,                   -- Where they're based
-      industry TEXT,                   -- What industry they work in
-      experience_years INTEGER,        -- Years of experience
-      age_range TEXT,                  -- Age range (optional)
-      gender TEXT,                     -- Gender (optional)
-      ethnicity TEXT                   -- Ethnicity (optional)
-    )
-  ")
-  
-  # Check if table is empty, if so, insert sample data
-  # dbGetQuery() runs a SQL query and returns results
-  count_result <- dbGetQuery(con, "SELECT COUNT(*) as count FROM mentors_enhanced")
-  
-  if (count_result$count == 0) {
-    cat("📊 Inserting sample mentor data...\n")
-    
-    # Create sample data (same as our CSV data)
-    sample_mentors <- data.frame(
-      id = 1:8,
-      name = c("Dr. Sarah Chen", "Mike Rodriguez", "Lisa Thompson", "David Kim", 
-               "Emma Wilson", "James Parker", "Dr. Maya Patel", "Alex Johnson"),
-      title = c("Senior Data Scientist", "Engineering Manager", "Product Manager", 
-                "UX Designer", "AI Research Lead", "DevOps Engineer", 
-                "ML Engineer", "Full Stack Developer"),
-      expertise_areas = c(
-        "Machine Learning, Python, Data Analysis, Statistical Modeling",
-        "Web Development, Team Leadership, Agile, Cloud Architecture", 
-        "Product Strategy, User Research, Analytics, A/B Testing",
-        "User Experience, Design Systems, Prototyping, Accessibility",
-        "Deep Learning, Computer Vision, Research, Neural Networks",
-        "Infrastructure, Containerization, CI/CD, Monitoring",
-        "Machine Learning, MLOps, Model Deployment, Feature Engineering",
-        "React, Node.js, Database Design, API Development"
-      ),
-      bio = c(
-        "8 years experience in ML and analytics at Fortune 500 companies",
-        "Engineering leader who has mentored 20+ developers",
-        "Product manager with 5 successful feature launches", 
-        "UX designer focused on accessibility and inclusive design",
-        "AI researcher with 15+ published papers",
-        "DevOps engineer who reduced deployment time by 80%",
-        "ML engineer building production systems serving 10M+ predictions",
-        "Full stack developer with 99.9% uptime applications"
-      ),
-      email = paste0(c("sarah.chen", "mike.rodriguez", "lisa.thompson", "david.kim", 
-                       "emma.wilson", "james.parker", "maya.patel", "alex.johnson"), "@email.com"),
-      location = c("San Francisco, CA", "Austin, TX", "New York, NY", "Seattle, WA",
-                   "Boston, MA", "Denver, CO", "Chicago, IL", "Portland, OR"),
-      industry = c("Technology", "Technology", "Technology", "Design", 
-                   "Research", "Technology", "Technology", "Technology"),
-      experience_years = c(8, 12, 6, 5, 4, 10, 7, 3),
-      age_range = c("30-35", "35-40", "25-30", "28-33", "26-31", "32-37", "29-34", "24-29"),
-      gender = c("Female", "Male", "Female", "Male", "Female", "Male", "Female", "Non-binary"),
-      ethnicity = c("Asian", "Hispanic", "Caucasian", "Asian", "Caucasian", 
-                    "African American", "South Asian", "Mixed"),
-      stringsAsFactors = FALSE
-    )
-    
-    # dbWriteTable() inserts data from a data frame into a database table
-    # append = TRUE means add to existing data (don't replace)
-    dbWriteTable(con, "mentors_enhanced", sample_mentors, append = TRUE)
-    
-    cat("✅ Sample data inserted successfully\n")
-  }
-  
-  # Always close database connections when done!
-  # This is very important to avoid problems
-  dbDisconnect(con)
-  
-  cat("📁 Database", db_file, "is ready with mentor data\n")
-}</code></pre>
-        
-        <p><strong>Step 3:</strong> Replace your CSV loading function with database loading:</p>
-        <pre><code>get_mentor_data_from_db <- function(db_file = "mentors.sqlite") {
-  # Connect to the database
-  con <- dbConnect(RSQLite::SQLite(), db_file)
-  
-  # Use tryCatch() to handle errors gracefully
-  result <- tryCatch({
-    # Try to get data from enhanced table first
-    cat("🔍 Querying mentors_enhanced table...\n")
-    
-    # SQL SELECT statement gets data from database
-    # * means "all columns"
-    mentors_enhanced <- dbGetQuery(con, "SELECT * FROM mentors_enhanced")
-    
-    if (nrow(mentors_enhanced) > 0) {
-      cat("✅ Found", nrow(mentors_enhanced), "mentors in enhanced table\n")
-      
-      # Map database columns to our expected format
-      mentors_mapped <- data.frame(
+                <h3>What are Libraries?</h3>
+                <p>Libraries are like pre-built toolkits that other programmers have created. Instead of writing everything from scratch, we can use these ready-made tools. For example, <span class="inline-code">text2vec</span> contains tools for working with text, while <span class="inline-code">DBI</span> helps us talk to databases. It's like borrowing a specialized tool from a friend instead of making your own.</p>
+
+                <h3>What is a Database?</h3>
+                <p>A database is like a digital filing cabinet that stores information in organized tables. In our case, it stores mentor profiles with their names, skills, experience, and contact information. Think of it like a spreadsheet, but much more powerful and designed to handle thousands of records efficiently.</p>
+            </div>
+
+            <div class="section">
+                <h2>2. Function to Get Mentor Data from Database</h2>
+
+                <h3>What is a Function?</h3>
+                <p>A function is like a recipe or a set of instructions that you can use over and over again. Just like a recipe for making cookies, you write the steps once, then you can "call" the function whenever you want to make cookies. In programming, functions take some input (like ingredients), do something with it (follow the recipe), and give you back a result (freshly baked cookies). Our <span class="inline-code">get_mentor_data</span> function takes a database connection and gives us back mentor information.</p>
+
+                <h3>What are Variables?</h3>
+                <p>Variables are like labeled boxes that store information. When you see <span class="inline-code">mentors_enhanced &lt;- dbGetQuery(...)</span>, think of it as putting the results of a database search into a box labeled "mentors_enhanced". Later, you can look inside that box by using its name. It's like having a filing system where you can store different types of information in different labeled folders and retrieve them when needed.</p>
+
+                <h3>What are Data Structures?</h3>
+                <p>Data structures are ways of organizing information, like different types of containers. A <span class="inline-code">data.frame</span> is like a spreadsheet with rows and columns - each row represents one mentor, and each column represents different information about them (name, skills, email, etc.). A <span class="inline-code">list</span> is like a collection of different items that can be different types - like a bag that can hold a book, an apple, and a phone all at the same time.</p>
+
+                <div class="code-block">
+<span class="function">get_mentor_data</span> <span class="operator">&lt;-</span> <span class="keyword">function</span>(con) {
+  <span class="comment"># Try enhanced table first, fallback to basic</span>
+  <span class="function">tryCatch</span>({
+    mentors_enhanced <span class="operator">&lt;-</span> <span class="function">dbGetQuery</span>(con, <span class="string">"SELECT * FROM mentors_enhanced"</span>)
+    <span class="keyword">if</span> (<span class="function">nrow</span>(mentors_enhanced) > 0) {
+      <span class="comment"># Map enhanced data to mentor_profiles format for compatibility</span>
+      mentors_mapped <span class="operator">&lt;-</span> <span class="function">data.frame</span>(
         id = mentors_enhanced$id,
         name = mentors_enhanced$name,
         title = mentors_enhanced$title,
-        expertise = mentors_enhanced$expertise_areas,  # Note: column name change
+        expertise = mentors_enhanced$expertise_areas,
         bio = mentors_enhanced$bio,
         email = mentors_enhanced$email,
-        location = ifelse(is.na(mentors_enhanced$location), "", mentors_enhanced$location),
-        industry = ifelse(is.na(mentors_enhanced$industry), "", mentors_enhanced$industry),
-        experience_years = ifelse(is.na(mentors_enhanced$experience_years), 0, mentors_enhanced$experience_years),
+        image = <span class="string">"https://via.placeholder.com/100x100?text=M"</span>,
+        <span class="comment"># Additional demographic fields for enhanced matching</span>
+        age_range = mentors_enhanced$age_range,
+        gender = mentors_enhanced$gender,
+        ethnicity = mentors_enhanced$ethnicity,
+        location = mentors_enhanced$location,
+        industry = mentors_enhanced$industry,
+        experience_years = mentors_enhanced$experience_years,
         stringsAsFactors = FALSE
       )
-      return(mentors_mapped)
+      <span class="keyword">return</span>(mentors_mapped)
     }
-    
-    # Fallback: try basic mentor_profiles table
-    cat("⚠️ Enhanced table empty, trying mentor_profiles table...\n")
-    basic_mentors <- dbGetQuery(con, "SELECT * FROM mentor_profiles")
-    
-    if (nrow(basic_mentors) > 0) {
-      cat("✅ Found", nrow(basic_mentors), "mentors in basic table\n")
-      return(basic_mentors)
-    }
-    
-    # No data found in either table
-    stop("No mentor data found in database!")
-    
-  }, error = function(e) {
-    # Handle database errors
-    cat("❌ Database error:", e$message, "\n")
-    stop("Failed to load mentor data from database")
-  }, finally = {
-    # Always disconnect, even if there was an error
-    # finally = code that runs no matter what happens
-    dbDisconnect(con)
-    cat("🔌 Database connection closed\n")
+  }, error = <span class="keyword">function</span>(e) {
+    <span class="function">message</span>(<span class="string">"Enhanced mentors table not found, using basic mentor_profiles"</span>)
   })
   
-  return(result)
-}
+  <span class="comment"># Fallback to basic mentor_profiles</span>
+  <span class="function">dbGetQuery</span>(con, <span class="string">"SELECT * FROM mentor_profiles"</span>)
+}</div>
 
-# Step 4: Update your embedding system to use database:
-# Replace this line in default_embedding_system():
-# mentor_data <- get_mentor_data(csv_file)
-# 
-# With this line:
-# mentor_data <- get_mentor_data_from_db()
+                <div class="explanation">
+                    <p><strong>What this does:</strong> This function is like a smart filing cabinet that tries to get the most detailed mentor information first (enhanced table with demographics). If that doesn't work, it falls back to basic information. It's like asking for someone's full resume, but if that's not available, settling for their business card.</p>
+                </div>
+            </div>
 
-# Step 5: Update your test script to create database:
-# Add this at the beginning of test_semantic_recommender():
-# if (!file.exists("mentors.sqlite")) {
-#   create_mentor_database()
-# }</code></pre>
-        
-        <p><strong>Database Concepts Explained:</strong></p>
-        <ul>
-            <li><strong>SQLite:</strong> A simple database that stores data in a single file</li>
-            <li><strong>SQL:</strong> Structured Query Language - how we ask databases for data</li>
-            <li><strong>Connection:</strong> Like opening a file - you connect, do work, then disconnect</li>
-            <li><strong>Tables:</strong> Like spreadsheet tabs - organized collections of data</li>
-            <li><strong>Queries:</strong> Requests for specific data using SQL commands</li>
-            <li><code>SELECT * FROM table_name</code> = "Get all columns from this table"</li>
-            <li><code>CREATE TABLE</code> = "Make a new table with these columns"</li>
-            <li><code>INSERT INTO</code> = "Add new data to a table"</li>
-        </ul>
-        
-        <p><strong>Why Use Databases Instead of CSV:</strong></p>
-        <ul>
-            <li><strong>Performance:</strong> Faster queries on large datasets</li>
-            <li><strong>Concurrency:</strong> Multiple users can access simultaneously</li>
-            <li><strong>Data Integrity:</strong> Built-in validation and constraints</li>
-            <li><strong>Advanced Queries:</strong> Filter, sort, and join data easily</li>
-            <li><strong>Production Ready:</strong> Real applications use databases, not CSV files</li>
-        </ul>
-        
-        <hr>
-        
-        <h3>📝 Submission</h3>
-        <ul>
-            <li>Email the following to me: </li>
-            <li>Folder: <code>[YOUR_NAME]_Semantic_Recommender</code></li>
-            <li>Files: <code>semantic_recommender.R</code>, <code>mentors_enhanced.csv</code>, test script</li>
-            <li>README with implementation notes and test results</li>
-        </ul>
+            <div class="section">
+                <h2>3. Create Mentor Embeddings from Database</h2>
+
+                <div class="code-block">
+<span class="function">default_embedding_system</span> <span class="operator">&lt;-</span> <span class="keyword">function</span>(con) {
+  mentor_data <span class="operator">&lt;-</span> <span class="function">get_mentor_data</span>(con)
+  
+  <span class="comment"># Enhanced text creation including demographic and professional data</span>
+  mentor_texts <span class="operator">&lt;-</span> <span class="function">paste</span>(
+    mentor_data$name,
+    mentor_data$title,
+    mentor_data$expertise,
+    mentor_data$bio,
+    <span class="comment"># Include demographic and professional context for better matching</span>
+    <span class="function">ifelse</span>(<span class="function">is.null</span>(mentor_data$location), <span class="string">""</span>, mentor_data$location),
+    <span class="function">ifelse</span>(<span class="function">is.null</span>(mentor_data$industry), <span class="string">""</span>, mentor_data$industry),
+    <span class="function">ifelse</span>(<span class="function">is.null</span>(mentor_data$experience_years), <span class="string">""</span>, mentor_data$experience_years),
+    <span class="function">ifelse</span>(<span class="function">is.null</span>(mentor_data$age_range), <span class="string">""</span>, mentor_data$age_range)
+  )</div>
+
+                <div class="explanation">
+                    <p><strong>Text Combination:</strong> This combines all information about each mentor (name, job title, skills, bio, location, industry, experience) into one comprehensive text description. Think of it like creating a detailed summary sentence for each person that includes everything important about them.</p>
+                </div>
+
+                <div class="code-block">
+  tokens <span class="operator">&lt;-</span> <span class="function">word_tokenizer</span>(<span class="function">tolower</span>(mentor_texts))
+  it_train <span class="operator">&lt;-</span> <span class="function">itoken</span>(tokens, progressbar = FALSE)
+  vocab <span class="operator">&lt;-</span> <span class="function">create_vocabulary</span>(it_train, stopwords = <span class="function">stopwords</span>(<span class="string">"en"</span>))
+  vocab <span class="operator">&lt;-</span> <span class="function">prune_vocabulary</span>(vocab, term_count_min = 1, doc_count_min = 1)</div>
+
+                <div class="explanation">
+                    <p><strong>Vocabulary Building:</strong> This breaks the text into individual words (tokenization), converts them to lowercase, and creates a dictionary of all important words. It removes common words like "the", "and", "is" because they don't help distinguish between different mentors.</p>
+                </div>
+
+                <h3>What is Tokenization?</h3>
+                <p>Tokenization is like taking a sentence and cutting it up into individual words. Imagine you have the sentence "Sarah is a software engineer in Boston" - tokenization would split this into separate pieces: ["Sarah", "is", "a", "software", "engineer", "in", "Boston"]. The computer needs to see each word separately to understand and analyze the text.</p>
+
+                <h3>What is a Vocabulary?</h3>
+                <p>A vocabulary is like a dictionary of all the unique words found across all mentor profiles. If one mentor mentions "Python" and another mentions "JavaScript", both words go into the vocabulary. However, we remove "stop words" (common words like "the", "and", "is") because they appear everywhere and don't help us understand what makes each mentor unique. It's like focusing on the meaningful words that actually describe someone's skills and background.</p>
+
+                <div class="code-block">
+  vectorizer <span class="operator">&lt;-</span> <span class="function">vocab_vectorizer</span>(vocab)
+  dtm_train <span class="operator">&lt;-</span> <span class="function">create_dtm</span>(it_train, vectorizer)
+  tfidf <span class="operator">&lt;-</span> <span class="function">TfIdf</span>$new(norm = <span class="string">"l2"</span>, sublinear_tf = TRUE)
+  dtm_tfidf <span class="operator">&lt;-</span> <span class="function">fit_transform</span>(dtm_train, tfidf)</div>
+
+                <div class="explanation">
+                    <p><strong>TF-IDF Magic:</strong> This converts text to numbers using TF-IDF (Term Frequency-Inverse Document Frequency). It assigns importance scores to words - words that appear frequently in one mentor's profile but rarely in others get high scores. It's like highlighting the unique keywords that make each mentor special.</p>
+                </div>
+
+                <h3>What is Vectorization?</h3>
+                <p>Vectorization is the process of converting text (which computers can't naturally understand) into numbers (which they can work with). Think of it like translating a book from English to a language made entirely of numbers. Each mentor's description becomes a list of numbers where each number represents how important a particular word is to that mentor. For example, if "Python" is very important to one mentor, it might get a high number like 0.8, while "cooking" might get 0.0 because it's not mentioned.</p>
+
+                <h3>What is TF-IDF?</h3>
+                <p>TF-IDF stands for "Term Frequency-Inverse Document Frequency" - but don't worry about the technical name! Here's what it actually does: Imagine you're trying to figure out what makes each restaurant unique. Every restaurant mentions "food" and "service", so those words aren't very helpful for distinguishing between them. But if only one restaurant mentions "sushi" and it mentions it several times, that word becomes very important for describing that specific restaurant. TF-IDF gives high scores to words that are frequently mentioned by one mentor but rarely mentioned by others - these are the words that make each mentor unique!</p>
+
+                <div class="code-block">
+  <span class="comment"># Robust LSA: Only use if enough mentors/features and matrix is not singular</span>
+  <span class="keyword">if</span> (<span class="function">ncol</span>(dtm_tfidf) > 2 && <span class="function">nrow</span>(dtm_tfidf) > 2) {
+    lsa <span class="operator">&lt;-</span> <span class="function">tryCatch</span>({
+      <span class="function">LSA</span>$new(n_topics = <span class="function">min</span>(30, <span class="function">nrow</span>(dtm_tfidf) - 1))
+    }, error = <span class="keyword">function</span>(e) NULL)
+    <span class="keyword">if</span> (!<span class="function">is.null</span>(lsa)) {
+      dtm_final <span class="operator">&lt;-</span> <span class="function">tryCatch</span>({
+        dtm_lsa <span class="operator">&lt;-</span> <span class="function">fit_transform</span>(dtm_tfidf, lsa)
+        dtm_lsa
+      }, error = <span class="keyword">function</span>(e) dtm_tfidf)
+    } <span class="keyword">else</span> {
+      dtm_final <span class="operator">&lt;-</span> dtm_tfidf
+      lsa <span class="operator">&lt;-</span> NULL
+    }
+  } <span class="keyword">else</span> {
+    lsa <span class="operator">&lt;-</span> NULL
+    dtm_final <span class="operator">&lt;-</span> dtm_tfidf
+  }</div>
+
+                <div class="explanation">
+                    <p><strong>LSA (Latent Semantic Analysis):</strong> This finds hidden connections between mentors by reducing the data to key patterns. It understands that "software engineer" and "programmer" are similar, even though they use different words. Only runs if there's enough data to make it worthwhile.</p>
+                </div>
+
+                <h3>What are Embeddings?</h3>
+                <p>Embeddings are like a mentor's "digital fingerprint" made of numbers. Instead of describing someone with words like "software engineer who knows Python and lives in Boston", we create a unique list of numbers that captures all of this information. Think of it like converting a person's description into coordinates on a map - mentors with similar skills and backgrounds end up with coordinates that are close together, while very different mentors end up far apart.</p>
+
+                <h3>What is Semantic Analysis (LSA)?</h3>
+                <p>Semantic analysis is like having a smart translator that understands meaning, not just exact words. For example, it knows that "car" and "automobile" mean the same thing, or that "software engineer" and "programmer" are very similar jobs. LSA (Latent Semantic Analysis) looks for these hidden connections by finding patterns in how words are used together. If "Python", "coding", and "software" often appear together, the system learns that these concepts are related, even when people use different words to describe the same thing.</p>
+
+                <div class="code-block">
+  <span class="function">list</span>(
+    embeddings = dtm_final,
+    vectorizer = vectorizer,
+    tfidf = tfidf,
+    lsa = lsa,
+    mentor_data = mentor_data
+  )
+}</div>
+
+                <div class="explanation">
+                    <p><strong>Return Package:</strong> The function returns all the processed components packaged together - the number representations (embeddings), the processing tools (vectorizer, tfidf, lsa), and the original mentor data. Think of this like a complete toolkit for matching.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>4. Recommender Function</h2>
+
+                <div class="code-block">
+<span class="function">get_mentor_recommendations</span> <span class="operator">&lt;-</span> <span class="keyword">function</span>(student_answers, embedding_system, top_k = 3) {
+  student_text <span class="operator">&lt;-</span> <span class="function">tolower</span>(<span class="function">paste</span>(<span class="function">unlist</span>(student_answers), collapse = <span class="string">" "</span>))
+  query_tokens <span class="operator">&lt;-</span> <span class="function">word_tokenizer</span>(student_text)
+  it_query <span class="operator">&lt;-</span> <span class="function">itoken</span>(query_tokens, progressbar = FALSE)
+  dtm_query <span class="operator">&lt;-</span> <span class="function">create_dtm</span>(it_query, embedding_system$vectorizer)
+  dtm_query_tfidf <span class="operator">&lt;-</span> <span class="function">transform</span>(dtm_query, embedding_system$tfidf)</div>
+
+                <div class="explanation">
+                    <p><strong>Student Text Processing:</strong> The system treats the student's description exactly the same way it treated mentor profiles - combining all their answers into one text, breaking it into words, and converting to numbers using the same vocabulary and TF-IDF system.</p>
+                </div>
+
+                <div class="code-block">
+  <span class="comment"># Only transform with LSA if it was successfully created and fitted</span>
+  <span class="keyword">if</span> (!<span class="function">is.null</span>(embedding_system$lsa)) {
+    query_final <span class="operator">&lt;-</span> <span class="function">tryCatch</span>({
+      <span class="function">transform</span>(dtm_query_tfidf, embedding_system$lsa)
+    }, error = <span class="keyword">function</span>(e) {
+      <span class="comment"># If LSA transform fails, use TF-IDF directly</span>
+      dtm_query_tfidf
+    })
+  } <span class="keyword">else</span> {
+    query_final <span class="operator">&lt;-</span> dtm_query_tfidf
+  }</div>
+
+                <div class="explanation">
+                    <p><strong>LSA Transformation:</strong> If LSA was successfully created earlier, apply the same pattern recognition to the student's text. If not, use the TF-IDF representation directly. This ensures consistent processing.</p>
+                </div>
+
+                <div class="code-block">
+  similarities <span class="operator">&lt;-</span> <span class="function">proxy::simil</span>(query_final, embedding_system$embeddings, method = <span class="string">"cosine"</span>)
+  similarities_vec <span class="operator">&lt;-</span> <span class="function">as.numeric</span>(similarities[1, ])
+  top_indices <span class="operator">&lt;-</span> <span class="function">order</span>(similarities_vec, decreasing = TRUE)[1:<span class="function">min</span>(top_k, <span class="function">length</span>(similarities_vec))]
+  result_df <span class="operator">&lt;-</span> embedding_system$mentor_data[top_indices, ]
+  match_scores <span class="operator">&lt;-</span> similarities_vec[top_indices]</div>
+
+                <div class="explanation">
+                    <p><strong>Similarity Scoring:</strong> The system compares the student's number pattern with each mentor's number pattern using cosine similarity (gives a score from 0 to 1, where 1 means perfect match). It then finds the top matches and retrieves their information and scores.</p>
+                </div>
+
+                <h3>What is Cosine Similarity?</h3>
+                <p>Cosine similarity is like measuring how similar two people's preferences are, but using math. Imagine you and a friend both rate 100 different movies on a scale of 1-10. Cosine similarity would compare your rating patterns to see how similar your tastes are. If you both love action movies and hate romantic comedies, you'd get a high similarity score (close to 1). If you have completely opposite tastes, you'd get a low score (close to 0). In our mentor matching system, instead of movie ratings, we're comparing the "importance scores" of different words and concepts between the student's description and each mentor's profile.</p>
+
+                <h3>How Similarity Scoring Works</h3>
+                <p>Think of each mentor and the student as having a "profile signature" made of numbers. The system compares these signatures like comparing fingerprints - looking for patterns that match up. The more similar the patterns, the higher the score. A score of 0.95 means "very similar" (like 95% match), while 0.3 means "somewhat similar" (like 30% match). This gives us a precise way to rank how well each mentor fits what the student is looking for.</p>
+
+                <div class="code-block">
+  recommendations <span class="operator">&lt;-</span> <span class="function">list</span>()
+  <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="function">seq_along</span>(top_indices)) {
+    recommendations[[i]] <span class="operator">&lt;-</span> <span class="function">list</span>(
+      id = result_df$id[i],
+      name = result_df$name[i],
+      title = result_df$title[i],
+      expertise = result_df$expertise[i],
+      bio = result_df$bio[i],
+      email = result_df$email[i],
+      image = result_df$image[i],
+      score = <span class="function">round</span>(match_scores[i], 3)
+    )
+  }
+  <span class="keyword">return</span>(recommendations)
+}</div>
+
+                <div class="explanation">
+                    <p><strong>Final Results:</strong> The function packages the top mentor matches into a clean list format, including all their information (name, title, expertise, bio, contact info) plus the match score rounded to 3 decimal places. This gives a complete recommendation with confidence scores.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>How It All Works Together:</h2>
+                <p>1. <strong>Setup:</strong> Load libraries and define functions</p>
+                <p>2. <strong>Data Retrieval:</strong> Get mentor information from database</p>
+                <p>3. <strong>Text Processing:</strong> Convert mentor descriptions to numerical patterns</p>
+                <p>4. <strong>Pattern Recognition:</strong> Use LSA to find hidden similarities</p>
+                <p>5. <strong>Matching:</strong> Compare student needs with mentor patterns</p>
+                <p>6. <strong>Recommendations:</strong> Return top matches with confidence scores</p>
+            </div>
+
+            <div class="explanation">
+                <p><strong>Real-world Impact:</strong> This system can process mentor-student matching in seconds instead of hours, considering demographics, location, industry, and experience level while understanding meaning rather than just exact word matches. It's like having a super-smart matchmaker that considers every possible connection.</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
@@ -3528,233 +3176,689 @@ library(RSQLite)  # SQLite database driver</code></pre>
         title: "Semantic Recommender Implementation",
         description: "Build and test a working semantic recommendation system",
         content: `
-        <style>
-  .ai-tutorial { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-  .ai-tutorial h2 { font-size: 28px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #8e44ad; }
-  .ai-tutorial h3 { font-size: 20px; font-weight: 600; margin: 30px 0 15px 0; background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #8e44ad; }
-  .ai-tutorial h4 { font-size: 18px; font-weight: 600; margin: 25px 0 10px 0; color: #2c3e50; }
-  .ai-tutorial blockquote { background: #f3e5f5; border-left: 4px solid #9c27b0; padding: 15px 20px; margin: 20px 0; font-style: normal; }
-  .ai-tutorial p { margin: 15px 0; }
-  .ai-tutorial ul, .ai-tutorial ol { margin: 15px 0 20px 25px; }
-  .ai-tutorial li { margin-bottom: 10px; }
-  .ai-tutorial pre { background: #263238; color: #aed581; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
-  .ai-tutorial code { background: #f5f5f5; color: #d32f2f; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
-  .ai-tutorial pre code { background: transparent; color: inherit; padding: 0; }
-  .ai-tutorial hr { margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0; }
-  .ai-tutorial a { color: #9c27b0; text-decoration: none; }
-  .ai-tutorial a:hover { text-decoration: underline; }
-  .ai-tutorial .highlight { background: #fff3cd; padding: 15px; border-radius: 5px; border-left: 4px solid #ffc107; }
-  .ai-tutorial .success { background: #d4edda; padding: 15px; border-radius: 5px; border-left: 4px solid #28a745; }
-  .ai-tutorial .info { background: #d1ecf1; padding: 15px; border-radius: 5px; border-left: 4px solid #17a2b8; }
-  .ai-tutorial .warning { background: #f8d7da; padding: 15px; border-radius: 5px; border-left: 4px solid #dc3545; }
-</style>
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: blue;
+            color: white;
+            padding: 30px 40px;
+            position: relative;
+        }
+        
+        .ticket-number {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .assignee {
+            font-size: 1em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .task-header {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .priority {
+            background: #ff9800;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+        
+        .code-block .comment {
+            color: #68d391;
+        }
+        
+        .code-block .keyword {
+            color: #fbb6ce;
+        }
+        
+        .code-block .string {
+            color: #faf089;
+        }
+        
+        .code-block .function {
+            color: #90cdf4;
+        }
+        
+        h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #495057;
+            margin: 30px 0 15px 0;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #6c757d;
+            margin: 25px 0 10px 0;
+        }
+        
+        .task-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .deliverable {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .deliverable h4 {
+            color: #155724;
+            margin-bottom: 10px;
+        }
+        
+        .deliverable p {
+            color: #155724;
+            margin: 0;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .warning h4 {
+            color: #856404;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .warning h4:before {
+            content: "⚠️";
+            margin-right: 10px;
+        }
+        
+        .warning p {
+            color: #856404;
+            margin: 0;
+        }
+        
+        .inline-code {
+            background: #e9ecef;
+            color: #495057;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #495057;
+        }
+        
+        .task-list {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .task-list li {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+        
+        .task-list li:before {
+            content: "☐";
+            margin-right: 10px;
+            color: #6c757d;
+        }
+        
+        .expected-output {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .qa-section {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .qa-section h3 {
+            color: #721c24;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="task-header">
+            <div class="ticket-number">DEV-2847</div>
+            <h1>Build Semantic Mentor Recommendation System with CSV Data</h1>
+            <div class="assignee">👤 Assigned to: Junior Developer | 📅 Due: End of Sprint</div>
+        </div>
+        
+        <div class="content">
+            <div class="task-header">
+                <div class="priority">HIGH PRIORITY</div>
+                <p><strong>Context:</strong> The backend team is working on the database system, so we need you to build a complete semantic recommendation system using CSV files for data storage. This will allow parallel development and testing.</p>
+                <p><strong>Business Impact:</strong> Working recommendation system = faster development = better user experience</p>
+            </div>
 
-<div class="ai-tutorial">
-  <h2>Semantic Recommender Implementation</h2>
+            <h2>📋 Task Overview</h2>
+            <p>You'll be building a complete semantic recommendation system from scratch using CSV files for data storage:</p>
+            <ol>
+                <li><strong>CSV Data Setup:</strong> Create mentor and student CSV files with realistic data</li>
+                <li><strong>Semantic Recommendation Engine:</strong> Build a system that matches students with mentors using AI techniques</li>
+                <li><strong>Similarity Method Comparison:</strong> Test different similarity algorithms and benchmark their performance</li>
+                <li><strong>Weighted Matching System:</strong> Implement a system that gives more importance to certain mentor attributes</li>
+            </ol>
 
-  
-  <hr>
-  
-  <h3>🎯 Task Overview</h3>
-  <p>You've learned the theory behind semantic recommendation systems. Now it's time to build one! Your mission is to create a functional semantic recommender that can match students with mentors based on text similarity using the concepts from the lesson.</p>
-  
-  <div class="highlight">
-    <p><strong>What You'll Build:</strong> A complete semantic recommendation system that processes mentor profiles, generates embeddings, and finds the best matches for student queries.</p>
-  </div>
-  
-  <hr>
-  
-  <h3>📋 Deliverables</h3>
-  <ul>
-    <li>A complete R script named <code>semantic_recommender.R</code> with all required functions</li>
-    <li>Sample mentor and student data files for testing</li>
-    <li>A test script that demonstrates the recommender in action</li>
-    <li>Documentation explaining your implementation choices</li>
-  </ul>
-  
-  <hr>
-  
-  <h3>🔧 Implementation Requirements</h3>
-  
-  <h4>1. Text Preprocessing Function</h4>
-  <p>Create a function that cleans and prepares text data for embedding generation:</p>
-  <pre><code>preprocess_text <- function(text) {
-  # Convert to lowercase
-  text <- tolower(text)
-  
-  # Remove punctuation and extra whitespace
-  text <- gsub("[[:punct:]]", " ", text)
-  text <- gsub("\\s+", " ", text)
-  
-  # Remove stopwords (use stopwords package)
-  library(stopwords)
-  stop_words <- stopwords("en")
-  words <- strsplit(text, " ")[[1]]
-  words <- words[!words %in% stop_words]
-  
-  # Return cleaned text
-  return(paste(words, collapse = " "))
-}</code></pre>
-  
-  <h4>2. Embedding Generation System</h4>
-  <p>Implement the TF-IDF + LSA approach from the lesson:</p>
-  <pre><code>library(text2vec)
-library(Matrix)
+            <div class="warning">
+                <h4>Before You Start</h4>
+                <p>This is a complete implementation from scratch. You'll create CSV files, build the recommendation engine, and test it with realistic student data. Focus on creating a working system that can be easily integrated with the database later.</p>
+            </div>
 
-create_embeddings <- function(mentor_profiles) {
-  # Combine mentor text fields
-  mentor_texts <- paste(
-    mentor_profiles$name,
-    mentor_profiles$title,
-    mentor_profiles$expertise,
-    mentor_profiles$bio,
-    mentor_profiles$industry
-  )
-  
-  # Preprocess all texts
-  processed_texts <- sapply(mentor_texts, preprocess_text)
-  
-  # Create vocabulary
-  tokens <- word_tokenizer(processed_texts)
-  it <- itoken(tokens, progressbar = FALSE)
-  vocab <- create_vocabulary(it)
-  vocab <- prune_vocabulary(vocab, term_count_min = 2)
-  
-  # Create vectorizer
-  vectorizer <- vocab_vectorizer(vocab)
-  
-  # Create DTM
-  dtm <- create_dtm(it, vectorizer)
-  
-  # Apply TF-IDF
-  tfidf <- TfIdf$new()
-  dtm_tfidf <- fit_transform(dtm, tfidf)
-  
-  # Apply LSA for dimensionality reduction
-  lsa <- LSA$new(n_topics = 50)  # Adjust number of topics as needed
-  dtm_lsa <- fit_transform(dtm_tfidf, lsa)
-  
-  return(list(
-    embeddings = dtm_lsa,
-    vectorizer = vectorizer,
-    tfidf = tfidf,
-    lsa = lsa
-  ))
-}</code></pre>
-  
-  <h4>3. Similarity Calculation Function</h4>
-  <p>Build a function that calculates cosine similarity between student queries and mentor embeddings:</p>
-  <pre><code>calculate_similarity <- function(student_query, embedding_system) {
-  # Preprocess student query
-  processed_query <- preprocess_text(student_query)
-  
-  # Create query tokens
-  query_tokens <- word_tokenizer(processed_query)
-  query_it <- itoken(list(query_tokens), progressbar = FALSE)
-  
-  # Transform query using same vectorizer
-  query_dtm <- create_dtm(query_it, embedding_system$vectorizer)
-  
-  # Apply same TF-IDF transformation
-  query_tfidf <- transform(query_dtm, embedding_system$tfidf)
-  
-  # Apply same LSA transformation
-  query_lsa <- transform(query_tfidf, embedding_system$lsa)
-  
-  # Calculate cosine similarity
-  similarities <- sim2(query_lsa, embedding_system$embeddings, method = "cosine")
-  
-  return(as.numeric(similarities))
-}</code></pre>
-  
-  <h4>4. Recommendation Function</h4>
-  <p>Create the main function that returns top mentor matches:</p>
-  <pre><code>get_mentor_recommendations <- function(student_query, mentor_profiles, top_n = 5) {
-  # Create embeddings for all mentors
-  embedding_system <- create_embeddings(mentor_profiles)
-  
-  # Calculate similarities
-  similarities <- calculate_similarity(student_query, embedding_system)
-  
-  # Add similarity scores to mentor profiles
-  mentor_profiles$similarity_score <- similarities
-  
-  # Sort by similarity and return top matches
-  top_matches <- mentor_profiles[order(similarities, decreasing = TRUE), ]
-  
-  return(top_matches[1:min(top_n, nrow(top_matches)), ])
-}</code></pre>
-  
-  <hr>
-  
-  <h3>🧪 Testing Your Implementation</h3>
-  
-  <h4>Create Sample Data</h4>
-  <p>Build a test dataset with diverse mentor profiles:</p>
-  <pre><code># Sample mentor data
-sample_mentors <- data.frame(
-  id = 1:5,
-  name = c("Dr. Sarah Chen", "Mike Rodriguez", "Lisa Thompson", "David Kim", "Emma Wilson"),
-  title = c("Senior Data Scientist", "Software Engineering Manager", "Product Manager", "UX Designer", "AI Research Lead"),
-  expertise = c("Machine Learning, Python, Data Analysis", "Web Development, Team Leadership, Agile", "Product Strategy, User Research, Analytics", "User Experience, Design Systems, Prototyping", "Deep Learning, Computer Vision, Research"),
-  bio = c("Experienced data scientist with 8 years in ML and analytics", "Engineering leader passionate about building great teams", "Product manager focused on user-centered design", "UX designer creating intuitive digital experiences", "AI researcher pushing boundaries in computer vision"),
-  industry = c("Technology", "Technology", "Technology", "Design", "Research")
+            <h2>🎯 Task 1: CSV Data Setup</h2>
+            
+            <div class="task-section">
+                <h3>Learning R Dataframes and CSV Files</h3>
+                <p>Before we build our recommendation system, let's learn how to create and work with CSV files in R. This is a great opportunity to understand dataframes, which are the foundation of data analysis in R.</p>
+
+                <h4>What is a Dataframe?</h4>
+                <p>A dataframe is like a spreadsheet in R - it has rows and columns, where each row represents one record (like one mentor or one student) and each column represents one piece of information (like name, email, expertise).</p>
+
+                <h4>Creating Your First Dataframe</h4>
+                <p>Create a file called <span class="inline-code">create_csv_data.R</span> and follow these steps:</p>
+
+                <div class="code-block">
+<span class="comment"># Step 1: Create mentor dataframe</span>
+<span class="comment"># We'll use the data.frame() function to create our first dataframe</span>
+
+<span class="comment"># First, let's create vectors for each column</span>
+mentor_ids <span class="operator">&lt;-</span> <span class="function">c</span>(1, 2, 3, 4, 5, 6)
+mentor_names <span class="operator">&lt;-</span> <span class="function">c</span>(<span class="string">"Dr. Sarah Chen"</span>, <span class="string">"David Kim"</span>, <span class="string">"James Parker"</span>, 
+                    <span class="string">"Lisa Thompson"</span>, <span class="string">"Dr. Maya Patel"</span>, <span class="string">"Alex Rodriguez"</span>)
+mentor_titles <span class="operator">&lt;-</span> <span class="function">c</span>(<span class="string">"Senior Data Scientist"</span>, <span class="string">"UX Design Lead"</span>, <span class="string">"DevOps Engineer"</span>,
+                     <span class="string">"Product Manager"</span>, <span class="string">"Machine Learning Researcher"</span>, <span class="string">"Career Counselor"</span>)
+
+<span class="comment"># Now combine them into a dataframe</span>
+mentors_df <span class="operator">&lt;-</span> <span class="function">data.frame</span>(
+  id = mentor_ids,
+  name = mentor_names,
+  title = mentor_titles,
+  stringsAsFactors = FALSE  <span class="comment"># This keeps text as text, not categories</span>
 )
 
-# Sample student queries
-student_queries <- c(
-  "I want to learn machine learning and data science",
-  "I need help with web development and becoming a team lead",
-  "I'm interested in product management and user research",
-  "I want to improve my UX design skills",
-  "I'm studying AI and computer vision"
-)</code></pre>
-  
-  <h4>Test Your Recommender</h4>
-  <p>Create a comprehensive test script:</p>
-  <pre><code># Test the recommender
-test_recommender <- function() {
-  cat("Testing Semantic Recommender...\n\n")
-  
-  for (i in 1:length(student_queries)) {
-    query <- student_queries[i]
-    cat("Student Query:", query, "\n")
-    
-    recommendations <- get_mentor_recommendations(query, sample_mentors, top_n = 3)
-    
-    cat("Top 3 Recommendations:\n")
-    for (j in 1:nrow(recommendations)) {
-      mentor <- recommendations[j, ]
-      cat(sprintf("%d. %s (%s) - Score: %.3f\n", 
-                  j, mentor$name, mentor$title, mentor$similarity_score))
-    }
-    cat("\n" + "─".repeat(50) + "\n\n")
-  }
+<span class="comment"># Let's see what we created</span>
+<span class="function">print</span>(mentors_df)
+<span class="function">str</span>(mentors_df)  <span class="comment"># Shows the structure of our dataframe</span></div>
+
+                <h4>Adding More Columns</h4>
+                <p>Now let's add the expertise and other important columns:</p>
+
+                <div class="code-block">
+<span class="comment"># Add expertise column</span>
+mentor_expertise <span class="operator">&lt;-</span> <span class="function">c</span>(
+  <span class="string">"Machine Learning, Python, Data Analysis, Statistical Modeling, AI Ethics"</span>,
+  <span class="string">"User Experience, Design Systems, Prototyping, Accessibility, User Research"</span>,
+  <span class="string">"Infrastructure, Containerization, CI/CD, Monitoring, Cloud Architecture"</span>,
+  <span class="string">"Product Strategy, Market Analysis, User Research, Agile Development, Team Leadership"</span>,
+  <span class="string">"Deep Learning, Computer Vision, Natural Language Processing, Research Methods"</span>,
+  <span class="string">"Career Planning, College Applications, Skill Development, Personal Branding"</span>
+)
+
+<span class="comment"># Add the expertise column to our dataframe</span>
+mentors_df$expertise <span class="operator">&lt;-</span> mentor_expertise
+
+<span class="comment"># Add bio column</span>
+mentor_bios <span class="operator">&lt;-</span> <span class="function">c</span>(
+  <span class="string">"8 years experience in ML and analytics at Fortune 500 companies. Passionate about responsible AI and helping students understand data science career paths."</span>,
+  <span class="string">"UX designer with 6 years experience focusing on accessibility and inclusive design. Loves mentoring students interested in design thinking."</span>,
+  <span class="string">"DevOps engineer who reduced deployment time by 80% at previous company. Enjoys teaching infrastructure and automation concepts."</span>,
+  <span class="string">"Product manager with experience at both startups and large tech companies. Specializes in helping students understand product development."</span>,
+  <span class="string">"PhD in Computer Science with focus on machine learning. Published 20+ papers and loves mentoring students in research."</span>,
+  <span class="string">"Career counselor with 10 years experience helping students navigate college and career decisions. Expert in personal development."</span>
+)
+
+mentors_df$bio <span class="operator">&lt;-</span> mentor_bios</div>
+
+                <h4>Saving to CSV</h4>
+                <p>Now let's save our dataframe to a CSV file:</p>
+
+                <div class="code-block">
+<span class="comment"># Save the dataframe to a CSV file</span>
+<span class="function">write.csv</span>(mentors_df, <span class="string">"mentors.csv"</span>, row.names = FALSE)
+
+<span class="comment"># Let's verify it worked by reading it back</span>
+test_read <span class="operator">&lt;-</span> <span class="function">read.csv</span>(<span class="string">"mentors.csv"</span>, stringsAsFactors = FALSE)
+<span class="function">print</span>(<span class="string">"Successfully created mentors.csv!"</span>)
+<span class="function">print</span>(<span class="function">head</span>(test_read))  <span class="comment"># Shows first few rows</span></div>
+
+                <h4>Complete the Mentor Data</h4>
+                <p>Now add the remaining columns to complete your mentor dataframe:</p>
+
+                <div class="code-block">
+<span class="comment"># Add remaining columns</span>
+mentors_df$email <span class="operator">&lt;-</span> <span class="function">c</span>(
+  <span class="string">"sarah.chen@techcorp.com"</span>, <span class="string">"david.kim@designstudio.com"</span>, <span class="string">"james.parker@devops.com"</span>,
+  <span class="string">"lisa.thompson@product.com"</span>, <span class="string">"maya.patel@research.edu"</span>, <span class="string">"alex.rodriguez@career.com"</span>
+)
+
+mentors_df$work_environment <span class="operator">&lt;-</span> <span class="function">c</span>(
+  <span class="string">"corporate, research"</span>, <span class="string">"startup, corporate"</span>, <span class="string">"corporate, remote"</span>,
+  <span class="string">"startup, corporate"</span>, <span class="string">"research, corporate"</span>, <span class="string">"nonprofit, corporate"</span>
+)
+
+mentors_df$mentorship_style <span class="operator">&lt;-</span> <span class="function">c</span>(
+  <span class="string">"structured"</span>, <span class="string">"casual"</span>, <span class="string">"project"</span>,
+  <span class="string">"structured"</span>, <span class="string">"detailed"</span>, <span class="string">"encouraging"</span>
+)
+
+<span class="comment"># Add the rest of the columns...</span>
+<span class="comment"># TODO: Add communication_preferences, personal_values, guidance_areas</span>
+
+<span class="comment"># Save the complete dataframe</span>
+<span class="function">write.csv</span>(mentors_df, <span class="string">"mentors.csv"</span>, row.names = FALSE)</div>
+
+                <h4>Create Student Dataframe</h4>
+                <p>Now create a similar dataframe for students:</p>
+
+                <div class="code-block">
+<span class="comment"># Create student dataframe</span>
+students_df <span class="operator">&lt;-</span> <span class="function">data.frame</span>(
+  id = <span class="function">c</span>(1, 2, 3, 4),
+  name = <span class="function">c</span>(<span class="string">"Emma Johnson"</span>, <span class="string">"Marcus Chen"</span>, <span class="string">"Sofia Rodriguez"</span>, <span class="string">"Jordan Smith"</span>),
+  email = <span class="function">c</span>(<span class="string">"emma.j@student.edu"</span>, <span class="string">"marcus.c@student.edu"</span>, <span class="string">"sofia.r@student.edu"</span>, <span class="string">"jordan.s@student.edu"</span>),
+  school_name = <span class="function">c</span>(<span class="string">"Tech High School"</span>, <span class="string">"Design Academy"</span>, <span class="string">"Community College"</span>, <span class="string">"Tech Institute"</span>),
+  stringsAsFactors = FALSE
+)
+
+<span class="comment"># Add the questionnaire fields</span>
+students_df$fields <span class="operator">&lt;-</span> <span class="function">c</span>(
+  <span class="string">"data science, machine learning, artificial intelligence, statistics"</span>,
+  <span class="string">"user experience design, human-computer interaction, design thinking"</span>,
+  <span class="string">"business, entrepreneurship, social impact, community service"</span>,
+  <span class="string">"cloud computing, infrastructure, automation, system administration"</span>
+)
+
+<span class="comment"># TODO: Add remaining student columns (environment, guidance, mentorship_type, etc.)</span>
+
+<span class="comment"># Save student dataframe</span>
+<span class="function">write.csv</span>(students_df, <span class="string">"students.csv"</span>, row.names = FALSE)</div>
+
+                <div class="task-list">
+                    <h4>Your Tasks:</h4>
+                    <ul>
+                        <li>Complete the mentor dataframe by adding the missing columns</li>
+                        <li>Complete the student dataframe with all questionnaire fields</li>
+                        <li>Save both dataframes as CSV files</li>
+                        <li>Test reading the CSV files back to make sure they work</li>
+                    </ul>
+                </div>
+
+                <div class="warning">
+                    <h4>💡 Pro Tips:</h4>
+                    <ul>
+                        <li><strong>data.frame()</strong> creates a new dataframe from vectors</li>
+                        <li><strong>df$column_name</strong> adds or accesses a column</li>
+                        <li><strong>write.csv()</strong> saves a dataframe to a CSV file</li>
+                        <li><strong>read.csv()</strong> reads a CSV file into a dataframe</li>
+                        <li><strong>head()</strong> shows the first few rows</li>
+                        <li><strong>str()</strong> shows the structure of your dataframe</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🎯 Task 2: Semantic Recommendation Engine</h2>
+            
+            <div class="task-section">
+                <h3>Build the Core System</h3>
+                <p>Create a file called <span class="inline-code">semantic_recommender.R</span> with the following functions:</p>
+
+                <div class="code-block">
+<span class="comment"># Load required libraries</span>
+<span class="function">library</span>(text2vec)
+<span class="function">library</span>(Matrix)
+<span class="function">library</span>(proxy)
+<span class="function">library</span>(stopwords)
+
+<span class="comment"># Function to load mentor data from CSV</span>
+<span class="function">load_mentor_data</span> <span class="operator">&lt;-</span> <span class="keyword">function</span>(csv_file = <span class="string">"mentors.csv"</span>) {
+  mentors <span class="operator">&lt;-</span> <span class="function">read.csv</span>(csv_file, stringsAsFactors = FALSE)
+  <span class="keyword">return</span>(mentors)
 }
 
-# Run the test
-test_recommender()</code></pre>
-  
+<span class="comment"># Function to load student data from CSV</span>
+<span class="function">load_student_data</span> <span class="operator">&lt;-</span> <span class="keyword">function</span>(csv_file = <span class="string">"students.csv"</span>) {
+  students <span class="operator">&lt;-</span> <span class="function">read.csv</span>(csv_file, stringsAsFactors = FALSE)
+  <span class="keyword">return</span>(students)
+}
 
+<span class="comment"># Function to create embedding system from CSV data</span>
+<span class="function">create_embedding_system</span> <span class="operator">&lt;-</span> <span class="keyword">function</span>(mentor_data) {
   
- 
+  <span class="comment"># Combine mentor information into text</span>
+  mentor_texts <span class="operator">&lt;-</span> <span class="function">paste</span>(
+    mentor_data$name,
+    mentor_data$title,
+    mentor_data$expertise,
+    mentor_data$bio,
+    mentor_data$work_environment,
+    mentor_data$mentorship_style,
+    mentor_data$communication_preferences,
+    mentor_data$personal_values,
+    mentor_data$guidance_areas
+  )
   
-  <hr>
+  <span class="comment"># TODO: Implement TF-IDF and LSA processing</span>
+  <span class="comment"># TODO: Return embedding system with vectorizer, tfidf, lsa, and mentor_data</span>
+}
+
+<span class="comment"># Function to get mentor recommendations</span>
+<span class="function">get_mentor_recommendations</span> <span class="operator">&lt;-</span> <span class="keyword">function</span>(student_answers, embedding_system, top_k = 3) {
   
-  <h3>📝 Submission</h3>
-  <ul>
-    <li>Email me the completed code and any files needed for it to run properly</li>
-    <li>Create a folder named <code>[YOUR_NAME]_Semantic_Recommender</code></li>
-    <li>Include your <code>semantic_recommender.R</code> script</li>
-    <li>Include your test data and test script</li>
-    <li>Add a README file explaining your implementation</li>
-   
-  </ul>
+  <span class="comment"># TODO: Process student text</span>
+  <span class="comment"># TODO: Calculate similarities</span>
+  <span class="comment"># TODO: Return top recommendations with scores</span>
+}</div>
+
+                <div class="task-list">
+                    <h4>Implementation Requirements:</h4>
+                    <ul>
+                        <li>Use TF-IDF vectorization for text processing</li>
+                        <li>Implement LSA (Latent Semantic Analysis) for dimensionality reduction</li>
+                        <li>Use cosine similarity for matching</li>
+                        <li>Handle errors gracefully (missing data, empty queries)</li>
+                        <li>Return recommendations with similarity scores</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🎯 Task 3: Similarity Method Comparison</h2>
+            
+            <div class="task-section">
+                <h3>Test Different Similarity Methods</h3>
+                <p>Create a function that compares different similarity algorithms using your CSV data:</p>
+
+                <div class="code-block">
+<span class="comment"># Function to compare different similarity methods</span>
+<span class="function">compare_similarity_methods</span> <span class="operator">&lt;-</span> <span class="keyword">function</span>(student_answers, embedding_system, top_k = 3) {
   
-  <div class="success">
-    <p><strong>Remember:</strong> This is your chance to apply the AI concepts you've learned! Focus on building a working system first, then optimize and enhance it. Good luck!</p>
-  </div>
-</div>
+  <span class="comment"># Process student text</span>
+  student_text <span class="operator">&lt;-</span> <span class="function">tolower</span>(<span class="function">paste</span>(<span class="function">unlist</span>(student_answers), collapse = <span class="string">" "</span>))
+  query_tokens <span class="operator">&lt;-</span> <span class="function">word_tokenizer</span>(student_text)
+  it_query <span class="operator">&lt;-</span> <span class="function">itoken</span>(query_tokens, progressbar = FALSE)
+  dtm_query <span class="operator">&lt;-</span> <span class="function">create_dtm</span>(it_query, embedding_system$vectorizer)
+  dtm_query_tfidf <span class="operator">&lt;-</span> <span class="function">transform</span>(dtm_query, embedding_system$tfidf)
+  
+  <span class="comment"># Handle LSA transformation</span>
+  <span class="keyword">if</span> (!<span class="function">is.null</span>(embedding_system$lsa)) {
+    query_final <span class="operator">&lt;-</span> <span class="function">tryCatch</span>({
+      <span class="function">transform</span>(dtm_query_tfidf, embedding_system$lsa)
+    }, error = <span class="keyword">function</span>(e) dtm_query_tfidf)
+  } <span class="keyword">else</span> {
+    query_final <span class="operator">&lt;-</span> dtm_query_tfidf
+  }
+  
+  <span class="comment"># Test different similarity methods</span>
+  methods <span class="operator">&lt;-</span> <span class="function">c</span>(<span class="string">"cosine"</span>, <span class="string">"euclidean"</span>, <span class="string">"jaccard"</span>, <span class="string">"manhattan"</span>)
+  results <span class="operator">&lt;-</span> <span class="function">list</span>()
+  
+  <span class="keyword">for</span> (method <span class="keyword">in</span> methods) {
+    <span class="comment"># TODO: Calculate similarities for each method</span>
+    <span class="comment"># TODO: Get top recommendations</span>
+    <span class="comment"># TODO: Store results with method name</span>
+  }
+  
+  <span class="keyword">return</span>(results)
+}</div>
+
+                <div class="task-list">
+                    <h4>Your TODO Items:</h4>
+                    <ul>
+                        <li>Complete the for loop to test each similarity method</li>
+                        <li>For each method, get the top recommendations and their scores</li>
+                        <li>Store results in a format that's easy to compare</li>
+                        <li>Handle any errors that might occur with different methods</li>
+                    </ul>
+                </div>
+
+                <div class="expected-output">
+                    <h4>Expected Output Structure:</h4>
+                    <p>Your function should return a list where each element contains the recommendations for a different similarity method, making it easy to compare which mentors each method recommends.</p>
+                </div>
+            </div>
+
+            <h2>🎯 Task 4: Weighted Matching System</h2>
+            
+            <div class="task-section">
+                <h3>The Problem</h3>
+                <p>Right now, all mentor attributes are treated equally when creating the text representation. But maybe expertise should count more than location, or mentorship style should be weighted higher than communication preferences.</p>
+
+                <h3>Your Mission</h3>
+                <p>Create a weighted version of your embedding system that accepts weights for different mentor attributes:</p>
+
+                <div class="code-block">
+<span class="comment"># Function to create weighted embedding system</span>
+<span class="function">create_weighted_embedding_system</span> <span class="operator">&lt;-</span> <span class="keyword">function</span>(mentor_data,
+                                                      expertise_weight = 3,
+                                                      bio_weight = 2,
+                                                      title_weight = 2,
+                                                      work_env_weight = 1,
+                                                      mentorship_style_weight = 2,
+                                                      comm_pref_weight = 1,
+                                                      values_weight = 1,
+                                                      guidance_weight = 1) {
+  
+  <span class="comment"># TODO: Create weighted text representation</span>
+  <span class="comment"># Hint: Use rep() function to repeat text based on weights</span>
+  mentor_texts <span class="operator">&lt;-</span> <span class="function">paste</span>(
+    <span class="comment"># Expertise gets repeated based on weight</span>
+    <span class="function">rep</span>(mentor_data$expertise, expertise_weight),
+    <span class="comment"># TODO: Add other weighted fields</span>
+  )
+  
+  <span class="comment"># TODO: Implement TF-IDF and LSA processing</span>
+  <span class="comment"># TODO: Return embedding system</span>
+}</div>
+
+                <div class="task-list">
+                    <h4>Implementation Checklist:</h4>
+                    <ul>
+                        <li>Use <span class="inline-code">rep()</span> function to repeat text based on weights</li>
+                        <li>Handle NULL values in mentor data (use <span class="inline-code">ifelse</span>)</li>
+                        <li>Make sure the function still works with the existing recommendation system</li>
+                        <li>Test with different weight combinations</li>
+                    </ul>
+                </div>
+
+                <div class="warning">
+                    <h4>Technical Note</h4>
+                    <p>The <span class="inline-code">rep()</span> function repeats text. So <span class="inline-code">rep("software engineer", 3)</span> creates: "software engineer software engineer software engineer". This gives that term more importance in the TF-IDF calculation.</p>
+                </div>
+            </div>
+
+            <h2>📊 Deliverables</h2>
+
+            <div class="deliverable">
+                <h4>1. CSV Data Files</h4>
+                <p>Two CSV files: <span class="inline-code">mentors.csv</span> and <span class="inline-code">students.csv</span> with realistic data that matches the student questionnaire structure. Also include your <span class="inline-code">create_csv_data.R</span> script that demonstrates how you created the dataframes.</p>
+            </div>
+
+            <div class="deliverable">
+                <h4>2. Working Semantic Recommender</h4>
+                <p>A complete <span class="inline-code">semantic_recommender.R</span> file with all required functions that can load CSV data and provide mentor recommendations.</p>
+            </div>
+
+            <div class="deliverable">
+                <h4>3. Similarity Comparison Report</h4>
+                <p>Test results comparing different similarity methods (cosine, euclidean, jaccard, manhattan) with at least 3 different student profiles. Document which method works best.</p>
+            </div>
+
+            <div class="deliverable">
+                <h4>4. Weighted System Implementation</h4>
+                <p>A functioning <span class="inline-code">create_weighted_embedding_system</span> function that can be called with different weight parameters and produces different recommendations based on those weights.</p>
+            </div>
+
+            <div class="deliverable">
+                <h4>5. Weight Optimization Experiment</h4>
+                <p>Test at least 3 different weight combinations and show how they affect the recommendations for the same student query. Document which combination seems most effective and why.</p>
+            </div>
+
+            <h2>🧪 Testing Your Work</h2>
+
+            <div class="task-section">
+                <h3>Test with CSV Data</h3>
+                <p>Use the student data from your <span class="inline-code">students.csv</span> file to test your implementations:</p>
+
+                <div class="code-block">
+<span class="comment"># Load your data</span>
+mentors <span class="operator">&lt;-</span> <span class="function">load_mentor_data</span>(<span class="string">"mentors.csv"</span>)
+students <span class="operator">&lt;-</span> <span class="function">load_student_data</span>(<span class="string">"students.csv"</span>)
+
+<span class="comment"># Create embedding system</span>
+embedding_system <span class="operator">&lt;-</span> <span class="function">create_embedding_system</span>(mentors)
+
+<span class="comment"># Test with student data</span>
+<span class="comment"># Test Case 1: Data Science Student (Emma Johnson)</span>
+student1 <span class="operator">&lt;-</span> <span class="function">list</span>(
+  fields = students$fields[1],
+  environment = students$environment[1],
+  guidance = students$guidance[1],
+  mentorship_type = students$mentorship_type[1],
+  feedback_style = students$feedback_style[1],
+  comm_style = students$comm_style[1],
+  frequency = students$frequency[1],
+  personal_values = students$personal_values[1],
+  challenges = students$challenges[1],
+  outcomes = students$outcomes[1],
+  additional_info = students$additional_info[1]
+)
+
+<span class="comment"># Get recommendations</span>
+recommendations <span class="operator">&lt;-</span> <span class="function">get_mentor_recommendations</span>(student1, embedding_system, top_k = 3)</div>
+
+                <h3>Expected Results</h3>
+                <p>Your system should produce results similar to the quick start script:</p>
+                <ul>
+                    <li><strong>Data Science Student</strong> → Should match with Dr. Sarah Chen (Score: ~0.877)</li>
+                    <li><strong>UX Design Student</strong> → Should match with David Kim (Score: ~0.973)</li>
+                    <li><strong>Career Exploration Student</strong> → Should match with Alex Rodriguez (Score: ~0.982)</li>
+                    <li><strong>DevOps Student</strong> → Should match with James Parker (Score: ~0.919)</li>
+                </ul>
+
+                <h3>Success Criteria</h3>
+                <ul>
+                    <li>CSV files load correctly without errors</li>
+                    <li>Embedding system creates successfully</li>
+                    <li>Different similarity methods produce noticeably different results</li>
+                    <li>Weighted system changes recommendations when weights are adjusted</li>
+                    <li>Code runs without errors</li>
+                    <li>Results make intuitive sense (students match with appropriate mentors)</li>
+                    <li>Performance is good (recommendations complete in under 1 second)</li>
+                </ul>
+            </div>
+
+            <div class="deliverable">
+                <h4>📧 Submission Instructions</h4>
+                <p>Create a folder called <span class="inline-code">[YOUR_NAME]_Semantic_Recommender</span> containing:</p>
+                <ul>
+                    <li><span class="inline-code">mentors.csv</span> - Your mentor data file</li>
+                    <li><span class="inline-code">students.csv</span> - Your student data file</li>
+                    <li><span class="inline-code">semantic_recommender.R</span> - Your complete implementation</li>
+                    <li><span class="inline-code">test_results.txt</span> - Output from testing your system</li>
+                    <li><span class="inline-code">README.md</span> - Documentation explaining your approach and findings</li>
+                </ul>
+                <p>Include in your README:</p>
+                <ul>
+                    <li>Brief description of your implementation approach</li>
+                    <li>Installation and setup instructions</li>
+                    <li>Usage examples with sample queries</li>
+                    <li>Test results and performance metrics</li>
+                    <li>Comparison of different similarity methods</li>
+                    <li>Weight optimization findings</li>
+                    <li>Any enhancements or bonus features implemented</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
         `
       }]
              

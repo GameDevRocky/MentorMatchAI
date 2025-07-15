@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEV-2847: Improve Mentor Matching Algorithm</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 40px;
+            position: relative;
+        }
+        
+        .ticket-number {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .assignee {
+            font-size: 1em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .task-header {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .priority {
+            background: #ff9800;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+        
+        .code-block .comment {
+            color: #68d391;
+        }
+        
+        .code-block .keyword {
+            color: #fbb6ce;
+        }
+        
+        .code-block .string {
+            color: #faf089;
+        }
+        
+        .code-block .function {
+            color: #90cdf4;
+        }
+        
+        h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #495057;
+            margin: 30px 0 15px 0;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #6c757d;
+            margin: 25px 0 10px 0;
+        }
+        
+        .task-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .deliverable {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .deliverable h4 {
+            color: #155724;
+            margin-bottom: 10px;
+        }
+        
+        .deliverable p {
+            color: #155724;
+            margin: 0;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .warning h4 {
+            color: #856404;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .warning h4:before {
+            content: "⚠️";
+            margin-right: 10px;
+        }
+        
+        .warning p {
+            color: #856404;
+            margin: 0;
+        }
+        
+        .inline-code {
+            background: #e9ecef;
+            color: #495057;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #495057;
+        }
+        
+        .task-list {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .task-list li {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+        
+        .task-list li:before {
+            content: "☐";
+            margin-right: 10px;
+            color: #6c757d;
+        }
+        
+        .expected-output {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .qa-section {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .qa-section h3 {
+            color: #721c24;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="ticket-number">DEV-2847</div>
+            <h1>Improve Mentor Matching Algorithm Performance</h1>
+            <div class="assignee">👤 Assigned to: Junior Developer | 📅 Due: End of Sprint</div>
+        </div>
+        
+        <div class="content">
+            <div class="task-header">
+                <div class="priority">MEDIUM PRIORITY</div>
+                <p><strong>Context:</strong> Our current mentor matching system is working, but the product team has been getting feedback that matches could be more accurate. We need to experiment with different similarity algorithms and implement a weighting system to prioritize certain mentor attributes over others.</p>
+                <p><strong>Business Impact:</strong> Better matches = higher user satisfaction = better retention</p>
+            </div>
+
+            <h2>📋 Task Overview</h2>
+            <p>You'll be working on two main improvements to our existing <span class="inline-code">get_mentor_recommendations</span> function:</p>
+            <ol>
+                <li><strong>Similarity Method Comparison:</strong> Test different similarity algorithms and benchmark their performance</li>
+                <li><strong>Weighted Matching System:</strong> Implement a system that gives more importance to certain mentor attributes</li>
+            </ol>
+
+            <div class="warning">
+                <h4>Before You Start</h4>
+                <p>Make sure you understand the current codebase. The existing system uses cosine similarity and treats all mentor attributes equally. Your job is to make it smarter and more flexible.</p>
+            </div>
+
+            <h2>🎯 Task 1: Similarity Method Comparison</h2>
+            
+            <div class="task-section">
+                <h3>Current Implementation</h3>
+                <p>Right now we're using cosine similarity. Here's the relevant code:</p>
+                
+                <div class="code-block">
+similarities <span class="operator">&lt;-</span> <span class="function">proxy::simil</span>(query_final, embedding_system$embeddings, method = <span class="string">"cosine"</span>)</div>
+
+                <h3>What You Need To Do</h3>
+                <p>Create a new function that can test different similarity methods and compare their results:</p>
+
+                <div class="code-block">
+<span class="comment"># Create this function in your R script</span>
+<span class="function">compare_similarity_methods</span> <span class="operator">&lt;-</span> <span class="keyword">function</span>(student_answers, embedding_system, top_k = 3) {
+  <span class="comment"># Process student text (same as original)</span>
+  student_text <span class="operator">&lt;-</span> <span class="function">tolower</span>(<span class="function">paste</span>(<span class="function">unlist</span>(student_answers), collapse = <span class="string">" "</span>))
+  query_tokens <span class="operator">&lt;-</span> <span class="function">word_tokenizer</span>(student_text)
+  it_query <span class="operator">&lt;-</span> <span class="function">itoken</span>(query_tokens, progressbar = FALSE)
+  dtm_query <span class="operator">&lt;-</span> <span class="function">create_dtm</span>(it_query, embedding_system$vectorizer)
+  dtm_query_tfidf <span class="operator">&lt;-</span> <span class="function">transform</span>(dtm_query, embedding_system$tfidf)
+  
+  <span class="comment"># Handle LSA transformation</span>
+  <span class="keyword">if</span> (!<span class="function">is.null</span>(embedding_system$lsa)) {
+    query_final <span class="operator">&lt;-</span> <span class="function">tryCatch</span>({
+      <span class="function">transform</span>(dtm_query_tfidf, embedding_system$lsa)
+    }, error = <span class="keyword">function</span>(e) dtm_query_tfidf)
+  } <span class="keyword">else</span> {
+    query_final <span class="operator">&lt;-</span> dtm_query_tfidf
+  }
+  
+  <span class="comment"># Test different similarity methods</span>
+  methods <span class="operator">&lt;-</span> <span class="function">c</span>(<span class="string">"cosine"</span>, <span class="string">"euclidean"</span>, <span class="string">"jaccard"</span>, <span class="string">"manhattan"</span>)
+  results <span class="operator">&lt;-</span> <span class="function">list</span>()
+  
+  <span class="keyword">for</span> (method <span class="keyword">in</span> methods) {
+    <span class="comment"># TODO: Calculate similarities for each method</span>
+    <span class="comment"># TODO: Get top recommendations</span>
+    <span class="comment"># TODO: Store results with method name</span>
+  }
+  
+  <span class="keyword">return</span>(results)
+}</div>
+
+                <div class="task-list">
+                    <h4>Your TODO Items:</h4>
+                    <ul>
+                        <li>Complete the for loop to test each similarity method</li>
+                        <li>For each method, get the top recommendations and their scores</li>
+                        <li>Store results in a format that's easy to compare</li>
+                        <li>Handle any errors that might occur with different methods</li>
+                    </ul>
+                </div>
+
+                <div class="expected-output">
+                    <h4>Expected Output Structure:</h4>
+                    <p>Your function should return a list where each element contains the recommendations for a different similarity method, making it easy to compare which mentors each method recommends.</p>
+                </div>
+            </div>
+
+            <h2>🎯 Task 2: Weighted Matching System</h2>
+            
+            <div class="task-section">
+                <h3>The Problem</h3>
+                <p>Right now, all mentor attributes are treated equally when creating the text representation. But maybe expertise should count more than location, or industry experience should be weighted higher than age range.</p>
+
+                <h3>Your Mission</h3>
+                <p>Modify the <span class="inline-code">default_embedding_system</span> function to accept weights for different mentor attributes:</p>
+
+                <div class="code-block">
+<span class="comment"># Modify the existing function to accept weights</span>
+<span class="function">weighted_embedding_system</span> <span class="operator">&lt;-</span> <span class="keyword">function</span>(con, 
+                                          expertise_weight = 3,
+                                          industry_weight = 2,
+                                          location_weight = 1,
+                                          experience_weight = 2,
+                                          bio_weight = 2) {
+  
+  mentor_data <span class="operator">&lt;-</span> <span class="function">get_mentor_data</span>(con)
+  
+  <span class="comment"># TODO: Create weighted text representation</span>
+  <span class="comment"># Hint: Repeat text based on weights</span>
+  mentor_texts <span class="operator">&lt;-</span> <span class="function">paste</span>(
+    <span class="comment"># Expertise gets repeated 3 times (weight = 3)</span>
+    <span class="function">rep</span>(mentor_data$expertise, expertise_weight),
+    <span class="comment"># TODO: Add other weighted fields</span>
+  )
+  
+  <span class="comment"># Rest of the function stays the same...</span>
+}</div>
+
+                <div class="task-list">
+                    <h4>Implementation Checklist:</h4>
+                    <ul>
+                        <li>Use <span class="inline-code">rep()</span> function to repeat text based on weights</li>
+                        <li>Handle NULL values in mentor data (use <span class="inline-code">ifelse</span>)</li>
+                        <li>Make sure the function still works with the existing recommendation system</li>
+                        <li>Test with different weight combinations</li>
+                    </ul>
+                </div>
+
+                <div class="warning">
+                    <h4>Technical Note</h4>
+                    <p>The <span class="inline-code">rep()</span> function repeats text. So <span class="inline-code">rep("software engineer", 3)</span> creates: "software engineer software engineer software engineer". This gives that term more importance in the TF-IDF calculation.</p>
+                </div>
+            </div>
+
+            <h2>📊 Deliverables</h2>
+
+            <div class="deliverable">
+                <h4>1. Similarity Comparison Report</h4>
+                <p>Run your comparison function with at least 3 different student profiles and document which similarity method gives the most sensible results for each case. Include example outputs.</p>
+            </div>
+
+            <div class="deliverable">
+                <h4>2. Working Weighted System</h4>
+                <p>A functioning <span class="inline-code">weighted_embedding_system</span> function that can be called with different weight parameters and produces different recommendations based on those weights.</p>
+            </div>
+
+            <div class="deliverable">
+                <h4>3. Weight Optimization Experiment</h4>
+                <p>Test at least 3 different weight combinations and show how they affect the recommendations for the same student query. Document which combination seems most effective and why.</p>
+            </div>
+
+            <h2>🧪 Testing Your Work</h2>
+
+            <div class="task-section">
+                <h3>Sample Test Cases</h3>
+                <p>Use these student profiles to test your implementations:</p>
+
+                <div class="code-block">
+<span class="comment"># Test Case 1: Tech Student</span>
+student1 <span class="operator">&lt;-</span> <span class="function">list</span>(<span class="string">"I want to learn web development and eventually work at a startup"</span>)
+
+<span class="comment"># Test Case 2: Business Student</span>
+student2 <span class="operator">&lt;-</span> <span class="function">list</span>(<span class="string">"I'm interested in marketing and brand management in the fashion industry"</span>)
+
+<span class="comment"># Test Case 3: Career Changer</span>
+student3 <span class="operator">&lt;-</span> <span class="function">list</span>(<span class="string">"I'm transitioning from teaching to data science and need guidance"</span>)</div>
+
+                <h3>Success Criteria</h3>
+                <ul>
+                    <li>Different similarity methods produce noticeably different results</li>
+                    <li>Weighted system changes recommendations when weights are adjusted</li>
+                    <li>Code runs without errors</li>
+                    <li>Results make intuitive sense (tech students match with tech mentors, etc.)</li>
+                </ul>
+            </div>
+
+            <div class="deliverable">
+                <h4>📧 Submission Instructions</h4>
+                <p>When you're done, email me your completed R script along with a brief summary of your findings from testing the different similarity methods and weight combinations. Include any observations about which approaches worked best for different types of student queries.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
