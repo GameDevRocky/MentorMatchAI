@@ -24,16 +24,20 @@
         background-size: 80px 80px;
         background-color: #0f1117;
         transition: background-color 0.3s ease, background-image 0.3s ease;
+        z-index: -1;
       }
 
       #grid-background.light-mode {
         background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent);
         background-color: #e2e8f0;
+        z-index: -1;
       }
 
       .main-container {
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         transition: box-shadow 0.3s ease;
+        position: relative;
+        z-index: 1;
       }
       
       body:not(.light-mode) .main-container {
@@ -75,11 +79,13 @@
         right: 0;
         bottom: 0;
         background-color: rgba(0, 0, 0, 0.5);
-        z-index: 50;
+        z-index: 9999;
         opacity: 0;
         transition: opacity 0.3s ease;
         overflow-y: auto;
         padding: 2rem;
+        width: 100vw;
+        height: 100vh;
       }
 
       .modal.show {
@@ -87,6 +93,9 @@
         opacity: 1;
         align-items: flex-start;
         justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
       }
 
       .modal-content {
@@ -101,10 +110,18 @@
         max-height: calc(100vh - 4rem);
         display: flex;
         flex-direction: column;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        z-index: 10000;
       }
 
       .modal.show .modal-content {
         transform: translateY(0);
+      }
+
+      /* Ensure body doesn't shift when modal opens/closes */
+      body.modal-open {
+        overflow: hidden;
+        padding-right: 0;
       }
 
       .modal-header {
@@ -1561,7 +1578,226 @@ includeHTML("www/hero_section.html")</code></pre>
             
             `
               
-            }]
+            }],
+            3: [{
+  title: "Building Email Newsletters: From Design to Delivery",
+  description: "A comprehensive guide to HTML, CSS, and R Markdown for newsletter creation with blastula",
+  content: `
+<style>
+  /* Base tutorial styles */
+  .shiny-tutorial {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .shiny-tutorial h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0 0 20px;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+  }
+  .shiny-tutorial h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 40px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+  }
+  .shiny-tutorial h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 30px 0 15px;
+    background: #f8f9fa;
+    padding: 10px 15px;
+    border-left: 4px solid #3498db;
+  }
+  .shiny-tutorial p {
+    margin: 15px 0;
+  }
+  .shiny-tutorial ul,
+  .shiny-tutorial ol {
+    margin: 15px 0 20px 25px;
+  }
+  .shiny-tutorial li {
+    margin-bottom: 10px;
+  }
+  .shiny-tutorial pre {
+    background: #263238;
+    color: #aed581;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 15px 0;
+  }
+  .shiny-tutorial code {
+    background: #f5f5f5;
+    color: #d32f2f;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+  }
+  .shiny-tutorial pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  /* New section styles */
+  .shiny-tutorial .intro-section {
+    margin-bottom: 30px;
+  }
+  .shiny-tutorial .callout {
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    padding: 15px 20px;
+    margin: 20px 0;
+    font-style: italic;
+  }
+  .shiny-tutorial .references {
+    margin-top: 40px;
+  }
+  .shiny-tutorial .references h3 {
+    margin-bottom: 10px;
+  }
+  .shiny-tutorial .references p {
+    margin: 5px 0;
+  }
+
+  /* Tables for email HTML examples */
+  .shiny-tutorial table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  .shiny-tutorial th,
+  .shiny-tutorial td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  .shiny-tutorial th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+</style>
+
+<div class="shiny-tutorial">
+
+  <div class="intro-section">
+    <h1>Building Email Newsletters: From Design to Delivery</h1>
+    <p>A comprehensive guide to HTML, CSS, and R Markdown for newsletter creation with <code>blastula</code>.</p>
+  </div>
+
+  <div class="callout">
+    <p><strong>Who is this for?</strong> Absolute beginners. If you’ve never written a line of code, don’t worry—every concept is explained from the ground up.</p>
+  </div>
+
+  <h2>Getting Your Toolkit Ready</h2>
+  <p>To follow along with this lesson, you'll need to set up your development environment:</p>
+  <ul>
+    <li><strong>Install R:</strong> Download from <a href="https://cran.r-project.org/" target="_blank">CRAN</a>.</li>
+    <li><strong>Install RStudio Desktop:</strong> Download from <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Posit</a>.</li>
+    <li>Then open RStudio’s console and run:
+      <pre><code>install.packages(c("shiny", "bslib", "blastula", "rmarkdown"))</code></pre>
+    </li>
+  </ul>
+
+  <h2>HTML Basics: The Structure of Your Newsletter</h2>
+  <p>HTML (HyperText Markup Language) provides the skeleton of your newsletter. In email design, we often rely on <code>&lt;table&gt;</code>-based layouts for consistent rendering across clients.</p>
+
+  <h3>Key HTML Tags for Newsletters</h3>
+  <ul>
+    <li><code>&lt;p&gt;</code>: Paragraphs.
+      <pre><code>&lt;p&gt;This is a paragraph in your newsletter.&lt;/p&gt;</code></pre>
+    </li>
+    <li><code>&lt;a&gt;</code>: Links.
+      <pre><code>&lt;a href="https://www.example.com"&gt;Visit our site&lt;/a&gt;</code></pre>
+    </li>
+    <li><code>&lt;img&gt;</code>: Images (use absolute URLs).
+      <pre><code>&lt;img src="https://www.example.com/image.jpg" alt="Description" width="200" height="150"&gt;</code></pre>
+    </li>
+    <li><code>&lt;div&gt;</code> &amp; <code>&lt;span&gt;</code>: Generic containers for grouping and inline styling.
+      <pre><code>&lt;div&gt;
+  &lt;p&gt;Grouped content.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+    </li>
+    <li><code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code>: Headings.
+      <pre><code>&lt;h1&gt;Your Title&lt;/h1&gt;</code></pre>
+    </li>
+    <li><code>&lt;table&gt;</code>: Tabular layouts for email.
+      <pre><code>&lt;table&gt;
+  &lt;tr&gt;&lt;td&gt;Cell 1&lt;/td&gt;&lt;td&gt;Cell 2&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+    </li>
+  </ul>
+
+  <h3>HTML Layout Example</h3>
+  <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Your Newsletter&lt;/title&gt;
+  &lt;style&gt;
+    /* Inline or embedded CSS here */
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;center&gt;
+    &lt;table width="600" cellpadding="0" cellspacing="0" border="0"&gt;
+      &lt;tr&gt;
+        &lt;td style="padding:20px;"&gt;
+          &lt;h1&gt;Welcome to Our Newsletter!&lt;/h1&gt;
+          &lt;p&gt;Main content goes here.&lt;/p&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+  <h2>CSS Basics: Styling Your Newsletter</h2>
+  <p>Email clients vary in CSS support. Use inline styles or an embedded <code>&lt;style&gt;</code> block:</p>
+  <pre><code>&lt;style&gt;
+h1 { color: #1a5276; font-family: 'Georgia', serif; }
+.container { background: #fff; border:1px solid #ddd; padding:20px; }
+&lt;/style&gt;</code></pre>
+
+  <h2>R Markdown &amp; <code>blastula</code></h2>
+  <p>Use R Markdown to generate HTML, then <code>blastula</code> to convert it and send:</p>
+  <pre><code>library(blastula)
+
+email_body <- paste(readLines("newsletter.html"), collapse = "\n") %>% md()
+
+email <- compose_email(
+  body   = email_body,
+  footer = md("Sent with **blastula**")
+)
+
+# smtp_send(email, to = "...", from = "...", subject = "Weekly Newsletter")
+</code></pre>
+
+  <div class="callout">
+    <p><strong>Pro Tip:</strong> When designing in Figma, keep email constraints in mind—use simple table layouts and inline CSS for best compatibility.</p>
+  </div>
+
+  <div class="references">
+    <h3>References</h3>
+    <p>[1] <a href="https://www.campaignmonitor.com/dev-resources/guides/coding/images/">Campaign Monitor – Images Guide</a></p>
+    <p>[2] <a href="https://www.litmus.com/blog/email-design-tips-tables-vs-divs/">Litmus – Tables vs Divs</a></p>
+    <p>[3] <a href="https://mailchimp.com/developer/email/html-css/css-in-html-emails/">Mailchimp – CSS in HTML Emails</a></p>
+  </div>
+
+</div>
+`
+}]
+
+            
+
+           
           },
           tickets: {
             1: 'commonWeek1Tickets',
@@ -1730,6 +1966,551 @@ shinyApp(ui, server)</code></pre>
   </ul>
   
   
+</div>
+`
+              }
+            ],
+             3: [
+              {
+                title: "Design to UI: Building a Landing Page in Shiny",
+                description: "Transform the starter script into a compelling landing page",
+                content: `
+<style>
+  .frontend-tutorial { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+  .frontend-tutorial h2 { font-size: 28px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #3498db; }
+  .frontend-tutorial h3 { font-size: 20px; font-weight: 600; margin: 30px 0 15px 0; background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #3498db; }
+  .frontend-tutorial h4 { font-size: 18px; font-weight: 600; margin: 25px 0 10px 0; color: #2c3e50; }
+  .frontend-tutorial blockquote { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px 20px; margin: 20px 0; font-style: normal; }
+  .frontend-tutorial p { margin: 15px 0; }
+  .frontend-tutorial ul, .frontend-tutorial ol { margin: 15px 0 20px 25px; }
+  .frontend-tutorial li { margin-bottom: 10px; }
+  .frontend-tutorial pre { background: #263238; color: #aed581; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
+  .frontend-tutorial code { background: #f5f5f5; color: #d32f2f; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+  .frontend-tutorial pre code { background: transparent; color: inherit; padding: 0; }
+  .frontend-tutorial hr { margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0; }
+  .frontend-tutorial a { color: #2196f3; text-decoration: none; }
+  .frontend-tutorial a:hover { text-decoration: underline; }
+  .frontend-tutorial .highlight { background: #fff3cd; padding: 15px; border-radius: 5px; border-left: 4px solid #ffc107; }
+  .frontend-tutorial .success { background: #d4edda; padding: 15px; border-radius: 5px; border-left: 4px solid #28a745; }
+  .frontend-tutorial .info { background: #d1ecf1; padding: 15px; border-radius: 5px; border-left: 4px solid #17a2b8; }
+  .frontend-tutorial .warning { background: #f8d7da; padding: 15px; border-radius: 5px; border-left: 4px solid #dc3545; }
+</style>
+
+<div class="frontend-tutorial">
+  
+
+  
+  <hr>
+  
+  <h3>🚀 Task Overview: Building the MentorMatchAI Landing Page MVP</h3>
+  <p>Alright team, with our recommender logic taking shape, it's time to build the public face of MentorMatchAI – our landing page! This is the first impression users will have, so it needs to be clean, inviting, and clearly guide them towards finding a mentor or becoming one.</p>
+  
+  <p>Your task is to take the provided Shiny starter script and transform its "Home" tab into a compelling landing page. You'll use your newfound UI/CSS skills to make it visually appealing and user-friendly, incorporating best practices for web design.</p>
+  
+  <hr>
+  
+  <h3>📋 Your Deliverables for this Ticket:</h3>
+  <ul>
+    <li>A working Shiny R script named <code>ticket1_1_landing_mvp.R</code> (you'll rename the provided starter script).</li>
+    <li>Any custom CSS files (e.g., <code>styles.css</code>) you create, placed in a <code>www</code> folder within your Shiny app directory.</li>
+    <li>(Optional but encouraged) Any JavaScript files you create for enhanced interactivity, also in the <code>www</code> folder.</li>
+    <li>Your project folder structure should be: <code>[YOUR_NAME]_Landing_Page/ticket1_1_landing_mvp.R</code> and <code>[YOUR_NAME]_Landing_Page/www/styles.css</code> (if applicable).</li>
+  </ul>
+  
+  <hr>
+  
+  <h3>Starter Shiny Script: <code>mentor_match_simple.R</code></h3>
+  <p>Use the following R script as your starting point. Rename it to <code>ticket1_1_landing_mvp.R</code>.</p>
+  
+  <pre><code># ticket1_1_landing_mvp.R
+# mentor_match_simple.R
+# ─────────────────────────────────────────────────────────
+# Libraries
+library(shiny)
+library(bslib)
+
+# ---- UI -------------------------------------------------
+ui <- page_navbar(
+  title = "MentorMatch Simple",
+  theme = bs_theme(version = 5, primary = "#4f8bb8"),
+
+  # Home tab ------------------------------------------------
+  nav_panel(
+    title = "Home",
+
+    div(
+      style = "text-align:center; padding:40px;",
+      h1("Welcome to MentorMatch"),
+      p("Connect with the perfect mentor using AI-powered matching",
+        style = "font-size:1.2rem; margin-bottom:30px;"),
+
+      div(
+        actionButton("show_student_form", "I'm a Student",
+                     class = "btn-primary btn-lg", style = "margin:10px;"),
+        actionButton("show_mentor_form", "I'm a Mentor",
+                     class = "btn-success  btn-lg", style = "margin:10px;")
+      )
+    ),
+
+    hr(),
+
+    # Where results / pop-ups will appear
+    uiOutput("results_section")
+  ),
+
+  # About tab ----------------------------------------------
+  nav_panel(
+    title = "About",
+    div(
+      style = "padding:20px; max-width:800px; margin:0 auto;",
+      h3("About MentorMatch"),
+      p("This application uses semantic text analysis to match students with appropriate mentors."),
+      h4("How it works:"),
+      tags$ol(
+        tags$li("Students and mentors fill out detailed questionnaires"),
+        tags$li("The system analyzes responses using text embeddings"),
+        tags$li("Cosine similarity finds the best matches"),
+        tags$li("Students can connect with their top matches")
+      )
+    )
+  )
+)
+
+# ---- Server ---------------------------------------------
+server <- function(input, output, session) {
+
+  observeEvent(input$show_student_form, {
+    showModal(
+      modalDialog(
+        title = "Student Questionnaire (placeholder)",
+        "Todo: build the multi-step student form here.",
+        easyClose = TRUE
+      )
+    )
+  })
+
+  observeEvent(input$show_mentor_form, {
+    showModal(
+      modalDialog(
+        title = "Mentor Questionnaire (placeholder)",
+        "Todo: build the multi-step mentor form here.",
+        easyClose = TRUE
+      )
+    )
+  })
+
+  # placeholder for future results
+  output$results_section <- renderUI({ NULL })
+}
+
+# ---- Launch ---------------------------------------------
+shinyApp(ui, server)</code></pre>
+  
+  <hr>
+  
+  <h3>Next Steps: Bringing Your Landing Page to Life</h3>
+  <ul>
+    <li><strong>Read Lesson 1.2 – Building Your First Shiny App</strong> to learn how Shiny works, how to add UI features, and how to apply themes & element-level styling.</li>
+    <li><strong>Design in Figma:</strong> Create a free <a href="https://www.figma.com/" target="_blank">Figma</a> account. Design your landing page in Figma first, keeping all ticket parameters and the UI/UX best practices (clarity, consistency, responsiveness, ethical design) in mind.</li>
+    <li><strong>Rebuild in Shiny UI:</strong> When finished with your Figma design, rebuild that design in the <code>ui</code> section of your <code>ticket1_1_landing_mvp.R</code> Shiny script. Focus on the "Home" tab.</li>
+    <li><strong>Enhance with CSS:</strong> Use custom CSS (either inline, in <code>tags$style</code>, or in an external <code>www/styles.css</code> file) to match your Figma design's aesthetics. Pay attention to colors, fonts, spacing, and component styling (e.g., buttons, cards).</li>
+    <li><strong>Consider Advanced Features:</strong>
+      <ul>
+        <li><strong>Hero Section:</strong> Implement a bold headline, a concise value proposition, and a compelling background (image or gradient). Add a wide hero image (~1920 × 600 px) as <code>www/hero.png</code> and reference it in your UI.</li>
+        <li><strong>Feature Cards:</strong> Design three visually distinct feature cards with icons + short text (e.g., "Instant Match", "Verified Mentors", "Free to Join").</li>
+        <li><strong>Testimonials Row:</strong> Add a section with 2-3 short quotes from happy (dummy) users.</li>
+        <li><strong>Trust Badge Strip:</strong> Include a row of logos from hypothetical partner universities or companies.</li>
+        <li><strong>Sticky Call-to-Action:</strong> Implement a "Get Started" button that stays visible as the user scrolls, especially on mobile.</li>
+        <li><strong>Accessible Color Palette:</strong> Check your chosen color contrasts at <a href="https://webaim.org/resources/contrastchecker/" target="_blank">WebAIM Contrast Checker</a> to ensure accessibility.</li>
+      </ul>
+    </li>
+  </ul>
+  
+  <hr>
+  
+  <h3>Submission</h3>
+  <ul>
+    
+    <li>Email me the completed code and any files needed for it to run properly</li>
+  </ul>
+  
+  
+</div>
+`
+              },
+              {
+                title: "Email Newsletter System: Design to Deployment",
+                description: "Build a complete email newsletter system for MentorMatchAI using HTML, CSS, R Markdown, and blastula",
+                content: `
+<style>
+  .email-ticket { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+  .email-ticket h2 { font-size: 28px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #3498db; }
+  .email-ticket h3 { font-size: 20px; font-weight: 600; margin: 30px 0 15px 0; background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #3498db; }
+  .email-ticket h4 { font-size: 18px; font-weight: 600; margin: 25px 0 10px 0; color: #2c3e50; }
+  .email-ticket blockquote { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px 20px; margin: 20px 0; font-style: normal; }
+  .email-ticket p { margin: 15px 0; }
+  .email-ticket ul, .email-ticket ol { margin: 15px 0 20px 25px; }
+  .email-ticket li { margin-bottom: 10px; }
+  .email-ticket pre { background: #263238; color: #aed581; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
+  .email-ticket code { background: #f5f5f5; color: #d32f2f; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+  .email-ticket pre code { background: transparent; color: inherit; padding: 0; }
+  .email-ticket hr { margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0; }
+  .email-ticket a { color: #2196f3; text-decoration: none; }
+  .email-ticket a:hover { text-decoration: underline; }
+  .email-ticket .highlight { background: #fff3cd; padding: 15px; border-radius: 5px; border-left: 4px solid #ffc107; }
+  .email-ticket .success { background: #d4edda; padding: 15px; border-radius: 5px; border-left: 4px solid #28a745; }
+  .email-ticket .warning { background: #f8d7da; padding: 15px; border-radius: 5px; border-left: 4px solid #dc3545; }
+  .email-ticket .info { background: #d1ecf1; padding: 15px; border-radius: 5px; border-left: 4px solid #17a2b8; }
+</style>
+
+<div class="email-ticket">
+
+  <h2>📧 Email Newsletter Design: From Figma to R Markdown</h2>
+  
+  <div class="highlight">
+    <p><strong>🎯 Mission:</strong> Design a professional email newsletter in Figma and then build it using R Markdown. You'll learn the complete design-to-development workflow, from creating beautiful email layouts to implementing them with dynamic content.</p>
+  </div>
+
+  <hr>
+
+  <h3>📋 Your Deliverables</h3>
+  <ul>
+    <li><strong>Figma Design:</strong> Professional email newsletter design with MentorMatchAI branding</li>
+    <li><strong>R Markdown Script:</strong> Working newsletter template that renders your design</li>
+    <li><strong>Design Handoff Documentation:</strong> Notes on your design decisions and implementation process</li>
+    <li><strong>Final Output:</strong> Rendered HTML newsletter that matches your Figma design</li>
+  </ul>
+
+  <hr>
+
+  <h3>🎨 Phase 1: Design in Figma</h3>
+  
+  <h4>Step 1: Create Your Email Newsletter Design</h4>
+  <p>Design a professional email newsletter in Figma that matches MentorMatchAI's branding. Your design should include:</p>
+  <ul>
+    <li><strong>Header Section:</strong> MentorMatchAI logo, navigation, and branding elements</li>
+    <li><strong>Hero Section:</strong> Compelling headline, subheadline, and primary call-to-action</li>
+    <li><strong>Content Sections:</strong> At least 2-3 content blocks (featured mentors, success stories, platform updates)</li>
+    <li><strong>Footer:</strong> Contact information, social links, and unsubscribe option</li>
+  </ul>
+
+  <div class="info">
+    <h4>Design Requirements:</h4>
+    <ul>
+      <li>Use MentorMatchAI's brand colors (#4f8bb8 primary, appropriate secondary colors)</li>
+      <li>Design for mobile-first (600px max width for desktop)</li>
+      <li>Include placeholder text and images</li>
+      <li>Use clear visual hierarchy with proper typography</li>
+      <li>Ensure good contrast ratios for accessibility</li>
+      <li>Create a clean, professional layout that builds trust</li>
+    </ul>
+  </div>
+
+  <h4>Step 2: Design System Documentation</h4>
+  <p>Document your design decisions for the handoff process:</p>
+  <ul>
+    <li><strong>Color Palette:</strong> Document all colors used (hex codes)</li>
+    <li><strong>Typography:</strong> Font families, sizes, and weights</li>
+    <li><strong>Spacing:</strong> Padding and margin values used throughout</li>
+    <li><strong>Component Specifications:</strong> Button styles, card layouts, image dimensions</li>
+    <li><strong>Responsive Breakpoints:</strong> How the design adapts to different screen sizes</li>
+  </ul>
+
+  <hr>
+
+  <h3>📝 Phase 2: R Markdown Implementation</h3>
+  
+  <h4>Step 3: Create Your R Markdown Newsletter</h4>
+  <p>Build your newsletter using R Markdown, translating your Figma design into code:</p>
+
+  <div class="relative">
+    <pre><code>---
+title: "MentorMatchAI Newsletter"
+output: 
+  html_document:
+    css: styles.css
+    toc: false
+params:
+  user_name: "Subscriber"
+  featured_mentors: 3
+  success_stories: 2
+---
+
+\`\`\`{css, echo=FALSE}
+/* Custom CSS to match your Figma design */
+.newsletter-container {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+.header {
+  background-color: #4f8bb8;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #4f8bb8 0%, #2c5aa0 100%);
+  color: white;
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.content-section {
+  padding: 30px;
+  background-color: #ffffff;
+}
+
+.footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.btn-primary {
+  background-color: #4f8bb8;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 10px 0;
+}
+
+.featured-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px 0;
+  background-color: #fafafa;
+}
+\`\`\`
+
+\`\`\`{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(ggplot2)
+library(dplyr)
+library(knitr)
+\`\`\`
+
+<div class="newsletter-container">
+
+## Header Section
+<div class="header">
+  <h1>MentorMatchAI</h1>
+  <p>Connecting Students with Perfect Mentors</p>
+</div>
+
+## Hero Section
+<div class="hero-section">
+  <h2>Welcome to MentorMatchAI, \`r params$user_name\`!</h2>
+  <p>Discover your perfect mentor and accelerate your learning journey</p>
+  <a href="#" class="btn-primary">Find Your Mentor</a>
+</div>
+
+## Featured Mentors
+<div class="content-section">
+  <h3>Featured Mentors This Week</h3>
+  
+  \`\`\`{r featured-mentors}
+# Generate featured mentors section
+mentors <- data.frame(
+  name = c("Dr. Sarah Chen", "Prof. Michael Rodriguez", "Alex Johnson"),
+  expertise = c("Data Science", "Machine Learning", "Web Development"),
+  rating = c(4.9, 4.8, 4.7),
+  students = c(45, 38, 52)
+)
+
+for(i in 1:nrow(mentors)) {
+  cat(sprintf("
+  <div class='featured-card'>
+    <h4>%s</h4>
+    <p><strong>Expertise:</strong> %s</p>
+    <p><strong>Rating:</strong> %s/5.0 (%s students)</p>
+  </div>
+  ", mentors$name[i], mentors$expertise[i], mentors$rating[i], mentors$students[i]))
+}
+\`\`\`
+
+## Success Stories
+<div class="content-section">
+  <h3>Success Stories</h3>
+  
+  \`\`\`{r success-stories}
+# Generate success stories visualization
+success_data <- data.frame(
+  category = c("Career Growth", "Skill Development", "Network Building"),
+  percentage = c(85, 92, 78)
+)
+
+ggplot(success_data, aes(x = category, y = percentage, fill = category)) +
+  geom_col() +
+  theme_minimal() +
+  labs(title = "Student Success Metrics",
+       x = NULL, y = "Success Rate (%)") +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, size = 16),
+        axis.text = element_text(size = 12))
+\`\`\`
+
+## Footer
+<div class="footer">
+  <p>© 2024 MentorMatchAI. All rights reserved.</p>
+  <p><a href="#">Unsubscribe</a> | <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+</div>
+
+</div></code></pre>
+    <button onclick="copyRMarkdownCode(this)" class="absolute top-2 right-2 bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-600 text-sm">Copy Code</button>
+  </div>
+
+  <h4>Step 4: Customize Your Design</h4>
+  <p>Update the CSS and content to match your Figma design:</p>
+  <ul>
+    <li><strong>Update Colors:</strong> Replace the CSS color values with your design's color palette</li>
+    <li><strong>Adjust Typography:</strong> Modify font families, sizes, and weights to match your design</li>
+    <li><strong>Layout Adjustments:</strong> Update padding, margins, and spacing to match your Figma layout</li>
+    <li><strong>Add Your Content:</strong> Replace placeholder text with your actual newsletter content</li>
+    <li><strong>Include Images:</strong> Add your design's images and graphics</li>
+  </ul>
+
+  <hr>
+
+  <h3>🧪 Phase 3: Testing and Rendering</h3>
+  
+  <h4>Step 5: Render Your Newsletter</h4>
+  <p>Test your R Markdown newsletter by rendering it to HTML:</p>
+
+  <pre><code># In RStudio, open your .Rmd file and click "Knit" 
+# Or run this command in the console:
+rmarkdown::render("your_newsletter.Rmd")
+
+# This will generate an HTML file that you can open in your browser</code></pre>
+
+  <h4>Step 6: Review and Refine</h4>
+  <p>Compare your rendered HTML with your Figma design:</p>
+  <ul>
+    <li><strong>Visual Comparison:</strong> Open both your Figma design and the rendered HTML side by side</li>
+    <li><strong>Layout Check:</strong> Ensure the layout matches your design specifications</li>
+    <li><strong>Color Verification:</strong> Confirm colors match your design palette</li>
+    <li><strong>Typography Review:</strong> Check that fonts and text styling are correct</li>
+    <li><strong>Responsive Testing:</strong> Test how it looks on different screen sizes</li>
+  </ul>
+
+  <div class="info">
+    <h4>Common Adjustments:</h4>
+    <ul>
+      <li>Fine-tune CSS values to match exact spacing from Figma</li>
+      <li>Adjust color codes to match your design palette</li>
+      <li>Update font sizes and weights to match typography</li>
+      <li>Modify padding and margins for perfect alignment</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <h3>🔧 Technical Requirements</h3>
+  
+  <h4>Required Packages</h4>
+  <pre><code># Install required packages
+install.packages(c("rmarkdown", "knitr", "ggplot2", "dplyr"))
+
+# Load libraries
+library(rmarkdown)
+library(knitr)
+library(ggplot2)
+library(dplyr)</code></pre>
+
+  <h4>File Structure</h4>
+  <pre><code>newsletter_project/
+├── design/
+│   ├── figma_design.png
+│   ├── design_specs.md
+│   └── color_palette.txt
+├── newsletter.Rmd
+├── styles.css (optional)
+└── rendered_newsletter.html</code></pre>
+
+  <div class="info">
+    <h4>Design Tools</h4>
+    <ul>
+      <li><strong>Figma:</strong> Free design tool for creating your newsletter layout</li>
+      <li><strong>Color Picker:</strong> Use browser dev tools or online color pickers to extract exact colors</li>
+      <li><strong>Typography:</strong> Google Fonts or system fonts for consistent typography</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <h3>📋 Testing Checklist</h3>
+  
+  <div class="success">
+    <h4>Design Validation</h4>
+    <ul>
+      <li>✓ Figma design is complete and professional</li>
+      <li>✓ Color palette is documented and consistent</li>
+      <li>✓ Typography choices are appropriate and readable</li>
+      <li>✓ Layout follows good visual hierarchy</li>
+      <li>✓ Design includes all required sections</li>
+    </ul>
+  </div>
+
+  <div class="info">
+    <h4>R Markdown Testing</h4>
+    <ul>
+      <li>✓ R Markdown file renders without errors</li>
+      <li>✓ CSS styling matches Figma design</li>
+      <li>✓ Dynamic content (R code chunks) works correctly</li>
+      <li>✓ Images and graphics display properly</li>
+      <li>✓ Layout is responsive and mobile-friendly</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <h3>📚 Additional Resources</h3>
+  <ul>
+    <li><a href="https://www.figma.com/" target="_blank">Figma Design Tool</a> - Free design tool for creating your newsletter layout</li>
+    <li><a href="https://rmarkdown.rstudio.com/" target="_blank">R Markdown Documentation</a> - Official guide to R Markdown</li>
+    <li><a href="https://www.w3schools.com/css/" target="_blank">CSS Tutorial</a> - Learn CSS for styling your newsletter</li>
+    <li><a href="https://colorhunt.co/" target="_blank">Color Hunt</a> - Find beautiful color palettes for your design</li>
+    <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a> - Free web fonts for your typography</li>
+  </ul>
+
+  <hr>
+
+  <h3>🎯 Success Criteria</h3>
+  <p>Your email newsletter design and implementation will be considered successful if it meets these criteria:</p>
+  <ul>
+    <li><strong>Professional Design:</strong> Figma design looks professional and matches MentorMatchAI branding</li>
+    <li><strong>Complete Layout:</strong> Design includes all required sections (header, hero, content, footer)</li>
+    <li><strong>Design Documentation:</strong> Color palette, typography, and spacing are well documented</li>
+    <li><strong>R Markdown Implementation:</strong> Newsletter renders correctly and matches the Figma design</li>
+    <li><strong>Dynamic Content:</strong> R code chunks generate appropriate content and visualizations</li>
+    <li><strong>Visual Fidelity:</strong> Rendered HTML closely matches the original Figma design</li>
+  </ul>
+
+  <hr>
+
+  <h3>📤 Submission Requirements</h3>
+  <p>Email the following files to complete your submission:</p>
+  <ul>
+    <li><strong>Figma Design:</strong> Screenshot or link to your Figma design file</li>
+    <li><strong>Design Documentation:</strong> Text file with your color palette, typography, and design decisions</li>
+    <li><strong>R Markdown File:</strong> Your complete <code>newsletter.Rmd</code> file</li>
+    <li><strong>Rendered HTML:</strong> The final <code>newsletter.html</code> file generated from your R Markdown</li>
+    <li><strong>Brief Summary:</strong> 2-3 sentences describing your design approach and any challenges you faced</li>
+  </ul>
+
+  <div class="highlight">
+    <h3>🚀 Ready to Design?</h3>
+    <p>This project will teach you the complete design-to-development workflow. Start with your Figma design, document your decisions, and then bring it to life with R Markdown. The skills you learn here will be valuable for any future design and development projects!</p>
+  </div>
+
 </div>
 `
               }
@@ -2284,7 +3065,640 @@ dbDisconnect(con)</code></pre>
 </div>
 `
               }
-            ]
+            ],
+            3:[{ title: "Week 3",
+            description: "Email Systems & Queue Logic for Non-Coders",
+            content: `
+            
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sending Emails in R - Complete Beginner's Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .main-title {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #27ae60;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+        .mission-box {
+            background: linear-gradient(135deg, #fff9c4 0%, #f7f1a8 100%);
+            border-left: 6px solid #f39c12;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .mission-label {
+            font-weight: 700;
+            color: #8b4513;
+            margin-bottom: 10px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin: 40px 0 20px 0;
+            padding-left: 10px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .section-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            background: #e74c3c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-left: 6px solid #2196f3;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            font-weight: 700;
+            color: #1565c0;
+            margin-bottom: 5px;
+        }
+
+        .concept-box {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .concept-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .code-explanation {
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 15px;
+            margin: 10px 0;
+            font-style: italic;
+            color: #495057;
+        }
+
+        .option-item {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .option-title {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .pros, .cons {
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .pros {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+
+        .cons {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+
+        .pros h4 {
+            color: #155724;
+            margin-bottom: 10px;
+        }
+
+        .cons h4 {
+            color: #721c24;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-left: 6px solid #f39c12;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-title {
+            font-weight: 700;
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .step-by-step {
+            background: #e8f5e8;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .step-title {
+            font-weight: 700;
+            color: #155724;
+            margin-bottom: 15px;
+        }
+
+        .analogy-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 6px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .quick-ref {
+            background: #f1f3f4;
+            border: 2px solid #dadce0;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .quick-ref h3 {
+            color: #1a73e8;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title">Sending Emails in R - Complete Beginner's Guide</h1>
+        <p class="subtitle">No Coding Experience Required</p>
+
+        <div class="mission-box">
+            <div class="mission-label">Your Mission:</div>
+            Learn how to send automated, professional emails using R programming. You'll understand the technology behind email automation, set up your first email system, and send personalized messages to multiple recipients - all without any prior coding experience.
+        </div>
+
+        <div class="section-header">
+            <div class="section-icon">🎯</div>
+            <h2 class="section-title">Task Overview</h2>
+        </div>
+
+        <p>You have three progressive learning paths for mastering email automation in R:</p>
+
+        <div class="option-item">
+            <div class="option-title">Option 1:</div>
+            <strong>Understand the Concepts</strong> - Learn what email automation means, how SMTP works, and why R is useful for this task
+        </div>
+
+        <div class="option-item">
+            <div class="option-title">Option 2:</div>
+            <strong>Set Up Basic Email Sending</strong> - Install blastula, configure credentials, and send your first automated email
+        </div>
+
+        <div class="option-item">
+            <div class="option-title">Option 3:</div>
+            <strong>Create Advanced Email Systems</strong> - Build personalized, professional email campaigns with error handling
+        </div>
+
+        <div class="info-box">
+            <div class="info-item">
+                <div class="info-label">What You'll Need:</div>
+                RStudio with blastula package installed, a Gmail account with 2-factor authentication enabled
+            </div>
+            <div class="info-item">
+                <div class="info-label">Success Criteria:</div>
+                Successfully send automated, personalized emails to multiple recipients using R code
+            </div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-icon">📧</div>
+            <h2 class="section-title">What is Email Automation?</h2>
+        </div>
+
+        <div class="concept-box">
+            <div class="concept-title">The Big Picture</div>
+            <p>Imagine you need to send a personalized email to 100 people. Normally, you'd have to:</p>
+            <ul>
+                <li>Write each email individually</li>
+                <li>Copy and paste each person's name</li>
+                <li>Send them one by one</li>
+            </ul>
+            <p><strong>Email automation with code</strong> means you write instructions once, and the computer does all the repetitive work for you. It's like having a super-smart assistant that can send hundreds of personalized emails in seconds.</p>
+        </div>
+
+        <div class="section-header">
+            <div class="section-icon">🌐</div>
+            <h2 class="section-title">Understanding SMTP - The Internet's Postal System</h2>
+        </div>
+
+        <div class="analogy-box">
+            <div class="concept-title">Real-World Analogy</div>
+            <p><strong>SMTP</strong> stands for "Simple Mail Transfer Protocol." Think of it as the postal system for the internet.</p>
+            
+            <p>When you mail a letter, you need:</p>
+            <ul>
+                <li><strong>A post office</strong> (SMTP server)</li>
+                <li><strong>The postal worker's help</strong> (authentication)</li>
+                <li><strong>The correct address format</strong> (email protocols)</li>
+                <li><strong>Your return address</strong> (sender information)</li>
+            </ul>
+
+            <p><strong>In email terms:</strong></p>
+            <ul>
+                <li><strong>SMTP Server:</strong> Like a digital post office that handles sending emails</li>
+                <li><strong>Authentication:</strong> Proving you're allowed to use that post office (login credentials)</li>
+                <li><strong>Protocols:</strong> Rules about how emails should be formatted and sent</li>
+                <li><strong>Sender Information:</strong> Your email address and credentials</li>
+            </ul>
+        </div>
+
+        <div class="section-header">
+            <div class="section-icon">🔧</div>
+            <h2 class="section-title">Why Use Blastula?</h2>
+        </div>
+
+        <div class="concept-box">
+            <div class="concept-title">Blastula vs Other Options</div>
+            <p><strong>Blastula</strong> is a modern R package specifically designed for sending emails. Think of it as a specialized tool, like using a bread maker instead of mixing dough by hand.</p>
+
+            <div class="pros-cons">
+                <div class="pros">
+                    <h4>✅ Blastula Advantages</h4>
+                    <ul>
+                        <li>Professional email templates built-in</li>
+                        <li>Easy markdown formatting with md() function</li>
+                        <li>Great for business communications</li>
+                        <li>Modern, well-maintained package</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h4>❌ Traditional Methods</h4>
+                    <ul>
+                        <li>Complex setup required</li>
+                        <li>Limited formatting options</li>
+                        <li>Hard to make professional emails</li>
+                        <li>More prone to errors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-icon">🚀</div>
+            <h2 class="section-title">Getting Started with Blastula</h2>
+        </div>
+
+        <div class="step-by-step">
+            <div class="step-title">Step 1: Installing the Tools</div>
+            <p>Before you can send emails, you need to install the <code>blastula</code> package. Think of this like downloading a new app on your phone.</p>
+
+            <div class="code-block">
+              <pre><code># Install blastula (only need to do this once)
+install.packages("blastula")
+
+# Load blastula (do this every time you start R)
+library(blastula)</code></pre>
+            </div>
+
+            <div class="code-explanation">
+                <strong>What this does:</strong> The first line downloads and installs the blastula email tools onto your computer. The second line tells R "I want to use the blastula tools in this session."
+            </div>
+        </div>
+
+        <div class="step-by-step">
+            <div class="step-title">Step 2: Understanding the md() Function</div>
+            <p>The <code>md()</code> function is blastula's special feature that lets you write emails using <strong>Markdown</strong>.</p>
+
+            <p><strong>What is Markdown?</strong> It's a simple way to format text without knowing complex code. For example:</p>
+            <ul>
+                <li><code>**bold text**</code> becomes <strong>bold text</strong></li>
+                <li><code>*italic text*</code> becomes <em>italic text</em></li>
+                <li><code># Big Heading</code> becomes a large headline</li>
+            </ul>
+
+            <div class="code-block">
+              <pre><code># Create email content using markdown
+email_content <- md(
+"
+# Welcome to Our Service!
+
+Hello **{name}**,
+
+Thank you for joining us. Here are your details:
+
+- Email: {email}
+- Join Date: {date}
+
+We're excited to have you!
+
+Best regards,  
+The Team
+"
+)</code></pre>
+            </div>
+
+            <div class="code-explanation">
+                <strong>Line-by-line breakdown:</strong>
+                <ul>
+                    <li><code>email_content <-</code> creates a storage box called "email_content"</li>
+                    <li><code>md(</code> starts the markdown email creation</li>
+                    <li><code># Welcome to Our Service!</code> creates a big heading</li>
+                    <li><code>**{name}**</code> creates bold text, where <code>{name}</code> will be replaced with actual names</li>
+                    <li><code>{email}</code> and <code>{date}</code> are placeholders that will be filled with real data</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-icon">🔐</div>
+            <h2 class="section-title">Setting Up Email Credentials</h2>
+        </div>
+
+        <div class="warning-box">
+            <div class="warning-title">Security First!</div>
+            <p>Before sending emails, you need to set up your credentials. This is like giving R permission to use your email account securely.</p>
+        </div>
+
+        <div class="step-by-step">
+            <div class="step-title">Creating Secure Credentials</div>
+
+            <div class="code-block">
+              <pre><code># Create credentials for Gmail
+create_smtp_creds_key(
+  id = "my_gmail",
+  user = "your.email@gmail.com",
+  host = "smtp.gmail.com",
+  port = 587,
+  use_ssl = TRUE
+)</code></pre>
+            </div>
+
+            <div class="code-explanation">
+                <strong>What each part means:</strong>
+                <ul>
+                    <li><code>id = "my_gmail"</code> gives this credential set a name you can remember</li>
+                    <li><code>user = "your.email@gmail.com"</code> is your actual email address</li>
+                    <li><code>host = "smtp.gmail.com"</code> tells R which email server to use (Gmail's server)</li>
+                    <li><code>port = 587</code> is like a specific door number at the email server</li>
+                    <li><code>use_ssl = TRUE</code> means "use secure, encrypted connection"</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-icon">✉️</div>
+            <h2 class="section-title">Creating Your First Email</h2>
+        </div>
+
+        <div class="step-by-step">
+            <div class="step-title">Simple Email Example</div>
+
+            <div class="code-block">
+              <pre><code># Create simple email content
+my_email <- md(
+"
+# Hello from R!
+
+This is my first automated email.
+
+It was sent using code, which is pretty cool!
+
+Best wishes,  
+Your Name
+"
+)
+
+# Send the email
+smtp_send(
+  email = my_email,
+  from = "your.email@gmail.com",
+  to = "recipient@example.com",
+  subject = "My First Automated Email",
+  credentials = creds_key("my_gmail")
+)</code></pre>
+            </div>
+
+            <div class="code-explanation">
+                <strong>Breaking down the sending process:</strong>
+                <ul>
+                    <li><code>email = my_email</code> uses the email content we created above</li>
+                    <li><code>from = "your.email@gmail.com"</code> sets who the email appears to be from</li>
+                    <li><code>to = "recipient@example.com"</code> sets who receives the email</li>
+                    <li><code>subject = "My First Automated Email"</code> sets the subject line</li>
+                    <li><code>credentials = creds_key("my_gmail")</code> uses the login credentials we set up earlier</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-icon">👥</div>
+            <h2 class="section-title">Personalizing Emails with Data</h2>
+        </div>
+
+        <div class="concept-box">
+            <div class="concept-title">Using Real Data in Emails</div>
+            <p>One of the most powerful features is using actual data to personalize emails. Imagine you have a list of customers and want to send each a personalized message.</p>
+
+            <div class="code-block">
+              <pre><code># Create sample data (like a simple spreadsheet)
+customer_data <- data.frame(
+  name = c("Alice Johnson", "Bob Smith", "Carol Davis"),
+  email = c("alice@example.com", "bob@example.com", "carol@example.com"),
+  purchase_amount = c(150, 75, 200),
+  stringsAsFactors = FALSE
+)</code></pre>
+            </div>
+
+            <div class="code-explanation">
+                <strong>Understanding the data structure:</strong>
+                <ul>
+                    <li><code>data.frame(</code> creates a table of information (like Excel)</li>
+                    <li><code>name = c("Alice Johnson", "Bob Smith", "Carol Davis")</code> creates a column of names</li>
+                    <li><code>c(...)</code> means "combine these items into a list"</li>
+                    <li>Each row represents one customer</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quick-ref">
+            <h3>🎯 Quick Reference Guide</h3>
+            
+            <div class="code-block">
+              <pre><code># 1. Load the package
+library(blastula)
+
+# 2. Set up credentials (one time only)
+create_smtp_creds_key(
+  id = "my_email",
+  user = "your.email@gmail.com",
+  host = "smtp.gmail.com",
+  port = 587,
+  use_ssl = TRUE
+)
+
+# 3. Create email content
+my_message <- md("
+# Subject Here
+
+Hello **{name}**,
+
+Your message content goes here.
+
+Best regards,
+Your Name
+")
+
+# 4. Send the email
+smtp_send(
+  email = my_message,
+  from = "your.email@gmail.com",
+  to = "recipient@example.com",
+  subject = "Email Subject",
+  credentials = creds_key("my_email"),
+  .data = list(name = "Recipient Name")
+)</code></pre>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-item">
+                <div class="info-label">Key Concepts Learned:</div>
+                <ul>
+                    <li><strong>SMTP</strong> is the internet's postal system for emails</li>
+                    <li><strong>Blastula</strong> makes it easy to send professional emails from R</li>
+                    <li><strong>md()</strong> lets you write beautiful emails using simple markdown formatting</li>
+                    <li><strong>Credentials</strong> are how you securely log into your email account</li>
+                    <li><strong>Placeholders</strong> like <code>{name}</code> get replaced with real data</li>
+                </ul>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Best Practices:</div>
+                <ul>
+                    <li>Always test with your own email first</li>
+                    <li>Use App Passwords, never regular passwords</li>
+                    <li>Add delays between bulk emails</li>
+                    <li>Handle errors to prevent crashes</li>
+                    <li>Keep subject lines clear and professional</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+            
+            
+            
+            
+            
+            `
+              
+            }]
           },
           tickets: {
             1: 'commonWeek1Tickets',
@@ -2663,7 +4077,646 @@ dbDisconnect(con)</code></pre>
 </div>
                 `
               }
+            ],
+            3: [
+             {
+  title: "Email Automation System Implementation",
+  description: "Build a professional email notification system using blastula",
+  content: `
+<style>
+  .backend-tutorial { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+  .backend-tutorial h2 { font-size: 28px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #27ae60; }
+  .backend-tutorial h3 { font-size: 20px; font-weight: 600; margin: 30px 0 15px 0; background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #27ae60; }
+  .backend-tutorial h4 { font-size: 18px; font-weight: 600; margin: 25px 0 10px 0; color: #2c3e50; }
+  .backend-tutorial blockquote { background: #e8f5e8; border-left: 4px solid #27ae60; padding: 15px 20px; margin: 20px 0; font-style: normal; }
+  .backend-tutorial p { margin: 15px 0; }
+  .backend-tutorial ul, .backend-tutorial ol { margin: 15px 0 20px 25px; }
+  .backend-tutorial li { margin-bottom: 10px; }
+  .backend-tutorial pre { background: #263238; color: #aed581; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
+  .backend-tutorial code { background: #f5f5f5; color: #d32f2f; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+  .backend-tutorial pre code { background: transparent; color: inherit; padding: 0; }
+  .backend-tutorial hr { margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0; }
+  .backend-tutorial .highlight { background: #fff3cd; padding: 15px; border-radius: 5px; border-left: 4px solid #ffc107; }
+  .backend-tutorial .success { background: #d4edda; padding: 15px; border-radius: 5px; border-left: 4px solid #28a745; }
+  .backend-tutorial .info { background: #d1ecf1; padding: 15px; border-radius: 5px; border-left: 4px solid #17a2b8; }
+  .backend-tutorial .warning { background: #f8d7da; padding: 15px; border-radius: 5px; border-left: 4px solid #dc3545; }
+  .backend-tutorial .ticket-header { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 20px; margin-bottom: 30px; border-radius: 0 8px 8px 0; }
+  .backend-tutorial .ticket-number { background: rgba(0,0,0,0.1); padding: 4px 8px; border-radius: 12px; font-size: 0.9em; display: inline-block; margin-right: 10px; }
+  .backend-tutorial .priority { background: #ff9800; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.8em; font-weight: bold; display: inline-block; }
+  .backend-tutorial .task-list { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; margin: 20px 0; }
+  .backend-tutorial .task-list li { margin: 10px 0; padding-left: 10px; }
+  .backend-tutorial .task-list li:before { content: "☐"; margin-right: 10px; color: #6c757d; }
+</style>
+
+<div class="backend-tutorial">
+  <div class="ticket-header">
+    <span class="ticket-number">TICKET #BE-2024</span>
+    <span class="priority">HIGH PRIORITY</span>
+    <h2 style="margin: 10px 0 0 0; border: none;">Email Notification System Implementation</h2>
+    <p style="margin: 10px 0 0 0; opacity: 0.9;">Assigned to: Junior Backend Developer | Due: EOD Today</p>
+  </div>
+
+  <div class="highlight">
+    <p><strong>From: Senior Developer</strong><br>
+    <strong>To: Junior Developer</strong><br>
+    <strong>Subject: URGENT - Implement Email Notification System for MentorMatchAI</strong></p>
+    
+    <p>Hey team! 👋</p>
+    
+    <p>We need to implement an email notification system for MentorMatchAI TODAY. When students submit their questionnaire, they should receive a professional confirmation email with their submission details. The frontend team is waiting on this to complete their integration.</p>
+    
+    <p><strong>Why this matters:</strong> Students are submitting forms but getting no confirmation. We're losing trust and potentially losing users who think their submission failed.</p>
+  </div>
+
+  <hr>
+
+  <h3>📋 Your Mission</h3>
+  
+  <p>Build a working email system that:</p>
+  <ol>
+    <li>Sends professional HTML emails using blastula</li>
+    <li>Uses dynamic content with glue for personalization</li>
+    <li>Includes proper error handling</li>
+    <li>Can be reused as a function for different email types</li>
+  </ol>
+
+  <div class="warning">
+    <h4>⚠️ IMPORTANT: Email Credentials</h4>
+    <p><strong>DO NOT</strong> hardcode any passwords or credentials in your code!</p>
+    <p>You'll need to get the following from your instructor:</p>
+    <ul>
+      <li>Gmail address to send from</li>
+      <li>App password (NOT regular password)</li>
+      <li>Instructions for secure credential storage</li>
+    </ul>
+    <p><strong>Ask your instructor for these NOW before proceeding!</strong></p>
+  </div>
+
+  <hr>
+
+  <h3>Step 1: Install Required Packages</h3>
+  
+  <p>First, let's get our tools ready. Copy and run this code:</p>
+  
+  <pre><code># Install packages if you haven't already
+install.packages(c("blastula", "glue"))
+
+# Load the libraries
+library(blastula)
+library(glue)</code></pre>
+
+  <div class="info">
+    <p><strong>What these do:</strong></p>
+    <ul>
+      <li><code>blastula</code> - Modern email package for R with great HTML support</li>
+      <li><code>glue</code> - Makes string interpolation easy (like f-strings in Python)</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <h3>Step 2: Set Up Email Credentials</h3>
+  
+  <p>Once you have the credentials from your instructor, set them up securely:</p>
+  
+  <pre><code># Create secure email credentials
+# Replace with actual values from your instructor
+create_smtp_creds_key(
+  id = "mentormatch_email",
+  user = "YOUR_INSTRUCTOR_WILL_PROVIDE@gmail.com",  # Ask instructor
+  host = "smtp.gmail.com",
+  port = 587,
+  use_ssl = TRUE
+)
+
+# You'll be prompted for the app password - paste it when asked</code></pre>
+
+  <div class="warning">
+    <p><strong>Security Note:</strong> This stores credentials securely in your system keyring. Never put passwords directly in code!</p>
+  </div>
+
+  <hr>
+
+  <h3>Step 3: Create Your First Email with Dynamic Content</h3>
+  
+  <p>Now let's create a confirmation email with personalized content. Copy this code and modify it:</p>
+  
+  <pre><code># Sample student data (this would come from your form/database)
+student_name <- "Alex Johnson"
+student_email <- "alex.johnson@student.edu"
+submission_time <- format(Sys.time(), "%B %d, %Y at %I:%M %p")
+selected_fields <- c("Data Science", "Machine Learning", "Python")
+mentorship_type <- "Technical Skills Development"
+
+# Create email content using blastula's md() with glue
+email_content <- md(glue::glue('
+# 🎉 Application Received!
+
+Hello **{student_name}**,
+
+Thank you for submitting your mentorship application to **MentorMatchAI**! We\'re excited to help you connect with the perfect mentor.
+
+## 📋 Your Submission Details:
+
+**Submitted on:** {submission_time}  
+**Your Email:** {student_email}  
+**Areas of Interest:** {paste(selected_fields, collapse = ", ")}  
+**Mentorship Type:** {mentorship_type}
+
+## 🚀 What Happens Next?
+
+1. **Review Process** - Our AI system is analyzing your profile (24-48 hours)
+2. **Mentor Matching** - We\'ll identify the top 3 mentors for your needs  
+3. **Introduction Email** - You\'ll receive mentor profiles and introduction instructions
+4. **First Meeting** - Schedule your initial consultation within 1 week
+
+## 📊 Quick Stats:
+- Average match satisfaction: **94%**
+- Typical response time: **36 hours**
+- Active mentors in your field: **127**
+
+---
+
+*Questions? Reply to this email or visit our [FAQ page](https://mentormatchai.com/faq)*
+
+Best regards,  
+**The MentorMatchAI Team**
+
+<small>You\'re receiving this because you submitted a mentorship application. [Unsubscribe](https://mentormatchai.com/unsubscribe)</small>
+'))
+
+# Send the email
+email <- compose_email(
+  body = email_content,
+  footer = md("© 2024 MentorMatchAI | Connecting Students with Mentors")
+)
+
+# Actually send it
+smtp_send(
+  email = email,
+  from = "mentormatchai@gmail.com",  # Use instructor-provided email
+  to = student_email,
+  subject = glue("Welcome to MentorMatchAI, {student_name}! 🎓"),
+  credentials = creds_key("mentormatch_email")
+)
+
+print("✅ Email sent successfully!")</code></pre>
+
+  <div class="task-list">
+    <h4>Checkpoint Tasks:</h4>
+    <ul>
+      <li>Run the code with test data first (use your own email as recipient)</li>
+      <li>Verify the email arrives and looks professional</li>
+      <li>Check that all dynamic content appears correctly</li>
+      <li>Note any errors and troubleshoot with classmates</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <h3>Step 4: Add a Professional Email Template</h3>
+  
+  <p>Let's make the email even more professional with custom styling:</p>
+  
+  <pre><code># Enhanced email with custom CSS styling
+create_branded_email <- function(student_name, student_email, fields, mentorship_type) {
+  
+  # Create the email body with custom styling
+  email_body <- md(glue::glue('
+<style>
+  .email-container {{
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+  }}
+  .header {{
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+  }}
+  .content {{
+    background: #f7fafc;
+    padding: 30px;
+    border-radius: 0 0 10px 10px;
+  }}
+  .info-box {{
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px 0;
+  }}
+  .cta-button {{
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    margin: 20px 0;
+  }}
+</style>
+
+<div class="email-container">
+  <div class="header">
+    <h1>Welcome to MentorMatchAI! 🎓</h1>
+    <p style="margin: 0; opacity: 0.9;">Your journey to finding the perfect mentor starts here</p>
+  </div>
+  
+  <div class="content">
+    <h2>Hello {student_name}! 👋</h2>
+    
+    <p>Congratulations on taking the first step towards advancing your career with personalized mentorship!</p>
+    
+    <div class="info-box">
+      <h3>📋 Your Application Summary</h3>
+      <p><strong>Name:</strong> {student_name}<br>
+      <strong>Email:</strong> {student_email}<br>
+      <strong>Focus Areas:</strong> {paste(fields, collapse = ", ")}<br>
+      <strong>Mentorship Type:</strong> {mentorship_type}<br>
+      <strong>Application ID:</strong> #{sample(10000:99999, 1)}</p>
+    </div>
+    
+    <div class="info-box">
+      <h3>🎯 Your Personalized Match Criteria</h3>
+      <p>Based on your preferences, we\'ll match you with mentors who:</p>
+      <ul>
+        <li>Have expertise in {fields[1]}</li>
+        <li>Offer {tolower(mentorship_type)} guidance</li>
+        <li>Match your communication style</li>
+        <li>Align with your career goals</li>
+      </ul>
+    </div>
+    
+    <center>
+      <a href="https://mentormatchai.com/dashboard" class="cta-button">View Your Dashboard</a>
+    </center>
+    
+    <p><em>Pro tip: While you wait, update your profile with more details to improve match quality!</em></p>
+  </div>
+</div>
+'))
+  
+  return(email_body)
+}</code></pre>
+
+  <hr>
+
+  <h3>Step 5: Turn It Into a Reusable Function</h3>
+  
+  <p>Now let's create a function that can send different types of emails:</p>
+  
+  <pre><code># Master email sending function
+send_mentormatch_email <- function(
+  recipient_email,
+  recipient_name,
+  email_type = "confirmation",
+  data = list(),
+  test_mode = FALSE
+) {
+  
+  # Input validation
+  if (!grepl("@", recipient_email)) {
+    stop("Invalid email address provided")
+  }
+  
+  # Different email templates based on type
+  email_content <- switch(email_type,
+    "confirmation" = {
+      md(glue::glue('
+# Application Confirmed! ✅
+
+Hello **{recipient_name}**,
+
+Your MentorMatchAI application has been received and is being processed.
+
+**Application Details:**
+- Fields of Interest: {paste(data$fields, collapse = ", ")}
+- Mentorship Type: {data$mentorship_type}
+- Submitted: {format(Sys.time(), "%B %d, %Y")}
+
+You\'ll hear from us within 48 hours with your mentor matches!
+
+Best regards,  
+The MentorMatchAI Team
+      '))
+    },
+    
+    "match_found" = {
+      md(glue::glue('
+# 🎉 We Found Your Mentors!
+
+Hello **{recipient_name}**,
+
+Great news! We\'ve identified **{data$match_count}** mentors who are perfect matches for your goals.
+
+**Your Top Match:**
+- Name: {data$top_mentor_name}
+- Expertise: {data$top_mentor_expertise}
+- Match Score: {data$match_score}%
+
+[View All Matches](https://mentormatchai.com/matches)
+
+Best regards,  
+The MentorMatchAI Team
+      '))
+    },
+    
+    "reminder" = {
+      md(glue::glue('
+# Friendly Reminder 🔔
+
+Hello **{recipient_name}**,
+
+Just a quick reminder that you have a mentorship session scheduled:
+
+- **When:** {data$session_date}
+- **With:** {data$mentor_name}
+- **Topic:** {data$session_topic}
+
+[Join Session](https://mentormatchai.com/session/{data$session_id})
+
+See you there!  
+The MentorMatchAI Team
+      '))
+    },
+    
+    # Default template
+    {
+      md(glue::glue('
+# Hello from MentorMatchAI
+
+Hello **{recipient_name}**,
+
+{data$custom_message}
+
+Best regards,  
+The MentorMatchAI Team
+      '))
+    }
+  )
+  
+  # Create email
+  email <- compose_email(
+    body = email_content,
+    footer = md("© 2024 MentorMatchAI | [Unsubscribe](https://mentormatchai.com/unsubscribe)")
+  )
+  
+  # Subject lines based on email type
+  subject <- switch(email_type,
+    "confirmation" = glue("Welcome to MentorMatchAI, {recipient_name}! 🎓"),
+    "match_found" = glue("🎉 We found your perfect mentors, {recipient_name}!"),
+    "reminder" = glue("Reminder: Upcoming session with {data$mentor_name}"),
+    glue("Update from MentorMatchAI")
+  )
+  
+  # Send email (or print in test mode)
+  if (test_mode) {
+    print("TEST MODE - Email would be sent to:")
+    print(recipient_email)
+    print("Subject:")
+    print(subject)
+    print("Preview:")
+    print(email)
+    return(invisible(TRUE))
+  } else {
+    smtp_send(
+      email = email,
+      from = "mentormatchai@gmail.com",  # Use instructor-provided email
+      to = recipient_email,
+      subject = subject,
+      credentials = creds_key("mentormatch_email")
+    )
+    
+    # Log the email
+    cat(glue("✅ {email_type} email sent to {recipient_name} ({recipient_email}) at {Sys.time()}\n"))
+    return(invisible(TRUE))
+  }
+}
+
+# Test the function
+send_mentormatch_email(
+  recipient_email = "test@example.com",
+  recipient_name = "Test User",
+  email_type = "confirmation",
+  data = list(
+    fields = c("Python", "Data Science"),
+    mentorship_type = "Technical Skills"
+  ),
+  test_mode = TRUE  # Set to FALSE to actually send
+)</code></pre>
+
+  <hr>
+
+  <h3>Step 6: Implement Error Handling</h3>
+  
+  <p>Professional code needs proper error handling. Add this enhanced version:</p>
+  
+  <pre><code># Production-ready email function with error handling
+send_email_with_retry <- function(
+  recipient_email,
+  recipient_name,
+  email_type = "confirmation",
+  data = list(),
+  max_retries = 3
+) {
+  
+  # Validate inputs
+  if (is.null(recipient_email) || recipient_email == "") {
+    stop("Recipient email cannot be empty")
+  }
+  
+  if (!grepl("^[^@]+@[^@]+\\.[^@]+$", recipient_email)) {
+    stop("Invalid email format")
+  }
+  
+  # Try sending with retries
+  attempt <- 1
+  while (attempt <= max_retries) {
+    tryCatch({
+      # Call our main email function
+      result <- send_mentormatch_email(
+        recipient_email = recipient_email,
+        recipient_name = recipient_name,
+        email_type = email_type,
+        data = data,
+        test_mode = FALSE
+      )
+      
+      # Success - log and return
+      cat(glue("✅ Email sent successfully on attempt {attempt}\n"))
+      return(list(
+        success = TRUE,
+        attempts = attempt,
+        timestamp = Sys.time(),
+        recipient = recipient_email
+      ))
+      
+    }, error = function(e) {
+      cat(glue("❌ Attempt {attempt} failed: {e$message}\n"))
+      
+      if (attempt < max_retries) {
+        cat(glue("⏳ Retrying in 5 seconds...\n"))
+        Sys.sleep(5)
+        attempt <<- attempt + 1
+      } else {
+        # Final failure - return error info
+        return(list(
+          success = FALSE,
+          attempts = attempt,
+          error = e$message,
+          timestamp = Sys.time(),
+          recipient = recipient_email
+        ))
+      }
+    })
+  }
+}</code></pre>
+
+  <div class="task-list">
+    <h4>Final Implementation Tasks:</h4>
+    <ul>
+      <li>Create a test script that sends all three email types</li>
+      <li>Add logging to track which emails were sent</li>
+      <li>Test error handling by providing invalid emails</li>
+      <li>Create a batch sending function for multiple recipients</li>
+      <li>Document your functions with comments</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <h3>🎯 Bonus Challenge: Batch Email Sender</h3>
+  
+  <p>If you finish early, implement this batch email sender:</p>
+  
+  <pre><code># Batch email sender with progress tracking
+send_batch_emails <- function(recipients_df, email_type = "confirmation") {
+  total <- nrow(recipients_df)
+  success_count <- 0
+  failed_emails <- c()
+  
+  cat(glue("📧 Sending {total} emails...\n\n"))
+  
+  # Progress bar
+  pb <- txtProgressBar(min = 0, max = total, style = 3)
+  
+  for (i in 1:total) {
+    recipient <- recipients_df[i, ]
+    
+    # Send email
+    result <- send_email_with_retry(
+      recipient_email = recipient$email,
+      recipient_name = recipient$name,
+      email_type = email_type,
+      data = list(
+        fields = strsplit(recipient$fields, ",")[[1]],
+        mentorship_type = recipient$mentorship_type
+      ),
+      max_retries = 2
+    )
+    
+    if (result$success) {
+      success_count <- success_count + 1
+    } else {
+      failed_emails <- c(failed_emails, recipient$email)
+    }
+    
+    # Update progress bar
+    setTxtProgressBar(pb, i)
+    
+    # Rate limiting - don't overwhelm the server
+    Sys.sleep(1)
+  }
+  
+  close(pb)
+  
+  # Summary report
+  cat("\n\n📊 Batch Email Report:\n")
+  cat(glue("✅ Successful: {success_count}/{total}\n"))
+  cat(glue("❌ Failed: {length(failed_emails)}/{total}\n"))
+  
+  if (length(failed_emails) > 0) {
+    cat("\nFailed emails:\n")
+    cat(paste("- ", failed_emails, collapse = "\n"))
+  }
+  
+  return(list(
+    total = total,
+    success = success_count,
+    failed = failed_emails,
+    success_rate = round(success_count / total * 100, 2)
+  ))
+}</code></pre>
+
+  <hr>
+
+  <h3>📋 Deliverables Checklist</h3>
+  
+  <div class="success">
+    <h4>What to Submit:</h4>
+    <ol>
+      <li><strong>email_functions.R</strong> - Your complete email system with all functions</li>
+      <li><strong>test_emails.R</strong> - Script demonstrating all email types</li>
+      <li><strong>email_log.txt</strong> - Log showing successful test sends</li>
+      <li><strong>screenshots/</strong> - Folder with screenshots of received emails</li>
+      <li><strong>README.md</strong> - Documentation explaining:
+        <ul>
+          <li>How to set up credentials</li>
+          <li>Function parameters and usage</li>
+          <li>Error handling approach</li>
+          <li>Any challenges you faced</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <div class="warning">
+    <h4>Before Submitting:</h4>
+    <ul>
+      <li>Remove ALL hardcoded credentials</li>
+      <li>Test with at least 3 different email scenarios</li>
+      <li>Ensure error handling works properly</li>
+      <li>Check that emails render correctly in Gmail</li>
+      <li>Verify all dynamic content appears correctly</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <h3>🎉 Success Criteria</h3>
+  
+  <p>Your implementation is complete when:</p>
+  <ul>
+    <li>✅ You can send personalized emails using blastula + glue</li>
+    <li>✅ The md() function creates properly formatted HTML emails</li>
+    <li>✅ Your function handles multiple email types</li>
+    <li>✅ Error handling prevents crashes</li>
+    <li>✅ Batch sending works with progress tracking</li>
+    <li>✅ All test emails arrive and display correctly</li>
+  </ul>
+
+  <div class="info">
+    <h4>🚀 What's Next?</h4>
+    <p>Once you complete this ticket, you'll be ready to:</p>
+    <ul>
+      <li>Integrate email notifications with the questionnaire system</li>
+      <li>Add email templates for mentor notifications</li>
+      <li>Implement weekly digest emails</li>
+      <li>Build an email queue system for delayed sending</li>
+    </ul>
+  </div>
+
+  <p><strong>Questions?</strong> Check with your teammates first, then escalate to your instructor if needed.</p>
+  
+  <p><em>Good luck! Remember: test thoroughly before pushing to production! 🚀</em></p>
+</div>
+`
+}
             ]
+            
           }
         },
         ai: {
@@ -3214,6 +5267,17 @@ for (i in 1:3) {
     </div>
 </body>
 </html>
+`
+              }
+            ],
+             3: [
+              {
+                title: "AI, Semantic Recommendation & RAG in R",
+                description: "Understand AI concepts, semantic recommendation, and RAG implementation",
+                content: `
+                See Week 2 lessons & tickets
+                
+                
 `
               }
             ]
@@ -4139,7 +6203,16 @@ for (i in seq_along(weighted_recommendations)) {
 </body>
 
         `
-      }]
+      }],
+      3: [{
+        title: "Semantic Recommender Implementation",
+        description: "Build and test a working semantic recommendation system",
+        content: `
+        Complete Week 2 Semantic Recommender Implementation Ticket
+
+        `
+      }],
+      
              
            }
         }
@@ -4205,7 +6278,7 @@ for (i in seq_along(weighted_recommendations)) {
             const hiddenContent = document.createElement('div');
             hiddenContent.style.display = 'none';
             hiddenContent.id = `${contentId}-content`;
-            hiddenContent.textContent = item.content;
+            hiddenContent.innerHTML = item.content;
             document.body.appendChild(hiddenContent);
           });
           
@@ -4219,7 +6292,7 @@ for (i in seq_along(weighted_recommendations)) {
         document.getElementById('modal-title').textContent = title;
         document.getElementById('modal-content').innerHTML = content;
         document.getElementById('modal').classList.add('show');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('modal-open');
         
         // Add copy buttons to code blocks in the modal
         setTimeout(() => {
@@ -4229,14 +6302,20 @@ for (i in seq_along(weighted_recommendations)) {
 
       function closeModal() {
         document.getElementById('modal').classList.remove('show');
-        document.body.style.overflow = '';
+        document.body.classList.remove('modal-open');
+        
+        // Ensure the main content area maintains its layout
+        const contentArea = document.getElementById('content-area');
+        if (contentArea) {
+          contentArea.style.display = 'block';
+        }
       }
 
       // Handle content card clicks
       function handleContentClick(contentId) {
         const element = document.getElementById(contentId);
         const title = element.getAttribute('data-title');
-        const content = document.getElementById(`${contentId}-content`).textContent;
+        const content = document.getElementById(`${contentId}-content`).innerHTML;
         showModal(title, content);
       }
 
@@ -4275,6 +6354,23 @@ for (i in seq_along(weighted_recommendations)) {
         navigator.clipboard.writeText(text).then(() => {
           btn.textContent = 'Copied!';
           setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
+        });
+      }
+
+      function copyRMarkdownCode(btn) {
+        const codeBlock = btn.parentElement.querySelector('code');
+        const text = codeBlock.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = 'Copied!';
+          btn.classList.add('copied');
+          setTimeout(() => { 
+            btn.textContent = 'Copy Code'; 
+            btn.classList.remove('copied');
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+          btn.textContent = 'Failed';
+          setTimeout(() => { btn.textContent = 'Copy Code'; }, 2000);
         });
       }
 
