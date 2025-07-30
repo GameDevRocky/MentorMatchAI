@@ -12,7 +12,28 @@ This tutorial teaches you how to design and send beautiful emails using the `bla
 
 ## 🚀 Getting Started
 
-### Step 1: Install Required Packages
+### Option 1: Use Existing Credentials (Recommended for Students)
+
+If your instructor has provided the credential files, you can use them directly:
+
+```r
+# Install required packages
+install.packages("blastula")
+install.packages("glue")
+
+# Run the student setup script
+source("student_email_setup.R")
+
+# Load the main tutorial
+source("blastula_email_tutorial.R")
+
+# Test your email setup
+test_email_setup()
+```
+
+### Option 2: Set Up Your Own Credentials
+
+If you want to use your own email account:
 
 ```r
 # Install the required packages
@@ -22,11 +43,7 @@ install.packages("glue")
 # Load the packages
 library(blastula)
 library(glue)
-```
 
-### Step 2: Run the Tutorial
-
-```r
 # Load the tutorial
 source("blastula_email_tutorial.R")
 ```
@@ -121,7 +138,23 @@ send_email_with_blastula(
 
 ## ⚙️ Configuration for Real Email Sending
 
-To send real emails, you need to configure SMTP settings:
+### Using Existing Credentials (Recommended)
+
+If your instructor has provided the credential files (`gmail_creds` or `gmail_credss`), you can use them directly:
+
+```r
+# The student setup script will automatically configure everything
+source("student_email_setup.R")
+```
+
+This will:
+- Load the existing credentials
+- Configure the email settings automatically
+- Allow you to send real emails immediately
+
+### Setting Up Your Own Credentials
+
+If you want to use your own email account:
 
 ```r
 # Update these settings in the tutorial file
