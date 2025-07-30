@@ -1,0 +1,2 @@
+# Quick Email Test - One Liner
+library(blastula); library(glue); cat("✅ Packages loaded\n"); test_email <- compose_email(body = md("Hello! This is a test email.")); cat("✅ Email created\n"); cat("📧 Test email object ready: 'test_email'\n"); cat("🎉 Quick test completed!\n") 
